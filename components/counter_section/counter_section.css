@@ -1,0 +1,38 @@
+@media screen and (max-width: 1200px){
+    div.number{
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 969px){
+    div.number{
+        font-size: 1.6rem;
+
+    }
+    p.label{
+        font-size: 1rem;
+        
+    }
+    .counert-section{
+        
+        padding-left: O;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 669px){
+    .counter-contanair{
+        display: grid;
+        grid-template-columns: repeat(2 ,2fr);
+        gap: 1rem;
+    }
+
+    div.number{
+        font-size: 1.3rem;
+
+    }
+    p.label{
+        font-size: 0.7rem;
+        
+    }
+}

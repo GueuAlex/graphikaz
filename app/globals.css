@@ -1,27 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700;800&family=Rubik:wght@300;400;500;600&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+*{
+  margin: O;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.blurr{
+  /* background: rgb(193, 245, 255); top: 17rem; width: 21rem; height: 11rem; left: -9rem; */
+  /* background: #edd0ff; */
+  border-radius: 50%;
+  -webkit-filter: blur(72px);
+  filter: blur(200px);
+  height: 4rem;
+  position: absolute;
+ 
+ 
+  z-index: -9;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.blur_1{
+  background-color: aqua;
 }
+
+.blur_2{
+  background-color: blueviolet;
+}
+
+.mask{
+  background-color: rgba(250, 235, 215, 0.396);
+  z-index: -100;
+}
+
+input[type="text"] {
+  /* Réinitialisation des styles par défaut */
+  border: none;
+  outline: none;
+  color: #000;
+  padding: 0;
+  margin: 0;
+  /* Autres styles personnalisés */
+  /* ... */
+}
+
+h2{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  width: 48%; /* Chaque enfant prendra 50% de la largeur du conteneur */
+}
+
+.flex-item1{
+  width: 50%;
+}
+
+.flex-item1-h{
+  height: 50%;
+}
+
+.po-link:hover .acess .p-link{
+  color: #5BBB7B;
+  text-decoration: underline;
+}
+
+
+
+div.add-to-favorite:hover i{
+  color: white;
+}
+

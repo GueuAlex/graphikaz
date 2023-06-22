@@ -1,0 +1,59 @@
+.link:hover h3 {
+    color: #5BBB7B;
+  }
+
+  .categories-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Crée 4 colonnes de largeur égale */
+    grid-gap: 1rem; /* Espacement entre les éléments */
+  }
+
+  @media screen and (max-width: 1270px){
+    .categories-content{
+      
+      grid-template-columns: repeat(3, 1fr);
+      
+    }
+  }
+  
+  @media screen and (max-width: 969px){
+    .categories-content{
+      
+      grid-template-columns: repeat(3, 1fr);
+      
+    }
+    
+    div.categories-title h2{
+      font-size: 1.3rem;
+    }
+
+    div.categories-title span{
+      font-size: 0.6rem;
+    }
+
+    .categories-content .link .img{
+      transform: scale(0.8);
+    }
+
+    .categories-content .category-title h3{
+      font-size: 0.8rem;
+    }
+
+    .categories-content .category-title small{
+      font-size: 0.7rem;
+    }
+
+  }
+
+  
+  @media screen and (max-width: 767px){
+    .categories-content{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+  }
+
+
+  

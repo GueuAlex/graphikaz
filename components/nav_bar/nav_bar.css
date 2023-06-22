@@ -1,0 +1,11 @@
+.ok{
+    font-size: 3em;
+}
+
+@media screen and (max-width: 1024px){
+    header{
+        background-color: white;
+        border-bottom: solid 1px rgb(222, 222, 222);
+    }
+
+ }
