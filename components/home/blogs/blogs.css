@@ -1,0 +1,16 @@
+.blog .blog-card-container .po-link {
+ margin-top: 0.75em;
+}
+
+@media screen and (max-width: 1200px){
+    .blog {
+        padding: 1em;
+    }
+    .blog .blog-header h2{
+        font-size: 1.1rem;
+    }
+
+    .blog .blog-header span{
+        font-size: 0.7rem;
+    }
+}

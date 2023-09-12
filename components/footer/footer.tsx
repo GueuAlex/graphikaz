@@ -5,16 +5,16 @@ import "./footer.css"
 
 const Footer = () => {
   return (
-    <div className="w-full bg-primary flex justify-center">
+    <div className="my-footer w-full bg-primary flex justify-center">
       <div className="max-w-[97rem] py-[2rem] w-full">
-        <div className="flex flex-row justify-between items-center pb-5 border-b-2 border-teal-800">
+        <div className="header  flex flex-row justify-between items-center pb-5 border-b-2 border-teal-800">
           <div className="flex flex-row gap-5">
             <Link href="/" className="text-slate-100 text-[1.2rem]">Terms of Service</Link>
             <Link href="/" className="text-slate-100 text-[1.2rem]">Privacy Policy</Link>
             <Link href="/" className="text-slate-100 text-[1.2rem]">Site Map</Link>
           </div>
           <div className="flex flex-row gap-5">
-            <Link href="/" className="text-slate-100 text-[1.2rem]">Follow Us</Link>
+            <Link href="/" className="text-slate-100 text-[1.2rem] mt-2">Follow Us</Link>
             <div className="w-[2.3rem] h-[2.3rem] rounded-full bg-transparent hover:bg-teal-800 hover:cursor-pointer flex justify-center items-center">
                <i className="ri-facebook-fill text-white"></i>
             </div>
@@ -29,7 +29,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex justify-between items-start px-[5rem] py-[5rem]">
+        <div className="footer-links flex justify-between items-start px-[5rem] py-[5rem]">
           <div className="flex flex-col justify-start gap-3">
             <p className="text-white font-semibold">About</p>
             <Link href="/" className="text-slate-300 hover:text-white">About Us</Link>
@@ -64,7 +64,7 @@ const Footer = () => {
 
           <div className="flex flex-col justify-start gap-3">
             <p className="text-white font-semibold">Subscribe</p>
-            <div className="w-[25rem] h-[4rem] bg-teal-800 rounded-[8px] opacity-60 px-[15px] flex justify-between items-center">
+            <div className="w-[100%] h-[4rem] bg-teal-800 rounded-[8px] opacity-60 px-[15px] flex justify-between items-center">
               <input type="text" placeholder="Your email address" className=" bg-transparent w-[60%]" />
               <button type="button" className="text-slate-50 hover:text-secondary">Send</button>
             </div>
@@ -76,7 +76,7 @@ const Footer = () => {
 
 
         </div>
-        <div className="flex flex-row justify-between items-center pt-5 border-t-2 border-teal-800">
+        <div className="footer-last-child flex flex-row justify-between items-center pt-5 px-5 border-t-2 border-teal-800">
           <p className="text-slate-200">
             © Graphikaz. 2023 CreativeLayers. All rights reserved.
           </p>

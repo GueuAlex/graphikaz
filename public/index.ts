@@ -37,6 +37,7 @@ import Slider66 from "./slider66.png";
 import Slider53 from "./slider53.png";
 import Slider63 from "./slider63.png";
 import Comp from "./comp.png";
+import Banner from "./banner3.jpg"
 
 
 export {
@@ -49,4 +50,5 @@ export {
     Cover,
     Blog1,Blog2,Blog3,Blog4,
     Slider, Slider53, Slider61, Slider63, Slider64, Slider65, Slider66, Comp,
+    Banner,
 }

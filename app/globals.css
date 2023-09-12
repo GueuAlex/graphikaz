@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700;800&family=Rubik:wght@300;400;500;600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +8,14 @@
   margin: O;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "DM Sans", sans-serif;
+}
+
+.m-container{
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 0.938em;
+
 }
 
 .blurr{
@@ -81,4 +87,56 @@ h2{
 div.add-to-favorite:hover i{
   color: white;
 }
+
+
+
+/*******************$ 
+* REUTILISABLE
+*********************/
+
+/* WRAPPER */
+.wrapper-content {
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+/* SERVICE CARD */
+.service-carde {
+ width: 20em;
+}
+.service-carde .favorite-contaner{
+  margin-right: 0.70em;
+}
+.service-carde p.first-link, .service-carde div.second-link p{
+  transition: ease-in .3s color;
+}
+.service-carde:hover p.first-link{
+  color: #5BBB7B;
+}
+.service-carde div.second-link:hover p{
+  color: #5BBB7B;
+}
+
+/* OVERLAY */
+.overlay{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.4);
+  visibility: hidden;
+  opacity: 0;
+  will-change: visibility, opacity;
+}
+.show-overlay{
+  cursor: not-allowed;
+   opacity: 1;
+  visibility: inherit;
+  height: 100vh;
+}
+
+
+
+
 

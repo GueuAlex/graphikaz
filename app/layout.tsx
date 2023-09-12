@@ -1,40 +1,43 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+"use client"
+import './globals.css';
+import { Inter } from 'next/font/google';
+import { usePathname } from 'next/navigation';
 
 import { Footer, NavBar } from '@/components';
 
+const inter = Inter({ subsets: ['latin'] });
 
-const inter = Inter({ subsets: ['latin'] })
-
-export const metadata = {
+// Exporter metadata directement depuis le fichier
+/* export const metadata = {
   title: 'Graphikaz',
   description: 'Graphikaz 2023 | prestation provider app',
-}
+}; */
 
+const excludedRoutes = ['/auth', '/excluded-page2'];
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
+  const currentPath = usePathname();
+  const isExcludedRoute = excludedRoutes.includes(currentPath);
+
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+        />
       </head>
-      
       <body className={inter.className}>
-
-        {/* <div className=" absolute w-full rotate-45  blurr blur_2 " />
-        <div className=" absolute w-full rotate-45 right-[50rem] blurr blur_1  " /> */}
-        <div className=" absolute w-[29vw] right-0 bg-black h-[100vh] mask" />
-
-        <NavBar />
+        {/* Utiliser le NavBar seulement si la route n'est pas exclue */}
+        {!isExcludedRoute && <NavBar />}
         {children}
-        <Footer />
-       
-       
-        </body>
+        {/* Utiliser le Footer seulement si la route n'est pas exclue */}
+        {!isExcludedRoute && <Footer />}
+      </body>
     </html>
-  )
+  );
 }

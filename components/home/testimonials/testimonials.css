@@ -1,0 +1,21 @@
+
+@media screen and (max-width: 1200px){
+
+    .testimonials .text-testi h2{
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding-left: 7rem;
+        padding-right: 7rem;
+    }
+
+    .testimonials  i{
+        font-size: 3.2rem;
+        
+    }
+
+    .img-container{
+        transform: scale(0.6);
+        flex-wrap: nowrap;
+    }
+}

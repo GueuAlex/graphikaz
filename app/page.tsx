@@ -1,18 +1,12 @@
-import { Hero, Needs, Categories, PopularServices, ProofSection, CounterSection, Testinmonials, TrendingService, Blogs, NewsLetter } from "@/components"
+import { Footer, MyHome, NavBar } from "@/components"
 
 export default function Home() {
   return (
     <main className=" overflow-hidden">
-      <Hero />
-      <Needs />
-      <Categories />
-      <PopularServices />
-      <ProofSection />
-      <CounterSection />
-      <Testinmonials />
-      <TrendingService />
-      <Blogs />
-      <NewsLetter />
+      <div className=" absolute w-[29vw] right-0 bg-black h-[100vh] mask" />
+     {/*  <NavBar /> */}
+      <MyHome />
+      {/* <Footer /> */}
     </main>
   )
 }

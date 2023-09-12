@@ -1,13 +1,96 @@
-import Image from 'next/image';
+"use client"
+import { useState } from 'react';
 import Link from 'next/link';
-import { Logo, Home } from '@/public';
 import "./nav_bar.css"
+import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
+
 export default function NavBar() {
+    const [toggle, setToggle] = useState(true);
+    const pathname = usePathname();
     return (
      
-    <header className='relative z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900'>
-        <nav aria-label='Global' className="mx-auto max-w-container px-4 sm:px-6 lg:px-8  ">
-        <div className="relative justify-around flex items-center py-[1.78rem] max-lg:justify-between ">
+    <header className=' z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900'>
+        <motion.div>
+            <div className={`${!toggle ? 'show-overlay': ''} overlay`}></div>
+            <div className={`${!toggle ? 'show-side-bar': 'hidde-side-bar'} sidebar`}>
+                <div className="top-items">
+                    <div className="sidebar_heard">
+                    <div className=" close-icon">
+                            <i className="ri-close-line" onClick={() => setToggle(!toggle)}></i>
+                        </div>
+                        <div className="text-big">
+                            <p>GRAPHIKAZ</p>
+                        </div>
+                        
+                    </div>
+                    <div className="item active">
+                    <div className="icon-small close-icon">
+                        <i className="ri-home-line"></i>
+                        </div>
+                        <div className="text-medium">
+                            <p>Home</p>
+                        </div>
+                        
+                    </div>
+
+                    <div className="item">
+                    <div className="icon-small close-icon">
+                        <i className="ri-apps-2-line"></i>
+                        </div>
+                        <div className="text-medium">
+                            <p>Categories</p>
+                        </div>
+                        
+                    </div>
+
+                    <div className="item">
+                        <div className="icon-small close-icon">
+                            <i className="ri-code-view"></i>
+                        </div>
+                        <div className="text-medium">
+                            <p>Prestations</p>
+                        </div>
+                       
+                    </div>
+
+                    <div className="item">
+                         <div className="icon-small close-icon">
+                            <i className="ri-error-warning-line"></i>
+                        </div>
+                        <div className="text-medium">
+                            <p>À propos</p>
+                        </div>
+                      
+                    </div>
+
+                </div>
+                <div className="bottom-items">
+
+                <div className="item">
+                        <div className="icon-small close-icon">
+                            <i className="ri-login-circle-line"></i>
+                        </div>
+                        <div className="text-medium">
+                            <p>Connexion</p>
+                        </div>
+                       
+                    </div>
+
+                    <div className="item">
+                        <div className="icon-small close-icon">
+                            <i className="ri-user-add-line"></i>
+                        </div>
+                        <div className="text-medium">
+                            <p>S'Inscrire</p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+        <nav aria-label='Global' className={`mx-auto max-w-container px-4 sm:px-6 lg:px-8 ${pathname.startsWith('/categories') ? 'shadow': ''}`}>
+        <div className={`${ pathname.startsWith('/categories') ? 'justify-between' : 'justify-around'} relative flex items-center py-[1.78rem] max-lg:justify-between`}>
             <div>
                 <Link href="/" className='mr-auto flex-none text-slate-900'>
                     <span className='sr-only'>Tailwind UI</span>
@@ -16,7 +99,7 @@ export default function NavBar() {
             </div>
             <div className='flex flex-row'>
                 <div className='hidden lg:flex lg:items-center'>
-                    <Link href="#caterigories">
+                    <Link href="/categories">
                         Categories
                     </Link>
                     <Link href="#" className='ml-8'>
@@ -35,15 +118,15 @@ export default function NavBar() {
                 </button>
                 <button type="button" className="-my-1 -mr-1 ml-6 flex h-8 w-8 items-center justify-center lg:hidden">
                     <span className="sr-only">Open navigation</span>
-                    <i className="ri-menu-line text-[23px]"></i>
+                    <i className="ri-menu-line text-[23px]" onClick={() => setToggle(!toggle)}></i>
                 </button>
                 <div className="hidden lg:ml-8 lg:flex lg:items-center lg:border-l lg:border-slate-900/15 lg:pl-8">
-                    <a href="/login">
+                    <Link href="/auth?et=signin">
                         S'inscrire
-                    </a>
-                    <a className="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-primary text-white hover:bg-slate-700 -my-2.5 ml-8" href="/all-access">
+                    </Link>
+                    <Link href="/auth" className="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-primary text-white hover:bg-slate-700 -my-2.5 ml-8">
                         <span>Connexion <span aria-hidden="true">→</span></span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

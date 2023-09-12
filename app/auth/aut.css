@@ -1,0 +1,272 @@
+:root {
+    --primary-color : #ff6b6b;
+    --secondary-color: #794afa;
+    --secondary-dark-color: #453c5c;
+
+    --white-color: #ffffff;
+    --light-bg-color: #f2f3f5;
+    --light-text-color: #7c899a;
+    --border-color: #e5e8ec;
+    --dark-color: #0a021c;
+
+    --font-small: 13px;
+    --font-smaller: 11px;
+
+    --percent100: 100%;
+    --percent50: 50%;
+
+    --fw3: 300;
+    --fw5: 500;
+    --fw6: 600;
+    --fw7: 700;
+    --fw8: 800;
+
+    --trans-background-color: background-color .3s, color .3s;
+    --trans-background: background-color .3s;
+    --trans-color: color .3s;
+}
+
+.login-signup-page .inputs-group div{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 0.5em;
+    width: var(--percent100);
+    margin-top: 0.5em;
+    background-color: rgb(245, 245, 245);
+    height: 2.5em;
+    border: 1px solid var(--border-color);
+}
+.signup-component .inputs-group {
+    display: flex;
+    gap: 1em;
+}
+
+.login-signup-page .separator {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    width: var(--percent100);
+    height: 1px;
+    background-color: rgb(172, 172, 172);
+}
+
+.login-signup-page input {
+    background-color: inherit;
+    width: var(--percent100);
+    outline: none;
+}
+
+.login-signup-page input::placeholder {
+    font-size: var(--font-small);
+}
+
+.login-signup-page {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    width: var(--percent100);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-signup-page .card, .signup-component .card {
+    max-width: 356px;
+    width:  356px;
+    padding: 2em;
+    text-align: center;
+    background-color: var(--white-color);
+    color: var(--dark-color);
+}
+.signup-component .card {
+    max-width: 569px;
+    width: 100%;
+}
+
+.login-signup-page .logo-underline{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2em;
+    font-weight: var(--fw7);
+}
+.login-signup-page .logo-underline .underline {
+    height: 8px;
+    margin-top: -0.19em;
+    margin-bottom: 0.7em;
+    width: calc(100% - 3.4em);
+    background-color: var(--dark-color);
+}
+.login-signup-page .mini-text {
+    font-size: var(--font-small);
+    line-height: 1.5;
+    display: block;
+}
+.login-signup-page .buttons-group {
+    margin-top: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.2em;
+}
+.login-signup-page .buttons-group button {
+    height: 2.9em;
+    width: var(--percent100);
+    padding: 0.5em;
+    font-size: var(--font-small);
+    font-weight: var(--fw5);
+}
+.login-signup-page .buttons-group button:nth-child(1) {
+    background-color: rgba(2, 2, 160, 0.845);
+    color: var(--white-color);
+    
+}
+.login-signup-page .buttons-group button:nth-child(2) {
+    background-color: rgb(172, 7, 10);
+    color: var(--white-color);
+    
+}
+.login-signup-page .buttons-group button:nth-child(3) {
+    margin-bottom: 1.5em;
+    border: 1px solid var(--dark-color);
+    transition: var(--trans-background-color);
+}
+.login-signup-page .second-links {
+    cursor: pointer;
+    border-bottom: 1px solid var(--primary-color);
+    font-weight: var(--fw6);
+    font-size: var(--font-small);
+
+}
+.login-component .inputs-group {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    
+}
+.login-component .password-input input {
+    width: 70%;
+}
+.login-component .connect-button button {
+    width: var(--percent100);
+    height: 2.7em;
+    padding: 0.59em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    background-color: var(--dark-color);
+    color: var(--white-color);
+    font-size: var(--font-small);
+}
+
+.signup-component .logo-underline .underline{
+    width: 190px;
+}
+.signup-component span.mini-text {
+    text-align: start;
+}
+.signup-component .form-container {
+    text-align: start;
+}
+.signup-component .form-container .parrain-code {
+    width: 50%;
+}
+.form-container strong {
+    display: block;
+    font-size: var(--font-small);
+    margin-top: 1.5em;
+    line-height: 2;
+}
+
+.form-container span.mini-text {
+   font-size: var(--font-small);
+   display: block;
+  
+}
+.form-container .radio-group, 
+.form-container .check-box {
+    display: flex;
+    gap: 0.5em;
+    height: 2.5em;
+    padding: 1.5em;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #7c899a16;
+    margin-top: 0.75em;
+    
+}
+.form-container .radio-group .radio {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5em;
+    grid-template-columns: 1fr 3fr;
+    font-size: var(--font-small);
+    
+}
+.form-container .radio-group .radio input {
+    width: 16px;
+    height: 16px;
+}
+.form-container .check-box {
+    justify-content: start;
+}
+.form-container .check-box a {
+    font-weight: var(--fw6);
+    border-bottom: 1px solid var(--primary-color);
+}
+.form-container .check-box input{
+    width: 13px;
+    height: 13px;
+    color: var(--white-color);
+    background-color: var(--dark-color);
+}
+.signup-component .connect-button {
+    margin-top: 2em;
+}
+.signup-component .connect-button button {
+    background-color: var(--dark-color);
+    width: auto;
+    height: 2.7em;
+    padding: 0.5em;
+    color: var(--white-color);
+    font-size: var(--font-small);
+}
+
+
+@media screen and (max-width: 567px) {
+    .signup-component .form-container .inputs-group {
+        flex-direction: column;
+    }
+    .signup-component .form-container .parrain-code {
+        width: 100%;
+    }
+
+    .form-container .radio-group {
+    flex-direction: column;
+    gap: 1em;
+    height: auto; 
+    }
+    .form-container .check-box{
+        height: auto;
+    }
+    .login-signup-page{
+        height: auto;
+        padding: 0;
+    }
+
+    .signup-component .connect-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .signup-component .connect-button button {
+        width: auto;
+    }
+    .login-signup-page .m-container {
+        padding: 0;
+    }
+    
+}
