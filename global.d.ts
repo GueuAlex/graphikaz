@@ -13,6 +13,7 @@ interface Window {
     };
   }
   
+  
   declare module 'react-scroll-trigger' {
     interface ScrollTriggerProps {
       onEnter?: () => void;

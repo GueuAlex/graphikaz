@@ -1,11 +1,12 @@
 "use client"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { Wrapper,  } from "@/reutilisables";
+import { RatingComponent, Wrapper,  } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
 import { PrestatorProps, ServiceProps } from "@/types";
 import { prestators, services } from "@/constants";
 import Image from "next/image";
+import RatingStates from "@/reutilisables/rating_state"
 
 export default function Page({ params } : { params: {slug: string}}){
     const title = decodeURIComponent(params.slug);
@@ -163,9 +164,88 @@ export default function Page({ params } : { params: {slug: string}}){
                                             </div>
                                         </div>
                                     </div>
-                                </div>  
+                                    {/* aaccordeon */}
+                                    <div className="divider"/>
+                                        <div className="accordeon">
+                                        
+                                            <div className="collapse collapse-plus bg-green-50 rounded-none">
+                                                <input type="radio" name="my-accordion-3" checked /> 
+                                                <div className="collapse-title text-xl font-medium">
+                                                    What methods of payment are supported ?
+                                                </div>
+                                                <div className="collapse-content"> 
+                                                    <p className="text-small">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                                                </div>
+                                            </div>
+                                            <div className="collapse collapse-plus">
+                                                <input type="radio" name="my-accordion-3" /> 
+                                                <div className="collapse-title text-xl font-medium">
+                                                    Can I cancel at anytime ?
+                                                </div>
+                                                <div className="collapse-content"> 
+                                                    <p className="text-small">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et.</p>
+                                                </div>
+                                            </div>
+                                            <div className="collapse collapse-plus">
+                                                <input type="radio" name="my-accordion-3" /> 
+                                                <div className="collapse-title text-xl font-medium">
+                                                    How do I get a receipt for my purchase ?
+                                                </div>
+                                                <div className="collapse-content"> 
+                                                    <p className="text-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                </div>
+                                            </div>
+                                            <div className="collapse collapse-plus">
+                                                <input type="radio" name="my-accordion-3" /> 
+                                                <div className="collapse-title text-xl font-medium">
+                                                    How do I get access to a theme I purchased ?
+                                                </div>
+                                                <div className="collapse-content"> 
+                                                    <p className="text-small">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    <div className="divider"/>
+                                </div>
+                                {/* service description */}
+                                <div className="ratting-area">
+                                <RatingStates ratings={[29, 125, 50, 70, 93]}/>
+                                {/* rating statistic */}
+
+                                <div className="review-comment">
+                                    <span className="text-bold">Be the first to review “{title}”</span>
+                                    <form action="">
+                                        <span className="text-small">Your Rating for this listing</span>
+                                        <RatingComponent/>
+                                        <div className="inputs">
+                                            <div className="comment-input">
+                                                <span>Your Comment</span>
+                                                <textarea name="" id="" cols={30} placeholder="Comment" ></textarea>
+                                            </div>
+                                            <div className="name-email-inputs">
+                                                <div className="name-input">
+                                                    <span>Your Name</span>
+                                                    <input type="text" placeholder="Name" />
+                                                </div>
+                                                <div className="email-input">
+                                                    <span>Your Email</span>
+                                                    <input type="email" placeholder="Email" />
+                                                </div> 
+                                            </div>
+                                            <div className="check-box">
+                                                <input type="checkbox"/> 
+                                                <span className="text-small">Save my name, email, and website in this browser for the next time I comment.</span>
+                                            </div>
+                                            <button type="submit">Submit Review</button>
+                                        </div>
+                                    </form>
+                                    {/* rating & comment form */}
+                                </div>
+                                </div>
+                                
+                                
                             </div>
-                            {/* service description */}
+                            
 
                             <div className="left sticky-r">
                                 <div className="sticky top-0">

@@ -13,6 +13,7 @@
     --light-text-color: #7c899a;
     --border-color: #e5e8ec;
     --dark-color: #0a021c;
+    --stars-color: #e1c03e;
 
     --font-small: 13px;
     --font-smaller: 11px;
@@ -470,7 +471,7 @@ div.d {
   padding: 0 0.75em;
   top: -8em;
   right: 0;
-  height: 120vh;
+  //height: 120vh;
   width: 30%;
   
 }
@@ -568,6 +569,147 @@ div.d {
 .rigth .carousel-slider button.control-next {
   right: 0;
  
+}
+/* *********************
+* SERVICE DESCRIPTION
+************************/
+.service-description {
+  h2 {
+    color: rgb(71, 71, 71);
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+  p.text-small {
+    color: rgb(71, 71, 71);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .descriptions {
+    margin-top: 2.5em;
+    h2 {
+      padding-top: 0.75em;
+      padding-bottom: 0.75em;
+    }
+    p.text-small {
+      padding-bottom: 1.5em;
+      padding-top: 0.75em;
+    }
+    .other-provide-services {
+      font-weight: 300;
+      color: rgb(71, 71, 71);
+    }
+    .work-tools {
+      margin-top: 2.3em;
+    }
+
+  }
+
+  .accordeon {
+  padding-top: 2.5em;
+  padding-bottom: 2em;
+
+  div.collapse-title {
+    font-size: 1.1em;
+    font-weight: 300;
+  }
+  
+  }
+
+}
+.ratting-area {
+  .review-score {
+    h2 {
+      font-size: 1.4em;
+      line-height: 2;
+      font-weight: 400;
+      color: #52565c;
+    }
+    .score-card {
+      display: flex;
+      gap: 1.25em;
+      align-items: center;
+      justify-content: start;
+      .score {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 35%;
+        height: 15em;
+        border-radius: 10px;
+        background-color: #fcede8;
+        h1 {
+          font-size: 3.5em;
+          line-height: 1;
+          font-weight: bolder;
+          color: var(--stars-color);
+          margin-bottom: 0.1em;
+        }
+        .stars {
+          display: flex;
+          svg {
+            margin: 0 0.1em 0 0.1em;
+            width: 0.9em;
+            height: 0.9em;
+          }
+        } 
+        span {
+          margin-top: 0.3em;
+          color: #52565c;
+        }
+        
+      }
+    }
+    .scores-percent {
+      display: flex;
+      flex-direction: column;
+      width: 65%;
+
+      .star-line-percent {
+        display: flex;
+
+      }
+    }
+    .scores-percent {
+      display:  flex;
+      flex-direction: column;
+      gap: 1em;
+
+      .rate-line-percent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.15em;
+        
+        span:nth-child(2) {
+          display: none;
+        }
+      }
+      .progress {
+        height: 0.5em;
+        border-radius: none;
+      }
+      .progress-warning::-moz-progress-bar {
+        --tw-bg-opacity: 1;
+        background-color: hsl(var(--wa) / var(--tw-bg-opacity));
+      }
+      .progress-warning:indeterminate {
+        --progress-color: hsl(var(--wa));
+      }
+      .progress-warning::-webkit-progress-value {
+        --tw-bg-opacity: 1;
+        background-color: hsl(var(--wa) / var(--tw-bg-opacity));
+      }   
+    }
+  }
+}
+.review-comment {
+  padding-top: 2.5em;
+
+  .text-bold {
+    font-size: 1.5em;
+    font-weight: 600;
+  }
 }
 
 

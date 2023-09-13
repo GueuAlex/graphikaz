@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import "./categories.css";
+import "./categories.scss";
 import { PathnameComponent } from '@/components';
 import { TServiceCard, Wrapper } from '@/reutilisables';
 import { services, prestators, categoriesTab } from '@/constants';
