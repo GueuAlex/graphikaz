@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react'
 import { Rating } from 'react-simple-star-rating'
 
@@ -22,6 +23,8 @@ export function RatingComponent() {
         onPointerEnter={onPointerEnter}
         onPointerLeave={onPointerLeave}
         onPointerMove={onPointerMove}
+        size={20}
+        
         /* Available Props */
       />
     </div>

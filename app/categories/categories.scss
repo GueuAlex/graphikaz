@@ -707,8 +707,50 @@ div.d {
   padding-top: 2.5em;
 
   .text-bold {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 600;
+    padding-top: 0.5em;
+  }
+  .text-small {
+    color: #676d75;
+  }
+  .inputs {
+    input {
+      outline: none;
+    }
+    span {
+      font-weight: 600;
+    }
+    .comment-input, .email-input, .name-input {
+      display: flex;
+      flex-direction: column;
+    }
+    .name-email-inputs{
+      margin-top: 1.5em;
+      display: flex;
+      gap: 1.5em;
+      .email-input, .name-input {
+        width: 50%;
+      }
+      
+    }
+    .check-box {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    button {
+      margin-top: 2em;
+      width: 30%;
+    }
+  }
+}
+.related-services-area {
+  .related-services {
+    display: flex;
+    gap: 1em;
   }
 }
 

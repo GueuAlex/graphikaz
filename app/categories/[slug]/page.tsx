@@ -1,18 +1,22 @@
 "use client"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { RatingComponent, Wrapper,  } from "@/reutilisables";
+import React, { useState } from "react";
+import {  RatingComponent, TServiceCard, Wrapper  } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
 import { PrestatorProps, ServiceProps } from "@/types";
 import { prestators, services } from "@/constants";
 import Image from "next/image";
 import RatingStates from "@/reutilisables/rating_state"
+import Rate from "@/reutilisables/rate";
 
 export default function Page({ params } : { params: {slug: string}}){
     const title = decodeURIComponent(params.slug);
     const service: ServiceProps | undefined = services.find((service) => service.title === title);
     
-    
+    const [rating, setRating] = useState(0);
+   
+
     if (service) {
         const prestator : PrestatorProps | undefined = prestators.find((prestator) => prestator.id === service.prestatorId);
         if (prestator) {
@@ -216,11 +220,13 @@ export default function Page({ params } : { params: {slug: string}}){
                                     <span className="text-bold">Be the first to review “{title}”</span>
                                     <form action="">
                                         <span className="text-small">Your Rating for this listing</span>
-                                        <RatingComponent/>
+                                    
+                                        <Rate rating={rating} onRating={(rate: React.SetStateAction<number>) => setRating(rate)} />
+
                                         <div className="inputs">
                                             <div className="comment-input">
                                                 <span>Your Comment</span>
-                                                <textarea name="" id="" cols={30} placeholder="Comment" ></textarea>
+                                                <textarea name="" id="" rows={8} placeholder="Comment" ></textarea>
                                             </div>
                                             <div className="name-email-inputs">
                                                 <div className="name-input">
@@ -242,8 +248,22 @@ export default function Page({ params } : { params: {slug: string}}){
                                     {/* rating & comment form */}
                                 </div>
                                 </div>
-                                
-                                
+
+                                <div className="related-services-area w-full pt-12">
+                                    <h2 className="mb-6 font-bold">Related Services</h2>
+                                    <div className="related-services">
+
+                                        {services.filter((serv) => serv.id !== service.id )
+                                        .slice(0, 3)
+                                        .map((service, index) =>{
+                                            const prestator = prestators.find((prestator) => prestator.id === service.prestatorId);
+                                            return <TServiceCard service={service} prestator={prestator ? prestator : null} />;
+                                        })}
+
+                                    </div>
+                                    
+                                </div>
+                                {/* related service */}
                             </div>
                             
 
