@@ -1,7 +1,7 @@
 "use client"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {  RatingComponent, TServiceCard, Wrapper  } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
 import { PrestatorProps, ServiceProps } from "@/types";
@@ -15,6 +15,17 @@ export default function Page({ params } : { params: {slug: string}}){
     const service: ServiceProps | undefined = services.find((service) => service.title === title);
     
     const [rating, setRating] = useState(0);
+
+    const [height, setHeight] = useState<number | null>(null);
+    const elementRef = useRef<HTMLDivElement>(null);
+  
+    useEffect(() => {
+      if (elementRef.current) {
+        setHeight(elementRef.current.offsetHeight);
+      }
+    }, []);
+    const style = height ? { height: `${height}px` } : {};
+   
    
 
     if (service) {
@@ -67,9 +78,10 @@ export default function Page({ params } : { params: {slug: string}}){
                             <BannerContainer service={service} prestator={prestator} />
                         </div>
                     </div>
+                    {/* banner container */}
                     <Wrapper>
                         <div className="sigle-service-body relative">
-                            <div className="rigth">
+                            <div className="rigth" ref={elementRef}>
                                 <div className="service-description">
                                     <div className="desc-head flex gap-14">
                                         <div className="desc flex items-center gap-8">
@@ -267,7 +279,7 @@ export default function Page({ params } : { params: {slug: string}}){
                             </div>
                             
 
-                            <div className="left sticky-r">
+                            <div className="left sticky-r" style={style}>
                                 <div className="sticky top-0">
                                     <div className="options-container shadow">
                                         <h2>${service.startPrice}</h2>
@@ -291,7 +303,7 @@ export default function Page({ params } : { params: {slug: string}}){
                                             </div>
                                             <div className="flex flex-col justify-center items-center">
                                                 <h3>{prestator.fullName}</h3>
-                                                <small>Product Manager</small>
+                                                <small>{prestator.post}</small>
                                                 <div className="reviews"><i className="ri-star-fill text-yellow-500"></i> {service.reviewScore} {`(`}{service.totalReview}{` Reviews)`}</div>
                                             </div>
                                         </div>

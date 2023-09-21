@@ -1,0 +1,413 @@
+/********************** 
+*
+*   FREELANCE STYLE CONFIG
+*
+***********************/
+:root {
+    --primary-color : #ff6b6b;
+    --cat-secondary-color: #5BBB7B;
+    --secondary-dark-color: #453c5c;
+
+    --white-color: #ffffff;
+    --light-bg-color: #f2f3f5;
+    --light-text-color: #7c899a;
+    --border-color: #e5e8ec;
+    --dark-color: #0a021c;
+    --stars-color: #e1c03e;
+
+    --font-small: 13px;
+    --font-smaller: 11px;
+
+    --percent100: 100%;
+    --percent50: 50%;
+
+    --fw3: 300;
+    --fw5: 500;
+    --fw6: 600;
+    --fw7: 700;
+    --fw8: 800;
+
+    --trans-background-color: background-color .3s ease-in, color .3s ease-in;
+    --trans-background: background-color .3s;
+    --trans-color: color .3s;
+}
+
+
+/* **********************************
+*
+* FREELANCERS STYLE
+*
+*************************************/
+
+.freelancers {
+   font-family: "DM Sans", sans-serif;
+   font-weight: 300;
+    /*************** side bar filter *********** */
+    .cat-side-filter {
+        position: fixed;
+        top: 0;
+        width: 360px;
+        height: 100vh;
+        z-index: 1000;
+        overflow: auto;
+        transition: transform .4s, visibility .4s;
+        will-change: transform, visibility;
+        background-color: white;
+        padding: 0 1.5em 0 1.5em;
+      }
+      .filter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2em 0 1.2em 0;
+        border-bottom: 1px solid var(--border-color);
+      
+      }
+
+   /* ********* banner *********/
+   .banner , 
+    .single_service_details .banner{
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 18em;
+    border-radius: 1em;
+  }
+  .banner {
+    background-image: url("./banner3.jpg");
+    .banner-title {
+        font-size: 2em;
+        line-height: 1.7;
+      }
+    .small-text {
+        font-size: 15px;
+      }
+    .banner-demo-container {
+        display: flex;
+        margin-top: 2.3em;
+        gap: 0.8em;
+        align-items: center;
+
+        div {
+            width: 3em;
+            height: 3em;
+            border: 1px solid --border-color;
+            background-color: #ffffff;
+            border-radius: 100%;
+            transition: var(--trans-background-color);
+          }
+        div:hover {
+            background-color: #ac0707;
+            color: var(--white-color);
+            cursor: pointer;
+          }
+      }
+  }
+
+  /* ************ filter section ********** */
+  .filter-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+
+    .filter-buttons {
+        display: flex;
+        gap: 1em;
+
+        button {
+            border: 1px solid var(--border-color);
+            padding: 0.6em;
+            border-radius: 0.3em;
+          }
+        button:first-child {
+            background-color: rgba(15, 151, 101, 0.08);
+            transition: var(--trans-background-color);
+          }
+        button:first-child:hover{
+            cursor: pointer;
+            color: var(--white-color);
+            background-color: var(--cat-secondary-color);
+            /* border: 1px solid var(--cat-secondary-color); */
+          }
+        button:nth-child(2) {
+            width: 11.2em;
+            display: flex;
+            justify-content: space-between;
+          }
+      }
+    /* filter-container .selected-options */
+    .selected-options {
+        display: none;
+        opacity: 0;
+        background-color: var(--white-color);
+        z-index: 10;
+        width: 11.2em;
+        border: 1px solid var(--border-color);
+        border-radius: 0.3em;
+        transition: 0.3s ease opacity 0.3s ease display;
+        will-change: display opacity;
+
+        ul li {
+            padding: 0.3em 1em 0.3em 1em;
+            transition: var(--trans-background);
+        }
+        ul li:hover {
+            background-color: #c9c8c877;
+            cursor: pointer;
+        }
+        ul li.active {
+            background-color: #c9c8c8;
+        }
+    }
+  }
+
+  /* freelancers area */
+  .freelancers-area {
+    .freelancers {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+  }
+  
+}
+
+
+/* ********************************************************
+*
+*  FREELANCER CARD STYLE
+* implementé comme du css global pour reutilisable partout
+************************************************************/
+.freelancer-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    align-items: center;
+    width: 298px;
+    padding: 1.5em;
+    border: solid 1px var(--border-color);
+    cursor: pointer;
+
+    .favorite-heart {
+        position: absolute;
+        right: 0;
+        margin-right: 0.75em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.8em;
+        height: 1.8em;
+        border: solid 1px var(--border-color);
+        border-radius: 100%;
+        transition: var(--trans-background-color);
+    }
+    .favorite-heart:hover {
+        background-color: var(--cat-secondary-color);
+        color: var(--white-color);
+        border: #5BBB7B;
+        cursor: pointer;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 6.5em;
+        width: 6.5em;
+        border-radius: 100%;
+    }
+
+    strong {
+        font-size: 1.1em;
+        font-weight: 600;
+        padding-top: 0.75em;
+        display: block;
+        width: 100%;
+        text-overflow: ellipsis;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    span.post {
+        font-size: 0.85em;
+        color: #878787;
+        padding-bottom: 0.5em;
+    }
+    .reviews {
+        padding-bottom: 0.75em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3em;
+
+        i{
+            color: #e1c03e;
+        }
+        .score {
+            font-weight: 600;
+        }
+        .total-review {
+            color: #878787;
+        }
+    }
+    .competences {
+        display: flex;
+        align-items: center;
+        gap: 0.75em;
+
+        .competence {
+           padding-left: 1.2em;
+           padding-right: 1.2em;
+           padding-top: 0.4em;
+           padding-bottom: 0.4em;
+            font-size: 0.8em;
+            font-weight: 500;
+            background-color: #c9880643;
+            border-radius: 60px;
+        }
+    }
+
+
+    /* button */
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 3.5em;
+        margin-top: 0.75em;
+        border-radius: 5px;
+       background-color: #5bbb7b32;
+       color: #5BBB7B;
+       font-weight: 600;
+       transition: var(--trans-background-color);
+    }
+
+    :hover button {
+        background-color: #5BBB7B;
+        color: var(--white-color);
+    }
+
+}
+.freelancer-card:hover button {
+    background-color: #5BBB7B;
+    color: var(--white-color);
+}
+
+
+/* ********************************************
+***********************************************
+**
+**  SINGLE FREELANCER STYLE
+**
+***********************************************
+********************************************* */
+.single-freelancer {
+
+    .banner , 
+    .single_service_details .banner{
+    display: flex;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 18em;
+    border-radius: 1em;
+  }
+  .banner {
+    background-image: url("./banner3.jpg");
+
+    .details-container {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 1.5em;
+
+        .details {
+           h4 {
+            
+            font-size: 1.3em;
+            font-weight: 600;
+           }
+           span.post {
+            font-size: 0.85em;
+            color: #4f4f4f;
+            padding-bottom: 0.5em;
+           }
+           .awards-contacts {
+            padding-top: 0.8em;
+
+            .awards:not(i) {
+                font-weight: 500;
+                font-size: 0.9em;
+
+                div.dett i {
+                    font-size: 1.5em;
+                    margin-right: 0.2em;
+                }
+            }
+
+            .contacts {
+                button {
+                    
+                    padding-top: 0.6em;
+                    padding-bottom: 0.6em;
+                    padding-left: 1.5em;
+                    padding-right: 1.5em;
+                    color: var(--white-color);
+                    background-color: var(--cat-secondary-color);
+                    border: none;
+                    transition: var(--trans-background);
+                    font-size: 0.9em;
+                    font-weight: 600;
+                    border-radius: 5px;
+                }
+                button:hover {
+                    background-color: #27613a;
+                }
+            }
+           }
+
+        }
+    }
+  }
+
+  /* floating component style********* */
+  .sigle-freelancer-body {
+    display: flex;
+    align-items: stretch; 
+    justify-content: space-between;
+
+    .rigth {
+        width: 65%;
+      }
+
+      .sticky-r {
+        position: absolute;
+        padding: 0 0.75em;
+        top: -7em;
+        right: 0;
+        width: 30%;
+        
+        .top-container, .bottom-container {
+            width: 100%;
+            padding: 0.75em;
+            background-color: var(--white-color);
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+      }
+  }
+  
+  
+}
+
+
+  
+  
+ 
+
+

@@ -164,31 +164,41 @@ const prestators: PrestatorProps [] = [
         id: 1,
         fullName: "John Powell",
         profilPic: F1,
-        profilLink: "" /* prestator/john_powell */
+        profilLink: "/freelancers/", /* prestator/john_powell */
+        competence: ['Sass', 'HTML5', 'Design Writing', 'Figma'],
+        post: 'Nursing Assistant'
     },
     {
         id: 2,
         fullName: "Robert Fox",
         profilPic: F2,
-        profilLink: "" /* prestator/john_powell */
+        profilLink: "/freelancers/", /* prestator/john_powell */
+        competence : ['PHP7 +', 'Laravel', 'NodeJs', 'TypeScript'],
+        post: 'Product Manager'
     },
     {
         id: 3,
         fullName: "Ali Tufan",
         profilPic: F3,
-        profilLink: "" /* prestator/john_powell */
+        profilLink: "/freelancers/", /* prestator/john_powell */
+        competence: ['Animation', 'Creative', 'UI/UX', 'Adob XD'],
+        post: 'UI/UX Designer'
     },
     {
         id: 4,
         fullName: "Tom Wilson",
         profilPic: F4,
-        profilLink: "" /* prestator/john_powell */
+        profilLink: "/freelancers/", /* prestator/john_powell */
+        competence: ['C++', 'Unreal Engine', 'Web design'],
+        post: 'Marketing Manager'
     },
     {
         id: 4,
         fullName: "Thomas Powell",
         profilPic: F5,
-        profilLink: "" /* prestator/john_powell */
+        profilLink: "/freelancers/", /* prestator/john_powell */
+        competence: ['APIs', 'ExpressJs', 'Cloud computing'],
+        post: 'Web developer'
     },
 ];
 

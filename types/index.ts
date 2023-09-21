@@ -23,7 +23,9 @@ export interface PrestatorProps {
     id: number;
     fullName: string;
     profilPic: StaticImageData;
+    competence: String [],
     profilLink: string;
+    post: string,
   }
 
   export interface BlogProps {
