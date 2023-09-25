@@ -102,8 +102,8 @@ export default function NavBar() {
                     <Link href="/categories">
                         Categories
                     </Link>
-                    <Link href="#" className='ml-8'>
-                        Prestations
+                    <Link href="/freelancers" className='ml-8'>
+                        Prestataires
                     </Link>
                     <div className='ml-2 hidden rounded-full bg-secondary px-1.5 py-0.5 text-xs text-white sm:block'>
                         New
