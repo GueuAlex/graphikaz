@@ -1,24 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   margin: O;
   padding: 0;
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
 }
 
-.m-container{
+.m-container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 0.938em;
-
 }
 
-.blurr{
+.blurr {
   /* background: rgb(193, 245, 255); top: 17rem; width: 21rem; height: 11rem; left: -9rem; */
   /* background: #edd0ff; */
   border-radius: 50%;
@@ -26,20 +25,19 @@
   filter: blur(200px);
   height: 4rem;
   position: absolute;
- 
- 
+
   z-index: -9;
 }
 
-.blur_1{
+.blur_1 {
   background-color: aqua;
 }
 
-.blur_2{
+.blur_2 {
   background-color: blueviolet;
 }
 
-.mask{
+.mask {
   background-color: rgba(250, 235, 215, 0.396);
   z-index: -100;
 }
@@ -55,7 +53,7 @@ input[type="text"] {
   /* ... */
 }
 
-h2{
+h2 {
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -69,26 +67,22 @@ h2{
   width: 48%; /* Chaque enfant prendra 50% de la largeur du conteneur */
 }
 
-.flex-item1{
+.flex-item1 {
   width: 50%;
 }
 
-.flex-item1-h{
+.flex-item1-h {
   height: 50%;
 }
 
-.po-link:hover .acess .p-link{
-  color: #5BBB7B;
+.po-link:hover .acess .p-link {
+  color: #5bbb7b;
   text-decoration: underline;
 }
 
-
-
-div.add-to-favorite:hover i{
+div.add-to-favorite:hover i {
   color: white;
 }
-
-
 
 /*******************$ 
 * REUTILISABLE
@@ -102,23 +96,37 @@ div.add-to-favorite:hover i{
 
 /* SERVICE CARD */
 .service-carde {
- width: 20em;
+  max-width: 20em;
 }
-.service-carde .favorite-contaner{
-  margin-right: 0.70em;
+.service-carde .favorite-contaner {
+  margin-right: 0.7em;
 }
-.service-carde p.first-link, .service-carde div.second-link p{
-  transition: ease-in .3s color;
+.service-carde p.first-link,
+.service-carde div.second-link p {
+  transition: ease-in 0.3s color;
 }
-.service-carde:hover p.first-link{
-  color: #5BBB7B;
+.service-carde:hover p.first-link {
+  color: #5bbb7b;
 }
-.service-carde div.second-link:hover p{
-  color: #5BBB7B;
+.service-carde div.second-link:hover p {
+  color: #5bbb7b;
+}
+.service-carde .service-view-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #5bbb7b10;
+  color: #5bbb7b;
+  border-radius: 5px;
+  transition: ease-in 0.3s color, 0.3s linear background-color;
+}
+.service-carde .service-view-button:hover {
+  background-color: #5bbb7b;
+  color: #fff;
 }
 
 /* OVERLAY */
-.overlay{
+.overlay {
   position: fixed;
   width: 100%;
   top: 0;
@@ -129,16 +137,43 @@ div.add-to-favorite:hover i{
   opacity: 0;
   will-change: visibility, opacity;
 }
-.show-overlay{
+.show-overlay {
   cursor: not-allowed;
-   opacity: 1;
+  opacity: 1;
   visibility: inherit;
   height: 100vh;
 }
 
+/* *******************************
+*
+* MENU DROPDOWN
+*
+********************************* */
+.sub-menu {
+  z-index: 100;
+  padding: 0.25em;
+  background-color: white;
+  border: 1px solid #e5e8ec;
+  display: none;
+  visibility: hidden;
+  transition: visibility 0.4s;
+  will-change: visibility;
+}
 
-
-
-
-
-
+.sub-menu ul li {
+  padding: 0.5em;
+  margin-top: 0.5em;
+  font-size: 13px;
+  font-weight: 400;
+  transition: ease-in background-color 0.2s, ease-in color 0.2s;
+  border-radius: 5px;
+}
+.sub-menu ul li:hover {
+  background-color: #5bbb7b3f;
+  color: #4a8e60;
+}
+.categories-label:hover .sub-menu {
+  position: absolute;
+  display: block;
+  visibility: visible;
+}

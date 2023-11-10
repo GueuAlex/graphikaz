@@ -37,18 +37,49 @@ import Slider66 from "./slider66.png";
 import Slider53 from "./slider53.png";
 import Slider63 from "./slider63.png";
 import Comp from "./comp.png";
-import Banner from "./banner3.jpg"
-
+import Banner from "./banner3.jpg";
+import Digifaz from "./digifaz.png";
 
 export {
-    Logo,
-    Home,
-    Lo,
-    Hc1,Hc2,Hc3,Hc4,Hc5,Hc6, Hc7,Hc8,
-    Service1,Service2,Service3,Service4,Service5,Service6,
-    F1,F2,F3,F4,F5,F6,F7,F8,F9,
-    Cover,
-    Blog1,Blog2,Blog3,Blog4,
-    Slider, Slider53, Slider61, Slider63, Slider64, Slider65, Slider66, Comp,
-    Banner,
-}
+  Digifaz,
+  Logo,
+  Home,
+  Lo,
+  Hc1,
+  Hc2,
+  Hc3,
+  Hc4,
+  Hc5,
+  Hc6,
+  Hc7,
+  Hc8,
+  Service1,
+  Service2,
+  Service3,
+  Service4,
+  Service5,
+  Service6,
+  F1,
+  F2,
+  F3,
+  F4,
+  F5,
+  F6,
+  F7,
+  F8,
+  F9,
+  Cover,
+  Blog1,
+  Blog2,
+  Blog3,
+  Blog4,
+  Slider,
+  Slider53,
+  Slider61,
+  Slider63,
+  Slider64,
+  Slider65,
+  Slider66,
+  Comp,
+  Banner,
+};
