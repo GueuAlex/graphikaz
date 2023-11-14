@@ -5,12 +5,14 @@ import "./nav_bar.css";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { categories } from "@/constants";
-import { fetchAllData } from "@/types/api_services";
+import { Anybody } from "next/font/google";
 import { packProps } from "@/types";
 
 export default function NavBar() {
   const [toggle, setToggle] = useState(true);
   const [isHome, setIsHome] = useState(true);
+  const [searchGlassVisible, setSearchGlassVisible] = useState(false); // Nouvel état pour la visibilité de search-glass
+
   const pathname = usePathname();
   useEffect(() => {
     // Mettre à jour l'état seulement si le chemin est '/'
@@ -161,6 +163,7 @@ export default function NavBar() {
               </Link>
             </div>
             <button
+              onClick={() => setSearchGlassVisible(!searchGlassVisible)}
               type="button"
               className="-my-1 ml-8 flex h-8 w-8 items-center justify-center rounded-lg"
             >
@@ -190,7 +193,94 @@ export default function NavBar() {
             </div>
           </div>
         </div>
+        <motion.div
+          /* onClick={() => setSearchGlassVisible(!searchGlassVisible)} */
+          className="search-glass"
+          initial={{ opacity: 0, y: "-100%" }}
+          animate={{
+            opacity: searchGlassVisible ? 1 : 0,
+            y: searchGlassVisible ? 0 : "-100%",
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          <i
+            className="ri-close-line mt-[40px] mr-4 close-button"
+            onClick={() => setSearchGlassVisible(!searchGlassVisible)}
+          ></i>{" "}
+          <SearchBarContents />
+        </motion.div>
       </nav>
     </header>
   );
 }
+
+const SearchBarContents = () => {
+  const [results, setResults] = useState<any[]>([]);
+  return (
+    <div className="search-glass-contents">
+      <SearchBar setResults={setResults} />
+
+      {results.length == 0 ? null : <SearchResults results={results} />}
+    </div>
+  );
+};
+
+export const SearchBar = ({
+  setResults,
+}: {
+  setResults: React.Dispatch<React.SetStateAction<packProps[]>>;
+}) => {
+  const fetchData = (value: string) => {
+    fetch("https://graphikaz.digifaz.com/api/packServices")
+      .then((response) => response.json())
+      .then((json) => {
+        const results: packProps[] = json.filter((pack: packProps) => {
+          return (
+            value &&
+            pack &&
+            pack.service.libelle &&
+            pack.service.libelle.toLowerCase().includes(value.toLowerCase()) &&
+            pack.ligne_services && // Vérifier que pack.ligne_services est défini
+            pack.ligne_services.map((option) =>
+              option.libelle.toLowerCase().includes(value.toLowerCase())
+            )
+          );
+        });
+        console.log(results);
+        setResults(results);
+      });
+  };
+  const handleChange = (value: string) => {
+    setInput(value);
+    fetchData(value);
+  };
+  const [input, setInput] = useState("");
+  return (
+    <div className="search-bar shadow">
+      <input
+        type="search"
+        placeholder="Recherche..."
+        value={input}
+        onChange={(e) => handleChange(e.target.value)}
+      />
+      <i className="ri-search-line"></i>
+    </div>
+  );
+};
+
+export const SearchResults = ({ results }: { results: {} }) => {
+  // Vérifie si results est un tableau
+  if (!Array.isArray(results)) {
+    return <div className="not-result">Aucun resultat</div>; // ou un message d'erreur, selon le cas
+  }
+
+  return (
+    <div className="search-result-container">
+      <ul>
+        {results.map((result: any) => (
+          <li>{result.service.libelle}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};

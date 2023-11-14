@@ -52,12 +52,12 @@ const TServiceCard = ({
                 </p>
               </div>
             </div>
-            <button type="button" className="service-view-button">
+            {/*  <button type="button" className="service-view-button">
               <p className="text-[0.8rem]">
                 A PARTIR DE{" "}
                 <span className="text-[16px]  font-normal">{montant} FCFA</span>
               </p>
-            </button>
+            </button> */}
           </div>
         </div>
       </Link>
