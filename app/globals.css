@@ -151,9 +151,8 @@ div.add-to-favorite:hover i {
 ********************************* */
 .sub-menu {
   z-index: 100;
-  padding: 0.25em;
+  padding: 2.5em;
   background-color: white;
-  border: 1px solid #e5e8ec;
   display: none;
   visibility: hidden;
   transition: visibility 0.4s;
@@ -163,14 +162,14 @@ div.add-to-favorite:hover i {
 .sub-menu ul li {
   padding: 0.5em;
   margin-top: 0.5em;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
-  transition: ease-in background-color 0.2s, ease-in color 0.2s;
   border-radius: 5px;
+  transition: ease-in background-color 0.2s, ease-in color 0.2s;
 }
 .sub-menu ul li:hover {
-  background-color: #5bbb7b3f;
-  color: #4a8e60;
+  background-color: #26564f;
+  color: #fff;
 }
 .categories-label:hover .sub-menu {
   position: absolute;
@@ -253,4 +252,17 @@ div.add-to-favorite:hover i {
 .close-button:hover {
   cursor: pointer;
   color: rgb(204, 6, 6);
+}
+
+/* ALERT DIALOG STYLE */
+.alert-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background-color: rgba(204, 6, 6, 0.189);
+  color: rgb(204, 6, 6);
+  border-radius: 100%;
+  font-size: 15px;
 }

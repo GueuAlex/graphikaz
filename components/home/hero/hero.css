@@ -1,138 +1,128 @@
-.my-hero{
+.my-hero {
+  width: 100%;
+}
+
+.input_div {
+  height: 5em;
+  width: 100%;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 4px;
+}
+
+.input_div input {
+  width: 70%;
+}
+.input_div button {
+  width: 30%;
+  height: 70%;
+  border-radius: 5px;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+small {
+  font-weight: 500;
+}
+
+.error-div {
+  display: flex;
+  margin-top: 0.5rem;
+  gap: 2rem;
+  background-color: rgba(165, 42, 42, 0.226);
+  color: brown;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  div.my-hero .left_hero {
+    display: none;
+  }
+  div.my-hero h1 {
+    font-size: 1.1rem !important;
+  }
+
+  div.my-hero {
+    display: block;
+  }
+  div.my-hero .rigth_hero .search-container {
     width: 100%;
-}
+    background-color: white;
+  }
+  div.my-hero .rigth_hero .search-container .input_div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    height: 7rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
 
-.input_div{
-    
-    height: 5em;
+  div.my-hero .rigth_hero .search-container .search-component {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: start;
     width: 100%;
-    padding-left: 1em;
-    padding-right: 1em;
-    border-radius: 4px;
-    
+  }
+
+  div.my-hero .rigth_hero .search-container .input_div button {
+    width: 100%;
+    height: 50%;
+  }
 }
 
-.input_div input{
-    width: 70%;
-}
-.input_div button{
-    width: 30%;
-    height: 70%;
-    border-radius: 5px;
-}
+@media screen and (max-width: 1024px) {
+  div.my-hero {
+    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+  }
+  div.my-hero .left_hero {
+    display: none;
+  }
+  div.my-hero h1 {
+    font-size: 1.8rem;
+  }
 
-.flex-2{
-    flex: 2;
-}
+  div.my-hero {
+    display: block;
+  }
 
-small{
-    font-weight: 500;
-}
-
-@media screen and (max-width: 767px) { 
-    div.my-hero .left_hero{
-        display:  none;
-    }
-    div.my-hero h1{
-        font-size: 1.1rem !important;
-    }
-
-    div.my-hero{
-        display: block;
-    }
-    div.my-hero .rigth_hero .search-container{
-        width: 100%;
-        background-color: white;
-      
-    }
-    div.my-hero .rigth_hero .search-container .input_div{
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        height: 7rem;
-        padding-top: 0.7rem;
-        padding-bottom: 0.7rem;
-    }
-
-   
-    div.my-hero .rigth_hero .search-container .search-component{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
-        justify-content: start;
-        width: 100%;
-        
-    }
-
-    div.my-hero .rigth_hero .search-container .input_div button{
-        width: 100%;
-        height: 50%;
-    }
- }
-
-
- @media screen and (max-width: 1024px){
-
-    div.my-hero{
-        padding-bottom: 2rem;
-        padding-top: 1.5rem;
-    }
-    div.my-hero .left_hero{
-        display:  none;
-    }
-    div.my-hero h1{
-        font-size: 1.8rem;
-    }
-
-    div.my-hero{
-        display: block;
-    }
-
-    div.my-hero .rigth_hero .search-container{
-        width: 100%;
-        background-color: white;
-      
-    }
-
-
-    
- }
-
- @media screen and (max-width: 1270px){
-    div.my-hero div.rigth_hero h1{
-        font-size: 2rem;
-    }
-    div.my-hero .left_hero{
-        
-        padding-left: 5rem;
-        padding-right: 5rem;
-        padding-top: 2rem;
-    }
-    div.my-hero .left_hero .slider61{
-        
-       transform: scale(0.8);
-       position: relative;
-       bottom: -2rem;
-        
-    }
-
-    div.my-hero .left_hero .flotant{
-        height: 15rem;
-    }
-
-    div.my-hero .left_hero .flotant *, div.hero .left_hero .boul1 {
-        transform: scale(0.7);
-    }
-
-    div.my-hero .left_hero .boul{
-        right: 0;
-    }
-
+  div.my-hero .rigth_hero .search-container {
+    width: 100%;
+    background-color: white;
+  }
 }
 
+@media screen and (max-width: 1270px) {
+  div.my-hero div.rigth_hero h1 {
+    font-size: 2rem;
+  }
+  div.my-hero .left_hero {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 2rem;
+  }
+  div.my-hero .left_hero .slider61 {
+    transform: scale(0.8);
+    position: relative;
+    bottom: -2rem;
+  }
 
+  div.my-hero .left_hero .flotant {
+    height: 15rem;
+  }
 
+  div.my-hero .left_hero .flotant *,
+  div.hero .left_hero .boul1 {
+    transform: scale(0.7);
+  }
 
-
+  div.my-hero .left_hero .boul {
+    right: 0;
+  }
+}

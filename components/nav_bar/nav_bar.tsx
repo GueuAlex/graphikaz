@@ -1,21 +1,37 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import "./nav_bar.css";
+import "./nav_bar.scss";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { categories } from "@/constants";
-import { Anybody } from "next/font/google";
-import { packProps } from "@/types";
+import { categories, userMenuTab } from "@/constants";
+import { signIn, signOut, useSession } from "next-auth/react";
+import SearchBarContents from "@/hoc/search_bar_contents";
+import { User } from "next-auth";
+import { getCategories } from "@/types/api_services";
+import { ApiCategoryProps } from "@/types";
 
 export default function NavBar() {
+  const session = useSession();
   const [toggle, setToggle] = useState(true);
   const [isHome, setIsHome] = useState(true);
   const [searchGlassVisible, setSearchGlassVisible] = useState(false); // Nouvel état pour la visibilité de search-glass
 
   const pathname = usePathname();
+  const [categoryList, setData] = useState<ApiCategoryProps[]>([]);
+  const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
+  async function getCategoriesList() {
+    try {
+      const data = await getCategories();
+      return data;
+      //console.log(data.at(0)?.libelle);
+      // Faites quelque chose avec les données ici
+    } catch (error) {
+      console.error("Une erreur s'est produite :", error);
+    }
+  }
+
   useEffect(() => {
-    // Mettre à jour l'état seulement si le chemin est '/'
     if (pathname === "/") {
       setIsHome(true);
     } else {
@@ -23,8 +39,26 @@ export default function NavBar() {
     }
   }, [pathname]); // Ne met à jour l'état que si le chemin change
 
+  ////////// fetch categories from database
+  useEffect(() => {
+    getCategoriesList()
+      .then((data) => {
+        const categories: ApiCategoryProps[] = data!;
+        setData(categories);
+        // Maintenant, vous pouvez utiliser les données ici
+        console.log(categories);
+        setcategoriesIsloadin(false);
+      })
+      .catch((error) => {
+        // Gérez les erreurs ici
+        console.error("Une erreur s'est produite :", error);
+        setcategoriesIsloadin(false);
+      });
+  }, []); //
+
   return (
     <header className=" z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900">
+      {/* side bar */}
       <motion.div>
         <div className={`${!toggle ? "show-overlay" : ""} overlay`}></div>
         {/* nav side bar */}
@@ -101,10 +135,11 @@ export default function NavBar() {
         </div>
         {/* nav side bar end */}
       </motion.div>
+      {/* side bar end */}
       <nav
         aria-label="Global"
-        className={`flex justify-center mx-auto max-w-container px-4 sm:px-6 lg:px-8 ${
-          pathname.startsWith("/categories") ? "shadow" : ""
+        className={`flex justify-center mx-auto max-w-container px-4 sm:px-6 lg:px-8  ${
+          pathname!.startsWith("/categories") ? "shadow" : ""
         }`}
       >
         <div
@@ -140,16 +175,20 @@ export default function NavBar() {
               </svg>
             </Link>
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-row items-center">
             <div className="hidden lg:flex lg:items-center">
               <Link href="/categories" className="categories-label">
                 Categories
-                <div className="sub-menu">
-                  <ul>
-                    {categories.map((cat, index) => (
-                      <li key={index}>{cat.label}</li>
-                    ))}
-                  </ul>
+                <div className="sub-menu shadow-xl">
+                  {categoriesIsLaoding ? (
+                    <p>Chargement...</p>
+                  ) : (
+                    <ul>
+                      {categoryList.map((cat, index) => (
+                        <li key={index}>{cat.libelle}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </Link>
               <Link href="/freelancers" className="ml-8">
@@ -181,15 +220,11 @@ export default function NavBar() {
               ></i>
             </button>
             <div className="hidden lg:ml-8 lg:flex lg:items-center lg:border-l lg:border-slate-900/15 lg:pl-8">
-              <Link href="/auth?et=signin">S'inscrire</Link>
-              <Link
-                href="/auth"
-                className="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-primary text-white hover:bg-slate-700 -my-2.5 ml-8"
-              >
-                <span>
-                  Connexion <span aria-hidden="true">→</span>
-                </span>
-              </Link>
+              {session.status !== "authenticated" ? (
+                <SignButtons />
+              ) : (
+                <AvatarContainer user={session.data?.user!} />
+              )}
             </div>
           </div>
         </div>
@@ -214,73 +249,67 @@ export default function NavBar() {
   );
 }
 
-const SearchBarContents = () => {
-  const [results, setResults] = useState<any[]>([]);
+const SignButtons = () => {
   return (
-    <div className="search-glass-contents">
-      <SearchBar setResults={setResults} />
-
-      {results.length == 0 ? null : <SearchResults results={results} />}
+    <div>
+      {" "}
+      <Link
+        href="/auth?et=signin"
+        /*  onClick={() => {
+          signOut();
+        }} */
+      >
+        S'inscrire
+      </Link>
+      <Link
+        href=""
+        onClick={() => {
+          signIn();
+        }}
+        className="inline-flex justify-center rounded-lg text-sm font-semibold py-2.5 px-4 bg-primary text-white hover:bg-slate-700 -my-2.5 ml-8"
+      >
+        <span>
+          Connexion <span aria-hidden="true">→</span>
+        </span>
+      </Link>
     </div>
   );
 };
 
-export const SearchBar = ({
-  setResults,
-}: {
-  setResults: React.Dispatch<React.SetStateAction<packProps[]>>;
-}) => {
-  const fetchData = (value: string) => {
-    fetch("https://graphikaz.digifaz.com/api/packServices")
-      .then((response) => response.json())
-      .then((json) => {
-        const results: packProps[] = json.filter((pack: packProps) => {
-          return (
-            value &&
-            pack &&
-            pack.service.libelle &&
-            pack.service.libelle.toLowerCase().includes(value.toLowerCase()) &&
-            pack.ligne_services && // Vérifier que pack.ligne_services est défini
-            pack.ligne_services.map((option) =>
-              option.libelle.toLowerCase().includes(value.toLowerCase())
-            )
-          );
-        });
-        console.log(results);
-        setResults(results);
-      });
-  };
-  const handleChange = (value: string) => {
-    setInput(value);
-    fetchData(value);
-  };
-  const [input, setInput] = useState("");
+const AvatarContainer = ({ user }: { user: User }) => {
   return (
-    <div className="search-bar shadow">
-      <input
-        type="search"
-        placeholder="Recherche..."
-        value={input}
-        onChange={(e) => handleChange(e.target.value)}
-      />
-      <i className="ri-search-line"></i>
-    </div>
-  );
-};
-
-export const SearchResults = ({ results }: { results: {} }) => {
-  // Vérifie si results est un tableau
-  if (!Array.isArray(results)) {
-    return <div className="not-result">Aucun resultat</div>; // ou un message d'erreur, selon le cas
-  }
-
-  return (
-    <div className="search-result-container">
-      <ul>
-        {results.map((result: any) => (
-          <li>{result.service.libelle}</li>
-        ))}
-      </ul>
+    <div className="avatar-conatainer flex gap-3 items-center relative">
+      <div className="avatar online placeholder cursor-pointer">
+        <div className="bg-neutral text-neutral-content rounded-full w-10">
+          <span className="text-xl">AI</span>
+        </div>{" "}
+      </div>
+      <div className="flex flex-col">
+        <p className=" cursor-pointer">{user.name}</p>
+        <span className=" text-stone-500 text-[11px]">{user.type_user}</span>
+      </div>
+      <div className="user-menu absolute shadow-xl">
+        <div className="user-menu-container w-full">
+          <ul>
+            {userMenuTab.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  className="flex gap-2 flex-row px-4 py-3"
+                  onClick={() => {
+                    if (item.label === "Logout") {
+                      signOut();
+                    }
+                  }}
+                >
+                  <i className={`${item.iconClass} `}></i>
+                  <span>{item.label}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

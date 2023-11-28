@@ -1,6 +1,10 @@
 .link:hover h3 {
   color: #5bbb7b;
 }
+.categories-content .link {
+  background-color: rgba(128, 128, 128, 0.1);
+  border-radius: 5px;
+}
 
 .categories-content {
   justify-content: space-between;

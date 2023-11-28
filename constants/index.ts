@@ -32,7 +32,10 @@ import {
   CategoryProps,
   PrestatorProps,
   ServiceProps,
+  userMenuProps,
+  userProps,
 } from "@/types";
+import { useSession } from "next-auth/react";
 
 const date = new Date();
 
@@ -361,4 +364,44 @@ const categoriesTab: catTab[] = [
   },
 ];
 
-export { categoriesTab, categories, services, prestators, blogs };
+/////
+const userMenuTab: userMenuProps[] = [
+  {
+    label: "Dashboard",
+    iconClass: "ri-home-6-line",
+  },
+  {
+    label: "Bought Service",
+    iconClass: "ri-money-dollar-box-line",
+  },
+  {
+    label: "Favorites",
+    iconClass: "ri-heart-3-line",
+  },
+  {
+    label: "Meetings",
+    iconClass: "ri-megaphone-line",
+  },
+  {
+    label: "Messages",
+    iconClass: "ri-message-3-line",
+  },
+  {
+    label: "Profile",
+    iconClass: "ri-user-6-line",
+  },
+  {
+    label: "Delete Profile",
+    iconClass: "ri-delete-bin-7-line",
+  },
+  {
+    label: "Change Password",
+    iconClass: "ri-lock-unlock-line",
+  },
+  {
+    label: "Logout",
+    iconClass: "ri-logout-circle-line",
+  },
+];
+
+export { categoriesTab, categories, services, prestators, blogs, userMenuTab };

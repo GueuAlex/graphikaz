@@ -39,6 +39,7 @@ import Slider63 from "./slider63.png";
 import Comp from "./comp.png";
 import Banner from "./banner3.jpg";
 import Digifaz from "./digifaz.png";
+import Success from "./success.png";
 
 export {
   Digifaz,
@@ -82,4 +83,5 @@ export {
   Slider66,
   Comp,
   Banner,
+  Success,
 };

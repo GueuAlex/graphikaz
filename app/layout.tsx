@@ -1,11 +1,13 @@
-"use client"
-import './globals.css';
-import { Inter } from 'next/font/google';
-import { usePathname } from 'next/navigation';
+"use client";
+import "./globals.css";
+import { Inter } from "next/font/google";
+import { usePathname } from "next/navigation";
 
-import { Footer, NavBar } from '@/components';
+import { Footer, NavBar } from "@/components";
+import { SessionProvider } from "next-auth/react";
+import { Component } from "react";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 // Exporter metadata directement depuis le fichier
 /* export const metadata = {
@@ -13,7 +15,7 @@ const inter = Inter({ subsets: ['latin'] });
   description: 'Graphikaz 2023 | prestation provider app',
 }; */
 
-const excludedRoutes = ['/auth', '/excluded-page2'];
+const excludedRoutes = ["/auth", "/excluded-page2"];
 
 export default function RootLayout({
   children,
@@ -21,23 +23,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const currentPath = usePathname();
-  const isExcludedRoute = excludedRoutes.includes(currentPath);
+  const isExcludedRoute = excludedRoutes.includes(currentPath as string);
 
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
-        />
-      </head>
-      <body className={inter.className}>
-        {/* Utiliser le NavBar seulement si la route n'est pas exclue */}
-        {!isExcludedRoute && <NavBar />}
-        {children}
-        {/* Utiliser le Footer seulement si la route n'est pas exclue */}
-        {!isExcludedRoute && <Footer />}
-      </body>
-    </html>
+    <SessionProvider>
+      <html lang="en">
+        <head>
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+          />
+        </head>
+        <body className={inter.className}>
+          {/* Utiliser le NavBar seulement si la route n'est pas exclue */}
+          {!isExcludedRoute && <NavBar />}
+          {children}
+          {/* Utiliser le Footer seulement si la route n'est pas exclue */}
+          {!isExcludedRoute && <Footer />}
+        </body>
+      </html>
+    </SessionProvider>
   );
 }
+
+//<Component {...pageProps} />

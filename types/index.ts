@@ -49,6 +49,18 @@ export interface PrestatorProps {
   post: string;
 }
 
+export interface userProps {
+  id: number;
+  name: string;
+  email: string;
+  type_user: string;
+}
+
+export interface userMenuProps {
+  label: string;
+  iconClass: string;
+}
+
 export interface BlogProps {
   id: number;
   title: string;
@@ -63,4 +75,9 @@ export interface CategoryProps {
   label: string;
   service_count: number;
   cover: StaticImageData;
+}
+
+export interface ApiCategoryProps {
+  id: number;
+  libelle: string;
 }

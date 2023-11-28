@@ -23,6 +23,16 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "style.js", "reutilisables/rating_state.js", "reutilisables/rate.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "style.js",
+    "reutilisables/rating_state.js",
+    "reutilisables/rate.js",
+    "pages/api/api_four.js",
+    "services/mail_service.ts"
+  ],
   "exclude": ["node_modules"]
 }
