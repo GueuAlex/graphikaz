@@ -1,28 +1,30 @@
 import Search from "@/app/search/page";
-import { packProps } from "@/types";
+import { apiServiceProps, packProps } from "@/types";
 import { useState } from "react";
 
 export const SearchBar = ({
   setResults,
 }: {
-  setResults: React.Dispatch<React.SetStateAction<packProps[]>>;
+  setResults: React.Dispatch<React.SetStateAction<apiServiceProps[]>>;
 }) => {
   const fetchData = (value: string) => {
-    fetch("https://graphikaz.digifaz.com/api/packServices")
+    fetch("https://graphikaz.digifaz.com/api/services")
       .then((response) => response.json())
       .then((json) => {
-        const results: packProps[] = json.filter((pack: packProps) => {
-          return (
-            value &&
-            pack &&
-            pack.service.libelle &&
-            pack.service.libelle.toLowerCase().includes(value.toLowerCase()) &&
-            pack.ligne_services && // Vérifier que pack.ligne_services est défini
-            pack.ligne_services.map((option) =>
-              option.libelle.toLowerCase().includes(value.toLowerCase())
-            )
-          );
-        });
+        const results: apiServiceProps[] = json.filter(
+          (serv: apiServiceProps) => {
+            return (
+              value &&
+              serv &&
+              serv.libelle &&
+              serv.libelle.toLowerCase().includes(value.toLowerCase()) &&
+              //serv.pack_services.ligne_services && // Vérifier que pack.ligne_services est défini
+              serv.pack_services.map((option) =>
+                option.libelle.toLowerCase().includes(value.toLowerCase())
+              )
+            );
+          }
+        );
         console.log(results);
         setResults(results);
       });
