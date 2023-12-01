@@ -1,14 +1,14 @@
-import { apiServiceProps } from "@/types";
+import { ApiCategoryProps, apiServiceProps } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
-import { Digifaz, Service2 } from "@/public";
+import { DeliCar, Digifaz, Service2 } from "@/public";
 
 const TServiceCard = ({
   service,
-  montant,
+  category,
 }: {
   service: apiServiceProps;
-  montant: number;
+  category: ApiCategoryProps | undefined; // Changer ici
 }) => {
   return (
     <div className="service-carde flex-item">
@@ -25,10 +25,13 @@ const TServiceCard = ({
         </div>
         <div className=" bg-slate-50 rounded-b-[8px] px-4">
           <div className="px-[20px] py-[5px]">
-            <p className="mt-2 text-slate-400 mb-[8px]">{"service.category"}</p>
-            <p className="first-link text-stone-900 font-[500] text-[1.2rem] ">
+            <p className="mt-2 text-slate-400 mb-[8px]">
+              {category !== undefined ? category.libelle : ""}
+            </p>
+            <p className="first-link text-stone-900 font-[500] text-[1.2rem] line-clamp-2">
               {service.libelle}
             </p>
+            {service.libelle.length < 50 ? <br /> : ""}
             <p className="mt-3 text-stone-500">
               <i className="ri-star-fill text-yellow-500"></i>{" "}
               <span className="text-black font-semibold">{4.5}</span>{" "}
@@ -38,18 +41,41 @@ const TServiceCard = ({
             <div className="mt-5 w-full h[1px] border " />
             <div className="pt-[0.7rem] flex flex-row items-start justify-between">
               <div className="second-link flex flex-row gap-3 justify-start items-center">
-                <div className="w-[2.2rem] h-[2.2rem]  rounded-full object-contain">
-                  <Image
-                    //src={prestator?.profilPic ? prestator?.profilPic : ""}
-                    src={Digifaz}
-                    alt="f1"
-                    className="rounded-full"
-                  />
+                <div className="w-[2.2rem] h-[2.2rem]  rounded-full object-contain relative">
+                  {/* prestator src */}
+                  {/* prestators.find(
+                      (prestator) => prestator.id === service.prestatorId
+                    )?.profilPic ?? "" */}
+                  <div className="t-overlay-dot absolute "></div>
+                  <Image src={DeliCar} alt="f1" className="rounded-full" />
                 </div>
                 <p className="text-[0.9rem]">
-                  {/* {prestator?.fullName} */}
-                  Digifaz
+                  {/* prestator name */}
+                  {/* {prestators.find(
+                  (prestator) => prestator.id === service.prestatorId
+                )?.fullName ?? ""} */}
+
+                  {service.pack_services.length > 0 ? (
+                    <span>
+                      <small>Livrer sous </small>{" "}
+                      <small>
+                        {service.pack_services[0].delais_livraison + " jours"}
+                      </small>
+                    </span>
+                  ) : (
+                    ""
+                  )}
                 </p>
+                {/*  {service.pack_services.length > 0 ? (
+                <span>
+                  <small>Livrer sous </small>{" "}
+                  <small>
+                    {service.pack_services[0].delais_livraison + " jours"}
+                  </small>
+                </span>
+              ) : (
+                ""
+              )} */}
               </div>
             </div>
             {/*  <button type="button" className="service-view-button">

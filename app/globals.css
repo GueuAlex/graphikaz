@@ -10,6 +10,9 @@
   box-sizing: border-box;
   font-family: "DM Sans", sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .m-container {
   max-width: 1280px;
@@ -123,6 +126,12 @@ div.add-to-favorite:hover i {
 .service-carde .service-view-button:hover {
   background-color: #5bbb7b;
   color: #fff;
+}
+.t-overlay-dot {
+  width: 2rem;
+  height: 2rem;
+  background-color: #e7c04031;
+  border-radius: 100%;
 }
 
 /* OVERLAY */

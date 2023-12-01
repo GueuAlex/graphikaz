@@ -4,14 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import React, { useEffect, useRef, useState } from "react";
 import { RatingComponent, TServiceCard, Wrapper } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
-import {
-  OptionsProps,
-  PrestatorProps,
-  ServiceProps,
-  apiServiceProps,
-  packProps,
-} from "@/types";
-import { prestators, services } from "@/constants";
+import { apiServiceProps, packProps } from "@/types";
 import Image from "next/image";
 import RatingStates from "@/reutilisables/rating_state";
 import Rate from "@/reutilisables/rate";
@@ -31,14 +24,14 @@ export default function Page({ params }: { params: { slug: string } }) {
     }
   }
   const [isLaoding, setIsloadin] = useState(true);
-  const [packList, setData] = useState<packProps[]>([]);
+  const [services, setData] = useState<apiServiceProps[]>([]);
   useEffect(() => {
     fetchAndUseData()
       .then((data) => {
-        const packData: packProps[] = data!;
-        setData(packData);
+        const services: apiServiceProps[] = data!;
+        setData(services);
         // Maintenant, vous pouvez utiliser les données ici
-        console.log(packData);
+        console.log(services);
         setIsloadin(false);
       })
       .catch((error) => {
@@ -50,8 +43,8 @@ export default function Page({ params }: { params: { slug: string } }) {
   /////////////////////
   //const montant = 0;
   const title = decodeURIComponent(params.slug);
-  const pack: packProps | undefined = packList.find(
-    (pack) => pack.service.libelle === title
+  const service: apiServiceProps | undefined = services.find(
+    (serv) => serv.libelle === title
   );
 
   //console.log(service?.libelle);
@@ -86,10 +79,12 @@ export default function Page({ params }: { params: { slug: string } }) {
   const style = height ? { height: `${height}px` } : {};
   console.log(height);
 
-  if (pack) {
+  if (service) {
     //
-    const service: apiServiceProps = pack.service;
-    const options: OptionsProps[] = pack.ligne_services;
+    //const service: apiServiceProps = pack.service;
+    const packs: packProps[] = service.pack_services;
+    console.log("this service", service);
+    console.log("paaacks", packs);
     /* rechecher le prestataire correspondant */
     /* const prestator: PrestatorProps | undefined = prestators.find(
       (prestator) => prestator.id === service.prestatorId
@@ -134,7 +129,8 @@ export default function Page({ params }: { params: { slug: string } }) {
               </div>
 
               {/* You can open the modal using ID.showModal() method */}
-              <div
+              {/* SERVICE REPORTER BUTTON */}
+              {/*  <div
                 className=" cursor-pointer"
                 onClick={() => window.my_modal_3.showModal()}
               >
@@ -158,7 +154,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                     Send report <i className="ri-arrow-right-up-line"></i>
                   </button>
                 </form>
-              </dialog>
+              </dialog> */}
 
               {/* Open the modal using ID.showModal() method */}
             </div>
@@ -185,13 +181,17 @@ export default function Page({ params }: { params: { slug: string } }) {
                       <div className="transparant absolute"></div>
                     </div>
                     <div className="desc-text">
-                      <span>Delivery Time</span>
+                      <span>Delais de livraison</span>
                       <br />
-                      <small>2 Days</small>
+                      <small>
+                        {packs.length > 0
+                          ? packs[0].delais_livraison + " jours"
+                          : ""}
+                      </small>
                     </div>
                   </div>
 
-                  <div className="desc flex items-center gap-8">
+                  {/*  <div className="desc flex items-center gap-8">
                     <div className="icon-large relative">
                       <i className="ri-bar-chart-grouped-fill text-[2.8em] text-primary"></i>{" "}
                       <div className="transparant absolute"></div>
@@ -201,7 +201,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                       <br />
                       <small>Conversational</small>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="desc flex items-center gap-8">
                     <div className="icon-large relative">
@@ -329,7 +329,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 </div>
                 {/* aaccordeon */}
                 <div className="divider" />
-                <div className="accordeon">
+                <div className="accordeon" id="customisation">
                   <div className="collapse collapse-plus bg-green-50 rounded-none">
                     <input type="radio" name="my-accordion-3" checked />
                     <div className="collapse-title text-xl font-medium">
@@ -471,40 +471,9 @@ export default function Page({ params }: { params: { slug: string } }) {
 
             <div className="left sticky-r" style={style}>
               <div className="sticky top-0">
-                <div className="options-container shadow">
-                  {/* montant initial */}
-                  {/* <h2>${service.startPrice}</h2> */}
-                  <div className="price-container flex justify-between items-center">
-                    <p>Service de base</p>
-                    <p className=" font-medium text-[20px]">
-                      {pack.montant}{" "}
-                      <sup className="text-[8px] font-bold">FCFA</sup>
-                    </p>
-                  </div>
-                  <p className=" font-light text-[18px] mt-4">
-                    Options suplémentaires
-                  </p>
-                  {options.map((option) => (
-                    <div className="single-option flex justify-between items-center">
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="checkbox"
-                          className="checkbox checkbox-success h-[16px] w-[16px]"
-                        />
-                        <span className="label-text">{option.libelle}</span>
-                      </div>
-                      <p className=" sup-option-price text-[14px] font-light w-[35%]">
-                        {option.montant}{" "}
-                        <sup className="text-[8px] font-bold">FCFA</sup>
-                      </p>
-                    </div>
-                  ))}
-                  <button type="button" className="first-chirld mt-4">
-                    Buy Now ${pack.montant}{" "}
-                    <i className="ri-arrow-right-up-line"></i>
-                  </button>
-                </div>
-                <div className="prestator-infos shadow">
+                <DefaultPacks packs={packs} />
+                {/* THIS SERVICE PROVIDER INFOS */}
+                {/* <div className="prestator-infos shadow">
                   <h3>À propos du vendeur</h3>
                   <div className="pretator-profil items-center flex gap-3 mt-3">
                     <div className=" object-cover w-[30%] h-[6em]  rounded-full">
@@ -543,7 +512,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                   <button type="button">
                     Contact Me <i className="ri-arrow-right-up-line"></i>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
             {/* sticky asside */}
@@ -567,7 +536,8 @@ const BannerContainer = ({
       <Wrapper>
         <h2 className="banner-title text-[2em]">{service.libelle}</h2>
         <div className="subtitle flex gap-7 items-center mt-5">
-          <div className="prestator flex items-center gap-2">
+          {/* THIS SERVICE PROVIDER */}
+          {/* <div className="prestator flex items-center gap-2">
             <div className="h-[3em] w-[3em] border rounded-full object-contain">
               <Image
                 //src={prestator.profilPic}
@@ -578,7 +548,7 @@ const BannerContainer = ({
               />
             </div>
             <h4>{"Digifaz"}</h4>
-          </div>
+          </div> */}
           <div className="reviews">
             <i className="ri-star-fill text-yellow-500"></i> {4.9} {`(`}
             {998}
@@ -592,3 +562,180 @@ const BannerContainer = ({
     </div>
   );
 };
+
+const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
+  const [selectedPack, setSelectedPack] = useState<packProps>();
+  if (packs.length === 0) {
+    return (
+      <div className="options-container shadow">
+        {" "}
+        Aucun pack n'est disponible pour le moment
+      </div>
+    );
+  }
+  if (packs.length === 1) {
+    setSelectedPack(packs[0]);
+    return (
+      <div className="options-container shadow">
+        <div className="pack-choice-container">
+          <label
+            htmlFor={packs[0].id.toString()}
+            className=" flex items-start justify-start gap-2 cursor-pointer"
+          >
+            <input
+              id={packs[0].id.toString()}
+              type="radio"
+              name="radio-5"
+              className="radio radio-success w-4 h-4 mt-1"
+              checked
+            />
+
+            <span className="intro-pack flex flex-col">
+              <span className="intro-pack-prince text-[18px] font-[600]">
+                {packs[0].montant}{" "}
+                <sup className="text-[8px] font-bold">FCFA</sup>
+              </span>
+              <small className="py-2 text-gray-500 font-[300]">
+                {packs[0].delais_livraison} jours de réalisation
+              </small>
+              {/*  <small>
+              Recommandé <i className="ri-quill-pen-line"></i>{" "}
+            </small> */}
+              <small className="text-[14px] font-[400]">
+                Service basique, sans option : {packs[0].libelle}
+              </small>
+            </span>
+          </label>
+        </div>
+
+        <button type="button" className="first-chirld mt-4">
+          Acheter ${selectedPack?.montant}{" "}
+          <i className="ri-arrow-right-up-line"></i>
+        </button>
+      </div>
+    );
+  }
+  // Utiliser reduce pour obtenir le total
+  const totalLigneServices = packs.reduce((acc, pack) => {
+    // Ajouter le nombre de lignes de service pour chaque service
+    return acc + (pack.ligne_services ? pack.ligne_services.length : 0);
+  }, 0);
+  useEffect(() => {
+    setSelectedPack(packs[1]);
+  }, []);
+  const [checked, setChecked] = useState(false);
+
+  const handleRadioChange = () => {
+    setChecked(!checked);
+  };
+  const setpack1 = () => {
+    setSelectedPack(packs[0]);
+  };
+  const setpack2 = () => {
+    setSelectedPack(packs[1]);
+  };
+  return (
+    <div className="options-container shadow">
+      <div className="pack-choice-container">
+        {/* pack recommandé */}
+        <label
+          htmlFor={packs[1].id.toString()}
+          className=" flex items-start justify-start gap-2 cursor-pointer"
+        >
+          <input
+            id={packs[1].id.toString()}
+            type="radio"
+            name="radio-5"
+            className="radio radio-success w-4 h-4 mt-1"
+            checked={!checked}
+            onChange={handleRadioChange}
+            onClick={setpack2}
+          />
+
+          <span className="intro-pack flex flex-col">
+            <span className="intro-pack-prince text-[18px] font-[600]">
+              {packs[1].montant}{" "}
+              <sup className="text-[8px] font-bold">FCFA</sup>
+            </span>
+            <small className="py-2 text-gray-500 font-[300]">
+              {packs[1].delais_livraison} jours de réalisation
+            </small>
+            <small className="text-[14px] font-semibold pb-1">
+              Recommandé <i className="ri-quill-pen-line"></i>{" "}
+            </small>
+            <small className="text-[14px] font-[400]">
+              Service basique et option recommandée : {packs[1].libelle}
+            </small>
+          </span>
+        </label>
+        <div className="divider" />
+        {/* pack de base */}
+        <label
+          htmlFor={packs[0].id.toString()}
+          className=" flex items-start justify-start gap-2 cursor-pointer"
+        >
+          <input
+            id={packs[0].id.toString()}
+            type="radio"
+            name="radio-5"
+            className="radio radio-success w-4 h-4 mt-1"
+            checked={checked}
+            onChange={handleRadioChange}
+            onClick={setpack1}
+          />
+
+          <span className="intro-pack flex flex-col">
+            <span className="intro-pack-prince text-[18px] font-[600]">
+              {packs[0].montant}{" "}
+              <sup className="text-[8px] font-bold">FCFA</sup>
+            </span>
+            <small className="py-2 text-gray-500 font-[300]">
+              {packs[0].delais_livraison} jours de réalisation
+            </small>
+            {/*  <small>
+              Recommandé <i className="ri-quill-pen-line"></i>{" "}
+            </small> */}
+            <small className="text-[14px] font-[400]">
+              Service basique, sans option : {packs[0].libelle}
+            </small>
+          </span>
+        </label>
+
+        {/* customisation link */}
+        <div className="divider" />
+        <a href="#customisation">
+          <div className="customisation-link w-full cursor-pointer">
+            <span className="flex gap-2  items-center justify-start ">
+              <i className="ri-equalizer-line text-[12px] font-[600]"></i>{" "}
+              <small className="text-[16px] font-[600]">
+                Personnalisé ce service
+              </small>
+            </span>
+            <small className="text-gray-500 font-[300]">
+              Choissez jusqu'a {totalLigneServices} options
+            </small>
+          </div>
+        </a>
+      </div>
+
+      <button type="button" className="first-chirld mt-4">
+        Acheter {selectedPack?.montant + "F CFA"}
+        <i className="ri-arrow-right-up-line"></i>
+      </button>
+      <div className="secur-paiement w-full py-2 flex flex-col justify-center items-center">
+        <span>
+          {" "}
+          Paiement{" "}
+          <span className=" text-green-600">
+            <i className="ri-lock-fill"></i> securisé
+          </span>{" "}
+        </span>
+        <small className="text-gray-500 font-[300]">
+          Vos informations sont chiffrées par TLS
+        </small>
+      </div>
+    </div>
+  );
+};
+
+//export default DefaultPacks

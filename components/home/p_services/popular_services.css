@@ -116,3 +116,11 @@
     font-weight: 400;
   }
 }
+
+.overlay-dot {
+  width: 2rem;
+  height: 2rem;
+  z-index: -1;
+  background-color: #e7c04031;
+  border-radius: 100%;
+}

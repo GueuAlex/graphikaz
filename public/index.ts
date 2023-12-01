@@ -40,6 +40,7 @@ import Comp from "./comp.png";
 import Banner from "./banner3.jpg";
 import Digifaz from "./digifaz.png";
 import Success from "./success.png";
+import DeliCar from "./deli-car.png";
 
 export {
   Digifaz,
@@ -84,4 +85,5 @@ export {
   Comp,
   Banner,
   Success,
+  DeliCar,
 };

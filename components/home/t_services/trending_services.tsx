@@ -1,11 +1,16 @@
 import Link from "next/link";
 import "./trending_services.css";
 
-import { prestators, services } from "@/constants";
 import { TServiceCard } from "@/reutilisables";
-import { packProps } from "@/types";
+import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
 
-const TrendingService = ({ packList }: { packList: packProps[] }) => {
+const TrendingService = ({
+  serviceList,
+  categories,
+}: {
+  serviceList: apiServiceProps[];
+  categories: ApiCategoryProps[];
+}) => {
   return (
     <div className="t-services w-full px-[2rem] py-[5rem] bg-primary relative  flex justify-center items-center">
       <div className="max-w-[97rem] relative   w-full">
@@ -31,23 +36,31 @@ const TrendingService = ({ packList }: { packList: packProps[] }) => {
           </div>
 
           <div className="t-services-cards flex flex-nowrap justify-around gap-2">
-            {packList.length > 5
-              ? packList
-                  .slice(0, 4)
-                  .map((pack) => (
+            {serviceList.length > 5
+              ? serviceList.slice(0, 4).map((service) => {
+                  const category: ApiCategoryProps = categories.find(
+                    (c) => c.id === service.category_id
+                  )!;
+                  return (
                     <TServiceCard
-                      key={pack.service.id}
-                      service={pack.service}
-                      montant={pack.montant}
+                      key={service.id}
+                      service={service}
+                      category={category}
                     />
-                  ))
-              : packList.map((pack) => (
-                  <TServiceCard
-                    key={pack.service.id}
-                    service={pack.service}
-                    montant={pack.montant}
-                  />
-                ))}
+                  );
+                })
+              : serviceList.map((service) => {
+                  const category: ApiCategoryProps = categories.find(
+                    (c) => c.id === service.category_id
+                  )!;
+                  return (
+                    <TServiceCard
+                      key={service.id}
+                      service={service}
+                      category={category}
+                    />
+                  );
+                })}
           </div>
         </div>
       </div>

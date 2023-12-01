@@ -4,12 +4,25 @@ import React, { useEffect, useState } from "react";
 import "./categories.scss";
 import { PathnameComponent } from "@/components";
 import { TServiceCard, Wrapper } from "@/reutilisables";
-import { services, prestators, categories } from "@/constants";
-import { packProps } from "@/types";
-import { fetchAllData } from "@/types/api_services";
+import { categories } from "@/constants";
+import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
+import { fetchAllData, getCategories } from "@/types/api_services";
 
 function Categories() {
+  //////// get all categories
+
+  async function getCategoriesList() {
+    try {
+      const data = await getCategories();
+      return data;
+      //console.log(data.at(0)?.libelle);
+      // Faites quelque chose avec les données ici
+    } catch (error) {
+      console.error("Une erreur s'est produite :", error);
+    }
+  }
   //////// fetching api //////////////////////////////////////////////
+
   async function fetchAndUseData() {
     try {
       const data = await fetchAllData();
@@ -21,20 +34,36 @@ function Categories() {
     }
   }
   const [isLaoding, setIsloadin] = useState(true);
-  const [packList, setData] = useState<packProps[]>([]);
+  const [services, setData] = useState<apiServiceProps[]>([]);
+  const [categoriesList, setcategoriesList] = useState<ApiCategoryProps[]>([]);
+  const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
   useEffect(() => {
     fetchAndUseData()
       .then((data) => {
-        const packData: packProps[] = data!;
-        setData(packData);
+        const servicesList: apiServiceProps[] = data!;
+        setData(servicesList);
         // Maintenant, vous pouvez utiliser les données ici
-        console.log(packData);
+        console.log(servicesList);
         setIsloadin(false);
       })
       .catch((error) => {
         // Gérez les erreurs ici
         console.error("Une erreur s'est produite :", error);
         setIsloadin(false);
+      });
+
+    getCategoriesList()
+      .then((data) => {
+        const categories: ApiCategoryProps[] = data!;
+        setcategoriesList(categories);
+        // Maintenant, vous pouvez utiliser les données ici
+        console.log(categories);
+        setcategoriesIsloadin(false);
+      })
+      .catch((error) => {
+        // Gérez les erreurs ici
+        console.error("Une erreur s'est produite :", error);
+        setcategoriesIsloadin(false);
       });
   }, []);
   //////////////////////////////////////////////////////////////////////
@@ -138,6 +167,10 @@ function Categories() {
     const newMaxValue = parseInt(event.target.value);
     setMaxValue(Math.max(newMaxValue, minValue)); // Assurer que max >= min
   };
+
+  if (isLaoding || categoriesIsLaoding) {
+    return <div> Chargement .... </div>;
+  }
 
   return (
     <div className="categories">
@@ -391,12 +424,15 @@ function Categories() {
       <Wrapper>
         {/* service cards */}
         <div className="cat-service-cards">
-          {packList.map((pack, index) => {
+          {services.map((service, index) => {
             /* const prestator = prestators.find(
               (prestator) => prestator.id === service.prestatorId
             ); */
+            const category: ApiCategoryProps = categoriesList.find(
+              (c) => c.id === service.category_id
+            )!;
             return (
-              <TServiceCard service={pack.service} montant={pack.montant} />
+              <TServiceCard service={service} category={category} key={index} />
             );
           })}
         </div>

@@ -18,6 +18,8 @@ export interface apiServiceProps {
   libelle: string;
   description: string;
   category_id: number;
+  create_at: Date;
+  pack_services: packProps[];
 }
 
 export interface packProps {
@@ -29,7 +31,6 @@ export interface packProps {
   type_paiement_id: number;
   pourcentage_remuneration: number;
   create_at: Date;
-  service: apiServiceProps;
   ligne_services: OptionsProps[];
 }
 

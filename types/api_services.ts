@@ -1,10 +1,10 @@
-import { ApiCategoryProps, CategoryProps, ServiceProps, packProps } from ".";
+import { ApiCategoryProps, apiServiceProps } from ".";
 
 const baseUri = "https://graphikaz.digifaz.com/api/";
-export const fetchAllData = async (): Promise<packProps[]> => {
+export const fetchAllData = async (): Promise<apiServiceProps[]> => {
   //"use server";
   try {
-    const response = await fetch(`${baseUri}packServices`);
+    const response = await fetch(`${baseUri}services`);
     if (!response.ok) {
       throw new Error("Erreur lors de la récupération des données");
     }
@@ -14,18 +14,21 @@ export const fetchAllData = async (): Promise<packProps[]> => {
     const apiDataList = await response.json();
 
     // Effectuez le mappage pour chaque élément de la liste
-    const mappedDataList: packProps[] = apiDataList.map((apiData: any) => ({
-      id: apiData.id,
-      libelle: apiData.libelle,
-      montant: apiData.montant,
-      delais_livrai: apiData.delais_livraison,
-      service_id: apiData.service_id,
-      type_paiement_id: apiData.type_paiement_id,
-      pourcentage_remuneration: apiData.pourcentage_remuneration,
-      create_at: apiData.create_at,
-      service: apiData.service,
-      ligne_services: apiData.ligne_services,
-    }));
+    const mappedDataList: apiServiceProps[] = apiDataList.map(
+      (apiData: any) => ({
+        id: apiData.id,
+        libelle: apiData.libelle,
+        description: apiData.description,
+        category_id: apiData.category_id,
+        /* delais_livrai: apiData.delais_livraison, */
+        /* service_id: apiData.service_id, */
+        /* type_paiement_id: apiData.type_paiement_id, */
+        /* pourcentage_remuneration: apiData.pourcentage_remuneration, */
+        create_at: apiData.create_at,
+        pack_services: apiData.pack_services,
+        /* ligne_services: apiData.ligne_services, */
+      })
+    );
 
     //console.log(mappedDataList.at(0)?.service.libelle);
 

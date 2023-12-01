@@ -11,7 +11,7 @@ import {
   Blogs,
   NewsLetter,
 } from "@/components/home";
-import { ApiCategoryProps, packProps } from "@/types";
+import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
 import { fetchAllData, getCategories } from "@/types/api_services";
 import { useEffect, useState } from "react";
 
@@ -20,7 +20,7 @@ const MyHome = () => {
   const [isLaoding, setIsloadin] = useState(true);
   const [categoriesList, setcategoriesList] = useState<ApiCategoryProps[]>([]);
   const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
-  const [packList, setData] = useState<packProps[]>([]);
+  const [serviceList, setData] = useState<apiServiceProps[]>([]);
   //////// get all categories
 
   async function getCategoriesList() {
@@ -48,7 +48,7 @@ const MyHome = () => {
   useEffect(() => {
     fetchAndUseData()
       .then((data) => {
-        const packData: packProps[] = data!;
+        const packData: apiServiceProps[] = data!;
         setData(packData);
         // Maintenant, vous pouvez utiliser les données ici
         console.log(packData);
@@ -83,11 +83,11 @@ const MyHome = () => {
       <Hero />
       <Needs />
       <Categories apiCategories={categoriesList} />
-      <PopularServices packList={packList} />
+      <PopularServices serviceList={serviceList} categories={categoriesList} />
       <ProofSection />
       <CounterSection />
       <Testinmonials />
-      <TrendingService packList={packList} />
+      <TrendingService serviceList={serviceList} categories={categoriesList} />
       <Blogs />
       <NewsLetter />
     </>
