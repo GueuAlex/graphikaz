@@ -8,37 +8,6 @@ import { packProps } from "@/types";
 import { fetchAllData } from "@/types/api_services";
 
 const Testinmonials = () => {
-  async function fetchAndUseData() {
-    try {
-      const data = await fetchAllData();
-      return data;
-      //console.log(data.at(0)?.libelle);
-      // Faites quelque chose avec les données ici
-    } catch (error) {
-      console.error("Une erreur s'est produite :", error);
-    }
-  }
-  const [isLaoding, setIsloadin] = useState(true);
-  const [packList, setData] = useState<packProps[]>([]);
-  useEffect(() => {
-    fetchAndUseData()
-      .then((data) => {
-        const packData: packProps[] = data!;
-        setData(packData);
-        // Maintenant, vous pouvez utiliser les données ici
-        console.log(packData);
-        setIsloadin(false);
-      })
-      .catch((error) => {
-        // Gérez les erreurs ici
-        console.error("Une erreur s'est produite :", error);
-        setIsloadin(false);
-      });
-  }, []);
-
-  if (isLaoding) {
-    return <div className="loading-div">chargement...</div>;
-  }
   return (
     <div className="testimonials px-[2rem] py-[5rem] w-full flex justify-center items-start">
       <div className="max-w-[97rem] h-full w-full flex flex-col justify-center items-center">
