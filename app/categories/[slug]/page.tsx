@@ -364,20 +364,20 @@ export default function Page({ params }: { params: { slug: string } }) {
                   </div>
                 </div>
                 {/* end customisation part */}
-                <div className="divider" />
+                {/* <div className="divider" /> */}
               </div>
               {/* service description */}
               <div className="ratting-area">
-                <RatingStates ratings={[29, 125, 50, 70, 93]} />
+                {/* <RatingStates ratings={[29, 125, 50, 70, 93]} /> */}
                 {/* rating statistic */}
-
+                <div className="divider" />
                 <div className="review-comment">
                   <span className="text-bold">
-                    Be the first to review “{title}”
+                    Soyez le premier à noter “{title}”
                   </span>
                   <form action="">
                     <span className="text-small">
-                      Your Rating for this listing
+                      Votre évaluation pour ce service
                     </span>
 
                     <Rate
@@ -389,32 +389,32 @@ export default function Page({ params }: { params: { slug: string } }) {
 
                     <div className="inputs">
                       <div className="comment-input">
-                        <span>Your Comment</span>
+                        <span>Votre commentaire</span>
                         <textarea
                           name=""
                           id=""
                           rows={8}
-                          placeholder="Comment"
+                          placeholder="Commentaire"
                         ></textarea>
                       </div>
                       <div className="name-email-inputs">
                         <div className="name-input">
-                          <span>Your Name</span>
-                          <input type="text" placeholder="Name" />
+                          <span>Votre nom</span>
+                          <input type="text" placeholder="nom" />
                         </div>
                         <div className="email-input">
-                          <span>Your Email</span>
+                          <span>Votre Email</span>
                           <input type="email" placeholder="Email" />
                         </div>
                       </div>
                       <div className="check-box">
                         <input type="checkbox" />
                         <span className="text-small">
-                          Save my name, email, and website in this browser for
-                          the next time I comment.
+                          Enregistrer mes informations pour la prochaine fois
+                          que je ferai un commentaire.
                         </span>
                       </div>
-                      <button type="submit">Submit Review</button>
+                      <button type="submit">Envoyer</button>
                     </div>
                   </form>
                   {/* rating & comment form */}
@@ -719,6 +719,7 @@ const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
 
 const ServiceOptions = ({ service }: { service: apiServiceProps }) => {
   const [selectedOptions, setSelectedOptions] = useState<OptionsProps[]>([]);
+  const [selectedPacks, setSelectedPacks] = useState<packProps[]>([]);
   const basePrice = service.pack_services[0].montant || 0;
 
   const handleOptionChange = (option: OptionsProps) => {
@@ -733,16 +734,33 @@ const ServiceOptions = ({ service }: { service: apiServiceProps }) => {
     }
   };
 
+  const handlePacksChange = (pack: packProps) => {
+    const index = selectedPacks.indexOf(pack);
+
+    if (index === -1) {
+      setSelectedPacks([...selectedPacks, pack]);
+    } else {
+      const updatedPacks = [...selectedPacks];
+      updatedPacks.splice(index, 1);
+      setSelectedPacks(updatedPacks);
+    }
+  };
+
   const calculateTotalPrice = () => {
     console.log("Selected Options:", selectedOptions);
 
     const optionsTotal = selectedOptions.reduce(
-      (total, option) => total + option.montant,
+      (total, option) => total + parseInt(option.montant.toString(), 10),
+      0
+    );
+
+    const packsTotal = selectedPacks.reduce(
+      (total, pack) => total + parseInt(pack.montant.toString(), 10),
       0
     );
 
     console.log("Total Price:", optionsTotal);
-    return optionsTotal;
+    return parseInt(basePrice.toString(), 10) + optionsTotal + packsTotal;
     // Reste du code...
   };
   // Utilisez flatMap pour extraire les "ligne_services" de chaque service
@@ -782,6 +800,8 @@ const ServiceOptions = ({ service }: { service: apiServiceProps }) => {
                 <input
                   type="checkbox"
                   className="checkbox w-[15px] h-[15px] rounded-[1px] mt-[0.4rem]"
+                  checked={selectedPacks.includes(pack)}
+                  onChange={() => handlePacksChange(pack)}
                 />
                 <div className="service-base-libelle text-[18px] font-[600]">
                   <p>{"PACK " + pack.libelle}</p>
@@ -824,7 +844,15 @@ const ServiceOptions = ({ service }: { service: apiServiceProps }) => {
           </div>
         );
       })}
-      <p>Total Price: {calculateTotalPrice()}</p>
+
+      <div className="flex">
+        <button type="button" className="first-chirld mt-4]">
+          Acheter {calculateTotalPrice()} FCFA{" "}
+          <i className="ri-arrow-right-up-line"></i>
+        </button>
+        <div className="w-[90%]"></div>
+      </div>
+      {/*  <p>Total Price: {}</p> */}
     </>
   );
 };
