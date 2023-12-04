@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import React, { useEffect, useRef, useState } from "react";
 import { RatingComponent, TServiceCard, Wrapper } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
-import { apiServiceProps, packProps } from "@/types";
+import { OptionsProps, apiServiceProps, packProps } from "@/types";
 import Image from "next/image";
 import RatingStates from "@/reutilisables/rating_state";
 import Rate from "@/reutilisables/rate";
@@ -284,109 +284,86 @@ export default function Page({ params }: { params: { slug: string } }) {
                     ratione voluptatem sequi nesciunt. Neque porro quisquam est,
                     qui dolorem ipsum quia dolor sit amet.
                   </p>
+                  {/* pack accordeon */}
                   <div className="other-provide-services">
-                    <span>Services I provide</span>
-                    <ul>
-                      <li>1{`)`} Website Design</li>
-                      <li>2{`)`} Mobile App Design</li>
-                      <li>3{`)`} Brochure Design</li>
-                      <li>4{`)`} Business Card Design</li>
-                      <li>5{`)`} Flyer Design</li>
-                    </ul>
+                    <div className="accordeon bg-slate-50 rounded">
+                      {packs.map((pack, index) => {
+                        return (
+                          <div className="collapse collapse-plus rounded-none">
+                            <input type="radio" name="my-accordion-3" checked />
+                            <div className="collapse-title  text-[16px] font-[500]">
+                              <span className="text-[16px] font-[500]">
+                                {pack.libelle + " "}
+                              </span>
+                              <span className="text-[15px] font-[700] underline decoration-yellow-600">
+                                {" " + pack.montant + " FCFA"}
+                              </span>
+                            </div>
+                            <div className="collapse-content">
+                              <p className="text-small">
+                                <p>Bénéficier de :</p>
+                                {pack.ligne_services.map((ligne, index) => {
+                                  return (
+                                    <div className="flex flex-col">
+                                      {ligne.libelle}
+                                    </div>
+                                  );
+                                })}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                  <p className="text-small">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                    corrupti quos dolores et quas molestias excepturi sint
-                    occaecati cupiditate non provident, similique sunt in culpa
-                    qui officia deserunt mollitia animi, id est laborum et
-                    dolorum fuga.
-                  </p>
-                  <div className="work-tools flex justify-start gap-6">
-                    <div className="item">
-                      <strong>App type</strong>
-                      <p className="text-small">
-                        Business, Food & drink,
-                        <br />
-                        Graphics & design
-                      </p>
-                    </div>
+                  {/* end pack accordeon */}
+                </div>
 
-                    <div className="item">
-                      <strong>Design tool</strong>
-                      <p className="text-small">
-                        Adobe XD, Figma,
-                        <br />
-                        Adobe Photoshop
+                {/* customisation part */}
+                <div className="customisation" id="customisation">
+                  <div className="customisation-content">
+                    <div className="customisation-header py-3 px-2 bg-slate-800">
+                      <p className="text-slate-100 font-semibold text-[20px]">
+                        Personnaliser ce service
                       </p>
+                      <small className=" text-slate-300 font-light">
+                        Pour une meilleure précision des résultats, nous
+                        suggérons d'explorer les options présentées ci-dessous
+                      </small>
                     </div>
+                    {/* end header */}
+                    <div className="customisation-body">
+                      <div className="service-base py-5 flex justify-between">
+                        <div className="flex  gap-3 items-start">
+                          <input
+                            type="checkbox"
+                            className="checkbox w-[15px] h-[15px] rounded-[1px] mt-[0.4rem]"
+                            disabled
+                            checked
+                          />
+                          <div className="service-base-libelle text-[18px] font-[600]">
+                            <p>{service.libelle}</p>
+                            <small className="text-gray-500 font-[300]">
+                              {packs[0].delais_livraison +
+                                " jours de réalisation"}
+                            </small>
+                          </div>
+                        </div>
+                        <span className="text-[18px] font-[600]">
+                          {packs[0].montant + " FCFA"}
+                        </span>
+                      </div>
 
-                    <div className="item">
-                      <strong>Device</strong>
-                      <p className="text-small">Mobile, Desktop</p>
+                      <p className=" font-semibold text-[20px]">
+                        Options supplémentaires
+                      </p>
+
+                      {/* use map */}
+                      <ServiceOptions service={service} />
                     </div>
                   </div>
                 </div>
-                {/* aaccordeon */}
-                <div className="divider" />
-                <div className="accordeon" id="customisation">
-                  <div className="collapse collapse-plus bg-green-50 rounded-none">
-                    <input type="radio" name="my-accordion-3" checked />
-                    <div className="collapse-title text-xl font-medium">
-                      What methods of payment are supported ?
-                    </div>
-                    <div className="collapse-content">
-                      <p className="text-small">
-                        At vero eos et accusamus et iusto odio dignissimos
-                        ducimus qui blanditiis praesentium voluptatum deleniti
-                        atque corrupti quos dolores et quas molestias excepturi
-                        sint occaecati cupiditate non provident.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title text-xl font-medium">
-                      Can I cancel at anytime ?
-                    </div>
-                    <div className="collapse-content">
-                      <p className="text-small">
-                        Sed ut perspiciatis unde omnis iste natus error sit
-                        voluptatem accusantium doloremque laudantium, totam rem
-                        aperiam, eaque ipsa quae ab illo inventore veritatis et.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title text-xl font-medium">
-                      How do I get a receipt for my purchase ?
-                    </div>
-                    <div className="collapse-content">
-                      <p className="text-small">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="collapse collapse-plus">
-                    <input type="radio" name="my-accordion-3" />
-                    <div className="collapse-title text-xl font-medium">
-                      How do I get access to a theme I purchased ?
-                    </div>
-                    <div className="collapse-content">
-                      <p className="text-small">
-                        Sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                {/* end customisation part */}
                 <div className="divider" />
               </div>
               {/* service description */}
@@ -737,5 +714,121 @@ const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
     </div>
   );
 };
+
+//import React, { useState } from 'react';
+
+const ServiceOptions = ({ service }: { service: apiServiceProps }) => {
+  const [selectedOptions, setSelectedOptions] = useState<OptionsProps[]>([]);
+  const basePrice = service.pack_services[0].montant || 0;
+
+  const handleOptionChange = (option: OptionsProps) => {
+    const index = selectedOptions.indexOf(option);
+
+    if (index === -1) {
+      setSelectedOptions([...selectedOptions, option]);
+    } else {
+      const updatedOptions = [...selectedOptions];
+      updatedOptions.splice(index, 1);
+      setSelectedOptions(updatedOptions);
+    }
+  };
+
+  const calculateTotalPrice = () => {
+    console.log("Selected Options:", selectedOptions);
+
+    const optionsTotal = selectedOptions.reduce(
+      (total, option) => total + option.montant,
+      0
+    );
+
+    console.log("Total Price:", optionsTotal);
+    return optionsTotal;
+    // Reste du code...
+  };
+  // Utilisez flatMap pour extraire les "ligne_services" de chaque service
+  const allOption: OptionsProps[] = service.pack_services.flatMap(
+    (pack) => pack.ligne_services
+  );
+  return (
+    /*  <div>
+      <h3>{service.name}</h3>
+      <p>Base Price: {basePrice}</p>
+      <ul>
+        {service.options.map((option) => (
+          <li key={option.id}>
+            <label>
+              <input
+                type="checkbox"
+                checked={selectedOptions.includes(option)}
+                onChange={() => handleOptionChange(option)}
+              />
+              {option.name} - {option.price}
+            </label>
+          </li>
+        ))}
+      </ul>
+      <p>Total Price: {calculateTotalPrice()}</p>
+    </div> */
+    <>
+      {/* packs map */}
+      {service.pack_services
+        .slice(1, service.pack_services.length)
+        .map((pack, index) => {
+          /* const delaiSup =
+            service.pack_services[0].delais_livraison - pack.delais_livraison; */
+          return (
+            <div className="service-base py-5 flex justify-between">
+              <div className="flex  gap-3 items-start">
+                <input
+                  type="checkbox"
+                  className="checkbox w-[15px] h-[15px] rounded-[1px] mt-[0.4rem]"
+                />
+                <div className="service-base-libelle text-[18px] font-[600]">
+                  <p>{"PACK " + pack.libelle}</p>
+                  <small className="text-gray-500 font-[300]">
+                    {pack.delais_livraison > 0
+                      ? "Délai supplémentaireon de " +
+                        pack.delais_livraison +
+                        " jours"
+                      : "Pas de délai supplémentaire"}
+                  </small>
+                </div>
+              </div>
+              <span className="text-[18px] font-[600]">
+                {pack.montant + " FCFA"}
+              </span>
+            </div>
+          );
+        })}
+      {/* options map */}
+      {allOption.map((option, index) => {
+        return (
+          <div className="service-base py-5 flex justify-between">
+            <div className="flex  gap-3 items-start">
+              <input
+                type="checkbox"
+                className="checkbox w-[15px] h-[15px] rounded-[1px] mt-[0.4rem]"
+                checked={selectedOptions.includes(option)}
+                onChange={() => handleOptionChange(option)}
+              />
+              <div className="service-base-libelle text-[18px] font-[600]">
+                <p>{option.libelle}</p>
+                <small className="text-gray-500 font-[300]">
+                  {" Pas de délai supplémentaire"}
+                </small>
+              </div>
+            </div>
+            <span className="text-[18px] font-[600]">
+              {option.montant + " FCFA"}
+            </span>
+          </div>
+        );
+      })}
+      <p>Total Price: {calculateTotalPrice()}</p>
+    </>
+  );
+};
+
+//export default ServiceOptions;
 
 //export default DefaultPacks
