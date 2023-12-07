@@ -26,16 +26,26 @@ import {
   Blog2,
   Blog3,
   Blog4,
+  OM,
+  Cartes,
+  Wave,
+  Moov,
+  MTN,
+  Miniature1,
+  Miniature3,
+  Miniature2,
 } from "@/public";
 import {
   BlogProps,
   CategoryProps,
+  PayProps,
   PrestatorProps,
   ServiceProps,
   userMenuProps,
   userProps,
 } from "@/types";
 import { useSession } from "next-auth/react";
+import { StaticImageData } from "next/image";
 
 const date = new Date();
 
@@ -404,4 +414,38 @@ const userMenuTab: userMenuProps[] = [
   },
 ];
 
-export { categoriesTab, categories, services, prestators, blogs, userMenuTab };
+const payMethodsTab: PayProps[] = [
+  {
+    libelle: "Carte de Crédit",
+    img: Cartes,
+  },
+  {
+    libelle: "Orange Money",
+    img: OM,
+  },
+  {
+    libelle: "MTN Mobile Money",
+    img: MTN,
+  },
+  {
+    libelle: "Moov Africa",
+    img: Moov,
+  },
+  {
+    libelle: "Wave",
+    img: Wave,
+  },
+];
+
+const miniatureTab: StaticImageData[] = [Miniature1, Miniature2, Miniature3];
+
+export {
+  categoriesTab,
+  categories,
+  services,
+  prestators,
+  blogs,
+  userMenuTab,
+  payMethodsTab,
+  miniatureTab,
+};

@@ -13,6 +13,11 @@ export interface ServiceProps {
   coverList: StaticImageData[];
 }
 
+export interface PayProps {
+  libelle: string;
+  img: StaticImageData;
+}
+
 export interface apiServiceProps {
   id: number;
   libelle: string;

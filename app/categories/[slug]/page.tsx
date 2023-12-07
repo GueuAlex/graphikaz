@@ -10,6 +10,8 @@ import RatingStates from "@/reutilisables/rating_state";
 import Rate from "@/reutilisables/rate";
 import { fetchAllData } from "@/types/api_services";
 import { Digifaz, Service2, Service3, Service5 } from "@/public";
+import PaiementCardBody from "@/reutilisables/paiement_card_body";
+import PaiementCardBody2 from "@/reutilisables/paiement_card_body2";
 
 export default function Page({ params }: { params: { slug: string } }) {
   ///////////// fetching data from api ///////////////:
@@ -56,6 +58,18 @@ export default function Page({ params }: { params: { slug: string } }) {
   const [height, setHeight] = useState<number | null>(null);
   const elementRef = useRef<HTMLDivElement>(null);
 
+  /* allow to show paiement side bar */
+  const [toggle, setToggle] = useState(false); // permet d'aaficher le side bar de paiement des pack par défaut
+  const [toggle1, setToggle1] = useState(false); // permet d'afficher side de paiement d'un service personnalisé
+  //
+  ///// fonctions de mise à jour des boolean permettants l'affichage des side bars
+  const updateToggle = () => {
+    setToggle(!toggle);
+  };
+  const updateToggle1 = () => {
+    setToggle1(!toggle1);
+  };
+
   useEffect(() => {
     const measureHeight = () => {
       if (elementRef.current) {
@@ -79,12 +93,26 @@ export default function Page({ params }: { params: { slug: string } }) {
   const style = height ? { height: `${height}px` } : {};
   console.log(height);
 
+  ////////////////////////////////:::: pack selectionné //////////////////////
+  const [selectedPack, setSelectedPack] = useState<packProps | undefined>(); // envoyé a "PaiementCardBody" pour effectuer le paaiement d'un pack proposé par defaut
+
+  const [selectedPackList, setSelectedPackList] = useState<
+    packProps[] | undefined
+  >(); // // envoyé a "PaiementCardBody2" pour effectuer le paiement d'une list de pack personnalisé
+  const [selectedOptionsList, setSelectedOptionsList] = useState<
+    OptionsProps[] | undefined
+  >(); // // envoyé a "PaiementCardBody2" pour effectuer le paiement d'une list d' options personnalisé
+
+  ///////////////////////////////////////////////////////////////////////////
+
   if (service) {
     //
     //const service: apiServiceProps = pack.service;
     const packs: packProps[] = service.pack_services;
     console.log("this service", service);
     console.log("paaacks", packs);
+    console.log("custom packs", selectedPackList);
+    console.log("custom options", selectedOptionsList);
     /* rechecher le prestataire correspondant */
     /* const prestator: PrestatorProps | undefined = prestators.find(
       (prestator) => prestator.id === service.prestatorId
@@ -93,9 +121,45 @@ export default function Page({ params }: { params: { slug: string } }) {
     //if (prestator) {
     return (
       <div className="single_service_details">
+        <div className={`${toggle ? "show-overlay" : ""} overlay`}></div>
+        <div className={`${toggle1 ? "show-overlay" : ""} overlay`}></div>
+        {/* Default packs paiement side bar */}
+        <aside
+          className={`${
+            toggle ? "show-paiement-side-bar" : "hide-paiement-side-bar"
+          } paiement-side-bar`}
+        >
+          <div className="paiement-side-bar-container">
+            {/* paiement card body */}
+            <PaiementCardBody
+              updateToggle={updateToggle}
+              defaultPack={selectedPack}
+            />
+            {/* end paiement card body */}
+          </div>
+        </aside>
+        {/* end paiement side bar */}
+        {/* custom pack paiement side bar */}
+        <aside
+          className={`${
+            toggle1 ? "show-paiement-side-bar" : "hide-paiement-side-bar"
+          } paiement-side-bar`}
+        >
+          <div className="paiement-side-bar-container">
+            {/* paiement card body */}
+            <PaiementCardBody2
+              updateToggle={updateToggle1}
+              seletedOptionsList={selectedOptionsList}
+              seletedPackList={selectedPackList}
+            />
+            {/* end paiement card body */}
+          </div>
+        </aside>
+        {/* end custom pack paiement side bar */}
         <Wrapper>
           <div className="flex justify-between">
             <PathnameComponent />
+            {/* share, save and repport area */}
             <div className="icon-container">
               <div className="share-container">
                 <div className="share-with shadow-sm rounded-[5px]">
@@ -161,7 +225,7 @@ export default function Page({ params }: { params: { slug: string } }) {
           </div>
         </Wrapper>
         {/* heading with fil d'ariane */}
-
+        {/* banner */}
         <div className="bannerss relative flex justify-center items-center">
           <div className=" max-w-[110rem] w-full">
             <BannerContainer
@@ -217,6 +281,8 @@ export default function Page({ params }: { params: { slug: string } }) {
                 </div>
               </div>
               {/* delivey time, language level, location */}
+
+              {/* service carousel img */}
               <div className="service-carousel">
                 <div className="carousel-slider">
                   <Carousel className=" w-full">
@@ -247,6 +313,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                     ))}
                   </Carousel>
                 </div>
+                {/* service miniature img */}
                 <div className="carousel-miniature flex justify-start w-full py-2 gap-2 mt-2">
                   {/* service images */}
                   {/* {service.coverList.map((cover, index) => (
@@ -359,7 +426,12 @@ export default function Page({ params }: { params: { slug: string } }) {
                       </p>
 
                       {/* use map */}
-                      <ServiceOptions service={service} />
+                      <ServiceOptions
+                        service={service}
+                        updateToggle={updateToggle1}
+                        setPacksList={setSelectedPackList}
+                        setOptionsList={setSelectedOptionsList}
+                      />
                     </div>
                   </div>
                 </div>
@@ -371,6 +443,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 {/* <RatingStates ratings={[29, 125, 50, 70, 93]} /> */}
                 {/* rating statistic */}
                 <div className="divider" />
+                {/* comment area */}
                 <div className="review-comment">
                   <span className="text-bold">
                     Soyez le premier à noter “{title}”
@@ -448,7 +521,11 @@ export default function Page({ params }: { params: { slug: string } }) {
 
             <div className="left sticky-r" style={style}>
               <div className="sticky top-0">
-                <DefaultPacks packs={packs} />
+                <DefaultPacks
+                  packs={packs}
+                  setOrderPack={setSelectedPack}
+                  updateToggle={updateToggle}
+                />
                 {/* THIS SERVICE PROVIDER INFOS */}
                 {/* <div className="prestator-infos shadow">
                   <h3>À propos du vendeur</h3>
@@ -540,8 +617,22 @@ const BannerContainer = ({
   );
 };
 
-const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
+interface DefaultPacksProps {
+  updateToggle: (value: boolean) => void;
+  packs: packProps[];
+  setOrderPack: React.Dispatch<React.SetStateAction<packProps | undefined>>;
+}
+
+const DefaultPacks: React.FC<DefaultPacksProps> = ({
+  packs,
+  setOrderPack,
+  updateToggle,
+}) => {
   const [selectedPack, setSelectedPack] = useState<packProps>();
+  useEffect(() => {
+    setOrderPack(selectedPack);
+  }, [selectedPack]);
+
   if (packs.length === 0) {
     return (
       <div className="options-container shadow">
@@ -552,6 +643,7 @@ const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
   }
   if (packs.length === 1) {
     setSelectedPack(packs[0]);
+
     return (
       <div className="options-container shadow">
         <div className="pack-choice-container">
@@ -578,17 +670,36 @@ const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
               {/*  <small>
               Recommandé <i className="ri-quill-pen-line"></i>{" "}
             </small> */}
-              <small className="text-[14px] font-[400]">
+              <small
+                className="text-[14px] font-[400]"
+                /* onClick={() => updateToggle(true)} */
+              >
                 Service basique, sans option : {packs[0].libelle}
               </small>
             </span>
           </label>
         </div>
 
-        <button type="button" className="first-chirld mt-4">
+        <button
+          type="button"
+          className="first-chirld mt-4"
+          onClick={() => updateToggle(true)}
+        >
           Acheter ${selectedPack?.montant}{" "}
           <i className="ri-arrow-right-up-line"></i>
         </button>
+        <div className="secur-paiement w-full py-2 flex flex-col justify-center items-center">
+          <span>
+            {" "}
+            Paiement{" "}
+            <span className=" text-green-600">
+              <i className="ri-lock-fill"></i> securisé
+            </span>{" "}
+          </span>
+          <small className="text-gray-500 font-[300]">
+            Vos informations sont chiffrées par TLS
+          </small>
+        </div>
       </div>
     );
   }
@@ -597,7 +708,9 @@ const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
     // Ajouter le nombre de lignes de service pour chaque service
     return acc + (pack.ligne_services ? pack.ligne_services.length : 0);
   }, 0);
+
   useEffect(() => {
+    /// selection le pack recommander
     setSelectedPack(packs[1]);
   }, []);
   const [checked, setChecked] = useState(false);
@@ -695,7 +808,11 @@ const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
         </a>
       </div>
 
-      <button type="button" className="first-chirld mt-4">
+      <button
+        type="button"
+        className="first-chirld mt-4"
+        onClick={() => updateToggle(true)}
+      >
         Acheter {selectedPack?.montant + "F CFA"}
         <i className="ri-arrow-right-up-line"></i>
       </button>
@@ -717,11 +834,35 @@ const DefaultPacks = ({ packs }: { packs: packProps[] }) => {
 
 //import React, { useState } from 'react';
 
-const ServiceOptions = ({ service }: { service: apiServiceProps }) => {
+interface ServiceOptionsProps {
+  updateToggle: (value: boolean) => void;
+  service: apiServiceProps;
+  setPacksList: React.Dispatch<React.SetStateAction<packProps[] | undefined>>;
+  setOptionsList: React.Dispatch<
+    React.SetStateAction<OptionsProps[] | undefined>
+  >;
+}
+const ServiceOptions: React.FC<ServiceOptionsProps> = ({
+  service,
+  updateToggle,
+  setPacksList,
+  setOptionsList,
+}) => {
   const [selectedOptions, setSelectedOptions] = useState<OptionsProps[]>([]);
   const [selectedPacks, setSelectedPacks] = useState<packProps[]>([]);
-  const basePrice = service.pack_services[0].montant || 0;
+  //const basePrice = service.pack_services[0].montant || 0;
+  const [basePrice, setPrice] = useState(service.pack_services[0].montant || 0);
 
+  useEffect(() => {
+    selectedPacks.push(service.pack_services[0]);
+  }, []);
+
+  //////////////
+  useEffect(() => {
+    setPacksList(selectedPacks);
+    setOptionsList(selectedOptions);
+  }, [selectedPacks, selectedOptions]);
+  //////////////
   const handleOptionChange = (option: OptionsProps) => {
     const index = selectedOptions.indexOf(option);
 
@@ -760,7 +901,10 @@ const ServiceOptions = ({ service }: { service: apiServiceProps }) => {
     );
 
     console.log("Total Price:", optionsTotal);
-    return parseInt(basePrice.toString(), 10) + optionsTotal + packsTotal;
+    useEffect(() => {
+      setPrice(optionsTotal + packsTotal);
+    }, [optionsTotal, packsTotal]);
+    return parseInt(basePrice.toString(), 10);
     // Reste du code...
   };
   // Utilisez flatMap pour extraire les "ligne_services" de chaque service
@@ -846,13 +990,21 @@ const ServiceOptions = ({ service }: { service: apiServiceProps }) => {
       })}
 
       <div className="flex">
-        <button type="button" className="first-chirld mt-4]">
+        <button
+          type="button"
+          className="first-chirld mt-4]"
+          onClick={() => updateToggle(true)}
+        >
           Acheter {calculateTotalPrice()} FCFA{" "}
           <i className="ri-arrow-right-up-line"></i>
         </button>
         <div className="w-[90%]"></div>
       </div>
       {/*  <p>Total Price: {}</p> */}
+
+      {/* paiement side bar */}
+
+      {/* end paiement side bar */}
     </>
   );
 };

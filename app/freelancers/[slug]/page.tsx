@@ -9,6 +9,7 @@ import Link from "next/link";
 import { services } from "@/constants";
 import RatingStates from "@/reutilisables/rating_state";
 import Rate from "@/reutilisables/rate";
+import DetailsContainer from "@/reutilisables/details_container";
 
 const SingleFreelancer = ({ params }: { params: { slug: string } }) => {
   /* on decode l'URI pour recuperer le nom envoyer en param */
@@ -448,27 +449,6 @@ const FloatingComponent = ({ freelancer }: { freelancer: PrestatorProps }) => {
           ))}
         </div>
       </div>
-    </div>
-  );
-};
-
-const DetailsContainer = ({
-  years,
-  title,
-  textgreen,
-  description,
-}: {
-  years: string;
-  title: string;
-  textgreen: string;
-  description: string;
-}) => {
-  return (
-    <div className="details-container flex flex-col gap-1">
-      <div className="years">{years}</div>
-      <h4 className="title">{title}</h4>
-      <span className="text-green">{textgreen}</span>
-      <p className="description">{description}</p>
     </div>
   );
 };

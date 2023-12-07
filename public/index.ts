@@ -41,6 +41,15 @@ import Banner from "./banner3.jpg";
 import Digifaz from "./digifaz.png";
 import Success from "./success.png";
 import DeliCar from "./deli-car.png";
+import Cartes from "./cartes.jpg";
+import OM from "./om.png";
+import Wave from "./wave.png";
+import MTN from "./mtn.jpg";
+import Moov from "./moov.jpg";
+import Miniature1 from "./miniature3.jpg";
+import Miniature2 from "./miniature1.jpg";
+import Miniature3 from "./miniature2.jpg";
+import EmptyCart from "./empty-cart.png";
 
 export {
   Digifaz,
@@ -86,4 +95,13 @@ export {
   Banner,
   Success,
   DeliCar,
+  Cartes,
+  OM,
+  Wave,
+  MTN,
+  Moov,
+  Miniature1,
+  Miniature2,
+  Miniature3,
+  EmptyCart,
 };
