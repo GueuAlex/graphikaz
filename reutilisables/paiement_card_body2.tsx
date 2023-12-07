@@ -53,9 +53,29 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
       </div>
     );
   }
+  const calculateTotalPrice = () => {
+    var optionsTotal = 0;
+    var packsTotal = 0;
 
+    if (seletedOptionsList !== undefined) {
+      optionsTotal = seletedOptionsList.reduce(
+        (total, option) => total + parseInt(option.montant.toString(), 10),
+        0
+      );
+    }
+
+    if (seletedPackList !== undefined) {
+      packsTotal = seletedPackList.reduce(
+        (total, pack) => total + parseInt(pack.montant.toString(), 10),
+        0
+      );
+    }
+
+    return optionsTotal + packsTotal;
+    // Reste du code...
+  };
   return (
-    <div className="content-body flex  w-full h-full">
+    <div className="content-body flex  w-full h-full gap-2">
       <div className="commande-details">
         <div className="detail-content">
           <div className="details-content-header flex items-center gap-2">
@@ -70,7 +90,7 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
           <div className="details-content-body">
             <div className="commande-total flex flex-col ">
               <small>TOTAL</small>
-              <span>45000 FCFA</span>
+              <span>{calculateTotalPrice()} FCFA</span>
             </div>
             {/* showing service, pack and option */}
             {/*  <p className="title-of-this-service pb-2 text-[1.2rem]  font-normal">
@@ -86,7 +106,54 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
             <div className="comande-list mt-2">
               <p className="py-3 text-stone-500">Votre commande</p>
               {/* use map */}
-              <div className="custome-timeline w-full flex flex-col">
+              {seletedPackList?.map((pack, index) => (
+                <>
+                  <div
+                    className="custome-timeline w-full flex flex-col"
+                    key={index}
+                  >
+                    <small className="this-option-price">
+                      {pack.montant} FCFA
+                    </small>
+                    <span className="this-option-tilte">
+                      PACK {pack.libelle.toUpperCase()}{" "}
+                      {pack.libelle.toLowerCase().includes("initial")
+                        ? "service basique, sans option"
+                        : "service basique et option - recommandée"}
+                    </span>
+                    <small className="py-2 text-gray-500 font-[300]">
+                      {pack.delais_livraison} jours de réalisation
+                    </small>
+                  </div>
+                  <div className="dot">
+                    <i className="ri-check-line"></i>
+                  </div>
+                </>
+              ))}
+              {seletedOptionsList !== undefined
+                ? seletedOptionsList?.map((option, index) => (
+                    <>
+                      <div
+                        className="custome-timeline w-full flex flex-col"
+                        key={index}
+                      >
+                        <small className="this-option-price">
+                          {option.montant} FCFA
+                        </small>
+                        <span className="this-option-tilte">
+                          {option.libelle}
+                        </span>
+                        <small className="py-2 text-gray-500 font-[300]">
+                          {0} jours de réalisation
+                        </small>
+                      </div>
+                      <div className="dot">
+                        <i className="ri-check-line"></i>
+                      </div>
+                    </>
+                  ))
+                : ""}
+              {/*  <div className="custome-timeline w-full flex flex-col">
                 <small className="this-option-price">20000 FCFA</small>
                 <span className="this-option-tilte">
                   PACK INITIAL: Service basique, sans option
@@ -97,8 +164,8 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
               </div>
               <div className="dot">
                 <i className="ri-check-line"></i>
-              </div>
-              <div className="custome-timeline w-full flex flex-col">
+              </div> */}
+              {/*  <div className="custome-timeline w-full flex flex-col">
                 <small className="this-option-price">20000 FCFA</small>
                 <span className="this-option-tilte">
                   PACK INITIAL: Service basique, sans option
@@ -109,31 +176,7 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
               </div>
               <div className="dot">
                 <i className="ri-check-line"></i>
-              </div>
-              <div className="custome-timeline w-full flex flex-col">
-                <small className="this-option-price">20000 FCFA</small>
-                <span className="this-option-tilte">
-                  PACK INITIAL: Service basique, sans option
-                </span>
-                <small className="py-2 text-gray-500 font-[300]">
-                  5 jours de réalisation
-                </small>
-              </div>
-              <div className="dot">
-                <i className="ri-check-line"></i>
-              </div>
-              <div className="custome-timeline w-full flex flex-col">
-                <small className="this-option-price">20000 FCFA</small>
-                <span className="this-option-tilte">
-                  PACK INITIAL: Service basique, sans option
-                </span>
-                <small className="py-2 text-gray-500 font-[300]">
-                  5 jours de réalisation
-                </small>
-              </div>
-              <div className="dot">
-                <i className="ri-check-line"></i>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="copy-right-terms w-full ">
