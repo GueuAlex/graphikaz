@@ -50,7 +50,9 @@ export default function Page({ params }: { params: { slug: string } }) {
   const service: apiServiceProps | undefined = services.find(
     (serv) => serv.libelle === title
   );
+  ////////////////////
 
+  /////////////////////////
   //console.log(service?.libelle);
 
   const [rating, setRating] = useState(0);
@@ -106,7 +108,9 @@ export default function Page({ params }: { params: { slug: string } }) {
   >(); // // envoyé a "PaiementCardBody2" pour effectuer le paiement d'une list d' options personnalisé
 
   ///////////////////////////////////////////////////////////////////////////
-
+  if (isLaoding) {
+    return <div>chargement ...</div>;
+  }
   if (service && service.pack_services.length <= 0) {
     return <OnEditing />;
   }
