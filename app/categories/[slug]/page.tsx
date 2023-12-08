@@ -9,9 +9,11 @@ import Image from "next/image";
 import RatingStates from "@/reutilisables/rating_state";
 import Rate from "@/reutilisables/rate";
 import { fetchAllData } from "@/types/api_services";
-import { Digifaz, Service2, Service3, Service5 } from "@/public";
+import { Digifaz, Editing, Service2, Service3, Service5 } from "@/public";
 import PaiementCardBody from "@/reutilisables/paiement_card_body";
 import PaiementCardBody2 from "@/reutilisables/paiement_card_body2";
+import Error404 from "@/reutilisables/404";
+import OnEditing from "@/reutilisables/on_editing";
 
 export default function Page({ params }: { params: { slug: string } }) {
   ///////////// fetching data from api ///////////////:
@@ -105,7 +107,11 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   ///////////////////////////////////////////////////////////////////////////
 
-  if (service) {
+  if (service && service.pack_services.length <= 0) {
+    return <OnEditing />;
+  }
+
+  if (service && service.pack_services.length > 0) {
     //
     //const service: apiServiceProps = pack.service;
     const packs: packProps[] = service.pack_services;
@@ -576,6 +582,11 @@ export default function Page({ params }: { params: { slug: string } }) {
     );
     // }
   }
+  return (
+    <Wrapper>
+      <Error404 />
+    </Wrapper>
+  );
 }
 
 const BannerContainer = ({
