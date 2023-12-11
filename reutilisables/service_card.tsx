@@ -1,7 +1,7 @@
 import { ApiCategoryProps, apiServiceProps } from "@/types";
 import Link from "next/link";
 import Image from "next/image";
-import { DeliCar, Digifaz, Service2 } from "@/public";
+import { DeliCar, Digifaz, Imgold, Service2 } from "@/public";
 
 const TServiceCard = ({
   service,
@@ -21,7 +21,20 @@ const TServiceCard = ({
           <div className="favorite-contaner w-[2.3rem] h-[2.3rem] flex items-center justify-center border border-secondary rounded-full bg-secondary absolute right-0 z-2 mt-2">
             <i className="ri-heart-line pt-1 text-white text-[1.2rem]"></i>
           </div>
-          <Image src={Service2} alt="sv1" className="rounded-t-[8px]" />
+          {service.image_services.length > 0 ? (
+            <Image
+              src={
+                "https://graphikaz.digifaz.com/api/photo_service/" +
+                service.image_services[0].libelle
+              }
+              alt="sv1"
+              className="rounded-t-[8px]"
+              width={576}
+              height={768}
+            />
+          ) : (
+            <Image src={Imgold} alt="sv1" className="rounded-t-[8px]" />
+          )}
         </div>
         <div className=" bg-slate-50 rounded-b-[8px] px-4">
           <div className="px-[20px] py-[5px]">

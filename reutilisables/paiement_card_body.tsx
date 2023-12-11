@@ -100,42 +100,6 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
               <div className="dot">
                 <i className="ri-check-line"></i>
               </div>
-              {/*  <div className="custome-timeline w-full flex flex-col">
-                <small className="this-option-price">20000 FCFA</small>
-                <span className="this-option-tilte">
-                  PACK INITIAL: Service basique, sans option
-                </span>
-                <small className="py-2 text-gray-500 font-[300]">
-                  5 jours de réalisation
-                </small>
-              </div> */}
-              {/*  <div className="dot">
-                <i className="ri-check-line"></i>
-              </div> */}
-              {/* <div className="custome-timeline w-full flex flex-col">
-                <small className="this-option-price">20000 FCFA</small>
-                <span className="this-option-tilte">
-                  PACK INITIAL: Service basique, sans option
-                </span>
-                <small className="py-2 text-gray-500 font-[300]">
-                  5 jours de réalisation
-                </small>
-              </div>
-              <div className="dot">
-                <i className="ri-check-line"></i>
-              </div> */}
-              {/*  <div className="custome-timeline w-full flex flex-col">
-                <small className="this-option-price">20000 FCFA</small>
-                <span className="this-option-tilte">
-                  PACK INITIAL: Service basique, sans option
-                </span>
-                <small className="py-2 text-gray-500 font-[300]">
-                  5 jours de réalisation
-                </small>
-              </div>
-              <div className="dot">
-                <i className="ri-check-line"></i>
-              </div> */}
             </div>
           </div>
           <div className="copy-right-terms w-full ">
@@ -189,9 +153,12 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
             {/* <CreditCardForm /> */}
             {/* <MobileMoneyForm method={selectedMetohd} />      */}
             {selectedMetohd === "Carte de Crédit" ? (
-              <CreditCardForm />
+              <CreditCardForm montant={defaultPack.montant} />
             ) : (
-              <MobileMoneyForm method={selectedMetohd} />
+              <MobileMoneyForm
+                method={selectedMetohd}
+                montant={defaultPack.montant}
+              />
             )}
           </div>
         </div>

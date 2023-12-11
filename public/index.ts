@@ -51,6 +51,7 @@ import Miniature2 from "./miniature1.jpg";
 import Miniature3 from "./miniature2.jpg";
 import EmptyCart from "./empty-cart.png";
 import Editing from "./editing.gif";
+import Imgold from "./imgold.png";
 
 export {
   Digifaz,
@@ -106,4 +107,5 @@ export {
   Miniature3,
   EmptyCart,
   Editing,
+  Imgold,
 };

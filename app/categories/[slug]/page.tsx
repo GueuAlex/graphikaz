@@ -5,11 +5,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { RatingComponent, TServiceCard, Wrapper } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
 import { OptionsProps, apiServiceProps, packProps } from "@/types";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import RatingStates from "@/reutilisables/rating_state";
 import Rate from "@/reutilisables/rate";
 import { fetchAllData } from "@/types/api_services";
-import { Digifaz, Editing, Service2, Service3, Service5 } from "@/public";
+import {
+  Digifaz,
+  Editing,
+  Imgold,
+  Service2,
+  Service3,
+  Service5,
+} from "@/public";
 import PaiementCardBody from "@/reutilisables/paiement_card_body";
 import PaiementCardBody2 from "@/reutilisables/paiement_card_body2";
 import Error404 from "@/reutilisables/404";
@@ -60,7 +67,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   //console.log(service?.libelle);
 
   const [rating, setRating] = useState(0);
-  const coverList = [Service2, Service3, Service5];
+  const coverList = [Imgold, Imgold, Imgold, Imgold];
   /////
 
   const [height, setHeight] = useState<number | null>(null);
@@ -144,6 +151,7 @@ export default function Page({ params }: { params: { slug: string } }) {
     ); */
     /// si prestator existe alors --->
     //if (prestator) {
+
     return (
       <div className="single_service_details">
         <div className={`${toggle ? "show-overlay" : ""} overlay`}></div>
@@ -324,18 +332,36 @@ export default function Page({ params }: { params: { slug: string } }) {
                         />
                       </div>
                     ))} */}
-                    {coverList.map((cover, index) => (
-                      <div
-                        id={`item${index + 1}`}
-                        className="carousel-item relative w-full"
-                      >
-                        <Image
-                          src={cover}
-                          alt={"service.title"}
-                          className="w-full rounded-[5px]"
-                        />
-                      </div>
-                    ))}
+                    {service.image_services.length > 0
+                      ? service.image_services.map((cover, index) => (
+                          <div
+                            id={`item${index + 1}`}
+                            className="carousel-item relative w-full"
+                          >
+                            <Image
+                              src={
+                                "https://graphikaz.digifaz.com/api/photo_service/" +
+                                cover.libelle
+                              }
+                              width={576}
+                              height={768}
+                              alt={"service.title"}
+                              className="w-full rounded-[5px]"
+                            />
+                          </div>
+                        ))
+                      : coverList.map((cover, index) => (
+                          <div
+                            id={`item${index + 1}`}
+                            className="carousel-item relative w-full"
+                          >
+                            <Image
+                              src={cover}
+                              alt={"service.title"}
+                              className="w-full rounded-[5px]"
+                            />
+                          </div>
+                        ))}
                   </Carousel>
                 </div>
                 {/* service miniature img */}
@@ -350,15 +376,30 @@ export default function Page({ params }: { params: { slug: string } }) {
                       />
                     </div>
                   ))} */}
-                  {coverList.map((cover, index) => (
-                    <div className="carousel-item relative w-[9em] h-[7.5em]">
-                      <Image
-                        src={cover}
-                        alt={"service.title"}
-                        className="w-full rounded-[5px]"
-                      />
-                    </div>
-                  ))}
+                  {service.image_services.length > 0
+                    ? service.image_services.map((cover, index) => (
+                        <div className="carousel-item relative w-[9em] h-[7.5em]">
+                          <Image
+                            src={
+                              "https://graphikaz.digifaz.com/api/photo_service/" +
+                              cover.libelle
+                            }
+                            width={576}
+                            height={768}
+                            alt={"service.title"}
+                            className="w-full rounded-[5px]"
+                          />
+                        </div>
+                      ))
+                    : coverList.map((cover, index) => (
+                        <div className="carousel-item relative w-[9em] h-[7.5em]">
+                          <Image
+                            src={cover}
+                            alt={"service.title"}
+                            className="w-full rounded-[5px]"
+                          />
+                        </div>
+                      ))}
                 </div>
               </div>
               {/* service carousel */}
@@ -601,6 +642,8 @@ export default function Page({ params }: { params: { slug: string } }) {
     );
     // }
   }
+
+  //////////////: rien de trouvé
   return (
     <Wrapper>
       <Error404 />
@@ -618,6 +661,18 @@ const BannerContainer = ({
   return (
     <div className="banner w-full max-h-[18rem]">
       <Wrapper>
+        {/* {service.image_services.map((img, idex) => {
+          return (
+            <Image
+              src={
+                "https://graphikaz.digifaz.com/api/photo_service/" + img.libelle
+              }
+              alt=""
+              width={500}
+              height={300}
+            />
+          );
+        })} */}
         <h2 className="banner-title text-[2em]">{service.libelle}</h2>
         <div className="subtitle flex gap-7 items-center mt-5">
           {/* THIS SERVICE PROVIDER */}

@@ -962,6 +962,15 @@ PAIEMENT SIDE BAR STYLES
   button.pay-btn {
     height: 50px !important;
   }
+  button.pay-btn-desable {
+    cursor: not-allowed;
+    height: 50px !important;
+    border-color: #b5b5b5 !important;
+    color: #b5b5b5 !important;
+  }
+  button.pay-btn-desable:hover {
+    background-color: white !important;
+  }
   font-size: 13px;
   label {
     color: #69696a;
@@ -1041,4 +1050,48 @@ PAIEMENT SIDE BAR STYLES
       color: white;
     }
   }
+}
+.methods-radios {
+  input {
+    border-radius: 100% !important;
+    width: 15px !important;
+    height: 20px !important;
+    margin-right: 5px;
+  }
+  i {
+    background-color: #161022;
+    cursor: pointer;
+    color: white;
+    padding: 2px;
+    font-size: 9px;
+    border-radius: 100%;
+    margin-left: 2px;
+  }
+  div.info-description {
+    position: absolute;
+    z-index: 10;
+    width: 20rem;
+    top: -0.5rem;
+    left: -0.09rem;
+    background-color: #0c0127d0;
+    color: whitesmoke;
+    text-align: center;
+    border-radius: 5px;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none; /* Pour que le contenu caché ne soit pas interactif */
+    transition: opacity 0.3s ease;
+  }
+  /* Style au survol de l'icône i */
+  div.info:hover div.info-description {
+    opacity: 1;
+    pointer-events: auto; /* Restaurer l'interaction au survol */
+  }
+}
+
+.danger {
+  background-color: #a5050521;
+  text-align: center;
+  color: #a50505;
+  border-radius: 5px;
 }

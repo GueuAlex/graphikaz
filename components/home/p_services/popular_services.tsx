@@ -4,7 +4,7 @@ import "./popular_services.css";
 
 import Image from "next/image";
 import { ApiCategoryProps, apiServiceProps } from "@/types";
-import { DeliCar, Service2 } from "@/public";
+import { DeliCar, Imgold, Service2 } from "@/public";
 import { useEffect, useState } from "react";
 
 const PopularServices = ({
@@ -113,7 +113,24 @@ const PServiceCard = ({
         className="po-link flex-1  border rounded-md flex flex-row gap-3 pr-2"
       >
         <div className="flex-2 object-contain">
-          <Image src={Service2} alt="sv1" className="w-full h-full" />
+          {service.image_services.length > 0 ? (
+            <Image
+              src={
+                "https://graphikaz.digifaz.com/api/photo_service/" +
+                service.image_services[0].libelle
+              }
+              alt="sv1"
+              className="w-full h-full rounded-tl-[5px] rounded-bl-[5px]"
+              width={576}
+              height={768}
+            />
+          ) : (
+            <Image
+              src={Imgold}
+              alt="sv1"
+              className=" w-full h-full rounded-tl-[5px] rounded-bl-[5px]"
+            />
+          )}
         </div>
         <div className="acess flex-2 flex-col justify-center items-center pt-2 pb-1 left-container">
           <div className="flex flex-row justify-between ">
