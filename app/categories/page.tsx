@@ -7,6 +7,8 @@ import { TServiceCard, Wrapper } from "@/reutilisables";
 import { categories } from "@/constants";
 import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
 import { fetchAllData, getCategories } from "@/types/api_services";
+import { AnimatePresence, motion } from "framer-motion";
+import Loader from "@/reutilisables/laoder";
 
 function Categories() {
   //////// get all categories
@@ -169,7 +171,18 @@ function Categories() {
   };
 
   if (isLaoding || categoriesIsLaoding) {
-    return <div> Chargement .... </div>;
+    return (
+      <AnimatePresence>
+        {" "}
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          exit={{ opacity: 1 }}
+        >
+          <Loader />
+        </motion.div>
+      </AnimatePresence>
+    );
   }
 
   return (

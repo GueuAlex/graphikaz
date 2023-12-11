@@ -24,6 +24,7 @@ export interface apiServiceProps {
   description: string;
   category_id: number;
   create_at: Date;
+  image_services: ImageProps[];
   pack_services: packProps[];
 }
 
@@ -86,4 +87,10 @@ export interface CategoryProps {
 export interface ApiCategoryProps {
   id: number;
   libelle: string;
+}
+
+export interface ImageProps {
+  id: number;
+  libelle: string;
+  service_id: number;
 }

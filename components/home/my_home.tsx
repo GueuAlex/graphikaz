@@ -11,8 +11,10 @@ import {
   Blogs,
   NewsLetter,
 } from "@/components/home";
+import Loader from "@/reutilisables/laoder";
 import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
 import { fetchAllData, getCategories } from "@/types/api_services";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const MyHome = () => {
@@ -75,9 +77,20 @@ const MyHome = () => {
       });
   }, []);
 
-  /* if (isLaoding) {
-    return <div className="loading-div">chargement...</div>;
-  } */
+  if (isLaoding || categoriesIsLaoding) {
+    return (
+      <AnimatePresence>
+        {" "}
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          exit={{ opacity: 1 }}
+        >
+          <Loader />
+        </motion.div>
+      </AnimatePresence>
+    );
+  }
   return (
     <>
       <Hero />

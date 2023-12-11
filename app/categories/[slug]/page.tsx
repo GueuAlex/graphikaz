@@ -14,6 +14,8 @@ import PaiementCardBody from "@/reutilisables/paiement_card_body";
 import PaiementCardBody2 from "@/reutilisables/paiement_card_body2";
 import Error404 from "@/reutilisables/404";
 import OnEditing from "@/reutilisables/on_editing";
+import Loader from "@/reutilisables/laoder";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Page({ params }: { params: { slug: string } }) {
   ///////////// fetching data from api ///////////////:
@@ -34,9 +36,11 @@ export default function Page({ params }: { params: { slug: string } }) {
       .then((data) => {
         const services: apiServiceProps[] = data!;
         setData(services);
-        // Maintenant, vous pouvez utiliser les données ici
-        console.log(services);
-        setIsloadin(false);
+        if (services !== undefined) {
+          // Maintenant, vous pouvez utiliser les données ici
+          console.log(services);
+          setIsloadin(false);
+        }
       })
       .catch((error) => {
         // Gérez les erreurs ici
@@ -109,7 +113,18 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   ///////////////////////////////////////////////////////////////////////////
   if (isLaoding) {
-    return <div>chargement ...</div>;
+    return (
+      <AnimatePresence>
+        {" "}
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          exit={{ opacity: 1 }}
+        >
+          <Loader />
+        </motion.div>
+      </AnimatePresence>
+    );
   }
   if (service && service.pack_services.length <= 0) {
     return <OnEditing />;

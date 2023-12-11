@@ -25,6 +25,7 @@ export const fetchAllData = async (): Promise<apiServiceProps[]> => {
         /* type_paiement_id: apiData.type_paiement_id, */
         /* pourcentage_remuneration: apiData.pourcentage_remuneration, */
         create_at: apiData.create_at,
+        image_services: apiData.image_services,
         pack_services: apiData.pack_services,
         /* ligne_services: apiData.ligne_services, */
       })
