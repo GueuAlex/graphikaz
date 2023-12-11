@@ -18,7 +18,9 @@ const AlertDialog = ({ msg }: { msg: string }) => {
           <span className=" text-red-600">Attention !</span>
         </div>
 
-        <p className="py-4 pl-3 text-stone-900 justify-center flex">{msg}</p>
+        <p className="py-4 pl-3 text-stone-900 justify-center text-center flex">
+          {msg}
+        </p>
       </div>
     </dialog>
   );

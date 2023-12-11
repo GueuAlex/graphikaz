@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AlertDialog from "./alert";
 
 const MobileMoneyForm = ({
   method,
@@ -13,10 +14,12 @@ const MobileMoneyForm = ({
   const [paymentMethod, setPaymentMethod] = useState<string>("Cash");
   const [paymentToken, setPaymentToken] = useState<string>("");
   const [paymentUrl, setPaymentUrl] = useState<string>("");
+  const [checkoutLoadin, setCheckoutLoadin] = useState(false);
 
   // Fonction de gestion de la soumission du formulaire
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setCheckoutLoadin(true);
 
     // Ajoutez ici la logique de traitement du paiement
     console.log("Card Number:", phoneNumber);
@@ -50,19 +53,25 @@ const MobileMoneyForm = ({
         setPaymentUrl(responseData.data.payment_url);
 
         // Redirigez l'utilisateur vers l'URL de paiement
+        setCheckoutLoadin(false);
         window.location.href = responseData.data.payment_url;
       } else {
         // Gérez les erreurs ou affichez un message à l'utilisateur
         console.error("Erreur lors de la création de la transaction");
+        setCheckoutLoadin(false);
+        window.my_modal_4.showModal();
       }
 
       ////////////:
     } catch (error) {
-      console.error("Error submitting payment form:", error);
+      //console.error("Error submitting payment form:", error);
+      setCheckoutLoadin(false);
+      window.my_modal_4.showModal();
     }
   };
   return (
     <form onSubmit={handleSubmit} className="credit-card-form">
+      <AlertDialog msg="Erreur lors de la création de la transaction. Vérifier vos informations et reéssayer" />
       {method === "Wave" ? (
         <div className="danger w-full py-2 px-2 text-cente">
           Wave est indisponible actuelment
@@ -141,6 +150,10 @@ const MobileMoneyForm = ({
       {method === "Wave" ? (
         <button className="pay-btn-desable" type="button">
           Passer la commande
+        </button>
+      ) : checkoutLoadin ? (
+        <button className="pay-btn" type="button">
+          Chargement ...
         </button>
       ) : (
         <button className="pay-btn" type="submit">
