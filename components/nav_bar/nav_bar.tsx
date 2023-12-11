@@ -11,14 +11,18 @@ import { User } from "next-auth";
 import { getCategories } from "@/types/api_services";
 import { ApiCategoryProps } from "@/types";
 
-export default function NavBar() {
+export default function NavBar({
+  categories,
+}: {
+  categories: ApiCategoryProps[];
+}) {
   const session = useSession();
   const [toggle, setToggle] = useState(true);
   const [isHome, setIsHome] = useState(true);
   const [searchGlassVisible, setSearchGlassVisible] = useState(false); // Nouvel état pour la visibilité de search-glass
 
   const pathname = usePathname();
-  const [categoryList, setData] = useState<ApiCategoryProps[]>([]);
+  /* const [categoryList, setData] = useState<ApiCategoryProps[]>([]);
   const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
   async function getCategoriesList() {
     try {
@@ -29,7 +33,7 @@ export default function NavBar() {
     } catch (error) {
       console.error("Une erreur s'est produite :", error);
     }
-  }
+  } */
 
   useEffect(() => {
     if (pathname === "/") {
@@ -40,7 +44,7 @@ export default function NavBar() {
   }, [pathname]); // Ne met à jour l'état que si le chemin change
 
   ////////// fetch categories from database
-  useEffect(() => {
+  /*  useEffect(() => {
     getCategoriesList()
       .then((data) => {
         const categories: ApiCategoryProps[] = data!;
@@ -54,7 +58,7 @@ export default function NavBar() {
         console.error("Une erreur s'est produite :", error);
         setcategoriesIsloadin(false);
       });
-  }, []); //
+  }, []); // */
 
   return (
     <header className=" z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900">
@@ -180,15 +184,13 @@ export default function NavBar() {
               <Link href="/categories" className="categories-label">
                 Categories
                 <div className="sub-menu shadow-xl">
-                  {categoriesIsLaoding ? (
-                    <p>Chargement...</p>
-                  ) : (
+                  {
                     <ul>
-                      {categoryList.map((cat, index) => (
+                      {categories.map((cat, index) => (
                         <li key={index}>{cat.libelle}</li>
                       ))}
                     </ul>
-                  )}
+                  }
                 </div>
               </Link>
               <Link href="/freelancers" className="ml-8">
