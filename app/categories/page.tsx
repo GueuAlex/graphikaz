@@ -9,6 +9,7 @@ import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
 import { fetchAllData, getCategories } from "@/types/api_services";
 import { AnimatePresence, motion } from "framer-motion";
 import Loader from "@/reutilisables/laoder";
+import { useRouter, useSearchParams } from "next/navigation";
 
 function Categories() {
   //////// get all categories
@@ -78,32 +79,35 @@ function Categories() {
   const toggleFilterSideBar = () =>
     toggle ? setToggle(false) : setToggle(true);
 
+  const [argCategory, setArgCategory] = useState<ApiCategoryProps>();
+  const [findedServices, setFindedServices] = useState<apiServiceProps[]>([]);
+
   /* ******** show more / show less === categories  **************/
   const itemsPerPage = 5;
   const [showAll, setShowAll] = useState(false);
   const [visibleItems, setVisibleItems] = useState(
-    categories.slice(0, itemsPerPage)
+    categoriesList.slice(0, itemsPerPage)
   );
   const handleShoMore = () => {
     // afficher tous les elements
-    setVisibleItems(categories);
+    setVisibleItems(categoriesList);
     setShowAll(true);
   };
   const handleShoLess = () => {
     // afficher le nombre d'element par defaut
-    setVisibleItems(categories.slice(0, itemsPerPage));
+    setVisibleItems(categoriesList.slice(0, itemsPerPage));
     setShowAll(false);
   };
   /* ******** show more / show less  **************/
 
   /* ******** show more / show less === date posted  **************/
   const data = [
-    "Last Hour",
-    "Last 24 hours",
-    "Last 7 days",
-    "Last 14 days",
-    "Last 30 days",
-    "All",
+    "Dernières Heures",
+    "Dernières 24 heures",
+    "7 derniers jours",
+    "14 derniers jours",
+    "30 derniers jours",
+    "Tout",
   ];
   const [showAllD, setShowAllD] = useState(false);
   const [visibleItemsD, setVisibleItemsD] = useState(data.slice(0, 4));
@@ -130,13 +134,13 @@ function Categories() {
     "7 Hours",
   ];
   const deliveryTime = [
-    "1 Day",
-    "2 Days",
-    "3 Days",
-    "4 Days",
-    "5 Days",
-    "6 Days",
-    "7 Days",
+    "1 Jour",
+    "2 Jous",
+    "3 Jours",
+    "4 Jourss",
+    "5 Jourss",
+    "6 Jourss",
+    "7 Jourss",
   ];
   const englishLevel = [
     "Basic",
@@ -158,7 +162,7 @@ function Categories() {
   ];
 
   const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(80);
+  const [maxValue, setMaxValue] = useState(975000);
 
   const handleMinChange = (event: any) => {
     const newMinValue = parseInt(event.target.value);
@@ -169,6 +173,50 @@ function Categories() {
     const newMaxValue = parseInt(event.target.value);
     setMaxValue(Math.max(newMaxValue, minValue)); // Assurer que max >= min
   };
+  const params = useSearchParams();
+  const initialCategory = params?.get("category");
+  console.log("intial " + initialCategory);
+  useEffect(() => {
+    let currentCategory = initialCategory || "all";
+    if (initialCategory) {
+      const catFinded: ApiCategoryProps | undefined = categoriesList.find(
+        (c) => c.libelle.toLowerCase() === initialCategory.trim().toLowerCase()
+      );
+      if (catFinded) {
+        console.log("Category found: " + initialCategory);
+        setArgCategory(catFinded);
+        const findedServ: apiServiceProps[] = services.filter(
+          (serv) => serv.category_id === catFinded.id
+        );
+        setFindedServices(findedServ);
+      } else {
+        console.log("Category not found, setting to 'all'");
+      }
+    } else {
+      //initialCategory = "all";
+    }
+    console.log("Current category: " + currentCategory);
+  }, [initialCategory, argCategory, services, categoriesList]);
+  /*   console.log("---------------------------------------------------");
+  console.log(argCategory); */
+
+  //////////////////////////: PAGINATION LOGIQUE //////////////////////////
+  const servicePerPage = 8; // Nombre d'éléments par page
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const displayedServices =
+    findedServices.length > 0 ? findedServices : services;
+
+  const serviceTotalItems = displayedServices.length;
+  const totalPages = Math.ceil(serviceTotalItems / servicePerPage);
+
+  const visibleServices = displayedServices.slice(
+    (currentPage - 1) * servicePerPage,
+    currentPage * servicePerPage
+  );
+  //////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
 
   if (isLaoding || categoriesIsLaoding) {
     return (
@@ -188,7 +236,7 @@ function Categories() {
   return (
     <div className="categories">
       <div className={`${toggle ? "show-overlay" : ""} overlay`}></div>
-      {/* aside filter */}
+      {/* categories aside filter */}
       <aside
         className={`${
           toggle ? "show-cat-side-filter" : "hide-cat-side-filter"
@@ -212,11 +260,11 @@ function Categories() {
                     <li id={index.toString()}>
                       <input
                         type="checkbox"
-                        value={cat.label}
-                        name={cat.label}
+                        value={cat.libelle}
+                        name={cat.libelle}
                         id={cat.id.toString()}
                       />
-                      <label htmlFor={cat.id.toString()}>{cat.label}</label>
+                      <label htmlFor={cat.id.toString()}>{cat.libelle}</label>
                     </li>
                   ))}
                 </ul>
@@ -224,14 +272,14 @@ function Categories() {
                   <div className="show">
                     <i className="ri-add-line symbol"></i>
                     <span onClick={handleShoMore} className="show-text">
-                      Show more
+                      Voir plus
                     </span>
                   </div>
                 ) : (
                   <div className="show">
                     <i className="ri-subtract-line symbol"></i>
                     <span onClick={handleShoLess} className="show-text">
-                      Show less
+                      Voir moin
                     </span>
                   </div>
                 )}
@@ -240,7 +288,7 @@ function Categories() {
 
             {/* Date posted */}
             <div className="filter-section">
-              <h3 className="title">Date Posted</h3>
+              <h3 className="title">Date de publication</h3>
               <div className="filter-cat-body">
                 <ul>
                   {visibleItemsD.map((data, index) => (
@@ -259,14 +307,14 @@ function Categories() {
                   <div className="show">
                     <i className="ri-add-line symbol"></i>
                     <span onClick={handleShoMoreD} className="show-text">
-                      Show more
+                      Voir plus
                     </span>
                   </div>
                 ) : (
                   <div className="show">
                     <i className="ri-subtract-line symbol"></i>
                     <span onClick={handleShoLessD} className="show-text">
-                      Show less
+                      Voir moin
                     </span>
                   </div>
                 )}
@@ -274,7 +322,7 @@ function Categories() {
             </div>
 
             {/* Reponse time */}
-            <div className="filter-section">
+            {/* <div className="filter-section">
               <h3 className="title">Response Time</h3>
               <select name="" id="">
                 <option value="" selected disabled>
@@ -286,14 +334,14 @@ function Categories() {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
 
             {/* delivery Time */}
             <div className="filter-section">
-              <h3 className="title">Response Time</h3>
+              <h3 className="title">Délai de livraison</h3>
               <select name="" id="">
                 <option value="" selected disabled>
-                  Delivery Time
+                  Délai
                 </option>
                 {deliveryTime.map((time, index) => (
                   <option key={index} value={time}>
@@ -307,8 +355,8 @@ function Categories() {
             <div className="filter-section">
               <h3 className="title">Budget</h3>
               <div className="buget-min-max">
-                <div className="min">${minValue}</div>
-                <div className="max">${maxValue}</div>
+                <div className="min">{minValue} ₣</div>
+                <div className="max">{maxValue} ₣</div>
               </div>
               <div className="ranger relative">
                 <div className="slider">
@@ -319,8 +367,8 @@ function Categories() {
                     type="range"
                     id="minRange"
                     name="minRange"
-                    min="0"
-                    max="100"
+                    min="5000"
+                    max="975000"
                     value={minValue}
                     onChange={handleMinChange}
                   />
@@ -328,8 +376,8 @@ function Categories() {
                     type="range"
                     id="maxRange"
                     name="maxRange"
-                    min="0"
-                    max="100"
+                    min="5000"
+                    max="975000"
                     value={maxValue}
                     onChange={handleMaxChange}
                   />
@@ -338,7 +386,7 @@ function Categories() {
             </div>
 
             {/* English Level */}
-            <div className="filter-section">
+            {/* <div className="filter-section">
               <h3 className="title">English Level</h3>
               <select name="" id="">
                 <option value="" selected disabled>
@@ -350,14 +398,14 @@ function Categories() {
                   </option>
                 ))}
               </select>
-            </div>
+            </div> */}
 
             {/* Cities */}
             <div className="filter-section">
-              <h3 className="title">City</h3>
+              <h3 className="title">Ville</h3>
               <select name="" id="">
                 <option value="" selected disabled>
-                  Cities
+                  Abidjan
                 </option>
                 {cities.map((city, index) => (
                   <option key={index} value={city}>
@@ -368,13 +416,13 @@ function Categories() {
             </div>
 
             {/* Location */}
-            <div className="filter-section">
+            {/* <div className="filter-section">
               <h3 className="title">Location</h3>
               <div className="filter-location">
                 <input type="text" name="location" id="" className=" flex-1" />
                 <i className="ri-map-pin-line"></i>
               </div>
-            </div>
+            </div> */}
 
             <div className="filte-footer w-full">
               <button
@@ -394,14 +442,28 @@ function Categories() {
       {/* banner */}
       <div className="bannerss relative flex justify-center items-center">
         <div className=" max-w-[110rem] w-full">
-          <BannerContainer />
+          <BannerContainer category={argCategory} />
         </div>
       </div>
       {/* banner end */}
       <Wrapper>
         {/* filter buttons area */}
         <div className="filter-container relative">
-          <div className="text-light"> Showing 1 – 8 of 12 results</div>
+          {/* <div className="text-light"> Showing 1 – 8 of 12 results</div> */}
+          {findedServices.length <= 0 ? (
+            <div className="text-light">
+              {" "}
+              Showing 1 – {services.length > 8 ? "8" : services.length} of{" "}
+              {services.length} results
+            </div>
+          ) : (
+            <div className="text-light">
+              {" "}
+              Showing 1 –{" "}
+              {findedServices.length > 8 ? "8" : findedServices.length} of{" "}
+              {findedServices.length} results
+            </div>
+          )}
           <div className="filter-buttons">
             <button type="button" onClick={toggleFilterSideBar}>
               <i className="ri-filter-3-fill"></i> &nbsp; Filter
@@ -437,24 +499,32 @@ function Categories() {
       <Wrapper>
         {/* service cards */}
         <div className="cat-service-cards">
-          {services.map((service, index) => {
-            /* const prestator = prestators.find(
-              (prestator) => prestator.id === service.prestatorId
-            ); */
-            const category: ApiCategoryProps = categoriesList.find(
-              (c) => c.id === service.category_id
-            )!;
-            return (
-              <TServiceCard service={service} category={category} key={index} />
-            );
-          })}
+          {visibleServices.map((service, index) => (
+            <TServiceCard
+              service={service}
+              category={argCategory}
+              key={index}
+            />
+          ))}
         </div>
         {/* service cards end */}
         {/* pagination buttons */}
         <div className="paginator py-[2em] gap-3">
-          <div className="page1 active">1</div>
-          <div className="page2">2</div>
-          <div className="next">
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <div
+              key={index}
+              className={currentPage === index + 1 ? "active" : ""}
+              onClick={() => setCurrentPage(index + 1)}
+            >
+              {index + 1}
+            </div>
+          ))}
+          <div
+            className="next"
+            onClick={() =>
+              setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev))
+            }
+          >
             <i className="ri-arrow-right-line"></i>
           </div>
         </div>
@@ -464,13 +534,22 @@ function Categories() {
   );
 }
 
-const BannerContainer = () => {
+const BannerContainer = ({
+  category,
+}: {
+  category: ApiCategoryProps | undefined;
+}) => {
   return (
     <div className="banner w-full max-h-[18rem]">
       <Wrapper>
-        <h2 className="banner-title">Design & Creative</h2>
-        <small className="small-text">
-          Give your visitor a smooth online experience with a solid UX design
+        <h2 className="banner-title">
+          {category ? category.libelle : "Nos services"}
+        </h2>
+        <small className="small-text font-light">
+          Explorez un monde de possibilités dans notre captivante collection{" "}
+          {category ? "de " + category.libelle : "services"}, <br /> Où
+          l'innovation rencontre le style pour élever votre expérience au-delà
+          des attentes.
         </small>
         <div className="banner-demo-container">
           <div className="flex items-center justify-center">

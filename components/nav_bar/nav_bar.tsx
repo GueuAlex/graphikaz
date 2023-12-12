@@ -185,7 +185,7 @@ export default function NavBar({
           </div>
           <div className="flex flex-row items-center">
             <div className="hidden lg:flex lg:items-center">
-              <Link href="/categories" className="categories-label">
+              <span className="categories-label">
                 Categories
                 <div className="sub-menu shadow-xl">
                   {
@@ -201,7 +201,7 @@ export default function NavBar({
                     </ul>
                   }
                 </div>
-              </Link>
+              </span>
               <Link href="/freelancers" className="ml-8">
                 Prestataires
               </Link>

@@ -22,7 +22,7 @@ const TrendingService = ({
             </small>
           </div>
           <span className="hover:text-secondary text-slate-200 font-semibold">
-            <Link href="/">
+            <Link href="/categories?category=all">
               All services <i className="ri-arrow-right-line"></i>
             </Link>
           </span>
