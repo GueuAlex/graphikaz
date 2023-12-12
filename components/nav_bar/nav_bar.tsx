@@ -59,7 +59,11 @@ export default function NavBar({
         setcategoriesIsloadin(false);
       });
   }, []); // */
-
+  const catIconTab = [
+    "ri-paint-brush-line",
+    "ri-camera-lens-fill",
+    "ri-pen-nib-fill",
+  ];
   return (
     <header className=" z-50 w-full flex-none text-sm font-semibold leading-6 text-slate-900">
       {/* side bar */}
@@ -187,7 +191,12 @@ export default function NavBar({
                   {
                     <ul>
                       {categories.map((cat, index) => (
-                        <li key={index}>{cat.libelle}</li>
+                        <li key={index} className=" flex gap-4">
+                          <i className={catIconTab[index]}></i>{" "}
+                          <a href={`/categories?category=${cat.libelle}`}>
+                            {cat.libelle}
+                          </a>
+                        </li>
                       ))}
                     </ul>
                   }

@@ -100,6 +100,13 @@ div.add-to-favorite:hover i {
 /* SERVICE CARD */
 .service-carde {
   max-width: 20em;
+  min-height: 27em; /* ou ajustez selon vos besoins */
+  max-height: 27em;
+}
+.service-carde .carde-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .service-carde .favorite-contaner {
   margin-right: 0.7em;
@@ -127,6 +134,8 @@ div.add-to-favorite:hover i {
   background-color: #5bbb7b;
   color: #fff;
 }
+/* ************************************ */
+/* *********************************** */
 .t-overlay-dot {
   width: 2rem;
   height: 2rem;

@@ -64,7 +64,7 @@ const Footer = ({ categories }: { categories: ApiCategoryProps[] }) => {
             {/* maping categories list */}
             {categories.map((cat, index) => (
               <Link
-                href={`/categorie?category=${cat.libelle}`}
+                href={`/categories?category=${cat.libelle}`}
                 key={cat.id}
                 className="text-slate-300 hover:text-white"
               >
