@@ -8,7 +8,9 @@ export const SearchResults = ({ results }: { results: {} }) => {
     <div className="search-result-container">
       <ul>
         {results.map((result: any) => (
-          <li>{result.libelle}</li>
+          <a href={`/categories/${result.libelle}`}>
+            <li>{result.libelle}</li>
+          </a>
         ))}
       </ul>
     </div>

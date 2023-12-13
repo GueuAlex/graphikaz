@@ -15,10 +15,13 @@ import {
 } from "@/public";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
   const [searchInfo, setSearchInfo] = useState("");
   const [isErro, setError] = useState(false);
+
+  const router = useRouter();
   return (
     <div className="mx-auto  px-4 sm:px-6 flex justify-center items-center lg:px-8">
       <div className="my-hero relative gap-[5em]  grid grid-flow-row grid-cols-2 max-w-[97rem] ">
@@ -78,6 +81,9 @@ const Hero = () => {
                       if (searchInfo.trim().length <= 0) {
                         //console.log("true");
                         setError(true);
+                      } else {
+                        console.log("bonjour");
+                        router.push("/search/" + searchInfo);
                       }
                     }}
                   >

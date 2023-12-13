@@ -253,7 +253,7 @@ export default function NavBar({
             className="ri-close-line mt-[40px] mr-4 close-button"
             onClick={() => setSearchGlassVisible(!searchGlassVisible)}
           ></i>{" "}
-          <SearchBarContents />
+          <SearchBarContents updateToggle={setSearchGlassVisible} />
         </motion.div>
       </nav>
     </header>

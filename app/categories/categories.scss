@@ -133,46 +133,56 @@
   background-color: #c9c8c8;
 }
 
-.categories .cat-service-cards {
+.categories .cat-service-cards,
+.saerch-result-page .cat-service-cards {
   display: flex;
   justify-items: center;
   flex-wrap: wrap;
   gap: 2em;
 }
-.categories .cat-service-cards .flex-item {
-  flex: 0 0 23.2%; /* 25% de la largeur du conteneur pour afficher 4 éléments par ligne */
+.categories .cat-service-cards .flex-item,
+.saerch-result-page .cat-service-cards .flex-item {
+  flex: 0 0 23.2%;
   box-sizing: border-box;
 }
 .categories .paginator,
-.categories .paginator div {
+.categories .paginator div,
+.saerch-result-page .paginator,
+.saerch-result-page .paginator div {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.categories .paginator div {
+.categories .paginator div,
+.saerch-result-page .paginator div {
   height: 2.7em;
   width: 2.7em;
   border-radius: 100%;
   border: solid 1px var(--border-color);
   cursor: pointer;
 }
-.categories .paginator .active {
+.categories .paginator .active,
+.saerch-result-page .paginator .active {
   background-color: #5bbb7b;
   color: var(--white-color);
   border: 1px solid #5bbb7b;
 }
-.categories .paginator div:nth-child(2) {
+.categories .paginator div:nth-child(2),
+.saerch-result-page .paginator div:nth-child(2) {
   transition: var(--trans-background-color);
 }
-.categories .paginator div:nth-child(2):hover {
+.categories .paginator div:nth-child(2):hover,
+.saerch-result-page .paginator div:nth-child(2):hover {
   background-color: #5bbb7b;
   color: var(--white-color);
   border: 1px solid #5bbb7b;
 }
-.categories .paginator div:nth-child(3) {
+.categories .paginator div:nth-child(3),
+.saerch-result-page .paginator div:nth-child(3) {
   transition: ease-in 0.3s transform, ease-in 0.3s border-color;
 }
-.categories .paginator div:nth-child(3):hover {
+.categories .paginator div:nth-child(3):hover,
+.saerch-result-page .paginator div:nth-child(3):hover {
   transform: scale(1.2);
   border-color: black;
 }
