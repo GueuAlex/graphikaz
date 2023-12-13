@@ -776,9 +776,9 @@ const DefaultPacks: React.FC<DefaultPacksProps> = ({
         <div className="secur-paiement w-full py-2 flex flex-col justify-center items-center">
           <span>
             {" "}
-            Paiement{" "}
+            Securisé par{" "}
             <span className=" text-green-600">
-              <i className="ri-lock-fill"></i> securisé
+              <i className="ri-lock-fill"></i> CinetPay
             </span>{" "}
           </span>
           <small className="text-gray-500 font-[300]">
@@ -904,9 +904,9 @@ const DefaultPacks: React.FC<DefaultPacksProps> = ({
       <div className="secur-paiement w-full py-2 flex flex-col justify-center items-center">
         <span>
           {" "}
-          Paiement{" "}
+          Securisé par{" "}
           <span className=" text-green-600">
-            <i className="ri-lock-fill"></i> securisé
+            <i className="ri-lock-fill"></i> CinetPay
           </span>{" "}
         </span>
         <small className="text-gray-500 font-[300]">

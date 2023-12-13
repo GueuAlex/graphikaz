@@ -35,7 +35,8 @@ const MobileMoneyForm = ({
         body: JSON.stringify({
           amount: paymentMethod === "Cash" ? montant : montant / 2,
           customer_phone_number: "+225" + phoneNumber,
-          lock_phone_number: true,
+          lock_phone_number: method === "Wave" ? false : true,
+          channels: method === "Wave" ? "WALLET" : "MOBILE_MONEY",
         }),
       });
 
@@ -72,13 +73,6 @@ const MobileMoneyForm = ({
   return (
     <form onSubmit={handleSubmit} className="credit-card-form">
       <AlertDialog msg="Erreur lors de la création de la transaction. Vérifier vos informations et reéssayer" />
-      {method === "Wave" ? (
-        <div className="danger w-full py-2 px-2 text-cente">
-          Wave est indisponible actuelment
-        </div>
-      ) : (
-        ""
-      )}
       <div className="flex flex-col">
         <label htmlFor="email">Email</label>
         <input
@@ -147,11 +141,7 @@ const MobileMoneyForm = ({
           </div>
         </div>
       </div>
-      {method === "Wave" ? (
-        <button className="pay-btn-desable" type="button">
-          Passer la commande
-        </button>
-      ) : checkoutLoadin ? (
+      {checkoutLoadin ? (
         <button className="pay-btn" type="button">
           Chargement ...
         </button>

@@ -40,7 +40,6 @@ export default async function handler(
             description: "test",
             notify_url: "https://graphikaz.digifaz.com/api/notify",
             return_url: "https://graphikaz-sqv5.vercel.app/success",
-            channels: "MOBILE_MONEY",
             lang: "fr",
           }),
         }

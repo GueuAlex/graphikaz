@@ -153,7 +153,10 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
             {/* <CreditCardForm /> */}
             {/* <MobileMoneyForm method={selectedMetohd} />      */}
             {selectedMetohd === "Carte de Crédit" ? (
-              <CreditCardForm montant={defaultPack.montant} />
+              <CreditCardForm
+                montant={defaultPack.montant}
+                method={selectedMetohd}
+              />
             ) : (
               <MobileMoneyForm
                 method={selectedMetohd}

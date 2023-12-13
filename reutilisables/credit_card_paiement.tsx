@@ -5,11 +5,19 @@ import { useState } from "react";
 import Image from "next/image";
 
 // Interface pour définir les propriétés attendues par le composant
-interface CreditCardFormProps {
+/* interface CreditCardFormProps {
   montant: number;
-}
+  method: string;
+} */
 
-const CreditCardForm: React.FC<CreditCardFormProps> = (montant) => {
+const CreditCardForm = ({
+  montant,
+  method,
+}: {
+  montant: number;
+  method: string;
+}) => {
+  console.log("methods: " + method);
   // États pour stocker les informations du formulaire
   const [cardNumber, setCardNumber] = useState<string>("");
   const [emailAddress, setEmailAddress] = useState<string>("");
@@ -73,6 +81,13 @@ const CreditCardForm: React.FC<CreditCardFormProps> = (montant) => {
 
   return (
     <form onSubmit={handleSubmit} className="credit-card-form">
+      {method === "Carte de Crédit" ? (
+        <div className="danger w-full py-2 px-2 text-cente">
+          Carte de Crédit est indisponible actuelment
+        </div>
+      ) : (
+        ""
+      )}
       <div className="flex flex-col">
         <label htmlFor="email">Email</label>
         <input
@@ -159,7 +174,7 @@ const CreditCardForm: React.FC<CreditCardFormProps> = (montant) => {
             <div className="info">
               <i className="ri-question-mark"></i>
               <div className="info-description">
-                Payer la totalité de la commande soit {montant.montant} FCFA
+                Payer la totalité de la commande soit {montant} FCFA
               </div>
             </div>
           </div>
@@ -177,16 +192,22 @@ const CreditCardForm: React.FC<CreditCardFormProps> = (montant) => {
             <div className="info">
               <i className="ri-question-mark"></i>
               <div className="info-description">
-                Payer 50% de la commande soit {montant.montant / 2} FCFA et
-                payer le reste a la livraison
+                Payer 50% de la commande soit {montant / 2} FCFA et payer le
+                reste a la livraison
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button className="pay-btn" type="submit">
-        Passer la commande
-      </button>
+      {method === "Carte de Crédit" ? (
+        <button className="pay-btn-desable" type="button">
+          Passer la commanded
+        </button>
+      ) : (
+        <button className="pay-btn" type="submit">
+          Passer la commande
+        </button>
+      )}
     </form>
   );
 };
