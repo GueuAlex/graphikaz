@@ -20,6 +20,15 @@ import { useRouter } from "next/navigation";
 const Hero = () => {
   const [searchInfo, setSearchInfo] = useState("");
   const [isErro, setError] = useState(false);
+  const popularSearch = [
+    "Designer",
+    "Developer",
+    "Web",
+    "IOS",
+    "PHP",
+    "Senior",
+    "Engineer",
+  ];
 
   const router = useRouter();
   return (
@@ -110,8 +119,12 @@ const Hero = () => {
               transition={{ delay: 1, ease: "easeIn" }}
             >
               <small className=" text-slate-800 font-medium mt-4 text-[14px] ">
-                Popular Searches : Designer, Developer, Web, IOS, PHP, Senior,
-                Engineer
+                Popular Searches :{" "}
+                {popularSearch.map((searchword, index) => (
+                  <a href={`search/${searchword}`} className="mr-2">
+                    {searchword},
+                  </a>
+                ))}
               </small>
             </motion.div>
           </AnimatePresence>

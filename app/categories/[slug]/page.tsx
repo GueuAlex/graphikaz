@@ -167,6 +167,7 @@ export default function Page({ params }: { params: { slug: string } }) {
             <PaiementCardBody
               updateToggle={updateToggle}
               defaultPack={selectedPack}
+              service={service}
             />
             {/* end paiement card body */}
           </div>
@@ -184,6 +185,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               updateToggle={updateToggle1}
               seletedOptionsList={selectedOptionsList}
               seletedPackList={selectedPackList}
+              servce={service}
             />
             {/* end paiement card body */}
           </div>

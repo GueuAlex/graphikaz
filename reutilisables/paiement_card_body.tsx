@@ -4,16 +4,18 @@ import Image, { StaticImageData } from "next/image";
 import { payMethodsTab } from "@/constants";
 import CreditCardForm from "./credit_card_paiement";
 import MobileMoneyForm from "./mobile_money_form";
-import { packProps } from "@/types";
+import { apiServiceProps, packProps } from "@/types";
 
 interface PaiementCardBodyProps {
   updateToggle: (value: boolean) => void;
   defaultPack: packProps | undefined;
+  service: apiServiceProps;
 }
 
 const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
   updateToggle,
   defaultPack,
+  service,
 }) => {
   const [selectedMetohd, setSelectedMetohd] = useState("Carte de Crédit");
   const imgTab: StaticImageData[] = [Service1, Service2, Service3];
@@ -74,8 +76,13 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
               Je vais créer un logo qui traduit fidèlement votre activité
             </p> */}
             <div className="img-container flex gap-1">
-              {imgTab.map((img, index) => (
-                <Image src={img} alt={index.toString()} width={80} />
+              {service.image_services.map((img, index) => (
+                <Image
+                  src={`https://graphikaz.digifaz.com/api/photo_service/${img.libelle}`}
+                  alt={index.toString()}
+                  width={80}
+                  height={80}
+                />
               ))}
             </div>
             {/* service title */}

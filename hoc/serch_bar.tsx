@@ -47,7 +47,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
       return;
     }
     updateToggle(false);
-    router.push("/categories/" + input.toString());
+    router.push("/search/" + input.toString());
   };
   return (
     <form onSubmit={handleSubmit}>
