@@ -22,9 +22,9 @@ const MobileMoneyForm = ({
     setCheckoutLoadin(true);
 
     // Ajoutez ici la logique de traitement du paiement
-    console.log("Card Number:", phoneNumber);
+    /*  console.log("Card Number:", phoneNumber);
     console.log("Email adress:", emailAddress);
-    console.log("paiement method:", paymentMethod);
+    console.log("paiement method:", paymentMethod); */
 
     try {
       const response = await fetch("/api/check_out", {
@@ -43,7 +43,7 @@ const MobileMoneyForm = ({
       const responseData = await response.json();
 
       // Traitez la réponse du serveur ici
-      console.log(responseData);
+      //console.log(responseData);
       ////////////////
       if (
         response &&

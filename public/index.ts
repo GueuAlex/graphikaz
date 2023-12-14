@@ -52,6 +52,8 @@ import Miniature3 from "./miniature2.jpg";
 import EmptyCart from "./empty-cart.png";
 import Editing from "./editing.gif";
 import Imgold from "./imgold.png";
+import LogoLight from "./logo_light.png";
+import LogoColor from "./logo_color.jpg";
 
 export {
   Digifaz,
@@ -108,4 +110,6 @@ export {
   EmptyCart,
   Editing,
   Imgold,
+  LogoLight,
+  LogoColor,
 };
