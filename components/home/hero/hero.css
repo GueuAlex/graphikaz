@@ -2,6 +2,11 @@
   width: 100%;
 }
 
+.my-hero h1.hero-h1 {
+  line-height: 1 !important;
+  padding-bottom: 5px;
+}
+
 .input_div {
   height: 5em;
   width: 100%;

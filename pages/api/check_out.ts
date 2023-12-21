@@ -21,9 +21,9 @@ export default async function handler(
       // Utilisez la bibliothèque axios ou fetch pour effectuer la requête
 
       // Exemple avec fetch
-      const id = generateTransactionId();
+      //const id = generateTransactionId();
       console.log(formData);
-      console.log("transactionId: " + id);
+      //console.log("transactionId: " + id);
       const partnerPaymentResponse = await fetch(
         "https://api-checkout.cinetpay.com/v2/payment",
         {
@@ -37,10 +37,9 @@ export default async function handler(
             // Ajoutez d'autres données requises par le partenaire
             apikey: process.env.API_KEY,
             site_id: process.env.SITE_ID,
-            transaction_id: id,
+            //transaction_id: id,
             currency: "XOF",
             description: "test",
-            notify_url: "https://graphikaz.digifaz.com/api/notify",
             return_url: "https://graphikaz-sqv5.vercel.app/success",
             lang: "fr",
           }),

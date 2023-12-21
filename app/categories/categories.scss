@@ -1105,3 +1105,11 @@ PAIEMENT SIDE BAR STYLES
   color: #a50505;
   border-radius: 5px;
 }
+
+select.select-div {
+  border: 1px solid var(--border-color);
+  border-radius: 5px !important;
+
+  font-weight: 400;
+  color: #52565c;
+}

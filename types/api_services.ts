@@ -1,4 +1,4 @@
-import { ApiCategoryProps, apiServiceProps } from ".";
+import { ApiCategoryProps, apiServiceProps, deliZoneProps } from ".";
 
 const baseUri = "https://graphikaz.digifaz.com/api/";
 export const fetchAllData = async (): Promise<apiServiceProps[]> => {
@@ -62,6 +62,42 @@ export const getCategories = async (): Promise<ApiCategoryProps[]> => {
     //console.log(mappedDataList.at(0)?.service.libelle);
 
     return categories;
+  } catch (error: any) {
+    // Spécifiez ici le type de l'erreur
+    throw new Error("Une erreur s'est produite : " + error.message);
+  }
+};
+
+///
+
+//////////
+export const getDeliZone = async (): Promise<deliZoneProps[]> => {
+  //"use server";
+  try {
+    const response = await fetch(`${baseUri}livraisons`);
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des données");
+    }
+    //console.log("bonjour ici 1");
+    //console.log(await response.json());
+    //console.log("bonjour ici 2");
+    const apiDataList = await response.json();
+
+    // Effectuez le mappage pour chaque élément de la liste
+    const deliZone: deliZoneProps[] = apiDataList.map((apiData: any) => ({
+      id: apiData.id,
+      country_id: apiData.country_id,
+      commune_id: apiData.commune_id,
+      city_id: apiData.city_id,
+      montant: apiData.montant,
+      country: apiData.country,
+      city: apiData.city,
+      commune: apiData.commune,
+    }));
+
+    //console.log(mappedDataList.at(0)?.service.libelle);
+
+    return deliZone;
   } catch (error: any) {
     // Spécifiez ici le type de l'erreur
     throw new Error("Une erreur s'est produite : " + error.message);

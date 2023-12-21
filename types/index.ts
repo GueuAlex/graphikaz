@@ -94,3 +94,46 @@ export interface ImageProps {
   libelle: string;
   service_id: number;
 }
+
+export interface DefaultOrderProps {
+  numero_commande: string | undefined;
+  service_id: number;
+  pack_service_id: number;
+  status: string;
+  reference_paiement: string | undefined;
+  status_paiement: string;
+}
+
+export interface CustomeOrderProps {
+  numero_commande: string | undefined;
+  reference_paiement: string | undefined;
+  service_id: number;
+  options: OptionsProps[];
+  packs: packProps[];
+  status: string;
+  status_paiement: string;
+}
+
+export interface communeProps {
+  id: number;
+  commune: string;
+}
+export interface cityProps {
+  id: number;
+  ville: string;
+}
+export interface countryProps {
+  id: number;
+  pays: string;
+}
+
+export interface deliZoneProps {
+  id: number;
+  country_id: number;
+  city_id: number;
+  commune_id: number;
+  montant: number;
+  country: countryProps;
+  city: cityProps;
+  commune: communeProps;
+}

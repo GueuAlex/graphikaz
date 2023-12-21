@@ -4,7 +4,12 @@ import Image, { StaticImageData } from "next/image";
 import { payMethodsTab } from "@/constants";
 import CreditCardForm from "./credit_card_paiement";
 import MobileMoneyForm from "./mobile_money_form";
-import { OptionsProps, apiServiceProps, packProps } from "@/types";
+import {
+  CustomeOrderProps,
+  OptionsProps,
+  apiServiceProps,
+  packProps,
+} from "@/types";
 
 interface PaiementCardBodyProps {
   updateToggle: (value: boolean) => void;
@@ -55,6 +60,17 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
       </div>
     );
   }
+  //////////
+  const customeOrder: CustomeOrderProps = {
+    numero_commande: undefined,
+    reference_paiement: undefined,
+    service_id: servce.id,
+    packs: seletedPackList!,
+    options: seletedOptionsList!,
+    status_paiement: "EN ATTENTE",
+    status: "EN ATTENTE",
+  };
+  //////
   const calculateTotalPrice = () => {
     var optionsTotal = 0;
     var packsTotal = 0;
@@ -245,6 +261,8 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
               <MobileMoneyForm
                 method={selectedMetohd}
                 montant={calculateTotalPrice()}
+                defaultOrder={undefined}
+                customeOrder={customeOrder}
               />
             )}
           </div>

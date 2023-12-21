@@ -42,7 +42,7 @@ const Hero = () => {
               exit={{ opacity: 0, y: 15 }}
               transition={{ delay: 0.15, ease: "easeIn" }}
             >
-              <h1 className="text-primary font-semibold lg:text-[40px] mt-2">
+              <h1 className="hero-h1 text-primary font-semibold lg:text-[40px] mt-2">
                 With talented{" "}
                 <span className="text-secondary">freelancers</span>
                 <br />

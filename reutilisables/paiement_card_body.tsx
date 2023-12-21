@@ -4,7 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { payMethodsTab } from "@/constants";
 import CreditCardForm from "./credit_card_paiement";
 import MobileMoneyForm from "./mobile_money_form";
-import { apiServiceProps, packProps } from "@/types";
+import { DefaultOrderProps, apiServiceProps, packProps } from "@/types";
 
 interface PaiementCardBodyProps {
   updateToggle: (value: boolean) => void;
@@ -18,8 +18,9 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
   service,
 }) => {
   const [selectedMetohd, setSelectedMetohd] = useState("Carte de Crédit");
-  const imgTab: StaticImageData[] = [Service1, Service2, Service3];
+  //const imgTab: StaticImageData[] = [Service1, Service2, Service3];
   /// UI returned if defaultPack ==== undefined
+
   if (defaultPack === undefined) {
     return (
       <div className="content-body flex  w-full h-full">
@@ -52,9 +53,17 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
     );
   }
   //// eles -----
-
+  const defaultOrder: DefaultOrderProps = {
+    numero_commande: undefined,
+    reference_paiement: undefined,
+    service_id: service.id,
+    pack_service_id: defaultPack.id,
+    status_paiement: "EN ATTENTE",
+    status: "EN ATTENTE",
+  };
+  console.log(defaultOrder);
   return (
-    <div className="content-body flex  w-full h-full">
+    <div className="content-body flex  w-full h-full gap-3">
       <div className="commande-details">
         <div className="detail-content">
           <div className="details-content-header flex items-center gap-2">
@@ -168,6 +177,8 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
               <MobileMoneyForm
                 method={selectedMetohd}
                 montant={defaultPack.montant}
+                defaultOrder={defaultOrder}
+                customeOrder={undefined}
               />
             )}
           </div>

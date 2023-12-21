@@ -1,0 +1,12 @@
+{
+  "id": 23444,
+  "numero_commande": "unique",
+  "zone_livraison_id": 22,
+  "user_id ou client_id": 122,
+  "service_id": "unique",
+  "reference_paiement": "unique",
+  "statut_paiement": "WATTING ou ACCEPTED ou CANCELLED",
+  "statut": "statut de la commande",
+  "packs": ["tableau de pack"],
+  "ligne_de_service": ["tableau de ligne de service"]
+}
