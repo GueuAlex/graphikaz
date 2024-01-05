@@ -43,15 +43,15 @@ const Hero = () => {
               transition={{ delay: 0.15, ease: "easeIn" }}
             >
               <h1 className="hero-h1 text-primary font-semibold lg:text-[40px] mt-2">
-                With talented{" "}
-                <span className="text-secondary">freelancers</span>
+                Trouver les bons services{" "}
+                <span className="text-secondary">freelances</span>
                 <br />
-                do more work.
+                immédiatement.
               </h1>
 
               <small className=" text-slate-800 mt-4 ">
-                Millions of people use freeio.com to turn their ideas into
-                reality.
+                Des millions de personnes utilisent graphikaz.com pour
+                concrétiser leurs idées.
               </small>
             </motion.div>
           </AnimatePresence>
@@ -74,7 +74,7 @@ const Hero = () => {
                       className=""
                       name=""
                       id=""
-                      placeholder="What are you looking for ?"
+                      placeholder="Que recherchez-vous  ?"
                       value={searchInfo}
                       onChange={({ target }) => {
                         setSearchInfo(target.value);
@@ -96,7 +96,7 @@ const Hero = () => {
                       }
                     }}
                   >
-                    Search
+                    Recherche
                   </button>
                 </div>
                 {isErro ? (
@@ -119,7 +119,7 @@ const Hero = () => {
               transition={{ delay: 1, ease: "easeIn" }}
             >
               <small className=" text-slate-800 font-medium mt-4 text-[14px] ">
-                Popular Searches :{" "}
+                Recherches populaires :{" "}
                 {popularSearch.map((searchword, index) => (
                   <a href={`search/${searchword}`} className="mr-2">
                     {searchword},

@@ -99,9 +99,8 @@ div.add-to-favorite:hover i {
 
 /* SERVICE CARD */
 .service-carde {
+  width: 100%;
   max-width: 20em;
-  min-height: 27em; /* ou ajustez selon vos besoins */
-  max-height: 27em;
 }
 .service-carde .carde-link {
   display: flex;

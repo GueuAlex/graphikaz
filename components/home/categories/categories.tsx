@@ -13,18 +13,20 @@ const Categories = ({
   apiCategories: ApiCategoryProps[];
 }) => {
   return (
-    <div className="w-full px-[2em]  categories relative">
+    <div className="w-full px-[2em]  categories relative bg-slate-50">
       <div className="py-[4rem] max-w-[97rem]  mx-auto   relative">
         <div className="categories-title flex flex-row justify-between items-start">
           <div>
-            <h2 className=" text-slate-800">Browse talent by category​</h2>
+            <h2 className=" text-slate-800">
+              Parcourir les talents par catégorie​
+            </h2>
             <small className="subtitle mt-3 text-slate-500 font-semibold">
-              Get some Inspirations from 1800+ skills
+              Inspirez-vous de 1800+ compétences
             </small>
           </div>
           <span className="hover:text-secondary font-semibold">
             <Link href="/categories">
-              All categories <i className="ri-arrow-right-line"></i>
+              Toutes les catégories <i className="ri-arrow-right-line"></i>
             </Link>
           </span>
         </div>

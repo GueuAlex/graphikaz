@@ -11,7 +11,7 @@ const TServiceCard = ({
   category: ApiCategoryProps | undefined; // Changer ici
 }) => {
   return (
-    <div className="service-carde flex-item">
+    <div className="service-carde  flex-item">
       <Link
         key={service.id}
         href={`/categories/${service.libelle}`}
@@ -42,7 +42,7 @@ const TServiceCard = ({
             />
           )}
         </div>
-        <div className=" bg-slate-50 rounded-b-[8px] px-4 h-[50%]">
+        <div className=" bg-slate-50 rounded-b-[8px] px-4 shadow h-[50%]">
           <div className="px-[20px] py-[5px]">
             <p className="mt-2 text-slate-400 mb-[8px]">
               {category !== undefined ? category.libelle : ""}
@@ -57,7 +57,7 @@ const TServiceCard = ({
               {`(${2} Reviews)`}
             </p>
 
-            <div className="mt-5 w-full h[1px] border " />
+            <div className="mt-5 w-full border " />
             <div className="pt-[0.7rem] flex flex-row items-start justify-between">
               <div className="second-link flex flex-row gap-3 justify-start items-center">
                 <div className="w-[2.2rem] h-[2.2rem]  rounded-full object-contain relative">

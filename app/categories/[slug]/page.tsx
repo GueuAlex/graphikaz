@@ -2,27 +2,21 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import React, { useEffect, useRef, useState } from "react";
-import { RatingComponent, TServiceCard, Wrapper } from "@/reutilisables";
+import { Wrapper } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
 import { OptionsProps, apiServiceProps, packProps } from "@/types";
-import Image, { ImageProps } from "next/image";
-import RatingStates from "@/reutilisables/rating_state";
+import Image from "next/image";
+
 import Rate from "@/reutilisables/rate";
 import { fetchAllData } from "@/types/api_services";
-import {
-  Digifaz,
-  Editing,
-  Imgold,
-  Service2,
-  Service3,
-  Service5,
-} from "@/public";
+import { Imgold } from "@/public";
 import PaiementCardBody from "@/reutilisables/paiement_card_body";
 import PaiementCardBody2 from "@/reutilisables/paiement_card_body2";
 import Error404 from "@/reutilisables/404";
 import OnEditing from "@/reutilisables/on_editing";
 import Loader from "@/reutilisables/laoder";
 import { motion, AnimatePresence } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Page({ params }: { params: { slug: string } }) {
   ///////////// fetching data from api ///////////////:
@@ -154,6 +148,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
     return (
       <div className="single_service_details">
+        <ToastContainer />
         <div className={`${toggle ? "show-overlay" : ""} overlay`}></div>
         <div className={`${toggle1 ? "show-overlay" : ""} overlay`}></div>
         {/* Default packs paiement side bar */}
@@ -197,7 +192,10 @@ export default function Page({ params }: { params: { slug: string } }) {
             {/* share, save and repport area */}
             <div className="icon-container">
               <div className="share-container">
-                <div className="share-with shadow-sm rounded-[5px]">
+                <div
+                  className="share-with shadow-sm rounded-[5px] "
+                  onClick={() => toast("Fonctionnalité bientôt disponible")}
+                >
                   <div className="icon-small">
                     <i className="ri-facebook-line"></i>
                   </div>
@@ -214,17 +212,18 @@ export default function Page({ params }: { params: { slug: string } }) {
                 <div className="icon-small d">
                   <i className="ri-share-box-fill"></i>
                 </div>
-                <small>Share</small>
+                <small>Partager</small>
               </div>
 
               <div
                 className="tooltip save-container"
-                data-tip="add to favorits"
+                data-tip="ajouter aux favoris"
+                onClick={() => toast("Fonctionnalité bientôt disponible")}
               >
                 <div className="icon-small d">
                   <i className="ri-heart-3-line"></i>
                 </div>
-                <small>Save</small>
+                <small>Sauvegarder</small>
               </div>
 
               {/* You can open the modal using ID.showModal() method */}

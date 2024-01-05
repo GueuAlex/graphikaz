@@ -183,12 +183,12 @@ export default function NavBar({
                   }
                 </div>
               </span>
-              <Link href="/freelancers" className="ml-8">
+              {/*  <Link href="/freelancers" className="ml-8">
                 Prestataires
               </Link>
               <div className="ml-2 hidden rounded-full bg-secondary px-1.5 py-0.5 text-xs text-white sm:block">
                 New
-              </div>
+              </div> */}
               <Link href="#" className="ml-8">
                 À propos
               </Link>

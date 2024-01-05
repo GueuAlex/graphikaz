@@ -96,12 +96,13 @@ const MyHome = () => {
       <Hero />
       <Needs />
       <Categories apiCategories={categoriesList} />
-      <PopularServices serviceList={serviceList} categories={categoriesList} />
-      <ProofSection />
-      <CounterSection />
-      <Testinmonials />
       <TrendingService serviceList={serviceList} categories={categoriesList} />
-      <Blogs />
+      {/* <PopularServices serviceList={serviceList} categories={categoriesList} /> */}
+      <ProofSection />
+      {/*  <CounterSection /> */}
+      {/* <Testinmonials /> */}
+
+      {/*  <Blogs /> */}
       <NewsLetter />
     </>
   );
