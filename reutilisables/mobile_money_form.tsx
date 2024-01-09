@@ -81,8 +81,16 @@ const MobileMoneyForm = ({
   //const notify = () => toast(msg);
   // Fonction de gestion de la soumission du formulaire
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log(customeOrder), console.log("default order" + defaultOrder);
+    console.log("<=========== custome order =========>");
+    console.log(customeOrder),
+      ///////
+      console.log("<=========== default order =========>");
+    console.log("default order" + defaultOrder);
+
+    ///// prevent browser submission event
     e.preventDefault();
+
+    /////// check if user is unauthenticated
     if (!session) {
       toast(
         "Veuillez vous connecter ou créer un compte. C'est simple et rapide"
@@ -90,7 +98,27 @@ const MobileMoneyForm = ({
       //notify();
       return;
     }
+    if (session.status === "unauthenticated") {
+      toast(
+        "Veuillez vous connecter ou créer un compte. C'est simple et rapide"
+      );
+      //notify();
+      return;
+    }
+    console.log("<=========== loged user id =========>");
     console.log(session.data?.user.id);
+
+    //// checking checkout amount
+    if (montant < 100) {
+      toast("minimum amount is 100 XOF");
+      //notify();
+      return;
+    }
+    if (montant / 2 < 100) {
+      toast("minimum amount is 100 XOF");
+      //notify();
+      return;
+    }
 
     ////////////generate transaction_id and numero_commande ///////////////////////
     ///////////////////////////////////////////////////////////////////////////////
@@ -119,7 +147,8 @@ const MobileMoneyForm = ({
         status: defaultOrder.status,
       };
 
-      //console.log(postData);
+      console.log("<=========== postable order ============>");
+      console.log(postData);
 
       try {
         const doResponse = await fetch(

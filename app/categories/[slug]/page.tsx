@@ -692,10 +692,10 @@ const BannerContainer = ({
           <div className="reviews">
             <i className="ri-star-fill text-yellow-500"></i> {4.9} {`(`}
             {998}
-            {` Reviews)`}
+            {` Avis)`}
           </div>
           <div className="views">
-            <i className="ri-eye-line"></i> 4578 views
+            <i className="ri-eye-line"></i> 4578 vues
           </div>
         </div>
       </Wrapper>
@@ -938,6 +938,7 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
   const [selectedPacks, setSelectedPacks] = useState<packProps[]>([]);
   //const basePrice = service.pack_services[0].montant || 0;
   const [basePrice, setPrice] = useState(service.pack_services[0].montant || 0);
+  const [quantity, setQuantity] = useState(1); // État pour suivre la quantité
 
   useEffect(() => {
     selectedPacks.push(service.pack_services[0]);
@@ -988,8 +989,8 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
 
     console.log("Total Price:", optionsTotal);
     useEffect(() => {
-      setPrice(optionsTotal + packsTotal);
-    }, [optionsTotal, packsTotal]);
+      setPrice(optionsTotal + packsTotal + quantity);
+    }, [optionsTotal, packsTotal, quantity]);
     return parseInt(basePrice.toString(), 10);
     // Reste du code...
   };
@@ -998,25 +999,6 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
     (pack) => pack.ligne_services
   );
   return (
-    /*  <div>
-      <h3>{service.name}</h3>
-      <p>Base Price: {basePrice}</p>
-      <ul>
-        {service.options.map((option) => (
-          <li key={option.id}>
-            <label>
-              <input
-                type="checkbox"
-                checked={selectedOptions.includes(option)}
-                onChange={() => handleOptionChange(option)}
-              />
-              {option.name} - {option.price}
-            </label>
-          </li>
-        ))}
-      </ul>
-      <p>Total Price: {calculateTotalPrice()}</p>
-    </div> */
     <>
       {/* packs map */}
       {service.pack_services
@@ -1025,7 +1007,7 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
           /* const delaiSup =
             service.pack_services[0].delais_livraison - pack.delais_livraison; */
           return (
-            <div className="service-base py-5 flex justify-between">
+            <div className="service-base py-5 flex justify-between" key={index}>
               <div className="flex  gap-3 items-start">
                 <input
                   type="checkbox"
@@ -1053,7 +1035,7 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
       {/* options map */}
       {allOption.map((option, index) => {
         return (
-          <div className="service-base py-5 flex justify-between">
+          <div className="service-base py-5 flex justify-between" key={index}>
             <div className="flex  gap-3 items-start">
               <input
                 type="checkbox"
@@ -1074,6 +1056,18 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
           </div>
         );
       })}
+      {/* lot */}
+      {/*  <div className="lot-config">
+        <button onClick={() => setQuantity(quantity - 1)}>-</button>
+        <input
+          type="number"
+          name=""
+          id=""
+          value={quantity}
+          onChange={(e) => setQuantity(parseInt(e.target.value))}
+        />
+        <button onClick={() => setQuantity(quantity + 1)}>+</button>
+      </div> */}
 
       <div className="flex">
         <button

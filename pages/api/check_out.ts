@@ -49,6 +49,9 @@ export default async function handler(
       // Vérifiez la réponse du partenaire
       const partnerPaymentData = await partnerPaymentResponse.json();
 
+      ////// afficher la reponse de cinetpay
+      console.log(partnerPaymentData);
+
       // Envoyez la réponse du partenaire en tant que réponse à la requête
       res.status(partnerPaymentResponse.status).json(partnerPaymentData);
     } catch (error) {
