@@ -109,7 +109,7 @@ const MobileMoneyForm = ({
     console.log(session.data?.user.id);
 
     //// checking checkout amount
-    if (montant < 100) {
+    /*  if (montant < 100) {
       toast("minimum amount is 100 XOF");
       //notify();
       return;
@@ -118,7 +118,7 @@ const MobileMoneyForm = ({
       toast("minimum amount is 100 XOF");
       //notify();
       return;
-    }
+    } */
 
     ////////////generate transaction_id and numero_commande ///////////////////////
     ///////////////////////////////////////////////////////////////////////////////
