@@ -17,8 +17,10 @@ import OnEditing from "@/reutilisables/on_editing";
 import Loader from "@/reutilisables/laoder";
 import { motion, AnimatePresence } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
+import { useSession } from "next-auth/react";
 
 export default function Page({ params }: { params: { slug: string } }) {
+  const session = useSession();
   ///////////// fetching data from api ///////////////:
   async function fetchAndUseData() {
     try {
@@ -158,6 +160,23 @@ export default function Page({ params }: { params: { slug: string } }) {
           } paiement-side-bar`}
         >
           <div className="paiement-side-bar-container">
+            {session.status === "unauthenticated" ? (
+              <div className="register-or-login-invitation container flex justify-center items-center mt-8">
+                <div className="p-3 font-light text-[12px]">
+                  Veuillez vous{" "}
+                  <a href="/auth?et=login" className=" text-blue-700">
+                    connecter
+                  </a>{" "}
+                  ou{" "}
+                  <a href="/auth?et=signin" className=" text-blue-700">
+                    créez un compte
+                  </a>{" "}
+                  c'est simple et rapide{" "}
+                </div>
+              </div>
+            ) : (
+              <div></div>
+            )}
             {/* paiement card body */}
             <PaiementCardBody
               updateToggle={updateToggle}
@@ -175,6 +194,23 @@ export default function Page({ params }: { params: { slug: string } }) {
           } paiement-side-bar`}
         >
           <div className="paiement-side-bar-container">
+            {session.status === "unauthenticated" ? (
+              <div className="register-or-login-invitation container flex justify-center items-center mt-8">
+                <div className="p-3 font-light text-[12px]">
+                  Veuillez vous{" "}
+                  <a href="auth?et=login" className=" text-blue-700">
+                    connecter
+                  </a>{" "}
+                  ou{" "}
+                  <a href="/auth?et=signin" className=" text-blue-700">
+                    créez un compte
+                  </a>{" "}
+                  c'est simple et rapide{" "}
+                </div>
+              </div>
+            ) : (
+              <div></div>
+            )}
             {/* paiement card body */}
             <PaiementCardBody2
               updateToggle={updateToggle1}
@@ -434,16 +470,17 @@ export default function Page({ params }: { params: { slug: string } }) {
                               </span>
                             </div>
                             <div className="collapse-content">
-                              <p className="text-small">
-                                <p>Bénéficier de :</p>
+                              <ul className="text-small">
+                                <li>Bénéficier de :</li>
                                 {pack.ligne_services.map((ligne, index) => {
                                   return (
-                                    <div className="flex flex-col">
+                                    <li>
+                                      <i className="ri-check-fill"></i>{" "}
                                       {ligne.libelle}
-                                    </div>
+                                    </li>
                                   );
                                 })}
-                              </p>
+                              </ul>
                             </div>
                           </div>
                         );

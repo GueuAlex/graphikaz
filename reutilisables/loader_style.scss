@@ -1,6 +1,10 @@
+.loader_body {
+  background-color: white;
+}
+
 .loader {
-  --path: #427f56;
-  --dot: #112116;
+  --path: #f18e36;
+  --dot: #427f56;
   --duration: 3s;
   width: 44px;
   height: 44px;

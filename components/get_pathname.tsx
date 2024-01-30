@@ -10,7 +10,7 @@ const PathnameComponent = () => {
 
     const relativePath = decodeURIComponent(currentPath!).replaceAll(
       "/",
-      " / "
+      " > "
     );
 
     setPathname(relativePath);

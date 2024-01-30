@@ -17,7 +17,7 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
     referralCode: "",
-    type_user: "",
+    type_user: "BUYER",
     agreement: false,
   });
   const [erroMsg, setErrorMsg] = useState("");
@@ -39,7 +39,7 @@ const SignUp = () => {
     try {
       // Remplacez cela par le code réel de six chiffres
       // console.log(pinCode);
-      const response = await fetch("http://localhost:3000/api/api_four", {
+      const response = await fetch("/api/api_four", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -232,7 +232,7 @@ const SignUp = () => {
               </div>
             </div>
 
-            <strong>Votre profil</strong>
+            {/*  <strong>Votre profil</strong>
             <span className="mini-text">
               À titre d'information uniquement et afin de vous accueillir au
               mieux, indiquez-nous la raison principale de votre inscription.
@@ -270,8 +270,9 @@ const SignUp = () => {
                 />
                 <span>Les deux !</span>
               </div>
-            </div>
-            <div className="check-box">
+            </div> */}
+
+            <div className="check-box mt-5">
               <input
                 type="checkbox"
                 name="agreement"

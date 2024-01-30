@@ -137,3 +137,69 @@ export interface deliZoneProps {
   city: cityProps;
   commune: communeProps;
 }
+
+export interface ChatMessageProps {
+  id: number;
+  sender: userProps;
+  receiver: userProps;
+  message_text: string;
+  unread: boolean;
+  date: Date;
+}
+
+export interface ChatProps {
+  id: number;
+  participants: userProps[];
+  concerned_order: CahtDefaultOrderProps;
+  messages: ChatMessageProps[];
+}
+export interface CahtDefaultOrderProps {
+  numero_commande: string | undefined;
+  service_id: number;
+  service_name: string;
+  pack_service_id: number;
+  status: string;
+  reference_paiement: string | undefined;
+  status_paiement: string;
+}
+
+/* impression data props */
+export interface ImpressCategoryProps {
+  id: number;
+  libelle: string;
+}
+
+export interface ImpressMetadataProps {
+  id: number;
+  metadata_libelle: string;
+  decsription: string | undefined;
+  data: ImpressMetadataNameProps[];
+}
+
+export interface ImpressMetadataNameProps {
+  id: number;
+  data_name: string;
+  decsription: string | undefined;
+  additional_price: number;
+}
+
+export interface ImpressableProps {
+  id: number;
+  title: string;
+  category: ImpressCategoryProps;
+  base_price: number;
+  cover: StaticImageData;
+  short_description: string;
+  /* metadata: ImpressMetadataProps[]; */
+}
+interface Fulldescription {
+  title: string;
+  desc: string;
+}
+export interface FlyersProps extends ImpressableProps {
+  isFolded: boolean;
+  format: string;
+  type: "UNFOLDED" | "FOLDED";
+  full_description: Fulldescription[];
+  caracteristics: string[];
+}

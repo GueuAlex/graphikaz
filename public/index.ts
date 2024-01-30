@@ -29,6 +29,8 @@ import Blog1 from "./blog1.jpg";
 import Blog2 from "./blog2.jpg";
 import Blog3 from "./blog3.jpg";
 import Blog4 from "./blog4.jpg";
+import Blog5 from "./blog5.jpeg";
+import Blog6 from "./blog6.jpg";
 import Slider from "./slider62.png";
 import Slider61 from "./slider61.png";
 import Slider64 from "./slider64.png";
@@ -54,6 +56,17 @@ import Editing from "./editing.gif";
 import Imgold from "./imgold.png";
 import LogoLight from "./logo_light.png";
 import LogoColor from "./logo_color.jpg";
+import EmptyChat1 from "./empty-chat1.png";
+import EmptyChat2 from "./empty-chat2.png";
+import PSlide1 from "./p-slide1.png";
+import PSlide2 from "./p-slide2.png";
+import PSlide3 from "./p-slide3.png";
+import PSlide4 from "./p-slide4.png";
+import PSlide5 from "./p-slide5.png";
+import Imprime from "./imprime.jpg";
+import Flyers from "./flyer-express.jpeg";
+import Affiche from "./affiche.jpeg";
+import GraphikazDesign from "./graphikaz-design.png";
 
 export {
   Digifaz,
@@ -88,6 +101,8 @@ export {
   Blog2,
   Blog3,
   Blog4,
+  Blog5,
+  Blog6,
   Slider,
   Slider53,
   Slider61,
@@ -112,4 +127,15 @@ export {
   Imgold,
   LogoLight,
   LogoColor,
+  EmptyChat1,
+  EmptyChat2,
+  PSlide1,
+  PSlide2,
+  PSlide3,
+  PSlide4,
+  PSlide5,
+  Imprime,
+  Flyers,
+  Affiche,
+  GraphikazDesign,
 };

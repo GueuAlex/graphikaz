@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import LoadingBtn from "@/reutilisables/loading_btn";
+import { toast, ToastContainer } from "react-toastify";
 
 //type SetIsLoginFunction = (newValue: string) => void;
 const Login = (/* { setState }: { setState: SetIsLoginFunction } */) => {
@@ -25,15 +26,19 @@ const Login = (/* { setState }: { setState: SetIsLoginFunction } */) => {
       email: userInfo.email,
       password: userInfo.password,
       redirect: false,
-    }).then(() => {
+    }).then((response) => {
+      if (response?.status != 200) {
+        toast("Email ou mot de passe incorrect");
+      }
       setLoading(false);
     });
-    console.log(response);
+    //console.log(response.json());
     console.log(data);
   };
 
   return (
     <div className="auth-card">
+      <ToastContainer />
       <div className="logo-underline">
         <h1>GRAPHIKAZ</h1>
         <div className="underline" />

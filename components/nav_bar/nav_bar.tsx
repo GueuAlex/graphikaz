@@ -3,15 +3,14 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import "./nav_bar.scss";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
-import { categories, userMenuTab } from "@/constants";
+import { usePathname, useRouter } from "next/navigation";
+import { userMenuTab } from "@/constants";
 import { signIn, signOut, useSession } from "next-auth/react";
 import SearchBarContents from "@/hoc/search_bar_contents";
 import { User } from "next-auth";
-import { getCategories } from "@/types/api_services";
 import { ApiCategoryProps } from "@/types";
 import Image from "next/image";
-import { LogoColor, LogoLight } from "@/public";
+import { LogoColor } from "@/public";
 
 export default function NavBar({
   categories,
@@ -24,6 +23,7 @@ export default function NavBar({
   const [searchGlassVisible, setSearchGlassVisible] = useState(false); // Nouvel état pour la visibilité de search-glass
 
   const pathname = usePathname();
+
   /* const [categoryList, setData] = useState<ApiCategoryProps[]>([]);
   const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
   async function getCategoriesList() {
@@ -183,12 +183,12 @@ export default function NavBar({
                   }
                 </div>
               </span>
-              {/*  <Link href="/freelancers" className="ml-8">
-                Prestataires
+              <Link href="/impression" className="ml-8">
+                Impression
               </Link>
               <div className="ml-2 hidden rounded-full bg-secondary px-1.5 py-0.5 text-xs text-white sm:block">
                 New
-              </div> */}
+              </div>
               <Link href="#" className="ml-8">
                 À propos
               </Link>
@@ -212,10 +212,12 @@ export default function NavBar({
               ></i>
             </button>
             <div className="hidden lg:ml-8 lg:flex lg:items-center lg:border-l lg:border-slate-900/15 lg:pl-8">
-              {session.status !== "authenticated" ? (
-                <SignButtons />
-              ) : (
+              {session.status === "loading" ? (
+                <span className="loading loading-dots loading-md"></span>
+              ) : session.status === "authenticated" ? (
                 <AvatarContainer user={session.data?.user!} />
+              ) : (
+                <SignButtons />
               )}
             </div>
           </div>
@@ -269,6 +271,11 @@ const SignButtons = () => {
 };
 
 const AvatarContainer = ({ user }: { user: User }) => {
+  const route = useRouter();
+  useEffect(() => {
+    route.prefetch("/dashboard");
+  }, []);
+
   return (
     <div className="avatar-conatainer flex gap-3 items-center relative">
       <div className="avatar online placeholder cursor-pointer">
@@ -289,8 +296,11 @@ const AvatarContainer = ({ user }: { user: User }) => {
                   key={index}
                   className="flex gap-2 flex-row px-4 py-3"
                   onClick={() => {
-                    if (item.label === "Logout") {
+                    if (item.label === "Déconnexion") {
                       signOut();
+                    }
+                    if (item.label === "Tableau de bord") {
+                      route.push("/dashboard");
                     }
                   }}
                 >

@@ -1,11 +1,15 @@
 "use client";
 import "./globals.css";
+/* ion icon */
+/* Core CSS required for Ionic components to work properly */
+import "@ionic/react/css/core.css";
+
 import { Inter } from "next/font/google";
 import { usePathname } from "next/navigation";
 
 import { Footer, NavBar } from "@/components";
 import { SessionProvider } from "next-auth/react";
-import { Component, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchAllData, getCategories } from "@/types/api_services";
 import { ApiCategoryProps, apiServiceProps } from "@/types";
 import Loader from "@/reutilisables/laoder";
@@ -18,7 +22,7 @@ const inter = Inter({ subsets: ["latin"] });
   description: 'Graphikaz 2023 | prestation provider app',
 }; */
 
-const excludedRoutes = ["/auth", "/excluded-page2"];
+const excludedRoutes = ["/auth", "/dashboard"];
 
 export default function RootLayout({
   children,
