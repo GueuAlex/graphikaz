@@ -1,6 +1,6 @@
 // pages/api/notify/[order_id].ts
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "@/lib/prisma";
+import myprisma from "@/lib/prisma";
 
 export default async function handler(
   req: NextApiRequest,
@@ -40,15 +40,15 @@ export default async function handler(
       if (verifyData?.code !== 404) {
         // Effectuez le update vers prisma
 
-        /* const updateOrder = await prisma.impressOrder.update({
+        const updateOrder = await myprisma.impressOrder.update({
           where: { order_number: order_ref as string }, // Spécifiez l'identifiant de la ligne à mettre à jour
           data: {
             // Spécifiez les champs que vous souhaitez mettre à jour et leurs nouvelles valeurs
             checkout_status: verifyData?.data?.status,
             // Ajoutez d'autres champs et valeurs à mettre à jour si nécessaire
           },
-        }); */
-        res.status(201).json("updateOrder");
+        });
+        res.status(201).json(updateOrder);
       } else {
         res.status(400).json({
           success: false,

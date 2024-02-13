@@ -1,6 +1,6 @@
 // Import des modules nécessaires
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "@/lib/prisma";
+import myprisma from "@/lib/prisma";
 
 // Fonction de gestion de la requête
 export default async function handler(
@@ -18,7 +18,7 @@ export default async function handler(
     const formData = req.body;
 
     // Enregistre les données dans la base de données
-    const createdOrder = await prisma.impressOrder.create({ data: formData });
+    const createdOrder = await myprisma.impressOrder.create({ data: formData });
     console.log("commander sauvegardée");
 
     // Répond avec les données nouvellement créées

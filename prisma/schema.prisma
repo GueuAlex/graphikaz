@@ -17,7 +17,7 @@ datasource db {
 // schema.prisma
 
 // Define your model for ImpressOrderProps
-model ImpressOrder {
+model impressOrder {
   id                Int      @id @default(autoincrement())
   user_id           Int
   order_number      String   @unique
