@@ -66,6 +66,7 @@ import {
   FlyersProps,
   ImpressCategoryProps,
   ImpressMetadataNameProps,
+  MetaDataProps,
   PayProps,
   PrestatorProps,
   ServiceProps,
@@ -1286,7 +1287,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr√
   },
 
   {
-    id: 13,
+    id: 14,
     title: "D√©pliant 3 volets 14 x 29,7 cm",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1320,7 +1321,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr√
   },
 
   {
-    id: 14,
+    id: 15,
     title: "D√©pliant 3 volets 10 x 21 cm",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1362,7 +1363,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr√
   },
 
   {
-    id: 15,
+    id: 16,
     title: "D√©pliants 3 volets 21√ó21 cm",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1394,7 +1395,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr√
     ],
   },
   {
-    id: 16,
+    id: 17,
     title: "D√©pliants 3 volets A5",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1426,7 +1427,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr√
     ],
   },
   {
-    id: 17,
+    id: 18,
     title: "Flyers et d√©pliants en forme de carte",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1466,7 +1467,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr√
     ],
   },
   {
-    id: 18,
+    id: 19,
     title: "D√©pliants 3 volets A4",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1526,116 +1527,116 @@ const flyersPageText = [
   },
 ];
 
-const flyersPaperType = [
+const flyersPaperType: MetaDataProps[] = [
   {
     libelle: "Slik",
-    additional_price: 1500,
+    price: 1500,
   },
   {
     libelle: "Gloss",
-    additional_price: 500,
+    price: 500,
   },
   {
     libelle: "Bond (uncoated)",
-    additional_price: 2500,
+    price: 2500,
   },
   {
     libelle: "Pulpe",
-    additional_price: 3400,
+    price: 3400,
   },
   {
     libelle: "Brown Kraft Paper",
-    additional_price: 2000,
+    price: 2000,
   },
   {
     libelle: "Matt Laminated",
-    additional_price: 4250,
+    price: 4250,
   },
   {
     libelle: "Gloss Laminated One Side",
-    additional_price: 3750,
+    price: 3750,
   },
   {
     libelle: "Gloss Laminated Both Sides",
-    additional_price: 4700,
+    price: 4700,
   },
   {
     libelle: "Spot UV Matt Laminated",
-    additional_price: 4100,
+    price: 4100,
   },
   {
     libelle: "Recycled Paper (White)",
-    additional_price: 5700,
+    price: 5700,
   },
   {
     libelle: "Recycled Board (White",
-    additional_price: 6700,
+    price: 6700,
   },
   {
     libelle: "Matt Laminated with Foiling",
-    additional_price: 7000,
+    price: 7000,
   },
 ];
-const flyersPrintingSide = [
+const flyersPrintingSide: MetaDataProps[] = [
   {
     libelle: "Couleur Recto / Verso",
-    additional_price: 2250,
+    price: 2250,
   },
   {
     libelle: "Couleur Recto",
-    additional_price: 1700,
+    price: 1700,
   },
   {
     libelle: "Blanc-noir Recto / Verso",
-    additional_price: 1350,
+    price: 1350,
   },
   {
     libelle: "Blanc-noir Recto",
-    additional_price: 650,
+    price: 650,
   },
 ];
-const flyersPaperWidget = [
+const flyersPaperWidget: MetaDataProps[] = [
   {
     libelle: "90gsm",
-    additonali_price: 550,
+    price: 550,
   },
   {
     libelle: "130gsm",
-    additonali_price: 1050,
+    price: 1050,
   },
   {
     libelle: "170gsm",
-    additonali_price: 1500,
+    price: 1500,
   },
   {
     libelle: "200gsm",
-    additonali_price: 2550,
+    price: 2550,
   },
   {
     libelle: "250gsm",
-    additonali_price: 3450,
+    price: 3450,
   },
   {
     libelle: "300gsm",
-    additonali_price: 3750,
+    price: 3750,
   },
   {
     libelle: "350gsm",
-    additonali_price: 4050,
+    price: 4050,
   },
   {
     libelle: "400gsm",
-    additonali_price: 4800,
+    price: 4800,
   },
 ];
-const flyersPelliculage = [
+const flyersPelliculage: MetaDataProps[] = [
   {
     libelle: "Sans Pelliculage",
-    additional_price: 0,
+    price: 0,
   },
   {
     libelle: "Avec Pelliculage",
-    additional_price: 675,
+    price: 675,
   },
 ];
 

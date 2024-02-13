@@ -1,0 +1,456 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+:root {
+  --primary-color: #ff6b6b;
+  --cat-secondary-color: #5bbb7b;
+  --secondary-dark-color: #453c5c;
+
+  --white-color: #ffffff;
+  --light-bg-color: #f2f3f5;
+  --light-text-color: #7c899a;
+  --border-color: #e5e8ec;
+  --dark-color: #0a021c;
+  --stars-color: #e1c03e;
+
+  --font-small: 13px;
+  --font-smaller: 11px;
+
+  --percent100: 100%;
+  --percent50: 50%;
+
+  --fw3: 300;
+  --fw5: 500;
+  --fw6: 600;
+  --fw7: 700;
+  --fw8: 800;
+
+  --trans-background-color: background-color 0.3s ease-in, color 0.3s ease-in;
+  --trans-background: background-color 0.3s;
+  --trans-color: color 0.3s;
+}
+
+/* *********************************
+************************************
+PAIEMENT SIDE BAR STYLES
+************************************
+************************************/
+.paiement-side-bar {
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  right: 0;
+  width: 50%;
+  float: left;
+  height: 100vh;
+  z-index: 1000;
+  overflow: auto;
+  transition: transform 0.4s, visibility 0.4s;
+  will-change: transform, visibility;
+  background-color: rgb(235, 235, 235);
+  padding: 1.5rem;
+
+  /* side bar container */
+  .paiement-side-bar-container {
+    background-color: white;
+    overflow: visible;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+
+    border-radius: 7px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+
+    /* close btn */
+    .close-btn:hover {
+      background-color: #5bbb7b;
+      color: var(--white-color);
+      cursor: pointer;
+    }
+  }
+  /* WebKit scrollbar styles (Chrome, Safari) */
+  .paiement-side-bar-container::-webkit-scrollbar {
+    width: 0; /* hide scrollbar track */
+  }
+
+  .paiement-side-bar-container::-webkit-scrollbar-thumb {
+    background-color: transparent; /* hide scrollbar thumb */
+  }
+
+  /* content top */
+  .title-top {
+    width: 90%;
+    span {
+      font-weight: 200;
+    }
+    .line {
+      margin: 0.5em;
+      width: 75px;
+      height: 0.5px;
+      background-color: #acacac;
+    }
+  }
+
+  /* content body */
+  .content-body {
+    padding-top: 3rem;
+    padding-left: 1rem;
+    /* *** */
+    .commande-details,
+    .paiement-informatios {
+      flex: 1;
+    }
+    /* command details */
+    .commande-details {
+      .p-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35px;
+        height: 35px;
+        padding: 0.5em;
+        background-color: black;
+        color: white;
+        border-radius: 100%;
+      }
+      .details-content-header small {
+        padding: 0.3em;
+        border-radius: 5px;
+        background-color: #c673003b;
+        color: #c67300;
+      }
+      .details-content-body {
+        .commande-total {
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+          span {
+            font-size: 28px;
+            font-weight: 600;
+            font-family: "Amatic+SC";
+          }
+        }
+        /* img container */
+        .img-container {
+          width: 100%;
+          height: 70px;
+          background-color: rgba(108, 106, 106, 0.023);
+          img.i-impress {
+            border-radius: 5px;
+          }
+
+          .title-caption {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 18px;
+            font-weight: 600;
+            background-color: #0a021c07;
+            padding-left: 0.5rem;
+            margin-right: 0.5rem;
+          }
+        }
+        /* commande list where timeline */
+        .comande-list {
+          margin-top: 2.5rem;
+          .custome-timeline {
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding-left: 1.5em;
+            border-left: 2px dashed var(--cat-secondary-color);
+
+            .this-option-price {
+              padding: 0.5em;
+              border-radius: 5px;
+              font-size: 11px;
+              font-weight: 600;
+              background-color: #5bbb7b1e;
+              color: #469561;
+            }
+          }
+          div.dot {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            left: -1em;
+            width: 30px;
+            height: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--cat-secondary-color);
+            background-color: #5bbb7b45;
+            border-radius: 100%;
+          }
+        }
+      }
+      .copy-right-terms {
+        padding: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+.show-paiement-side-bar {
+  visibility: visible;
+  transform: translateX(0%);
+}
+
+.hide-paiement-side-bar {
+  visibility: hidden;
+  transform: translateX(100%);
+}
+
+/* paie */
+
+.paiement-informatios {
+  .img-container {
+    margin-left: 0.5rem;
+    height: 55px;
+    border-radius: 5px;
+    border: 5px solid var(--border-color);
+    transition: border 0.3s ease;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
+
+    img {
+      height: 50px;
+      width: 100px;
+      /*  width: auto;
+      height: auto; */
+      max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas la largeur du conteneur */
+      max-height: 100%; /* Pour s'assurer que l'image ne dépasse pas la hauteur du conteneur */
+      border-radius: 2px;
+    }
+  }
+  .img-container:hover {
+    border: solid 5px var(--cat-secondary-color);
+  }
+  .active {
+    border: solid 5px var(--cat-secondary-color);
+  }
+  .pay-overlay {
+    background-color: #0a021c0d;
+
+    .selected-check {
+      margin-top: 2px;
+      margin-left: 2px;
+      padding: 0.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 25px;
+      height: 25px;
+      background-color: #5bbb7b;
+      color: white;
+      border-radius: 100%;
+    }
+  }
+}
+
+/*************************
+* CREDIT CARD FORM
+**************************/
+.credit-card-form {
+  button.pay-btn {
+    height: 50px !important;
+  }
+  button.pay-btn-desable {
+    cursor: not-allowed;
+    height: 50px !important;
+    border-color: #b5b5b5 !important;
+    color: #b5b5b5 !important;
+  }
+  button.pay-btn-desable:hover {
+    background-color: white !important;
+  }
+  font-size: 13px;
+  label {
+    color: #69696a;
+  }
+  input {
+    height: 45px !important;
+    width: 100%;
+  }
+
+  .img-list {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    .img {
+      width: 30px;
+      height: 100%;
+    }
+  }
+  .card-number-container {
+    height: 45px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border: 1px solid var(--border-color);
+    border-bottom: none !important;
+
+    input {
+      border: none;
+      height: 40px !important;
+    }
+  }
+
+  .expire-date-and-cvc {
+    width: 100%;
+    div.cvc,
+    div.expire-date {
+      width: 50%;
+      height: 45px;
+
+      input {
+        height: 40px;
+        border-radius: 0px;
+      }
+      .input1 {
+        border-bottom-left-radius: 5px !important ;
+        border-right: none !important;
+      }
+      .input2 {
+        border-bottom-right-radius: 5px !important ;
+      }
+    }
+  }
+}
+
+.editing-container {
+  background-color: #d2d2d272;
+
+  .etditing-text-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    h1 {
+      font-size: 30px;
+      font-weight: 600;
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
+    }
+    p {
+      font-weight: 300;
+    }
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0.5em;
+      height: 2.5rem;
+      padding: 0.75em;
+      background-color: #0a021c;
+      border-radius: 5px;
+      color: white;
+    }
+  }
+}
+.methods-radios {
+  input {
+    border-radius: 100% !important;
+    width: 15px !important;
+    height: 20px !important;
+    margin-right: 5px;
+  }
+  i {
+    background-color: #161022;
+    cursor: pointer;
+    color: white;
+    padding: 2px;
+    font-size: 9px;
+    border-radius: 100%;
+    margin-left: 2px;
+  }
+  div.info-description {
+    position: absolute;
+    z-index: 10;
+    width: 20rem;
+    top: -0.5rem;
+    left: -0.09rem;
+    background-color: #0c0127d0;
+    color: whitesmoke;
+    text-align: center;
+    border-radius: 5px;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none; /* Pour que le contenu caché ne soit pas interactif */
+    transition: opacity 0.3s ease;
+  }
+  /* Style au survol de l'icône i */
+  div.info:hover div.info-description {
+    opacity: 1;
+    pointer-events: auto; /* Restaurer l'interaction au survol */
+  }
+}
+
+.danger {
+  background-color: #a5050521;
+  text-align: center;
+  color: #a50505;
+  border-radius: 5px;
+}
+
+select.select-div {
+  border: 1px solid var(--border-color);
+  border-radius: 5px !important;
+
+  font-weight: 400;
+  color: #52565c;
+}
+
+.lot-config {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  input {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: center;
+  }
+  button {
+    width: 30% !important;
+  }
+}
+
+.printing {
+  .credit-card-form {
+    button {
+      border: 2px solid;
+      border-radius: 5px;
+      width: 100%;
+      margin-top: 0.75rem;
+      transition: ease-in 0.3s all;
+    }
+    button.pay-btn {
+      border-color: #5bbb7b;
+      color: #5bbb7b;
+      font-weight: 600;
+    }
+    button.pay-btn:hover {
+      background-color: #5bbb7b;
+      color: var(--white-color);
+    }
+    input {
+      outline: none t;
+      padding: 0 0 0 0.75rem;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 5px;
+    }
+
+    .card-infos-container {
+      input.card-number-input {
+        border: none !important;
+      }
+    }
+    div.flex-col {
+      margin-bottom: 0.5rem;
+      margin-top: 0.25rem;
+    }
+  }
+}
+.this-option-price {
+  font-family: "Amatic+SC";
+}

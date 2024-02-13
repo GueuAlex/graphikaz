@@ -5,7 +5,7 @@ import "./globals.css";
 import "@ionic/react/css/core.css";
 
 import { Inter } from "next/font/google";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { Footer, NavBar } from "@/components";
 import { SessionProvider } from "next-auth/react";
@@ -29,6 +29,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // prefech rouutes
+  const route = useRouter();
+  useEffect(() => {
+    route.prefetch("/dashboard");
+    route.prefetch("/impression");
+  }, []);
   const currentPath = usePathname();
   const isExcludedRoute = excludedRoutes.includes(currentPath as string);
 

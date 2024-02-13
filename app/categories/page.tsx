@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./categories.scss";
+import "@/styles/checkout_side_bar.scss";
 import { PathnameComponent } from "@/components";
 import { TServiceCard, Wrapper } from "@/reutilisables";
 import { categories } from "@/constants";

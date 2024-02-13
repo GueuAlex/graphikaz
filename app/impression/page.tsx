@@ -2,6 +2,7 @@
 import { PathnameComponent } from "@/components";
 import { Wrapper } from "@/reutilisables";
 import "./printing.scss";
+import "@/styles/checkout_side_bar.scss";
 import React, { ReactNode } from "react";
 import "react-multi-carousel/lib/styles.css";
 import { useState } from "react";
@@ -10,6 +11,7 @@ import { ImpressCategoryProps } from "@/types";
 import { impressCategories } from "@/constants";
 import DefaultView from "./view/default_view";
 import FlyserView from "./view/flyers_view";
+import BusinessCardView from "./view/business_card_view";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -49,7 +51,7 @@ const Impression = () => {
       case "Flyers & Leaflets":
         return <FlyserView />;
       case "Business Cards":
-        return <>Business cards</>;
+        return <BusinessCardView />;
       case "Brochures":
         return <>Brochure</>;
       case "Roller Banners":

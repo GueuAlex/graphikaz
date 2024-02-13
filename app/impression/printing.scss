@@ -139,6 +139,14 @@
   .flyers-view {
     background-image: url("./banners/flyers-cover-PhotoRoom.jpeg");
   }
+  .business-card-view {
+    background-image: url("./banners/business-cards.png");
+  }
+  .banner-caption {
+    font-size: 35px;
+    font-weight: 900;
+    color: var(--white-color);
+  }
 
   /* =======================================================
 =======================tag container =====================
@@ -338,26 +346,22 @@
 
   .selected-flyer-container {
     background-color: #f6f6f6;
-    .go-to-back {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .back-to-menu {
-        margin-left: unset;
-        max-width: 1395px;
-        width: 100%;
-
-        .back {
-          width: max-content;
-          padding: 0.5rem;
-          background-color: #fff;
-          border-radius: 5px;
-          transition: all;
-        }
-        .back:hover {
-          cursor: pointer;
-        }
-      }
+    .go-back {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      width: max-content;
+      padding: 0.25rem;
+      border-radius: 5px;
+      background-color: #00000039;
+      color: var(--white-color);
+      transition: all ease 0.3s;
+    }
+    .go-back:hover {
+      background-color: var(--border-color);
+      color: #000;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      cursor: pointer;
     }
     .selected-flyer {
       .flyer-details {
@@ -589,9 +593,9 @@
                 }
 
                 /* Firefox */
-                input[type="number"] {
+                /*  input[type="number"] {
                   -moz-appearance: textfield;
-                }
+                } */
                 .moin,
                 .plus {
                   width: 70px;
@@ -719,7 +723,7 @@
         .caption-underline {
           display: flex;
           align-items: center;
-          justify-content: start;
+          justify-content: flex-start;
 
           div.caption {
             text-align: left;

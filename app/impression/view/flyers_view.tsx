@@ -36,7 +36,7 @@ const responsive = {
 
 const FlyserView = () => {
   const [selectedFlyer, setSelectedFlyer] = useState<FlyersProps | undefined>(
-    FlyersTab[0]
+    undefined
   );
   const handleMenuChanges = (flyer: FlyersProps) => {
     setSelectedFlyer(flyer);

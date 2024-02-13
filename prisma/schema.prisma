@@ -4,18 +4,55 @@
 generator client {
   provider = "prisma-client-js"
 }
-
+ 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"
+  // Uses connection pooling
+  url = env("POSTGRES_PRISMA_URL")
+  // Uses direct connection, ⚠️ make sure to keep this to `POSTGRES_URL_NON_POOLING`
+  // or you'll have dangling databases from migrations
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model ServiceReview {
-  id Int @id @default(autoincrement())
-  note Int 
-  email String
-  username String
-  comment String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+// schema.prisma
+
+// Define your model for ImpressOrderProps
+model ImpressOrder {
+  id                Int      @id @default(autoincrement())
+  user_id           Int
+  order_number      String   @unique
+  transaction_ref   String?
+  amount            Float
+  ordering_at       DateTime?
+  impressable       String
+  impressable_type  String?
+  impressable_format String?
+  quantity          Int
+  checkout_type     CheckoutType
+  checkout_status   CheckoutStatus
+  order_status      OrderStatus
+  meta_data         Json
 }
+
+enum CheckoutType {
+  CASH
+  HALF
+}
+
+enum CheckoutStatus {
+  ACCEPTED
+  PENDING
+  CANCELLED
+  REFUSED
+}
+
+ enum OrderStatus {
+  COMPLETED
+  PENDING
+  IN_PROCESS
+  CANCELLED
+}
+
+// Define your model for MetaDataProp
+
+

@@ -464,9 +464,11 @@ const MobileMoneyForm = ({
             />
             <span>Cash</span>
             <div className="info">
-              <i className="ri-question-mark"></i>
-              <div className="info-description">
-                Payer la totalité de la commande soit {montant} FCFA
+              <div
+                className="tooltip"
+                data-tip={` Payer la totalité de la commande soit ${montant} FCFA`}
+              >
+                <i className="ri-question-mark"></i>
               </div>
             </div>
           </div>
@@ -482,10 +484,14 @@ const MobileMoneyForm = ({
             />
             <span>50%</span>
             <div className="info">
-              <i className="ri-question-mark"></i>
-              <div className="info-description">
-                Payer 50% de la commande soit {montant / 2} FCFA et payer le
-                reste a la livraison
+              <div
+                className="tooltip"
+                data-tip={` Payer 50% de la commande soit ${
+                  montant / 2
+                } FCFA et payer le
+                reste a la livraison`}
+              >
+                <i className="ri-question-mark"></i>
               </div>
             </div>
           </div>

@@ -1,23 +1,16 @@
-// CreditCardForm.tsx
-
 import { miniatureTab } from "@/constants";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
-// Interface pour définir les propriétés attendues par le composant
-/* interface CreditCardFormProps {
+interface CheckoutCreditCardFormProps {
   montant: number;
   method: string;
-} */
+}
 
-const CreditCardForm = ({
-  montant,
+const CheckoutCreditCardForm: React.FC<CheckoutCreditCardFormProps> = ({
   method,
-}: {
-  montant: number;
-  method: string;
+  montant,
 }) => {
-  //console.log("methods: " + method);
   // États pour stocker les informations du formulaire
   const [cardNumber, setCardNumber] = useState<string>("");
   const [emailAddress, setEmailAddress] = useState<string>("");
@@ -25,44 +18,7 @@ const CreditCardForm = ({
   const [titulaire, setTitulaire] = useState<string>("");
   const [cvc, setCVC] = useState<string>("");
   const [paymentMethod, setPaymentMethod] = useState<string>("Cash");
-
-  // Fonction de gestion de la soumission du formulaire
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Ajoutez ici la logique de traitement du paiement
-    console.log("Email address:", emailAddress);
-    console.log("Card Number:", cardNumber);
-    console.log("Expiry Date:", expiryDate);
-    console.log("CVC:", cvc);
-    console.log("Titulaire:", titulaire);
-    console.log("Payment Method:", paymentMethod);
-
-    // Réinitialisez les champs du formulaire après la soumission
-    setEmailAddress("");
-    setCardNumber("");
-    setExpiryDate("");
-    setCVC("");
-    setTitulaire("");
-    setPaymentMethod("Cash");
-  };
-
-  const handleExpiryDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    const sanitizedValue = inputValue.replace(/[^0-9]/g, ""); // Supprime tous les caractères non numériques
-
-    // Vérifie la longueur de la chaîne
-    if (sanitizedValue.length <= 4) {
-      // Ajoute automatiquement le "/" après les deux premiers caractères
-      setExpiryDate(
-        sanitizedValue
-          .substring(0, 2)
-          .concat(sanitizedValue.length >= 3 ? "/" : "")
-          .concat(sanitizedValue.substring(2, 4))
-      );
-    }
-  };
-
+  ///
   const setCardNumberFormatted = (inputValue: string) => {
     const sanitizedValue = inputValue.replace(/[^0-9]/g, ""); // Supprime tous les caractères non numériques
 
@@ -79,8 +35,24 @@ const CreditCardForm = ({
     setCVC(formattedValue);
   };
 
+  //////
+  const handleExpiryDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    const sanitizedValue = inputValue.replace(/[^0-9]/g, ""); // Supprime tous les caractères non numériques
+
+    // Vérifie la longueur de la chaîne
+    if (sanitizedValue.length <= 4) {
+      // Ajoute automatiquement le "/" après les deux premiers caractères
+      setExpiryDate(
+        sanitizedValue
+          .substring(0, 2)
+          .concat(sanitizedValue.length >= 3 ? "/" : "")
+          .concat(sanitizedValue.substring(2, 4))
+      );
+    }
+  };
   return (
-    <form onSubmit={handleSubmit} className="credit-card-form">
+    <form className="credit-card-form">
       {method === "Carte de Crédit" ? (
         <div className="danger w-full py-2 px-2 text-cente">
           Carte de Crédit est indisponible actuelment
@@ -218,4 +190,4 @@ const CreditCardForm = ({
   );
 };
 
-export default CreditCardForm;
+export default CheckoutCreditCardForm;

@@ -1,6 +1,11 @@
 import { Wrapper } from "@/reutilisables";
-import { FlyersProps } from "@/types";
-import React, { ChangeEvent, useState } from "react";
+import {
+  FlyersProps,
+  ImpressOrderProps,
+  MetaDataProps,
+  deliZoneProps,
+} from "@/types";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import {
   FlyersTab,
@@ -12,10 +17,13 @@ import {
 import { GraphikazDesign, Logo, LogoColor } from "@/public";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { useSession } from "next-auth/react";
+import CheckoutComponent from "@/reutilisables/checkout_component";
+import { getDeliZone } from "@/types/api_services";
 
 interface SecletedFlyerViewProps {
   selectedFlyer: FlyersProps;
-  setSelectedFlyer: (selectedFlyer: FlyersProps) => void;
+  setSelectedFlyer: (selectedFlyer: FlyersProps | undefined) => void;
 }
 const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
   selectedFlyer,
@@ -25,18 +33,25 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
     (flyer) => flyer.type === selectedFlyer.type
   );
   const paragraphs = selectedFlyer.short_description.split("\n");
+
+  //////: gestions des etat
   const [quantity, setQuantity] = useState(25); // Quantité initiale à 25
-  const [printingSidePrice, setPrintingSidePrice] = useState(
-    flyersPrintingSide[0].additional_price
+  const [printingSidePrice, setPrintingSidePrice] = useState<MetaDataProps>(
+    flyersPrintingSide[0]
   );
-  const [paperTypePrice, setPaperTypePrice] = useState(
-    flyersPaperType[0].additional_price
+  const [paperTypePrice, setPaperTypePrice] = useState<MetaDataProps>(
+    flyersPaperType[0]
   ); //);
-  const [paperWidgetPrice, setPaperWidgetPrice] = useState(
-    flyersPaperWidget[0].additonali_price
+  const [paperWidgetPrice, setPaperWidgetPrice] = useState<MetaDataProps>(
+    flyersPaperWidget[0]
   );
-  const [pelliculagePrice, setPelliculagePrice] = useState(
-    flyersPelliculage[0].additional_price
+  const [pelliculagePrice, setPelliculagePrice] = useState<MetaDataProps>(
+    flyersPelliculage[0]
+  );
+
+  const [deliZone, setDeliZone] = useState<deliZoneProps[]>([]);
+  const [selecteddeliZone, setSelectedDeliZone] = useState<deliZoneProps>(
+    deliZone[0]
   );
 
   // Gestionnaire d'événement pour réduire la quantité
@@ -62,35 +77,154 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
   // Calculer le prix total en fonction de la quantité et des prix supplémentaires sélectionnés
   const totalPrice =
     (selectedFlyer.base_price +
-      printingSidePrice +
-      paperTypePrice +
-      paperWidgetPrice +
-      pelliculagePrice) *
-    quantity;
+      printingSidePrice.price +
+      paperTypePrice.price +
+      paperWidgetPrice.price +
+      pelliculagePrice.price) *
+      quantity +
+    parseInt(selecteddeliZone?.montant.toString());
 
   // Gestionnaire d'événement pour mettre à jour les prix supplémentaires sélectionnés et recalculer le prix total
   const handleSelectChange = (
     event: ChangeEvent<HTMLSelectElement>,
-    setter: React.Dispatch<React.SetStateAction<number>>
+    setter: React.Dispatch<React.SetStateAction<MetaDataProps>>
   ) => {
     const additionalPrice = parseFloat(event.target.value);
-    setter(additionalPrice);
+
+    // Supposez que MetaDataProps a un champ appelé additionalPrice
+    setter((prevMetaDataProps) => ({
+      ...prevMetaDataProps,
+      price: additionalPrice,
+    }));
   };
+
+  // session management
+  const session = useSession();
+
+  // afficher le component de paiement
+  const [toggle, setToggle] = useState<boolean>(false);
+
+  ///
+  //////:: delizone //////////
+  const handleSelectZoneChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedId = parseInt(e.target.value, 10);
+    const selectedZone = deliZone.find((zone) => zone.id === selectedId);
+
+    if (selectedZone) {
+      setSelectedDeliZone(selectedZone);
+    }
+  };
+
+  async function getDelizone() {
+    try {
+      const data = await getDeliZone();
+      return data;
+      //console.log(data.at(0)?.libelle);
+      // Faites quelque chose avec les données ici
+    } catch (error) {
+      console.error("Une erreur s'est produite :", error);
+    }
+  }
+  useEffect(() => {
+    getDelizone()
+      .then((data) => {
+        const deliZones: deliZoneProps[] = data!;
+        setDeliZone(deliZones);
+        setSelectedDeliZone(deliZones[0]);
+        // Maintenant, vous pouvez utiliser les données ici
+        //console.log(packData);
+        // setIsloadin(false);
+      })
+      .catch((error) => {
+        // Gérez les erreurs ici
+        console.error("Une erreur s'est produite :", error);
+        //setIsloadin(false);
+      });
+  }, []);
+
+  /// intercepteur du boutton telechargé plus tard et commander
+  const handleClick = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setToggle(true);
+  };
+
+  const order: ImpressOrderProps = {
+    order_number: null,
+    user_id: null,
+    transaction_ref: null,
+    impressable: selectedFlyer.title,
+    impressable_format: selectedFlyer.format,
+    impressable_type: selectedFlyer.type,
+    ordering_at: null,
+    quantity: quantity,
+    amount: totalPrice,
+    checkout_status: null,
+    checkout_type: null,
+    order_status: null,
+    /* deli_zone: selecteddeliZone, */
+    meta_data: {
+      "coté imprimé": printingSidePrice,
+      support: paperTypePrice,
+      "densité du support": paperWidgetPrice,
+      pelliculage: pelliculagePrice,
+    },
+  };
+
   return (
     <div className="selected-flyer-container">
-      <div className="go-to-back">
-        <div className="back-to-menu">
-          {" "}
-          <div className="back">{"<-- Retour"}</div>{" "}
+      <ToastContainer />
+      {/* paiement part */}
+      <div className={`${toggle ? "show-overlay" : ""} overlay`}></div>
+      <aside
+        className={`${
+          toggle ? "show-paiement-side-bar" : "hide-paiement-side-bar"
+        } paiement-side-bar`}
+      >
+        <div className="paiement-side-bar-container">
+          {session.status === "unauthenticated" ? (
+            <div className="register-or-login-invitation container flex justify-center items-center mt-8">
+              <div className="p-3 font-light text-[12px]">
+                Veuillez vous{" "}
+                <a href="/auth?et=login" className=" text-blue-700">
+                  connecter
+                </a>{" "}
+                ou{" "}
+                <a href="/auth?et=signin" className=" text-blue-700">
+                  créez un compte
+                </a>{" "}
+                c'est simple et rapide{" "}
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          {/* paiement card body */}
+          {/* <PaiementCardBody
+              updateToggle={updateToggle}
+              defaultPack={selectedPack}
+              service={service}
+            /> */}
+          <CheckoutComponent
+            order={order}
+            updateToggle={setToggle}
+            selected_flyer={selectedFlyer}
+            delizone={selecteddeliZone}
+          />
+          {/* end paiement card body */}
         </div>
-      </div>
+      </aside>
+      {/* paiement part end */}
       <div className="selected-flyer w-full relative flex justify-center">
-        <ToastContainer />
-
         <div className="flyer-details ">
           <div className="flyer-details-left  flex-1">
             <div className="sticky-left ">
-              <div className="cover-container w-full">
+              <div className="cover-container w-full relative">
+                <div
+                  className="go-back"
+                  onClick={() => setSelectedFlyer(undefined)}
+                >
+                  {"<- Retour"}
+                </div>
                 <Image src={selectedFlyer.cover} alt={selectedFlyer.title} />
               </div>
               <div className="unselected-container">
@@ -113,7 +247,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                           <div className="flex flex-col gap-[-0.5rem]">
                             <strong>
                               {flyer.base_price}
-                              <sup>₣</sup>{" "}
+                              <span className="text-[10px]"> F CFA</span>{" "}
                             </strong>
                             <small>zero rated for VAT</small>
                           </div>
@@ -162,7 +296,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
               <div className="princing-bold flex flex-col gap-[-0.5rem]">
                 <strong>
                   {selectedFlyer.base_price}
-                  <sup>₣</sup>{" "}
+                  <span className="text-[12px]">F CFA</span>{" "}
                 </strong>
                 <small>zero rated for VAT</small>
               </div>
@@ -183,7 +317,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
             </div>
             {/* form */}
             <div className="form w-full">
-              <form action="" className="w-full">
+              <form action="" className="w-full" onSubmit={handleClick}>
                 <div className="quantity-container w-full">
                   <label htmlFor="">Quantité</label>
                   <div className="moin-input-plus">
@@ -222,7 +356,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                     }
                   >
                     {flyersPrintingSide.map((side) => (
-                      <option value={side.additional_price} key={side.libelle}>
+                      <option value={side.price} key={side.libelle}>
                         {side.libelle}
                       </option>
                     ))}
@@ -249,10 +383,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                     }
                   >
                     {flyersPaperType.map((paper) => (
-                      <option
-                        value={paper.additional_price}
-                        key={paper.libelle}
-                      >
+                      <option value={paper.price} key={paper.libelle}>
                         {paper.libelle}
                       </option>
                     ))}
@@ -279,10 +410,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                     }
                   >
                     {flyersPaperWidget.map((weight) => (
-                      <option
-                        value={weight.additonali_price}
-                        key={weight.libelle}
-                      >
+                      <option value={weight.price} key={weight.libelle}>
                         {weight.libelle}
                       </option>
                     ))}
@@ -309,11 +437,28 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                     }
                   >
                     {flyersPelliculage.map((pellicule) => (
-                      <option
-                        value={pellicule.additional_price}
-                        key={pellicule.libelle}
-                      >
+                      <option value={pellicule.price} key={pellicule.libelle}>
                         {pellicule.libelle}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="label-input mt-2">
+                  <label htmlFor="delizone">Zone de livraison</label>
+                  <select
+                    name=""
+                    id="delizone"
+                    className="select select-div"
+                    value={selecteddeliZone?.id || ""}
+                    onChange={(e) => handleSelectZoneChange(e)}
+                  >
+                    {deliZone.map((zone, index) => (
+                      <option value={zone.id} key={index}>
+                        {zone.commune.commune +
+                          " - " +
+                          zone.city.ville +
+                          " - " +
+                          zone.country.pays}
                       </option>
                     ))}
                   </select>
@@ -334,15 +479,24 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                   </p>
                   <div className="price-block">
                     <div className="price-with-deli">
-                      <strong>{totalPrice}₣</strong> TTC avec livraison
+                      <strong>{totalPrice} F CFA</strong> TTC avec livraison
                     </div>
                     <div className="price-without-deli">
-                      <strong>1000₣</strong> TTC sans livraison
+                      <strong>
+                        {totalPrice -
+                          parseInt(selecteddeliZone?.montant.toString())}
+                        {" F CFA"}
+                      </strong>{" "}
+                      TTC sans livraison
                     </div>
-                    <button className="btn first-chirld">
+                    <button
+                      className="btn first-chirld"
+                      type="button"
+                      onClick={() => console.log(JSON.stringify(order))}
+                    >
                       TÉLÉCHARGER VOS FICHIERS ET COMMANDER
                     </button>
-                    <button className="btn">
+                    <button className="btn" type="submit">
                       TÉLÉCHARGER PLUS TARD ET COMMANDER
                     </button>
                   </div>
@@ -382,7 +536,10 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                   <div className="desc">
                     <h3>{desc.title}</h3>
                     {para.map((text, index) => (
-                      <p dangerouslySetInnerHTML={{ __html: text }} />
+                      <p
+                        dangerouslySetInnerHTML={{ __html: text }}
+                        key={index.toString()}
+                      />
                     ))}
                   </div>
                 );

@@ -203,3 +203,43 @@ export interface FlyersProps extends ImpressableProps {
   full_description: Fulldescription[];
   caracteristics: string[];
 }
+
+export interface ImpressOrderProps {
+  order_number: string | null;
+  user_id: number | null;
+  transaction_ref: string | null;
+  amount: number;
+  ordering_at: Date | null;
+  impressable: string;
+  impressable_type: string | null;
+  impressable_format: string | null;
+  quantity: number;
+  checkout_type: CheckoutType | null;
+  checkout_status: CheckoutStatus | null;
+  order_status: OrderStatus | null;
+  meta_data: { [key: string]: MetaDataProps };
+}
+
+export interface MetaDataProps {
+  libelle: string;
+  price: number;
+}
+
+export enum CheckoutType {
+  CASH = "CASH",
+  HALF = "HALF",
+}
+
+export enum CheckoutStatus {
+  ACCEPTED = "ACCEPTED",
+  PENDING = "PENDING",
+  CANCELLED = "CANCELLED",
+  REFUSED = "REFUSED",
+}
+
+export enum OrderStatus {
+  COMPLETED = "COMPLETED",
+  PENDING = "PENDING",
+  IN_PROCESS = "IN_PROCESS",
+  CANCELLED = "CANCELLED",
+}
