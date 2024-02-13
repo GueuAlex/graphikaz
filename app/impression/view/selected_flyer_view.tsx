@@ -36,16 +36,14 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
 
   //////: gestions des etat
   const [quantity, setQuantity] = useState(25); // Quantité initiale à 25
-  const [printingSidePrice, setPrintingSidePrice] = useState<MetaDataProps>(
+  const [printingSide, setPrintingSide] = useState<MetaDataProps>(
     flyersPrintingSide[0]
   );
-  const [paperTypePrice, setPaperTypePrice] = useState<MetaDataProps>(
-    flyersPaperType[0]
-  ); //);
-  const [paperWidgetPrice, setPaperWidgetPrice] = useState<MetaDataProps>(
+  const [paperType, setPaperType] = useState<MetaDataProps>(flyersPaperType[0]); //);
+  const [paperWidget, setPaperWidget] = useState<MetaDataProps>(
     flyersPaperWidget[0]
   );
-  const [pelliculagePrice, setPelliculagePrice] = useState<MetaDataProps>(
+  const [pelliculage, setPelliculage] = useState<MetaDataProps>(
     flyersPelliculage[0]
   );
 
@@ -77,25 +75,35 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
   // Calculer le prix total en fonction de la quantité et des prix supplémentaires sélectionnés
   const totalPrice =
     (selectedFlyer.base_price +
-      printingSidePrice.price +
-      paperTypePrice.price +
-      paperWidgetPrice.price +
-      pelliculagePrice.price) *
+      printingSide.price +
+      paperType.price +
+      paperWidget.price +
+      pelliculage.price) *
       quantity +
     parseInt(selecteddeliZone?.montant.toString());
 
   // Gestionnaire d'événement pour mettre à jour les prix supplémentaires sélectionnés et recalculer le prix total
   const handleSelectChange = (
     event: ChangeEvent<HTMLSelectElement>,
-    setter: React.Dispatch<React.SetStateAction<MetaDataProps>>
+    setter: React.Dispatch<React.SetStateAction<MetaDataProps>>,
+    metaDataList: MetaDataProps[]
   ) => {
-    const additionalPrice = parseFloat(event.target.value);
-
-    // Supposez que MetaDataProps a un champ appelé additionalPrice
-    setter((prevMetaDataProps) => ({
-      ...prevMetaDataProps,
-      price: additionalPrice,
-    }));
+    const selectedValue = event.target.value;
+    const selectedMetaData = metaDataList.find(
+      (metaData) => metaData.libelle === selectedValue
+    );
+    if (selectedMetaData) {
+      const updatedMetaData = {
+        ...selectedMetaData,
+      };
+      /* const updatedMetaDataList = metaDataList.map((metaData) =>
+        metaData.libelle === selectedValue ? updatedMetaData : metaData
+      ); */
+      setter(updatedMetaData);
+      console.log(updatedMetaData);
+      // Vous pouvez également mettre à jour le state avec la liste mise à jour si nécessaire
+      // setMetaDataList(updatedMetaDataList);
+    }
   };
 
   // session management
@@ -163,10 +171,10 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
     order_status: null,
     /* deli_zone: selecteddeliZone, */
     meta_data: {
-      "coté imprimé": printingSidePrice,
-      support: paperTypePrice,
-      "densité du support": paperWidgetPrice,
-      pelliculage: pelliculagePrice,
+      "coté imprimé": printingSide,
+      support: paperType,
+      "densité du support": paperWidget,
+      pelliculage: pelliculage,
     },
   };
 
@@ -352,11 +360,15 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                   <select
                     className=" w-full select"
                     onChange={(event) =>
-                      handleSelectChange(event, setPrintingSidePrice)
+                      handleSelectChange(
+                        event,
+                        setPrintingSide,
+                        flyersPrintingSide
+                      )
                     }
                   >
                     {flyersPrintingSide.map((side) => (
-                      <option value={side.price} key={side.libelle}>
+                      <option value={side.libelle} key={side.libelle}>
                         {side.libelle}
                       </option>
                     ))}
@@ -379,11 +391,11 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                   <select
                     className=" w-full select"
                     onChange={(event) =>
-                      handleSelectChange(event, setPaperTypePrice)
+                      handleSelectChange(event, setPaperType, flyersPaperType)
                     }
                   >
                     {flyersPaperType.map((paper) => (
-                      <option value={paper.price} key={paper.libelle}>
+                      <option value={paper.libelle} key={paper.libelle}>
                         {paper.libelle}
                       </option>
                     ))}
@@ -406,11 +418,15 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                   <select
                     className=" w-full select"
                     onChange={(event) =>
-                      handleSelectChange(event, setPaperWidgetPrice)
+                      handleSelectChange(
+                        event,
+                        setPaperWidget,
+                        flyersPaperWidget
+                      )
                     }
                   >
                     {flyersPaperWidget.map((weight) => (
-                      <option value={weight.price} key={weight.libelle}>
+                      <option value={weight.libelle} key={weight.libelle}>
                         {weight.libelle}
                       </option>
                     ))}
@@ -433,11 +449,15 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                   <select
                     className=" w-full select"
                     onChange={(event) =>
-                      handleSelectChange(event, setPelliculagePrice)
+                      handleSelectChange(
+                        event,
+                        setPelliculage,
+                        flyersPelliculage
+                      )
                     }
                   >
                     {flyersPelliculage.map((pellicule) => (
-                      <option value={pellicule.price} key={pellicule.libelle}>
+                      <option value={pellicule.libelle} key={pellicule.libelle}>
                         {pellicule.libelle}
                       </option>
                     ))}
