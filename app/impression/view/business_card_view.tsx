@@ -1,11 +1,56 @@
-import { flyersPageText } from "@/constants";
+import { bcardTab, flyersPageText } from "@/constants";
 import { Wrapper } from "@/reutilisables";
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
+import { BcardProps } from "@/types";
+import SelectedBcardView from "./selected_bcard_view";
+
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+const bcardByFinish: BcardProps[] = bcardTab.filter(
+  (bcard) => bcard.type == "BY FINISH"
+);
+const bcardByType: BcardProps[] = bcardTab.filter(
+  (bcard) => bcard.type == "BY TYPE"
+);
 
 const BusinessCardView = () => {
+  const [selectedBcard, setSelectedBcard] = useState<BcardProps | undefined>(
+    undefined
+  );
+  const handleMenuChanges = (bcard: BcardProps) => {
+    setSelectedBcard(bcard);
+  };
+
+  if (selectedBcard) {
+    return (
+      <SelectedBcardView
+        selectedBcard={selectedBcard}
+        setSelectedFlyer={setSelectedBcard}
+      />
+    );
+  }
+
   return (
     <>
       <div className="bannerss relative flex justify-center items-center">
@@ -16,53 +61,53 @@ const BusinessCardView = () => {
       {/* Banner  */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>FLYERS SANS VOLETS</h2>
-          {/*  <Carousel
-        responsive={responsive}
-        autoPlay={true}
-        infinite={true}
-        className=" justify-normal"
-        itemClass="carou-items"
-      >
-        {unfoldedFlyers.map((flyer, index) => (
-          <div
-            className="carou-item w-full h-full flex justify-center items-center"
-            onClick={() => handleMenuChanges(flyer)}
+          <h2>CARTES DE VISITE PAR FINITION</h2>
+          <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            infinite={true}
+            className=" justify-normal"
+            itemClass="carou-items"
           >
-            <div className="test">
-             
-              <Image src={flyer.cover} alt={flyer.title} />
-            </div>
-            <p className="w-full h-full text-center pt-1">{flyer.title}</p>
-          </div>
-        ))}
-      </Carousel> */}
+            {bcardByFinish.map((bcard, index) => (
+              <div
+                key={index}
+                className="carou-item w-full h-full flex justify-center items-center"
+                onClick={() => handleMenuChanges(bcard)}
+              >
+                <div className="test">
+                  <Image src={bcard.cover} alt={bcard.title} />
+                </div>
+                <p className="w-full h-full text-center pt-1">{bcard.title}</p>
+              </div>
+            ))}
+          </Carousel>
         </div>
       </Wrapper>
       {/* unfolded  flyers */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>FLYERS AVEC VOLETS</h2>
-          {/* <Carousel
-        responsive={responsive}
-        autoPlay={true}
-        infinite={true}
-        className=" justify-normal"
-        itemClass="carou-items"
-      >
-        {foldedFlyers.map((flyer, index) => (
-          <div
-            className="carou-item w-full h-full flex justify-center items-center"
-            onClick={() => handleMenuChanges(flyer)}
+          <h2>CARTES DE VISITE PAR TYPE</h2>
+          <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            infinite={true}
+            className=" justify-normal"
+            itemClass="carou-items"
           >
-            <div className="test">
-              
-              <Image src={flyer.cover} alt={flyer.title} />
-            </div>
-            <p className="w-full h-full text-center pt-1">{flyer.title}</p>
-          </div>
-        ))}
-      </Carousel> */}
+            {bcardByType.map((bcard, index) => (
+              <div
+                key={index}
+                className="carou-item w-full h-full flex justify-center items-center"
+                onClick={() => handleMenuChanges(bcard)}
+              >
+                <div className="test">
+                  <Image src={bcard.cover} alt={bcard.title} />
+                </div>
+                <p className="w-full h-full text-center pt-1">{bcard.title}</p>
+              </div>
+            ))}
+          </Carousel>
         </div>
       </Wrapper>
       {/* Folded flyers */}

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import { FlyersProps, ImpressOrderProps, deliZoneProps } from "@/types";
+import {
+  BcardProps,
+  FlyersProps,
+  ImpressOrderProps,
+  deliZoneProps,
+} from "@/types";
 import { payMethodsTab } from "@/constants";
 import CheckoutMobileForm from "./checkout_mobile_form";
 import CheckoutCreditCardForm from "./checkout_credit_card_form";
@@ -8,13 +13,13 @@ import CheckoutCreditCardForm from "./checkout_credit_card_form";
 interface CheckoutComponentProps {
   updateToggle: (value: boolean) => void;
   order: ImpressOrderProps;
-  selected_flyer: FlyersProps;
+  impressable: FlyersProps | BcardProps;
   delizone: deliZoneProps | undefined;
 }
 
 const CheckoutComponent: React.FC<CheckoutComponentProps> = ({
   updateToggle,
-  selected_flyer,
+  impressable,
   order,
   delizone,
 }) => {
@@ -44,14 +49,14 @@ const CheckoutComponent: React.FC<CheckoutComponentProps> = ({
           </p> */}
             <div className="img-container flex gap-1">
               <Image
-                src={selected_flyer.cover}
-                alt={selected_flyer.title}
+                src={impressable.cover}
+                alt={impressable.title}
                 width={80}
                 height={80}
                 className=""
               />
               <div className="flex-1 h-full title-caption">
-                {selected_flyer.title}
+                {impressable.title}
               </div>
             </div>
             {/* service title */}

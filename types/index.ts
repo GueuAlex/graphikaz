@@ -204,6 +204,13 @@ export interface FlyersProps extends ImpressableProps {
   caracteristics: string[];
 }
 
+export interface BcardProps extends ImpressableProps {
+  formats: MetaDataProps[];
+  full_description: Fulldescription[];
+  caracteristics: string[];
+  type: "BY FINISH" | "BY TYPE";
+}
+
 export interface ImpressOrderProps {
   order_number: string | null;
   user_id: number | null;

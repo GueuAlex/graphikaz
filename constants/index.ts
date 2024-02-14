@@ -36,6 +36,23 @@ import {
   Miniature2,
 } from "@/public";
 import {
+  Bcard1,
+  Bcard10,
+  Bcard11,
+  Bcard12,
+  Bcard13,
+  Bcard14,
+  Bcard15,
+  Bcard2,
+  Bcard3,
+  Bcard4,
+  Bcard5,
+  Bcard6,
+  Bcard7,
+  Bcard8,
+  Bcard9,
+} from "@/public/b_card_img";
+import {
   Flyers15x15,
   Flyers21x21,
   FlyersA3,
@@ -57,6 +74,7 @@ import {
   FoldedMap,
 } from "@/public/flyers_img";
 import {
+  BcardProps,
   BlogProps,
   CahtDefaultOrderProps,
   CategoryProps,
@@ -1640,6 +1658,645 @@ const flyersPelliculage: MetaDataProps[] = [
   },
 ];
 
+/*******************************************************
+ * ****************** carte de visites config **********
+ *******************************************************/
+
+/************* meta data config ************/
+const bcardFormats: MetaDataProps[] = [
+  {
+    libelle: "85 x 55 mm (Standard)",
+    price: 750,
+  },
+  {
+    libelle: "85 x 25 mm (Mini)",
+    price: 550,
+  },
+  {
+    libelle: "55 x 55 mm (Square)",
+    price: 950,
+  },
+  {
+    libelle: "89 x 51 mm (Americain)",
+    price: 850,
+  },
+  {
+    libelle: "88 x 55 mm (Alternative)",
+    price: 350,
+  },
+  {
+    libelle: "80 x 50 mm (Petite)",
+    price: 650,
+  },
+  {
+    libelle: "90 x 55 mm (longue)",
+    price: 850,
+  },
+];
+
+const bcardPaperColors: MetaDataProps[] = [
+  {
+    libelle: "Or",
+    price: 700,
+  },
+  {
+    libelle: "Argenté",
+    price: 750,
+  },
+  {
+    libelle: "Or rose",
+    price: 1000,
+  },
+  {
+    libelle: "Or brillant",
+    price: 1200,
+  },
+  {
+    libelle: "Vert",
+    price: 350,
+  },
+  {
+    libelle: "Bleu",
+    price: 500,
+  },
+  {
+    libelle: "Rouge",
+    price: 550,
+  },
+  {
+    libelle: "Turquoise",
+    price: 750,
+  },
+  {
+    libelle: "Noir",
+    price: 250,
+  },
+];
+
+const bcardRadius: MetaDataProps[] = [
+  {
+    libelle: "Bordures ronds",
+    price: 450,
+  },
+  {
+    libelle: "Bordures carrées",
+    price: 0,
+  },
+];
+
+const bcardOptions: MetaDataProps[] = [
+  {
+    libelle: "Economie",
+    price: 0,
+  },
+  {
+    libelle: "Plastifié",
+    price: 250,
+  },
+  {
+    libelle: "Pâte à papier",
+    price: 350,
+  },
+  {
+    libelle: "Texturé",
+    price: 550,
+  },
+  {
+    libelle: "Métallique",
+    price: 650,
+  },
+  {
+    libelle: "Spot UV",
+    price: 750,
+  },
+  {
+    libelle: "Kraft",
+    price: 750,
+  },
+  {
+    libelle: "Feuille d'aluminium",
+    price: 1400,
+  },
+  {
+    libelle: "Triple couche",
+    price: 900,
+  },
+];
+
+/************* b-cards ************/
+const bcardTab: BcardProps[] = [
+  {
+    id: 1,
+    title: "Cartes de visite bon marché",
+    formats: bcardFormats,
+    type: "BY FINISH",
+    base_price: 1500,
+    category: impressCategories[2],
+    cover: Bcard1,
+    short_description: `Obtenir le meilleur retour sur investissement est toujours une priorité pour les entreprises, mais une carte de visite bien conçue et parfaitement imprimée est essentielle pour établir des contacts et développer de nouvelles relations. Heureusement, des cartes de visite bon marché ne sont pas forcément synonymes de mauvaise qualité.
+
+    En proposant une large gamme de formats sur un papier populaire non laminé, nous sommes en mesure de maintenir une qualité d'impression élevée sur une carte de visite abordable qui ne vous décevra pas.
+    
+    Chaque fois que vous commandez chez Solopress, vous bénéficiez de prix bas, de délais d'exécution rapides et d'une livraison fiable en France. L'emballage en marque blanche est standard, et l'option de compensation carbone vous permet de faire votre part pour l'environnement.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite à bas prix",
+        desc: `Restez à l'esprit de vos clients et ouvrez de nouvelles voies de communication sans vous ruiner grâce à l'impression de cartes de visite à bas prix de Solopress.
+
+      Cette gamme de cartes économiques associe un prix avantageux à une impression de haute qualité, ce qui vous permet d'impressionner vos clients ou de faire passer le message lors d'événements de réseautage sans avoir à dépenser beaucoup d'argent. Vous pouvez ainsi communiquer vos coordonnées en toute confiance, en sachant que vous avez fait un choix judicieux et sans compromis.
+      
+      Choisissez votre format et votre design pour des cartes de visite bon marché, en recto ou en recto verso. Utilisez les modèles de conception en ligne de notre outil Créez votre propre carte pour produire des cartes de visite personnalisées avec des éléments graphiques et des mises en page éprouvés. Nous pouvons vous aider à créer des designs personnalisés en couleur, afin que vous puissiez être sûr que votre carte est unique.
+      
+      Si vous êtes en panne d'inspiration, notre équipe de designers internes est là pour vous aider à concrétiser votre vision. Une fois que vous serez satisfait de votre maquette, nous nous mettrons immédiatement au travail pour imprimer votre nouvelle carte de visite.
+      
+      Pour des cartes de visite britanniques bon marché avec livraison gratuite, il n'y a rien de plus simple que de commander en ligne avec nous.`,
+      },
+    ],
+    caracteristics: [
+      "Carte de visite à finition lisse en soie 400gsm",
+      "Afficher le texte avec des détails et des couleurs vives",
+      "Acheter des tailles standard, mini, carrées ou autres",
+    ],
+  },
+
+  {
+    id: 2,
+    title: "Cartes de visite plastifiées",
+    formats: bcardFormats,
+    type: "BY FINISH",
+    base_price: 1200,
+    category: impressCategories[2],
+    cover: Bcard2,
+    short_description: `Ajoutez de l'éclat à votre présentation grâce à la gamme de cartes de visite plastifiées de Solopress. Disponibles en différents formats et finitions, nous pouvons vous aider à faire en sorte que votre prochain événement de réseautage se déroule aussi bien que la sensation de ces cartes brillantes qui attirent l'attention.
+
+    <strong>Disponibles en :</strong>
+    Pelliculage mat - soyeux et lisse au toucher, il adoucit les images.
+    Pelliculage brillant - Finition ultra brillante, les couleurs de l'œuvre d'art apparaissent plus vives.
+    Pelliculage Velvet Soft-Touch - Comme une peau de pêche, les couleurs paraissent plus riches.
+    
+    Des prix avantageux, une livraison gratuite et efficace au Royaume-Uni et des délais d'exécution rapides font partie de l'expérience Solopress. Les emballages en marque blanche sont parfaits pour l'impression par des tiers, et notre option de compensation carbone favorise l'impression respectueuse de l'environnement.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite plastifiées à bas prix",
+        desc: `L'ajout d'un pelliculage lorsque vous imprimez des cartes de visite offre un niveau de protection solide qui garantira leur longévité.
+
+        Le type de pelliculage choisi dépend de l'impact que vous souhaitez avoir sur le destinataire. Les cartes de visite pelliculées brillantes sont brillantes et attirent l'attention, tandis que les cartes de visite pelliculées velours sont très douces au toucher.
+        
+        Les cartes de visite plastifiées mates restent toutefois notre finition la plus couramment commandée en raison de leur aspect général et de l'équilibre parfait entre performance et présentation.
+        
+        Quelle que soit l'option choisie, le pelliculage peut être appliqué sur une ou deux faces,
+        
+        Utilisez l'un de nos modèles de cartes de visite gratuits pour créer votre maquette et soumettez-la nous en ligne lorsque vous passez votre commande. Vous pouvez également faire appel à notre équipe de concepteurs pour vous aider à obtenir un produit de haute qualité, avec une livraison gratuite pour chaque commande, pour couronner notre processus simple.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 3,
+    title: "Cartes de visite Spot UV",
+    type: "BY FINISH",
+    formats: bcardFormats,
+    base_price: 1400,
+    category: impressCategories[2],
+    cover: Bcard3,
+    short_description: `Add a touch of gloss with Spot UV Business Cards. Our jet varnish process can print details as fine as 0.5mm, enabling raised lettering in a gloss finish, or a logo that shines out from its background.
+
+    Your varnished area doesn't even need to correspond to your printed artwork. A pattern, image or area defined solely in UV varnish can have a subtle yet striking effect on spot gloss Business Cards.
+    
+    Every time you order from Solopress, you'll benefit from low prices, rapid turnarounds, and trustworthy UK delivery. White label packaging comes as standard, and the option for carbon offsetting lets you do your bit for the environment.
+    
+    How to supply artwork: Please supply all artwork in one PDF document, with pages for conventional colour print in CMYK, followed by separate pages for spot UV areas indicated by areas in solid black in a vector format. When you come to upload your artwork, please use the NOTES field to let us know how you’ve arranged your PDF (e.g. page 1: Side 1 CMYK, page 2: Side 2 CMYK, page 3: Side 1 Spot UV).`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite Spot Gloss à bas prix",
+        desc: `Ajoutez un impact visuel à vos cartes de visite grâce à des éléments UV ponctuels qui font ressortir les éléments clés de votre conception dans un vernis très brillant. L'impression de cartes de visite en UV spot ajoute une touche inoubliable à votre première rencontre.
+
+        Disponible dans une gamme de formats sur papier pelliculé mat de 400 g/m², vous pouvez personnaliser chaque aspect de votre carte de visite, y compris l'effet de pelliculage. Restez simple ou inondez-les d'informations en impression simple ou double face.
+        
+        Utilisez nos modèles de cartes de visite Spot Gloss en relief pour vous aider à concevoir des maquettes prêtes à être imprimées. Les illustrations Spot UV doivent être fournies sur des couches séparées : notre guide d'assistance et notre vidéo didactique sur ce sujet contiennent des informations utiles pour éviter les pièges les plus courants lors de la création d'illustrations pour Spot UV.
+        
+        Vous pouvez également demander à notre équipe de concepteurs de vous aider à créer une carte de visite Spot UV en relief sur mesure.
+        
+        Une fois la maquette finalisée, votre commande imprimée et emballée, la livraison gratuite au Royaume-Uni vient couronner ce processus rapide et pratique.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 4,
+    title: "Cartes de visite en pâte à papier",
+    type: "BY FINISH",
+    formats: bcardFormats,
+    base_price: 1700,
+    category: impressCategories[2],
+    cover: Bcard4,
+    short_description: `Si vous ne souhaitez pas transmettre vos coordonnées sur papier glacé, la gamme de cartes de visite en pâte à papier de Solopress pourrait bien être ce qu'il vous faut. Exprimez votre côté accessible avec des cartes de visite à la texture naturelle, imprimées sur un papier 380mic non couché.
+
+    Les cartes de visite en pâte à papier sont disponibles avec un large éventail de possibilités de personnalisation. Vous pouvez choisir parmi plusieurs formats différents, les faire imprimer en simple ou double face, et vous pouvez également choisir entre des coins carrés ou arrondis.
+    
+    Pour chaque commande passée auprès de Solopress, vous bénéficiez de prix avantageux, d'une livraison fiable au Royaume-Uni et de délais rapides. Profitez d'un emballage en marque blanche et de la possibilité de compenser les émissions de carbone pour une impression respectueuse de l'environnement.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite en pâte à papier à bas prix",
+        desc: `Avec leur texture naturelle et non finie, les cartes de visite en pâte à papier offrent une alternative simple aux cartes de visite plastifiées plus formelles. Cette surface brute est la toile vierge parfaite pour les marques décontractées qui souhaitent exprimer des valeurs alternatives ou sans prétention.
+
+        Ces cartes sont disponibles dans différentes tailles et avec un choix de coins carrés ou arrondis, apportant un sentiment d'individualité. Laissez vos contacts absorber vos coordonnées et votre marque d'un seul coup d'œil grâce à l'impression simple face, ou optez pour le recto-verso afin de maximiser votre message.
+        
+        Pour faciliter la création de votre carte de visite personnalisée, nous vous proposons des modèles gratuits et téléchargeables à utiliser sur Adobe Creative Cloud, ou sous forme de pdf simple à importer dans votre logiciel de création préféré.
+        
+        Par ailleurs, si vous êtes pressé par le temps ou si vous voulez quelque chose de très spécial, notre équipe de designers est à votre disposition pour vous aider à produire des illustrations qui reflètent votre marque tout en transmettant vos coordonnées.
+        
+        Une fois que vous avez décidé de l'aspect et de la convivialité de votre carte de visite en pâte à papier, envoyez-nous votre commande et nous nous mettrons immédiatement au travail pour l'imprimer.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 5,
+    title: "Cartes de visite écologiques",
+    type: "BY FINISH",
+    base_price: 1100,
+    formats: bcardFormats,
+    category: impressCategories[2],
+    cover: Bcard5,
+    short_description: `Les cartes de visite recyclées reflètent l'essence même de votre marque. Contribuez à la protection de la planète sans compromettre la qualité de l'impression.
+
+    Ces cartes de visite écologiques sont fabriquées à partir de papier 100 % recyclé. Toutes les émissions de carbone produites au cours du processus de fabrication sont compensées par des investissements dans des projets de protection du climat.
+    
+    En imprimant vert, vous faites une déclaration importante sur les engagements et les valeurs de votre entreprise en matière d'environnement.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite en pâte à papier à bas prix",
+        desc: `Avec leur texture naturelle et non finie, les cartes de visite en pâte à papier offrent une alternative simple aux cartes de visite plastifiées plus formelles. Cette surface brute est la toile vierge parfaite pour les marques décontractées qui souhaitent exprimer des valeurs alternatives ou sans prétention.
+
+        Ces cartes sont disponibles dans différentes tailles et avec un choix de coins carrés ou arrondis, apportant un sentiment d'individualité. Laissez vos contacts absorber vos coordonnées et votre marque d'un seul coup d'œil grâce à l'impression simple face, ou optez pour le recto-verso afin de maximiser votre message.
+        
+        Pour faciliter la création de votre carte de visite personnalisée, nous vous proposons des modèles gratuits et téléchargeables à utiliser sur Adobe Creative Cloud, ou sous forme de pdf simple à importer dans votre logiciel de création préféré.
+        
+        Par ailleurs, si vous êtes pressé par le temps ou si vous voulez quelque chose de très spécial, notre équipe de designers est à votre disposition pour vous aider à produire des illustrations qui reflètent votre marque tout en transmettant vos coordonnées.
+        
+        Une fois que vous avez décidé de l'aspect et de la convivialité de votre carte de visite en pâte à papier, envoyez-nous votre commande et nous nous mettrons immédiatement au travail pour l'imprimer.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 6,
+    title: "Cartes de visite en kraft brun",
+    type: "BY FINISH",
+    formats: bcardFormats,
+    base_price: 1100,
+    category: impressCategories[2],
+    cover: Bcard6,
+    short_description: `Affirmez le style unique de votre marque avec les cartes de visite en kraft brun. Leur charme rustique et leur matériau kraft durable en font un produit robuste, parfait pour toute personne ou entreprise souhaitant se démarquer.
+
+    Disponibles dans une gamme de formats populaires, elles offrent suffisamment d'espace pour les détails essentiels et un design vibrant. Plus qu'une simple carte, elles représentent la conscience environnementale, s'alignant sur les clients soucieux de l'environnement grâce à leurs qualités biodégradables et recyclables.
+    
+    Bénéficiez de produits à des prix compétitifs, de délais d'exécution rapides et d'une livraison gratuite dans tout le Royaume-Uni. L'emballage en marque blanche est utilisé en standard. Utilisez notre option de compensation carbone pour minimiser notre impact sur l'environnement.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite en papier kraft à bas prix",
+        desc: `Nous vous présentons nos cartes de visite en kraft brun, une union parfaite entre l'attrait organique et la solidité durable. Ces cartes, mesurant 85 x 55 mm, créent une plateforme distinctive pour votre marque, assurant une impression mémorable à chaque rencontre.
+
+        Les cartes de visite Brown Kraft sont dérivées de "kraft", un mot allemand signifiant "force". Ce mot fait référence à l'histoire durable du papier kraft, introduit à la fin du XIXe siècle et toujours réputé pour sa robustesse aujourd'hui. La solidité du matériau garantit la durabilité de votre carte de visite, ce qui permet à votre message de rester intact et percutant.
+        
+        Ces cartes vont au-delà de la simple fonctionnalité, car elles présentent l'aspect brut et prêt à l'emploi du papier kraft brun non blanchi et non raffiné. Cette allure organique accentue votre design, créant un contraste saisissant avec la toile de fond terreuse. La texture unique ajoute une dimension tactile à vos interactions commerciales et contribue à incarner les aspects naturels et dignes de confiance de votre marque
+        
+        Le choix d'un papier kraft brun souligne votre engagement en faveur du développement durable. Ces cartes, recyclables et biodégradables, trouvent un écho auprès des publics contemporains sensibles à l'environnement et vous présentent comme une marque consciente et responsable.
+        
+        Nos options d'impression de haute qualité et l'outil polyvalent "Créez votre propre carte" facilitent votre créativité et vous permettent de réaliser des conceptions en couleur qui se démarquent. Que vous préfériez une conception recto ou recto-verso, notre gamme de modèles en ligne et notre assistance interne à la conception garantissent un aspect professionnel à vos cartes.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 7,
+    title: "Cartes de visite en aluminium",
+    type: "BY FINISH",
+    formats: bcardFormats,
+    base_price: 1900,
+    category: impressCategories[2],
+    cover: Bcard7,
+    short_description: `Faites briller votre design sur une carte de visite professionnelle à l'aspect luxueux. Les cartes de visite en aluminium mettent en valeur votre marque tout en ajoutant une couche de texture, de définition et de qualité.
+
+    Cultivez des relations d'affaires à long terme grâce à notre impression sur film solide et durable. Choisissez parmi une grande variété de couleurs d'impression, appliquées avec précision pour que vos cartes aient un statut spécial.
+    
+    Comme pour tous nos produits, vous bénéficiez de prix compétitifs, de délais d'exécution rapides et d'une livraison gratuite au Royaume-Uni. Choisissez Solopress pour l'emballage en marque blanche et la possibilité de compenser les émissions de carbone, garantissant ainsi des solutions d'impression durables.
+    
+    <strong>Remarque :</strong> une fois votre commande passée, vous recevrez une épreuve pour approbation. Nous ne pourrons respecter la date de livraison indiquée que si vous nous communiquez votre approbation avant la date limite fixée. Votre date de livraison sera confirmée une fois votre approbation reçue.
+    
+    <strong>Comment fournir la maquette :</strong> Veuillez fournir toutes les illustrations dans un seul document PDF, avec des pages pour l'impression couleur conventionnelle en CMYK, suivies de pages séparées pour les zones de film indiquées par des zones en noir uni dans un format vectoriel. Lorsque vous téléchargez votre maquette, utilisez le champ NOTES pour nous indiquer comment vous avez agencé votre PDF (par exemple, page 1 : Face 1 CMJN, page 2 : Face 2 CMJN, page 3 : Face 1 Foil).`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite avec film plastique à bas prix",
+        desc: `Lorsque vous distribuez vos cartes de visite en aluminium de haute qualité à des cadres ou à des clients potentiels, ils sont immédiatement frappés par le prestige de ce que vous offrez. Elles constituent un excellent moyen d'échanger des coordonnées et de laisser une impression durable qui brille dans l'esprit de ceux qui les reçoivent.
+
+        Ces cartes de visite de luxe montrent à quel point vous prenez les détails au sérieux. Nous prenons également les détails au sérieux, puisque notre dorure peut être appliquée avec une précision allant jusqu'à des lignes fines de 0,5 mm.
+        
+        Personnalisez vos cartes grâce à un large éventail d'options. Outre les cartes de visite en or rose, en argent et en or, nous proposons une variété d'options de couleurs qui attirent l'attention. Choisissez parmi une large sélection de formats de cartes de visite, avec la possibilité d'imprimer en recto ou en recto-verso pour un effet maximal.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 8,
+    title: "Cartes de visite texturées",
+    type: "BY FINISH",
+    base_price: 1900,
+    formats: bcardFormats,
+    category: impressCategories[2],
+    cover: Bcard8,
+    short_description: `Allez à contre-courant et donnez à vos cartes de visite un aspect tactile. Les clients et les contacts sentiront la différence et reconnaîtront immédiatement votre souci du détail et votre engagement en faveur de l'originalité.
+
+    Les cartes de visite texturées vous permettent d'exprimer les valeurs de votre marque sans même prononcer un mot, qu'il s'agisse d'une texture rustique ou d'un motif technique précis. Choisissez parmi notre large gamme de formats pour montrer à quel point votre marque est unique.
+    
+    Chaque commande est assortie de prix bas et d'une livraison gratuite en France. Profitez de délais d'exécution rapides et d'un emballage en marque blanche. Profitez de notre option de compensation carbone pour prouver votre engagement écologique.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite texturées à bas prix",
+        desc: `Sentez la différence grâce à la texture forte, cohérente et de haute qualité que donnent ces cartes de visite.
+
+        Les cartes de visite texturées expriment le soin que vous apportez à votre petite entreprise grâce à la nature individuelle de ces cartes. Cette impression unique et complexe ne manquera pas d'être remarquée par vos clients.
+        
+        Imprimées sur du tweed texturé 400 g/m², ces cartes offrent une solution durable pour communiquer vos coordonnées à vos clients.
+        
+        Ces cartes sont disponibles en impression simple ou double face dans une large sélection de formats de cartes de visite. Choisissez entre un format standard de 85 x 55 mm et un format mini de 85 x 25 mm pour y étaler vos superbes illustrations en couleur.
+        
+        Nous vous donnons le contrôle de votre design. Choisissez entre les coins carrés traditionnels et les coins arrondis spéciaux pour compléter vos cartes de visite texturées.
+        
+        Vous pouvez créer votre propre maquette. Toutefois, n'ayez crainte si la création de vos imprimés n'est pas votre spécialité. Notre équipe de concepteurs internes qualifiés est là pour vous aider si vous avez besoin d'un coup de main.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 9,
+    title: "Cartes de visite métalliques",
+    type: "BY FINISH",
+    base_price: 1900,
+    formats: bcardFormats,
+    category: impressCategories[2],
+    cover: Bcard9,
+    short_description: `Les cartes de visite métallisées brillantes et audacieuses sont une option énergisante pour une gamme polyvalente de marques. Déployées de manière créative, les cartes de visite à finition métallique peuvent servir de nombreuses ambiances.
+
+    Selon la façon dont vous choisissez de présenter votre design, elles peuvent être audacieuses ou ornées, techniques ou glamour, très professionnelles ou très amusantes.
+    
+    Explorez notre gamme de papiers irisés qui donnent de la personnalité à vos données personnelles.
+    
+    Avec des prix bas et une expédition gratuite dans tout le Royaume-Uni, vous bénéficierez d'une livraison rapide et d'un emballage en marque blanche. Chaque commande vous permet de compenser les émissions de carbone associées à votre commande pour une solution d'impression durable.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite métalliques à bas prix",
+        desc: `L'utilisation d'un papier irisé comme toile de fond pour vos cartes de visite métalliques vous donne un avantage, avant même qu'une goutte d'encre ne soit appliquée.
+
+        Les papiers irisés roses et bleus prennent vie en tant qu'arrière-plan ou en tant que support pour une impression contrastée. Vous pouvez même essayer un motif sur toute la surface pour une juxtaposition frappante de couleurs et de textures.
+        
+        Pour ceux qui souhaitent créer leurs propres illustrations, nous mettons à leur disposition une gamme complète de modèles de cartes de visite téléchargeables à utiliser dans Photoshop, Illustrator ou InDesign. Il existe également une version pdf qui peut être importée dans d'autres programmes de conception graphique.
+        
+        Si vous préférez, notre outil "Créez votre propre carte" vous permet de concevoir vos propres cartes de visite en ligne, grâce à une série de modèles prêts à l'emploi auxquels vous pouvez ajouter votre propre logo et vos coordonnées.
+        
+        Pour une expérience de conception professionnelle vraiment personnalisée, vous pouvez choisir de demander à notre équipe de graphistes de créer une carte de visite pour vous à partir de votre cahier des charges.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  /* *****************************
+   * B CARD BY TYPE****************
+   ********************************/
+  {
+    id: 10,
+    title: "Cartes de visite à coins arrondis",
+    type: "BY TYPE",
+    base_price: 1900,
+    formats: bcardFormats,
+    category: impressCategories[2],
+    cover: Bcard10,
+    short_description: `Oubliez les coins nets et optez pour le rétro, l'ultra-moderne ou montrez simplement votre côté plus doux avec les cartes de visite à coins arrondis. Nous proposons des coins arrondis sur une large sélection de notre gamme de cartes de visite, depuis les cartes économiques jusqu'à nos cartes plastifiées les plus populaires.
+
+    Choisissez parmi une vaste sélection de types de papier et réalisez votre superbe design en impression simple ou double face.
+    
+    En commandant chez Solopress, vous bénéficiez de prix avantageux, d'une livraison gratuite au Royaume-Uni et d'un délai d'exécution rapide. L'emballage en marque blanche est standard, et notre option de compensation carbone vous aide à soutenir l'impression durable.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite à coins arrondis à bas prix",
+        desc: `Les cartes de visite Round Corner permettent d'alléger les formalités lors de l'échange d'informations dans le cadre d'événements de réseautage.
+
+        Ces cartes accrocheuses constituent une alternative fantastique pour les marques distinctives qui cherchent à perturber les conventions étouffantes par leur approche originale.
+        
+        Vos cartes de visite à coins arrondis sont disponibles dans un format généreux de 85 x 55 mm et votre design peut être imprimé en simple ou double face. En outre, vous pouvez choisir d'ajouter des coins arrondis à une sélection de notre gamme existante.
+        
+        Imprimez sur une vaste sélection de papiers de haute qualité. Notre variété de textures tactiles comprend le laminé mat, la soie et la pâte à papier, le tout sur une large gamme d'épaisseurs de papier.
+        
+        Vous pouvez imprimer plusieurs versions différentes de vos cartes de visite, de sorte que les collègues sont couverts lorsque vous souhaitez un certain nombre de jeux différents.
+        
+        Nous disposons d'une équipe exceptionnelle de designers internes prêts à produire votre superbe impression si la conception n'est pas dans vos cordes. Vous pouvez également utiliser notre outil de conception en ligne pour créer gratuitement vos propres cartes de visite avec des coins arrondis.`,
+      },
+    ],
+    caracteristics: [
+      "Finition lisse de votre carte de visite",
+      "Taille compacte de 85 x 55 mm pour un partage facile",
+      "Imprimer des cartes recto ou recto-verso",
+    ],
+  },
+
+  {
+    id: 11,
+    title: "Cartes de visite carrées",
+    type: "BY TYPE",
+    base_price: 1300,
+    formats: bcardFormats,
+    category: impressCategories[2],
+    cover: Bcard11,
+    short_description: `Êtes-vous une cheville carrée dans un trou rond ? Les cartes de visite standard ne correspondent pas à votre style ? Les cartes de visite carrées vous offrent l'impression parfaite pour montrer le style unique de votre marque tout en vous présentant sous un jour professionnel.
+
+    Leurs dimensions de 55 x 55 mm vous permettent de vous mettre en valeur tout en laissant de la place aux éléments essentiels. Transformez chaque rencontre en opportunité avec des cartes de visite carrées qui vous démarquent de vos concurrents.
+    
+    Comme pour tous nos produits, vous bénéficiez de prix compétitifs, de délais d'exécution rapides et d'une livraison gratuite en France. Choisissez Solopress pour l'emballage en marque blanche et la possibilité de compenser les émissions de carbone, garantissant ainsi des solutions d'impression durables.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite carrées à bas prix",
+        desc: `Découvrez un outil de réseautage unique avec nos cartes de visite carrées. D'une taille de 55 x 55 mm, ces cartes s'écartent de la norme et offrent une plateforme distinctive pour exprimer l'identité de votre marque.
+
+        Nos cartes de visite carrées ne sont pas seulement uniques par leur forme, elles font également preuve d'originalité. Elles offrent suffisamment d'espace pour vos coordonnées, votre logo et le message de votre marque, garantissant ainsi une impression mémorable.
+        
+        Nos cartes se distinguent par une impression de haute qualité, combinée à une gamme variée de papiers, afin que vous puissiez exprimer votre professionnalisme dans les moindres détails. Choisissez le type de papier et la finition qui vous conviennent le mieux pour compléter votre carte de visite carrée.
+        
+        Consultez les modèles téléchargeables gratuitement ci-dessous pour vous aider à concevoir votre carte dans Photoshop, Illustrator ou InDesign. Vous pouvez également utiliser notre outil "Créez votre propre carte" et concevoir votre carte en ligne avec nous. Si vous avez besoin d'aide pour créer votre maquette, nos concepteurs internes sont prêts à vous aider.
+        
+        Toutes les adresses au Royaume-Uni bénéficient d'une livraison gratuite, ce qui vous permet de vous procurer encore plus facilement ces cartes uniques.`,
+      },
+    ],
+    caracteristics: [
+      "Cartes au format 55 x 55 mm",
+      "Coins carrés",
+      "Choisissez parmi notre gamme complète de papier",
+    ],
+  },
+
+  {
+    id: 12,
+    title: "Mini cartes de visite",
+    type: "BY TYPE",
+    formats: bcardFormats,
+    base_price: 1350,
+    category: impressCategories[2],
+    cover: Bcard12,
+    short_description: `Petites par leur nom mais pas par leur impact, les mini-cartes de visite sont une option puissante pour tout individu ou entreprise. Leur format réduit unique permet de les ranger facilement, ce qui garantit que votre marque est toujours à portée de main. Les mini-cartes de visite sont une solution rentable qui permet de tirer le meilleur parti de chaque réunion ou rencontre fortuite.
+
+    D'une taille de 85 x 25 mm, leur polyvalence va au-delà du réseautage, puisqu'elles peuvent servir de superbes étiquettes de produits, de rappels de rendez-vous ou de cartes de fidélité, offrant ainsi des possibilités infinies. Choisissez des cartes de visite de petite taille pour faire forte impression.
+    
+    Chaque commande est assortie de prix compétitifs, de délais d'exécution rapides et d'une livraison gratuite au Royaume-Uni. Profitez de l'emballage en marque blanche et de l'option de compensation carbone, pour des solutions d'impression durables.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite à bas prix",
+        desc: `Découvrez la puissance de nos mini-cartes de visite, où la taille n'a vraiment pas d'importance. Mesurant 85 x 25 mm, ces cartes vous permettent de vous démarquer lors de chaque interaction. Leur format portable permet de les ranger et de les rendre accessibles facilement, ce qui est parfait pour le professionnel moderne.
+
+        Nos mini-cartes de visite sont peut-être petites, mais elles ont un impact énorme. Malgré leur taille, elles offrent suffisamment d'espace pour vos informations essentielles. Leur design encourage la créativité et vous permet de vous concentrer sur l'essence de votre identité de marque.
+        
+        La combinaison d'une impression de haute qualité et d'options soigneusement sélectionnées en matière de matériaux et de finitions vous permet d'afficher votre professionnalisme au premier coup d'œil. Choisissez parmi notre large sélection de papiers et d'options de pelliculage pour compléter la conception de votre carte de visite.
+        
+        Créez des designs en couleur vraiment uniques grâce à notre outil convivial "Créez votre propre carte". Que vous préfériez une conception recto ou recto-verso, nos modèles de conception en ligne gratuits comportent des éléments graphiques et des mises en page qui ont fait leurs preuves, garantissant ainsi des résultats professionnels.
+        
+        Toutes les cartes de visite imprimées sont livrées gratuitement au Royaume-Uni.`,
+      },
+    ],
+    caracteristics: [
+      "Cartes élégantes de 85 x 25 mm",
+      "Imprimé sur une ou deux faces",
+      "Une option élégante et peu encombrante",
+    ],
+  },
+
+  {
+    id: 13,
+    title: "Cartes de fidélité",
+    type: "BY TYPE",
+    base_price: 1550,
+    formats: bcardFormats,
+    category: impressCategories[2],
+    cover: Bcard13,
+    short_description: `Fidélisez votre marque en récompensant les clients qui reviennent. Lorsque vous offrez un cadeau, un avantage spécial ou une réduction, vous incitez votre clientèle à revenir encore et encore. En établissant une relation de confiance avec les clients qui gagnent leur prix, vous pouvez également les fidéliser longtemps après que leur carte de fidélité a été tamponnée.
+
+    Nous proposons une large gamme de formats afin que vous puissiez personnaliser le nombre d'achats nécessaires à vos clients avant qu'ils ne gagnent leur récompense. Toutes les cartes de fidélité imprimées sont livrées gratuitement au Royaume-Uni.
+    
+    <strong>Remarque :</strong> si vous souhaitez tamponner vos cartes de fidélité, nous vous recommandons de choisir notre papier 380mic Pulp. Tout autre type de papier ne retiendra que l'encre permanente.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de fidélité à bas prix",
+        desc: `Créer une base de clients fidèles peut être un défi. En imprimant des cartes de fidélité, vous rendez ce défi réalisable.
+
+        Si vos clients aiment déjà payer pour quelque chose, fixez-leur un objectif réaliste qui les incite à renouveler leurs achats. Vous constaterez que vous créez ainsi une base de clients fidèles et dévoués, susceptibles de revenir plus souvent.
+        
+        Après tout, les clients qui consomment de la caféine sont plus susceptibles de rester hyperactifs face à la tentation d'une carte de fidélité pour le café.
+        
+        Nous proposons plusieurs types de papier dans un large choix de formats, ce qui vous permet de personnaliser le nombre d'achats que vos clients doivent effectuer avant de recevoir leur récompense.
+        
+        Choisissez le format de votre carte de fidélité, de la carte standard 85 x 55 mm à la carte mini 85 x 25 mm.
+        
+        Imprimez-la en recto ou en recto-verso pour encourager la fidélité de vos clients et maximiser les chances que votre entreprise ou votre café devienne un élément incontournable de leur routine.
+        
+        N'hésitez pas à concevoir votre propre maquette. Toutefois, si vous avez besoin d'aide pour créer votre design, notre talentueuse équipe de designers internes est tout à fait capable de donner vie à votre vision en utilisant la même structure de prix que lorsqu'ils conçoivent des cartes de visite.
+        
+        Chaque commande de cartes de fidélité professionnelles est livrée gratuitement à toutes les adresses au Royaume-Uni.`,
+      },
+    ],
+    caracteristics: [
+      "Cartes de timbres de qualité pour la fidélisation de la clientèle",
+      "Parfait pour les cafés et les détaillants",
+      "Impression simple ou double face",
+    ],
+  },
+
+  {
+    id: 14,
+    title: "Cartes de visite pliées",
+    type: "BY TYPE",
+    base_price: 1550,
+    formats: bcardFormats,
+    category: impressCategories[2],
+    cover: Bcard14,
+    short_description: `Pour les marques distinctives qui ont beaucoup à dire, les cartes de visite pliées offrent deux fois plus d'espace pour travailler, et un point de différence pour vous distinguer de vos concurrents.
+
+    La structure pliée offre la possibilité de faire une grande révélation. Vous pouvez utiliser cet espace de manière créative pour introduire un élément surprise, fournir un texte supplémentaire ou afficher un composant graphique étendu qui aide à exprimer le message de votre marque.
+    
+    Chaque commande est assortie de prix bas et d'une livraison gratuite au Royaume-Uni. Profitez de délais d'exécution rapides et d'un emballage en marque blanche. Profitez de notre option de compensation carbone pour prouver votre engagement écologique.`,
+
+    full_description: [
+      {
+        title: "Cartes de visite pliées à bas prix",
+        desc: `Avec deux fois plus de surface imprimable, l'impression de cartes de visite pliées vous offre tout l'espace supplémentaire dont vous avez besoin pour présenter votre offre et exprimer les valeurs de votre marque.
+
+        Cet espace supplémentaire est inestimable lorsque vous avez beaucoup de choses à dire en plus de vos coordonnées. Si vos arguments de vente ont besoin d'être expliqués, vous disposez de beaucoup d'espace pour allonger le texte. Si votre secteur d'activité met l'accent sur l'aspect visuel, vous pouvez donner à vos concepteurs une plus grande marge de manœuvre pour enrichir votre carte d'une illustration attrayante.
+        
+        Si vous préférez vous charger vous-même de la conception, nous vous proposons de télécharger des modèles de cartes de visite pliées à ouvrir dans Photoshop, Illustrator et InDesign, ou au format PDF.
+        
+        Vous pouvez également consulter notre outil "Créez votre propre carte" et choisir l'un de nos modèles prêts à l'emploi pour créer votre propre carte.
+        
+        Pour l'impression de cartes de visite sur mesure, Solopress dispose également d'une équipe de designers talentueux qui sont toujours prêts à travailler sur votre projet.
+        
+        Nos cartes de visite pliables de haute qualité sont pliées avant l'expédition, prêtes à être pliées. Elles sont fournies à plat et livrées gratuitement au Royaume-Uni.`,
+      },
+    ],
+    caracteristics: [
+      "Différents plis et tailles disponibles",
+      "Fourni à plat et plié en place",
+      "Plus d'espace pour des informations supplémentaires sur votre carte",
+    ],
+  },
+
+  {
+    id: 15,
+    title: "Cartes de visite perforées",
+    type: "BY TYPE",
+    base_price: 1150,
+    formats: bcardFormats,
+    category: impressCategories[2],
+    cover: Bcard15,
+    short_description: `Créez un impact important en combinant le matériel promotionnel de votre marque avec vos propres coordonnées. Utilisez les cartes de visite perforées à deux volets, à la fois pour inspirer les clients avec des illustrations détaillées sur votre entreprise et pour les encourager à vous contacter.
+
+    Chaque commande comprend des prix bas, une livraison fiable au Royaume-Uni et des délais d'exécution rapides. Bénéficiez d'un emballage sans marque, en marque blanche, et de l'option de compensation des émissions de carbone, afin de promouvoir une impression respectueuse de l'environnement.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite perforées à bas prix",
+        desc: `Chez Solopress, notre mission est de vous faire connaître, vous et votre entreprise. Alors pourquoi se contenter d'une carte standard pour faire votre promotion alors qu'un peu de créativité peut faire beaucoup avec une carte de visite perforée ?
+
+        Nos cartes perforées sont imprimées sur les deux faces, découpées au format 110 x 55 mm et coupées au milieu pour créer deux pièces de 55 x 55 mm. Vous pouvez inclure le logo de votre entreprise sur une face, ou promouvoir une offre spéciale, et vous assurer que vos coordonnées sont clairement imprimées sur l'autre face.
+        
+        Utilisez-les pour détailler des concours, des tirages au sort ou des événements spéciaux, et incluez votre carte de visite détachable pour que les clients aient quelque chose à mettre dans leur portefeuille.
+        
+        Si vous êtes en panne d'inspiration, notre équipe de designers peut vous aider à concevoir une carte de visite unique qui fera passer votre message et laissera vos clients avec une carte détachable contenant vos coordonnées. Si vous savez exactement ce que vous voulez dire, essayez notre modèle facile à utiliser pour concevoir vos propres cartes, et profitez de notre livraison gratuite le lendemain.d`,
+      },
+    ],
+    caracteristics: [
+      "Choisissez une à quatre perforations",
+      "Idéal pour attacher des bons et des tickets",
+      "Large choix de types de cartes de visite",
+    ],
+  },
+];
+
 export {
   defaultOders,
   chats,
@@ -1658,4 +2315,11 @@ export {
   flyersPrintingSide,
   flyersPaperWidget,
   flyersPelliculage,
+
+  /* Bcards */
+  bcardTab,
+  bcardFormats,
+  bcardPaperColors,
+  bcardRadius,
+  bcardOptions,
 };

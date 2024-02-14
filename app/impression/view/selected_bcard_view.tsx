@@ -1,3 +1,4 @@
+import { BcardProps } from "@/types";
 import { Wrapper } from "@/reutilisables";
 import {
   FlyersProps,
@@ -8,43 +9,64 @@ import {
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import {
-  FlyersTab,
+  bcardFormats,
+  bcardOptions,
+  bcardPaperColors,
+  bcardRadius,
+  bcardTab,
   flyersPaperType,
   flyersPaperWidget,
   flyersPelliculage,
   flyersPrintingSide,
 } from "@/constants";
-import { GraphikazDesign, Logo, LogoColor } from "@/public";
+import { GraphikazDesign } from "@/public";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import CheckoutComponent from "@/reutilisables/checkout_component";
 import { getDeliZone } from "@/types/api_services";
 
-interface SecletedFlyerViewProps {
-  selectedFlyer: FlyersProps;
-  setSelectedFlyer: (selectedFlyer: FlyersProps | undefined) => void;
+interface SecletedBcardProps {
+  selectedBcard: BcardProps;
+  setSelectedFlyer: (selectedFlyer: BcardProps | undefined) => void;
 }
-const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
-  selectedFlyer,
+
+const SelectedBcardView: React.FC<SecletedBcardProps> = ({
+  selectedBcard,
   setSelectedFlyer,
 }) => {
-  const unselectedFlyers = FlyersTab.filter(
-    (flyer) => flyer.type === selectedFlyer.type
+  ////////////////// variables et constantes //////////////////
+  const unselectedBcards = bcardTab.filter(
+    (bcard) => bcard.type === selectedBcard.type
   );
-  const paragraphs = selectedFlyer.short_description.split("\n");
+  const paragraphs = selectedBcard.short_description.split("\n");
 
+  /* ************** gestion des etats *********************
+   ********************************************************/
   //////: gestions des etat
   const [quantity, setQuantity] = useState(25); // Quantité initiale à 25
+  //
+  const [bcardOption, setBcardOption] = useState<MetaDataProps>(
+    bcardOptions[0]
+  );
+  //
+  const [bcardFormat, setBcardFormat] = useState<MetaDataProps>(
+    bcardFormats[0]
+  );
+  //
+  const [bcardPaperColor, setBcardPaperColor] = useState<MetaDataProps>(
+    bcardPaperColors[0]
+  );
+  //
+  const [bcardBorder, setBcardBorder] = useState<MetaDataProps>(bcardRadius[0]);
+  //
   const [printingSide, setPrintingSide] = useState<MetaDataProps>(
     flyersPrintingSide[0]
   );
+
   const [paperType, setPaperType] = useState<MetaDataProps>(flyersPaperType[0]); //);
   const [paperWidget, setPaperWidget] = useState<MetaDataProps>(
     flyersPaperWidget[0]
-  );
-  const [pelliculage, setPelliculage] = useState<MetaDataProps>(
-    flyersPelliculage[0]
   );
 
   const [deliZone, setDeliZone] = useState<deliZoneProps[]>([]);
@@ -64,6 +86,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
   };
+
   // Gestionnaire d'événement pour mettre à jour la quantité directement saisie
   const handleQuantityChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newQuantity = parseInt(event.target.value);
@@ -74,11 +97,14 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
 
   // Calculer le prix total en fonction de la quantité et des prix supplémentaires sélectionnés
   const totalPrice =
-    (selectedFlyer.base_price +
+    (selectedBcard.base_price +
       printingSide.price +
       paperType.price +
       paperWidget.price +
-      pelliculage.price) *
+      bcardOption.price +
+      bcardFormat.price +
+      bcardPaperColor.price +
+      bcardBorder.price) *
       quantity +
     parseInt(selecteddeliZone?.montant.toString());
 
@@ -156,13 +182,15 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
     setToggle(true);
   };
 
+  /* ******************** la commande de l'utilisateur *********
+   ************************************************************* */
   const order: ImpressOrderProps = {
     order_number: null,
     user_id: null,
     transaction_ref: null,
-    impressable: selectedFlyer.title,
-    impressable_format: selectedFlyer.format,
-    impressable_type: selectedFlyer.type,
+    impressable: selectedBcard.title,
+    impressable_format: bcardFormat.libelle,
+    impressable_type: selectedBcard.type,
     ordering_at: null,
     quantity: quantity,
     amount: totalPrice,
@@ -171,15 +199,18 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
     order_status: null,
     /* deli_zone: selecteddeliZone, */
     meta_data: {
+      option: bcardOption,
+      format: bcardFormat,
+      "couleur du papier": bcardPaperColor,
+      "bordures du papier": bcardBorder,
       "coté imprimé": printingSide,
       support: paperType,
       "densité du support": paperWidget,
-      pelliculage: pelliculage,
     },
   };
 
   return (
-    <div className="selected-flyer-container">
+    <div className="selected-flyer-container selected-bcard">
       <ToastContainer />
       {/* paiement part */}
       <div className={`${toggle ? "show-overlay" : ""} overlay`}></div>
@@ -208,14 +239,14 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
           )}
           {/* paiement card body */}
           {/* <PaiementCardBody
-              updateToggle={updateToggle}
-              defaultPack={selectedPack}
-              service={service}
-            /> */}
+          updateToggle={updateToggle}
+          defaultPack={selectedPack}
+          service={service}
+        /> */}
           <CheckoutComponent
             order={order}
             updateToggle={setToggle}
-            impressable={selectedFlyer}
+            impressable={selectedBcard}
             delizone={selecteddeliZone}
           />
           {/* end paiement card body */}
@@ -233,28 +264,29 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                 >
                   {"<- Retour"}
                 </div>
-                <Image src={selectedFlyer.cover} alt={selectedFlyer.title} />
+                <Image src={selectedBcard.cover} alt={selectedBcard.title} />
               </div>
               <div className="unselected-container">
-                <h3>SÉLECTIONNER UN STYLE DE FLYERS</h3>
+                <h3>SÉLECTIONNER UN STYLE DE CARTE DE VISITE</h3>
                 <div className="unseleted-content w-full">
-                  {unselectedFlyers.map((flyer, index) => (
+                  {unselectedBcards.map((bcard, index) => (
                     <div
+                      key={index}
                       className={`unselected-f ${
-                        flyer.id === selectedFlyer.id ? "active" : ""
+                        bcard.id === selectedBcard.id ? "active" : ""
                       }`}
-                      onClick={() => setSelectedFlyer(flyer)}
+                      onClick={() => setSelectedFlyer(bcard)}
                     >
                       <div className="un-f-img">
-                        <Image src={flyer.cover} alt={flyer.title} />
+                        <Image src={bcard.cover} alt={bcard.title} />
                       </div>
                       <div className="un-f-desc">
-                        <h1>{flyer.title}</h1>
+                        <h1>{bcard.title}</h1>
                         <div className=" price flex justify-start items-center">
                           <span className="start-from">à partir de:</span>
                           <div className="flex flex-col gap-[-0.5rem]">
                             <strong>
-                              {flyer.base_price}
+                              {bcard.base_price}
                               <span className="text-[10px]"> F CFA</span>{" "}
                             </strong>
                             <small>zero rated for VAT</small>
@@ -268,7 +300,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
             </div>
           </div>
           <div className="flyer-details-right flex-1">
-            <h1>{selectedFlyer.title}</h1>
+            <h1>{selectedBcard.title}</h1>
             <div className="short-desc">
               {/* Mappez sur le tableau de paragraphes pour afficher chaque paragraphe */}
               {paragraphs.map((paragraph, index) => (
@@ -303,7 +335,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
               <p>PRICE INCLUDING FREE DELIVERY {"==>"}</p>
               <div className="princing-bold flex flex-col gap-[-0.5rem]">
                 <strong>
-                  {selectedFlyer.base_price}
+                  {selectedBcard.base_price}
                   <span className="text-[12px]">F CFA</span>{" "}
                 </strong>
                 <small>zero rated for VAT</small>
@@ -312,7 +344,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
             <div className="divider" />
             {/*  */}
             <div className="customisation">
-              <h1>Customiser votre flyers {selectedFlyer.title}</h1>
+              <h1>Customiser votre flyers {selectedBcard.title}</h1>
               <span className="text-stone-600">SIMPLE ET RAPIDE</span>
               <p>
                 Démarquez-vous avec nos flyers sur mesure, conçus pour captiver
@@ -345,14 +377,30 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                     </div>
                   </div>
                 </div>
-                <div className="label-input mt-2">
+                {/*  <div className="label-input mt-2">
                   <label htmlFor="">Format</label>
                   <input
                     type="text"
                     name=""
                     id=""
-                    value={selectedFlyer.format}
+                    value={"selectedBcard.format"}
                   />
+                </div> */}
+                {/* Options */}
+                <div className="label-input mt-2">
+                  <label htmlFor="">Options</label>
+                  <select
+                    className=" w-full select"
+                    onChange={(event) =>
+                      handleSelectChange(event, setBcardOption, bcardOptions)
+                    }
+                  >
+                    {bcardOptions.map((option) => (
+                      <option value={option.libelle} key={option.libelle}>
+                        {option.libelle}
+                      </option>
+                    ))}
+                  </select>
                 </div>
                 {/* cotés à imprimé */}
                 <div className="label-input mt-2">
@@ -367,9 +415,37 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                       )
                     }
                   >
-                    {flyersPrintingSide.map((side) => (
+                    {flyersPrintingSide.slice(0, 2).map((side) => (
                       <option value={side.libelle} key={side.libelle}>
                         {side.libelle}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Size */}
+                <div className="label-input mt-2">
+                  <label htmlFor="">
+                    Taille {"( Dimensions de la carte )"}{" "}
+                    <a
+                      href="http://"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#3366cc] font-light underline"
+                    >
+                      {" "}
+                      Plus d'infos
+                    </a>
+                  </label>
+                  <select
+                    className=" w-full select"
+                    onChange={(event) =>
+                      handleSelectChange(event, setBcardFormat, bcardFormats)
+                    }
+                  >
+                    {bcardFormats.map((size) => (
+                      <option value={size.libelle} key={size.libelle}>
+                        {size.libelle}
                       </option>
                     ))}
                   </select>
@@ -435,34 +511,66 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                 {/* Pelliculage */}
                 <div className="label-input mt-2">
                   <label htmlFor="">
-                    Pelliculage
+                    Couleur du papier
                     {/*  <a
-                    href="http://"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#3366cc] font-light underline"
-                  >
-                    {" "}
-                    Plus d'infos
-                  </a> */}
+                href="http://"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#3366cc] font-light underline"
+              >
+                {" "}
+                Plus d'infos
+              </a> */}
                   </label>
                   <select
                     className=" w-full select"
                     onChange={(event) =>
                       handleSelectChange(
                         event,
-                        setPelliculage,
-                        flyersPelliculage
+                        setBcardPaperColor,
+                        bcardPaperColors
                       )
                     }
                   >
-                    {flyersPelliculage.map((pellicule) => (
-                      <option value={pellicule.libelle} key={pellicule.libelle}>
-                        {pellicule.libelle}
+                    {bcardPaperColors.map((color) => (
+                      <option value={color.libelle} key={color.libelle}>
+                        {color.libelle}
                       </option>
                     ))}
                   </select>
                 </div>
+                {/* Pelliculage */}
+                <div className="label-input mt-2">
+                  <label htmlFor="">
+                    Bordures
+                    {/*  <a
+                href="http://"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#3366cc] font-light underline"
+              >
+                {" "}
+                Plus d'infos
+              </a> */}
+                  </label>
+                  <select
+                    className=" w-full select"
+                    onChange={(event) =>
+                      handleSelectChange(event, setBcardBorder, bcardRadius)
+                    }
+                  >
+                    {bcardRadius.map((border) => (
+                      <option value={border.libelle} key={border.libelle}>
+                        {border.libelle}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* ///
+                
+                ////*/}
+
                 <div className="label-input mt-2">
                   <label htmlFor="delizone">Zone de livraison</label>
                   <select
@@ -541,7 +649,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
       </div>
       <div className="selected-flyer-desc">
         <div className="desc-container">
-          <h2>Concernant {selectedFlyer.title}</h2>
+          <h2>Concernant {selectedBcard.title}</h2>
           <div className="descripter">
             <div className="caption-underline">
               <div className="caption">
@@ -550,10 +658,10 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
               <div className="line" />
             </div>
             <div className="full-desc">
-              {selectedFlyer.full_description.map((desc, index) => {
+              {selectedBcard.full_description.map((desc, index) => {
                 const para = desc.desc.split("\n");
                 return (
-                  <div className="desc">
+                  <div className="desc" key={index}>
                     <h3>{desc.title}</h3>
                     {para.map((text, index) => (
                       <p
@@ -574,8 +682,10 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
             </div>
             <div className="">
               <ul className="px-[16px]">
-                {selectedFlyer.caracteristics.map((caract, index) => (
-                  <li className=" list-disc">{caract}</li>
+                {selectedBcard.caracteristics.map((caract, index) => (
+                  <li key={index} className=" list-disc">
+                    {caract}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -587,4 +697,4 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
   );
 };
 
-export default SecletedFlyerView;
+export default SelectedBcardView;

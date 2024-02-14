@@ -70,6 +70,7 @@ const FlyserView = () => {
           >
             {unfoldedFlyers.map((flyer, index) => (
               <div
+                key={flyer.title}
                 className="carou-item w-full h-full flex justify-center items-center"
                 onClick={() => handleMenuChanges(flyer)}
               >
