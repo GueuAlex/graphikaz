@@ -4,7 +4,14 @@ import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
-const navigation: ImpressCategoryProps[] = impressCategories;
+const navigation: ImpressCategoryProps[] = impressCategories
+  .map((element, index) => {
+    if (index === 5 || index === 6) {
+      return null; // Ou tout autre valeur que vous voulez utiliser pour représenter un élément exclu
+    }
+    return element;
+  })
+  .filter((element): element is ImpressCategoryProps => element !== null);
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");

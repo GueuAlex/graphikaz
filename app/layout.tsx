@@ -122,7 +122,7 @@ export default function RootLayout({
             </>
           )}
           <script
-            src="//code.tidio.co/vmtlpcod1xpk2xwv02jar65cqswwck7o.js"
+            src="//code.tidio.co/lvwvljciykg3iycfbgvvk9v7o5tnxtsw.js"
             async
           ></script>
         </body>

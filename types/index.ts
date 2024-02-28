@@ -211,6 +211,27 @@ export interface BcardProps extends ImpressableProps {
   type: "BY FINISH" | "BY TYPE";
 }
 
+export interface BrochureProps extends ImpressableProps {
+  full_description: Fulldescription[];
+  format: string;
+  caracteristics: string[];
+  type: "EXPRESS" | "STANDARD" | "N&B";
+}
+
+export interface RollupProps extends ImpressableProps {
+  full_description: Fulldescription[];
+  format: string;
+  caracteristics: string[];
+  type: "ROLLUP";
+}
+
+export interface RestoProps extends ImpressableProps {
+  full_description: Fulldescription[];
+  format: string;
+  caracteristics: string[];
+  type: "MENU RESTO";
+}
+
 export interface ImpressOrderProps {
   order_number: string | null;
   user_id: number | null;

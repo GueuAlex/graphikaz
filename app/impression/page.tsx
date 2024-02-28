@@ -12,6 +12,9 @@ import { impressCategories } from "@/constants";
 import DefaultView from "./view/default_view";
 import FlyserView from "./view/flyers_view";
 import BusinessCardView from "./view/business_card_view";
+import BrochureView from "./view/brochure_view";
+import RollupView from "./view/rollup_view";
+import RestoView from "./view/resto-view";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -53,15 +56,15 @@ const Impression = () => {
       case "Business Cards":
         return <BusinessCardView />;
       case "Brochures":
-        return <>Brochure</>;
+        return <BrochureView />;
       case "Roller Banners":
-        return <>Roller Banners</>;
+        return <RollupView />;
       case "Posters":
         return <>Posters</>;
       case "Stickers":
         return <>Stickers</>;
       case "Menus Restau":
-        return <>Menu restau</>;
+        return <RestoView />;
       case "Promotional":
         return <>Promotional</>;
       default:

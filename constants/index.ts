@@ -53,6 +53,13 @@ import {
   Bcard9,
 } from "@/public/b_card_img";
 import {
+  Brochure1,
+  Brochure2,
+  Brochure3,
+  Brochure4,
+  Brochure5,
+} from "@/public/brochure_img";
+import {
   Flyers15x15,
   Flyers21x21,
   FlyersA3,
@@ -74,8 +81,30 @@ import {
   FoldedMap,
 } from "@/public/flyers_img";
 import {
+  Resto1,
+  Resto10,
+  Resto2,
+  Resto3,
+  Resto4,
+  Resto5,
+  Resto6,
+  Resto7,
+  Resto8,
+  Resto9,
+} from "@/public/resto";
+import {
+  Roller1,
+  Roller2,
+  Roller3,
+  Roller4,
+  Roller5,
+  Roller6,
+  Roller7,
+} from "@/public/rollers";
+import {
   BcardProps,
   BlogProps,
+  BrochureProps,
   CahtDefaultOrderProps,
   CategoryProps,
   ChatMessageProps,
@@ -87,6 +116,8 @@ import {
   MetaDataProps,
   PayProps,
   PrestatorProps,
+  RestoProps,
+  RollupProps,
   ServiceProps,
   userMenuProps,
   userProps,
@@ -2297,6 +2328,869 @@ const bcardTab: BcardProps[] = [
   },
 ];
 
+/* *********** Brochures **************** */
+const brochures: BrochureProps[] = [
+  /* brochure type EXPRESS */
+  {
+    id: 1,
+    title: "Brochure A4 fermée – Paysage",
+    base_price: 2500,
+    format: "59.4x21 cm ouvert - A4 fermé",
+    category: impressCategories[3],
+    type: "EXPRESS",
+    cover: Brochure1,
+    short_description: `Découvrez notre service d'impression de brochures haut de gamme pour mettre en valeur votre entreprise ou votre événement. Avec notre option "Brochure A4 fermée – Paysage", au format 59.4x21 cm ouvert et A4 fermé, démarquez-vous avec un support visuel élégant et professionnel. 
+
+    Que ce soit pour présenter vos produits, promouvoir vos services ou communiquer sur un événement spécial, notre impression de brochure garantit une qualité irréprochable et un rendu visuel saisissant. Confiez-nous votre projet et laissez-nous transformer vos idées en une brochure qui fera sensation.
+    
+    Faites bonne impression dès le premier coup d'œil avec notre service d'impression de brochures sur mesure.`,
+    full_description: [],
+    caracteristics: [],
+  },
+  {
+    id: 2,
+    title: "Brochure Express 21 x 21 cm fermé",
+    base_price: 1000,
+    format: "42 x 21 cm ouvert - 21 x 21 cm fermé",
+    category: impressCategories[3],
+    type: "EXPRESS",
+    cover: Brochure2,
+    short_description: `Découvrez notre service d'impression de brochures ultra-rapide, le "Brochure Express 21 x 21 cm fermé". Avec des dimensions parfaites de 42 x 21 cm ouvert et 21 x 21 cm fermé, cette brochure est idéale pour présenter votre entreprise, vos produits ou vos événements de manière professionnelle et percutante.
+
+    Grâce à notre technologie d'impression de pointe, nous garantissons une qualité exceptionnelle pour mettre en valeur vos contenus. Commandez dès maintenant et bénéficiez d'une livraison rapide pour vous démarquer avec style !`,
+    full_description: [
+      {
+        title: "",
+        desc: `La <strong>brochure</strong> est un outil de communication indispensable pour présenter vos produits ou votre activité en détail.
+
+        La brochure 21 x 21 est idéale pour l’impression de vos documents de présentation de vos produits et services. <strong>Le brochage 2 points métal</strong> est une confection permettant d’assembler vos documents par le centre. Cela permet d’ouvrir facilement votre brochure imprimée. A destination de vos clients professionnels ou particuliers, il est  facile de le transporter et de le distribuer.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD",
+      "Format ouvert 42 x 21 cm",
+      "Format fermé 21 x 21 cm",
+      "Plié agraphé au centre",
+      "90 gr offset, 135 et 170 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto sur la couverture",
+    ],
+  },
+
+  {
+    id: 3,
+    title: "Brochure Express A4 fermée",
+    base_price: 1500,
+    format: "A3 ouvert - A4 fermé",
+    category: impressCategories[3],
+    type: "EXPRESS",
+    cover: Brochure3,
+    short_description: `Offrez à votre entreprise une visibilité exceptionnelle avec notre service d'impression de brochures "Brochure Express A4 fermée". 
+
+    Conçue pour captiver l'attention de vos clients, cette brochure au format A3 ouvert et A4 fermé offre un support idéal pour présenter vos produits, services ou événements de manière percutante et professionnelle. Grâce à notre processus d'impression rapide et de haute qualité, vous pouvez obtenir des brochures impeccables en un temps record.
+    
+    Démarquez-vous de la concurrence et faites briller votre entreprise avec notre solution d'impression de brochures de qualité supérieure !`,
+    full_description: [
+      {
+        title: "Pourquoi Opter Pour L’impression De Brochures En Express ?",
+        desc: `Les brochures s’avèrent être un moyen efficace pour promouvoir votre entreprise ou vos produits, mais il peut parfois être délicat d’être préparé à temps pour des événements cruciaux ou des présentations importantes. C’est précisément là que l’impression express de brochures entre en jeu. En choisissant cette solution, vous garantissez une préparation rapide de vos brochures, répondant ainsi avec célérité à vos impératifs les plus pressants.`,
+      },
+      {
+        title: "Quels Sont Les Avantages De L’impression De Brochures En A4 ?",
+        desc: `L’impression de brochures en A4 peut offrir de nombreux avantages par rapport à d’autres formats. Le format A4 est un choix populaire car il est facile à lire et à manipuler, et il peut être imprimé à un coût raisonnable. De plus, les brochures en A4 peuvent être facilement pliées pour s’adapter à vos besoins de présentation.
+        `,
+      },
+      {
+        title:
+          "Comment Préparer Votre Fichier Pour L’impression De Brochures En Express ?",
+        desc: `Pour préparer votre fichier pour l’impression de brochures en express, il est important de fournir un fichier numérique de haute qualité. Ainsi, vous pouvez vous assurer que votre brochure sera imprimée rapidement et avec la qualité souhaitée. L’impression de brochures en express peut être un moyen efficace de promouvoir votre entreprise ou votre produit de manière rapide et professionnelle. En optant pour l’impression en A4, vous pouvez bénéficier d’un format facile à lire et à manipuler, ainsi que d’un coût raisonnable. Assurez-vous de préparer correctement votre fichier pour l’impression pour garantir un produit final de qualité.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD",
+      "Format ouvert A3 (42 x 29,7 cm)",
+      "Format fermé A4 (21 x 29,7 cm)",
+      "Plié agrafé au centre",
+      "90 gr offset, 135 et 170 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto sur la couverture",
+    ],
+  },
+
+  {
+    id: 4,
+    title: "Brochure Express A5 fermé",
+    base_price: 1250,
+    format: "A4 ouvert - A5 fermé",
+    category: impressCategories[3],
+    type: "EXPRESS",
+    cover: Brochure4,
+    short_description: `Découvrez notre service d'impression de brochures rapide et efficace avec notre nouvelle offre, la "Brochure Express A5 fermé". Avec des dimensions parfaites de A4 ouvert et A5 fermé, cette brochure compacte est parfaite pour présenter vos produits, services ou événements de manière professionnelle et impactante. Grâce à notre processus d'impression de haute qualité, vos designs seront reproduits avec une netteté exceptionnelle et des couleurs éclatantes. 
+
+    Commandez dès maintenant pour une communication visuelle qui fera sensation et attirera l'attention de vos clients potentiels !`,
+    full_description: [
+      {
+        title: "",
+        desc: `<strong>Brochure A5 fermé</strong> imprimée à votre image. Ce support de communication est idéal pour faire connaitre votre entreprise auprès de professionnels ou particuliers. La brochure personnalisée est composée de brochage 2 points métal qui permet d’assembler vos documents au centre. Ce système permet une ouverture facile de votre document.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD",
+      "Format ouvert A4 (21 x 14,85 cm)",
+      "Format fermé A5 (10,5 x 21 cm)",
+      "Plié agrafé au centre",
+      "90 gr offset, 135 et 170 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto sur la couverture",
+    ],
+  },
+
+  {
+    id: 5,
+    title: "Brochure Express A6 fermé",
+    base_price: 1250,
+    format: "A5 ouvert - A6 fermé",
+    category: impressCategories[3],
+    type: "EXPRESS",
+    cover: Brochure5,
+    short_description: `Découvrez notre service d'impression de brochures rapide et efficace avec notre nouvelle offre, la "Brochure Express A6 fermé". Avec des dimensions parfaites de A4 ouvert et A5 fermé, cette brochure compacte est parfaite pour présenter vos produits, services ou événements de manière professionnelle et impactante. Grâce à notre processus d'impression de haute qualité, vos designs seront reproduits avec une netteté exceptionnelle et des couleurs éclatantes. 
+
+    Commandez dès maintenant pour une communication visuelle qui fera sensation et attirera l'attention de vos clients potentiels !`,
+    full_description: [
+      {
+        title: "",
+        desc: `<strong>La brochure</strong> est un outil de communication indispensable pour présenter vos produits ou votre activité en détail.
+        Imprimez une brochure 100% personnalisable pour vos documents commerciaux et pour présenter vos produits.Ce support de communication est idéal pour présenter vos produits auprès de professionnels ou de particuliers. Il est relié par un brochage de 2 points métal avec une confection permettant d’assembler vos documents au centre. Cela permet une ouverture facile de votre brochure imprimée.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD",
+      "Format ouvert A5 (21 cm x 14,85 cm)",
+      "Format fermé A6 (14,85 cm x 10,5)",
+      "Plié agrafé au centre",
+      "90 gr offset, 135 et 170 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto sur la couverture",
+    ],
+  },
+  /* brochure type STANDARD */
+];
+
+const brochurePageNumber: MetaDataProps[] = [
+  {
+    price: 1200,
+    libelle: "8 pages (2 feuilles recto/verso)",
+  },
+  {
+    price: 2000,
+    libelle: "12 pages (3 feuilles recto/verso)",
+  },
+  {
+    price: 2520,
+    libelle: "16 pages (4 feuilles recto/verso)",
+  },
+  {
+    price: 2920,
+    libelle: "20 pages (5 feuilles recto/verso)",
+  },
+  {
+    price: 3100,
+    libelle: "24 pages (6 feuilles recto/verso)",
+  },
+  {
+    price: 3300,
+    libelle: "28 pages (7 feuilles recto/verso)",
+  },
+  {
+    price: 3500,
+    libelle: "32 pages (8 feuilles recto/verso)",
+  },
+  {
+    price: 3800,
+    libelle: "36 pages (9 feuilles recto/verso)",
+  },
+];
+
+const brochurePrintingSide: MetaDataProps[] = [
+  {
+    libelle: "Couleur Recto / Verso",
+    price: 2250,
+  },
+  {
+    libelle: "Blanc-noir Recto / Verso",
+    price: 1350,
+  },
+];
+
+/* roll up */
+const rollups: RollupProps[] = [
+  {
+    id: 1,
+    title: "Roll Up 85 x 200 cm",
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller1,
+    format: "85 x 200 cm",
+    base_price: 12500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 85×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title: "Le Roll Up 85×200 Est L’outil De Communication Idéal",
+        desc: `<strong>Le roll up 85×200</strong> est un véritable moyen de communication à lui tout seul. Économique et efficace, il est idéal pour tous types d’entreprises ou d’organisations. Ainsi, généralement imprimé pour des événements en extérieur ou en intérieur. Le roll up est une <strong>grande affiche</strong> qui impacte directement votre clientèle ou vos prospects. C’est pourquoi, Il permet de mettre en avant facilement une <strong>offre promotionnelle</strong> sur vos produits. D’autre part, le roll-up personnalisé est également apprécié par les entreprises pour lancer un nouveau produit. Grâce à ça structure solide et compacte, le stand est monté en quelques minutes pour une installation rapide de votre publicité sur le lieu de votre manifestation. De plus, le roll up 85×200 a l’avantage de maintenir durablement votre impression.`,
+      },
+      {
+        title: "",
+        desc: `Apprécié par les professionnels, il est disponible sous de multiple formats : le 85×200 cm étant le standard de la gamme offrant ainsi le meilleur rapport qualité/prix. Ce <strong>kakemono avec enrouleur</strong> est un outil idéal pour diffuser votre message clairement. Esthétique et efficace, ce support imprimé en recto est solide face aux intempéries (vent, pluie et soleil).`,
+      },
+      {
+        title: "Impression Roll Up Personnalisé En Ligne",
+        desc: `Facile et simple, il suffit de fournir votre visuel de roll up 85×200 au format pdf via interface en ligne. Ainsi, notre équipe de professionnel à Nice traitera votre demande pour un résultat en HD dans les plus brefs délais.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 440 gr",
+      "Impression recto couleur haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+  {
+    id: 2,
+    title: "Roll Up 100×200 cm",
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller2,
+    format: "100 x 200 cm",
+    base_price: 14500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 100×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title:
+          "Le Roll-Up : La Solution Idéale Pour Les Entreprises En Déplacement",
+        desc: `Un roll up 100×200 cm est un support de communication visuelle portable et pratique. Il se compose d’un support enroulable sur lui-même, généralement en aluminium, sur lequel est fixée une bâche imprimée à votre image. Le rollup est facile à installer et à déplacer, ce qui en fait un choix populaire pour les expositions, les foires commerciales, les événements promotionnels et les présentations de produits.La bannière du roll up est imprimée en haute résolution pour offrir une qualité d’image professionnelle. Elle peut être personnalisée selon les besoins de chaque client, avec le logo, les images et le texte de leur choix.`,
+      },
+      {
+        title:
+          "La Solution Du Roll-Up Publicitaire Pratique Pour Tous Vos Besoins",
+        desc: `Le roll up est équipé d’un mécanisme de tendeur qui permet de tendre la bannière pour qu’elle soit parfaitement tendue lors de l’utilisation. Il est également équipé d’un système de verrouillage pour maintenir la bannière enroulée lors du transport et de la rangement.
+        En résumé, le roll up est un outil de communication visuelle pratique, portable et facile à utiliser, idéal pour les expositions, les foires commerciales et les événements promotionnels. Il permet d’afficher des images de qualité professionnelle de manière simple et rapide.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 440 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+
+  {
+    id: 3,
+    title: "Roll Up 120 x 200 cm",
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller3,
+    format: "120 x 200 cm",
+    base_price: 14500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 120×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title: "ROLL UP PUBLICITAIRE : UN OUTIL DE COMMUNICATION EFFICACE",
+        desc: `Le roll-up publicitaire est un outil de communication efficace pour promouvoir votre entreprise ou votre événement. Faciles à installer et à transporter, les roll-up sont des supports publicitaires pratiques qui attirent l’attention de votre public cible. Que vous soyez une petite entreprise ou une grande entreprise, les roll-up publicitaires sont un choix judicieux pour maximiser votre visibilité et votre impact. En effet, il permet de diffuser un message publicitaire de manière rapide et simple. Grâce à leur format compact et léger, les roll-up peuvent être utilisés dans de nombreuses situations différentes, que ce soit lors d’un salon professionnel, d’une conférence, d’une exposition ou d’un événement public.`,
+      },
+      {
+        title: "CRÉER SON UN ROLL UP PUBLICITAIRE",
+        desc: `Pour créer un roll-up publicitaire infaillible, il est important de choisir le bon format et le bon design. Le format doit être adapté à l’emplacement dans lequel vous prévoyez d’afficher le roll-up, tandis que le design doit refléter votre image de marque et attirer l’attention de votre clientèle. Les couleurs, les polices et les images doivent être soigneusement choisies pour créer un visuel attractif et facile à lire. Il est également important d’inclure des informations claires et concises sur le roll-up publicitaire. Les messages doivent être simples et directs pour que le public puisse facilement comprendre ce que vous offrez et ce que vous attendez d’eux. N’oubliez pas d’inclure votre logo et vos coordonnées pour que les gens puissent vous contacter facilement.`,
+      },
+      {
+        title:
+          "LE KAKEMONO PUBLICITAIRE : UN SUPPORT IDÉAL POUR UNE VISIBILITÉ OPTIMALE",
+        desc: `Ainsi, pour maximiser l’impact de votre roll-up publicitaire, assurez-vous de l’afficher dans un endroit stratégique où les prospects sont susceptibles de le voir. Quel que soit l’événement, un roll-up publicitaire bien conçu peut faire la différence et attirer l’attention. Les roll-up publicitaires sont particulièrement intéressants pour les petites entreprises, car ils permettent de maximiser leur visibilité sans avoir à investir des sommes importantes dans des campagnes publicitaires coûteuses. Ils peuvent également être utilisés par les grandes entreprises pour compléter leur stratégie de communication et pour renforcer leur image de marque. Dans tous les cas, les roll-up publicitaires permettent de toucher un large public et de diffuser efficacement un message publicitaire.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 510 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+
+  {
+    id: 4,
+    title: "Roll Up 150 x 200 cm",
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller4,
+    format: "150 x 200 cm",
+    base_price: 14500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 150×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title: "",
+        desc: `Facile à installer et à déployer le roll up est léger, compact et robuste, idéal pour des utilisations fréquentes lors de vos événements.
+        Le visuel de l’enrouleur imprimé en couleur mesure 2 mètres de haut sur 1,5 mètres de large, il est fixé par rail clippant sur la partie haute et amorce adhésive à la base.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 510 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+
+  {
+    id: 5,
+    title: "Roll Up 200 x 200 cm",
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller5,
+    format: "200 x 200 cm",
+    base_price: 14500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 200×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title:
+          "Découvrez L’Impact Visuel Exceptionnel Avec Le Roll Up 200×200 !",
+        desc: `À la recherche d’une solution publicitaire compacte et percutante ? Ne cherchez pas plus loin ! Notre Roll Up 200×200 est la réponse parfaite pour mettre en valeur votre message de manière efficace tout en conservant un format pratique. Avec ses dimensions optimales de 200×200 centimètres, ce roll up offre une visibilité exceptionnelle sans compromettre l’espace. Vous cherchez à faire une déclaration audacieuse ? Optez pour ce Roll Up Grand format, un moyen puissant de mettre en avant votre marque de manière spectaculaire. Avec des dimensions imposantes, ce support publicitaire est idéal pour créer une présence remarquable lors d’événements de grande envergure. Donnez de la visibilité à votre message et faites en sorte que votre entreprise se démarque avec ce média de qualité.        `,
+      },
+
+      {
+        title: "Les Avantages Du Roll Up Grand Format :",
+        desc: `1. <strong>Espace Généreux :</strong> Profitez d’une surface de 4 mètres carrés pour afficher vos visuels, messages promotionnels ou produits phares.
+        2. <strong>Facilité de Transport :</strong> Malgré leur taille, les Roll Up 200×200 sont facilement transportables et peuvent être installés en quelques minutes, offrant ainsi une solution pratique pour vos événements.
+        3. <strong>Personnalisation Totale :</strong> Exprimez pleinement votre identité visuelle grâce à la personnalisation complète de votre Roll Up. Choisissez des couleurs vibrantes, des graphiques percutants et des messages clairs pour un impact maximal.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 510 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+
+  {
+    id: 6,
+    title: "Roll Up 240 x 200 cm",
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller5,
+    format: "240 x 200 cm",
+    base_price: 14500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 240×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title: "Le Rollup grande taille",
+        desc: `Le roll-up 240×200 cm est une solution pratique et polyvalente pour répondre à vos besoins en matière de présentation et d’affichage. Avec ses dimensions généreuses de 240 centimètres de largeur sur 200 centimètres de hauteur, il offre une surface d’affichage spacieuse qui captivera l’attention de votre public.Que vous organisiez une exposition, une conférence, un salon professionnel ou tout autre événement, le roll 240×200 cm est idéal pour mettre en valeur vos informations, vos graphiques et vos visuels. Son format étendu permet d’afficher du contenu détaillé avec clarté et lisibilité, assurant ainsi l’impact souhaité.`,
+      },
+
+      {
+        title: "Un enrouleur de conception robuste et durable",
+        desc: `La conception du rollup 240×200 cm est également très pratique. Il est équipé d’un système de rouleau intégré qui permet de l’enrouler et de le dérouler facilement. Cela facilite le transport et le rangement, vous offrant une solution portable et peu encombrante pour vos besoins d’affichage. De plus, le stand sur enrouleur 240×200 cm est imprimé sur de la bâche M1 pour offrir une grande durabilité. Fabriqué avec des matériaux de haute qualité, il résiste aux manipulations fréquentes et conserve son apparence professionnelle au fil du temps. Sa structure solide et stable assure une présentation sans faille, sans risque de s’affaisser ou de se renverser.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 510 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+
+  {
+    id: 7,
+    title: "Roll Up 300 x 200 cm",
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller6,
+    format: "300 x 200 cm",
+    base_price: 15000,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 300×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title: "",
+        desc: `Facile à installer, léger et compact, un Roll-Up robuste, idéal pour des utilisations fréquentes lors vos événements ou manifestation.
+La taille du visuel imprimé en couleur est de 3 mètres  sur  2, fixé par amorce adhésive à la base et rail clippant sur la partie haute.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 510 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+  {
+    id: 8,
+    title: "Roll Up recto/verso",
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller7,
+    format: "85 x 200 cm",
+    base_price: 15000,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 85×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title: "",
+        desc: `Le roll-up est un moyen de communication économique pour accentuer votre visibilité. En effet, que ce soit pour votre communication interne ou externe, le roll up recto/verso est un support performant. Visible sur les 2 faces, ce support est un outil idéal pour transmettre un message dans votre entreprise ou dans un salon professionnel.`,
+      },
+      {
+        title: "",
+        desc: `De plus le roll up est un outil de qualité et facile à installer. Léger et compact, le roll up double face est parfait pour une utilisation fréquente. De plus, ce support à l’avantage d’avoir un double impact sur votre cible. En effet, le roll up recto/ verso permet de maintenir vos affiches sur la face avant et arrière du support. En plus selon vos objectifs, vous avez le choix de mettre des visuels identiques ou différents sur votre roll up. Enfin nous sécurisons les impressions de 2 mètres par amorce adhésive à la base et rail clippant sur la partie haute.`,
+      },
+
+      {
+        title: "",
+        desc: `Chez Fac Imprimeur nous réalisons dans notre atelier à Nice votre roll up double face personnalisé selon vos critères afin d’optimiser votre visibilité.`,
+      },
+    ],
+    caracteristics: [
+      "Les visuels sur bâche 440 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+];
+
+const rollupSupport: MetaDataProps[] = [
+  {
+    price: 2300,
+    libelle: "Bâche 440 gr",
+  },
+  {
+    price: 5000,
+    libelle: "Bâche 510 gr",
+  },
+  {
+    price: 5300,
+    libelle: "Bâche 510 gr M1",
+  },
+];
+
+/* Menus resto */
+const menusResto: RestoProps[] = [
+  {
+    id: 1,
+    title: "Set de table plastifié",
+    format: "A4",
+    base_price: 15700,
+    category: impressCategories[7],
+    cover: Resto1,
+    type: "MENU RESTO",
+    short_description: `<strong>Élégance Pratique : Découvrez notre Set de Table Plastifié Personnalisable</strong>
+Optez pour un set de table plastifié, alliant praticité et style. Imperméable et facile à nettoyer, il offre une protection tout en ajoutant une touche esthétique à votre table. Un ajout pratique et stylisé pour chaque repas.`,
+    full_description: [
+      {
+        title: "Set De Table Plastique",
+        desc: `Un set de table plastifié est un set de table en papier qui est recouvert d’une couche de plastique à chaud. Cette dernière sert à le protéger de l’eau et de la saleté. De plus, c’est un excellent moyen de décorer et protéger vos tables. En effet ce support plastifié peut être personnalisé selon vos envie pour s’adapté au mieux avec la décoration de votre intérieur. C’est une très bonne alternative pour remplacer une nappe. Vous pouvez donc profiter du design de votre table tout en la protégeant. Les sets de table plastifiés sont souvent utilisés dans les restaurants, les cantines, les cafétérias, etc., car ils sont faciles à nettoyer et à remplacer. Les restaurateurs ont l’habitude de jeter les sets de table en papier après chaque fin de service alors que la ils sont réutilisable plusieurs fois.`,
+      },
+      {
+        title: "Imprimez Vos Set De Table Plastifié",
+        desc: `Les sets de tables plastifiés peuvent être imprimés en utilisant différentes techniques d’impression, comme l’offset ou l’impression numérique à partir de 1 exemplaire. L’impression peut être uniquement recto mais aussi recto verso, sur support 90g et au format A3. La plastification à chaud des sets de table les rends 100% étanches et très résistant grâce à son encapsulage. Cette méthode permet de rendre votre support résistant et lui garantit une durée de vie optimale. La finition brillante de la plastification rendra votre produit unique.`,
+      },
+      {
+        title: "L’encapsulage À Chaud De Vos Sets De Table",
+        desc: `L’emcapsulage à chaud est une technique qui consiste à recouvrir les sets de table d’une couche protectrice en plastique. Cette méthode permet de protéger et prolonger la durée de vie de votre produit. En effet, une fine couche de plastique offre une importante résistance à la chaleur et celle-ci est facile à nettoyer. Ainsi, ce type de plastification permet une protection efficace contre les taches, les rayures et les déchirures. Par exemple, dans les restaurants ou les bars, les sets de table sont très souvent manipulés et salis. L’emcapsulage à chaud permet d’accentuer les couleurs de votre set de table en améliorant le contraste de lumière. Alors, cela apportera un gage de qualité supplémentaire à votre établissement.`,
+      },
+    ],
+    caracteristics: [
+      "Format A3",
+      "Support en 90 g",
+      "Impression recto ou recto / verso",
+    ],
+  },
+
+  {
+    id: 2,
+    title: "Porte Addition",
+    format: "21x10 cm fermé - 21x20 cm ouvert",
+    base_price: 15900,
+    category: impressCategories[7],
+    cover: Resto2,
+    type: "MENU RESTO",
+    short_description: `Porte addition personnalisé : impression de porte addition format 10×21 avec encoche pour glisser la note`,
+    full_description: [
+      {
+        title:
+          "L’Élégance Personnalisée : Découvrez Nos Porte-Additions Uniques Signés Facimprimeur",
+        desc: `Au cœur de la quête incessante pour une expérience client exceptionnelle dans le domaine culinaire, nos porte-additions se démarquent en tant que supports plaquettes raffinés, spécialement conçus pour présenter discrètement l’addition à la fin de chaque repas. Chez Facimprimeur, notre engagement envers la personnalisation va au-delà, vous permettant de choisir parmi une gamme de matériaux haut de gamme. Optez pour le papier 300g couché brillant ou recyclé satiné, ou explorez notre version premium en simili cuir, disponible dans cinq coloris exclusifs.`,
+      },
+      {
+        title:
+          "Personnalisation Sans Limite : Exprimez L’Identité De Votre Restaurant",
+        desc: `Chez Facimprimeur, nous mettons à votre disposition une palette d’options pour personnaliser votre porte-addition. Affichez fièrement le logo et le nom de votre restaurant, ajoutant ainsi une touche distinctive à cet accessoire essentiel. Cette personnalisation sans limite offre une opportunité exceptionnelle de communiquer l’identité unique de votre établissement et de créer une dernière impression mémorable.`,
+      },
+      {
+        title:
+          "Support De Qualité Supérieure Pour Une Durabilité Exceptionnelle",
+        desc: `Nous sommes fiers de vous proposer des support d’impression de qualité supérieure qui définissent nos porte-additions. Que vous optiez pour le papier 300g couché brillant, le recyclé satiné ou le simili cuir haut de gamme, chaque choix garantit une durabilité exceptionnelle et une esthétique qui perdure dans le temps.`,
+      },
+      {
+        title:
+          "Choisissez Votre Style : Une Palette De Matériaux Et De Couleurs Uniques",
+        desc: `Facimprimeur vous offre la possibilité de choisir votre style parmi notre palette de matériaux et de couleurs uniques. Du classique au luxueux, personnalisez votre porte-addition pour refléter l’ambiance et le caractère distinctif de votre établissement, tout en optimisant votre visibilité en ligne grâce à notre solution SEO.`,
+      },
+      {
+        title: "Osez La Différence Avec Un Porte-Addition Unique",
+        desc: `Faites de chaque détail une occasion de distinction avec des porte-additions uniques et personnalisés qui s’inscrivent dans notre engagement à vous offrir bien plus qu’un simple accessoire. Découvrez comment notre expertise en matière de personnalisation peut transformer votre service client et renforcer la réputation de votre restaurant. Optez pour l’excellence avec Facimprimeur et osez la différence.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur recto / verso",
+      "Support 300 gr couché brillant",
+      "Pelliculage mat ou brillant en option",
+      "Format 10×21 fermé / 20×21 ouvert",
+      "encoche pour l’addition",
+    ],
+  },
+
+  {
+    id: 3,
+    title: "Menus depliants 21 X 30 – 2 plis roulés",
+    format: "63x29.7 cm ouvert A4 fermé",
+    base_price: 15900,
+    category: impressCategories[7],
+    cover: Resto3,
+    type: "MENU RESTO",
+    short_description: `Le menu grand format à prix réduit`,
+    full_description: [
+      {
+        title:
+          "Menu De Restaurant 2 Plis Roulés : L’Élégance Dépliée Sur Votre Table",
+        desc: `Les menus à 2 plis roulés représentent une solution idéale pour présenter avec élégance et praticité les cartes de votre restaurant. Cette conception ingénieuse offre plusieurs avantages qui contribuent à améliorer l’expérience de vos clients tout en mettant en valeur l’identité visuelle de votre établissement. Tout d’abord, les menus à 2 plis roulés sont particulièrement attractifs visuellement. Lorsqu’ils sont déployés, ils offrent une surface généreuse pour afficher vos sélections de plats, boissons et formules de manière claire et organisée. La disposition en 2 plis permet de diviser le contenu de manière stratégique, facilitant la lecture et la navigation pour vos clients. Cela garantit une expérience agréable et fluide lorsqu’ils explorent les options disponibles, renforçant ainsi la probabilité qu’ils découvrent et choisissent des plats qui correspondent à leurs préférences.`,
+      },
+      {
+        title: "Naviguer Avec Style : L’Attractivité Des Menus À 2 Plis Roulés",
+        desc: `De plus, le format à 2 plis roulés ajoute une touche de sophistication à la présentation de vos menus. Lorsqu’ils sont roulés, ces menus créent une esthétique élégante et compacte, idéale pour être placée sur les tables de votre restaurant sans encombrer l’espace. Cette compacité est particulièrement avantageuse dans les environnements où l’espace est limité, tout en permettant aux clients de manipuler facilement le menu sans se sentir dépassés.La praticité des menus à 2 plis roulés se manifeste également lorsqu’il s’agit de mettre à jour les sélections. Ce format offre une flexibilité accrue pour ajuster et modifier le contenu de manière rapide et efficace. Vous pouvez facilement actualiser les plats du jour, les promotions spéciales ou les changements de saison sans compromettre la lisibilité ou l’esthétique globale du menu.`,
+      },
+      {
+        title: "Charme Déroulé D’un Menu De Restaurant",
+        desc: `Par ailleurs, la durabilité est un élément clé des menus à 2 plis roulés. Grâce à des matériaux de qualité et à une impression soignée, ces menus résistent bien à l’usure quotidienne. Cela signifie que vos menus conservent leur apparence attrayante même après une utilisation fréquente, assurant ainsi une représentation constante de la qualité et du professionnalisme de votre établissement.
+
+        En conclusion, opter pour des menus à 2 plis roulés constitue une stratégie judicieuse pour présenter vos cartes de restaurant. Entre l’attrait visuel, la praticité, la sophistication et la durabilité, ce format offre une combinaison équilibrée d’éléments essentiels pour influencer positivement l’expérience culinaire de vos clients et renforcer l’image de votre établissement.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Format ouvert A4 (63 x 29,7 cm)",
+      "Format fermé 21 x 29,7 cm",
+      "2 plis roulés",
+      "350 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto / verso Mat ou Brillant",
+    ],
+  },
+
+  {
+    id: 4,
+    title: "Menu restaurant 8 pages A3",
+    format: "A3 ouvert A4 fermé",
+    base_price: 16900,
+    category: impressCategories[7],
+    cover: Resto4,
+    type: "MENU RESTO",
+    short_description: ``,
+    full_description: [
+      {
+        title: "Un Menu De Restaurant Économique Et Résistant",
+        desc: `MENU 8 pages A3 – plié/agrafé personnalisé. Ce grand support est idéal pour votre restaurant car il permet de présenter facilement vos spécialités. En effet, le menu 8 pages A3 permettre en valeur les photos et le descriptif de vos entrées, plats et desserts.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Format ouvert A3 (42 x 29,7 cm)",
+      "Format fermé A4 (21 x 29,7 cm)",
+      "lié/agrafé à cheval",
+      "350 gr couché mat",
+      "Impression recto / verso",
+      "Pelliculage recto/verso mat ou brillan",
+    ],
+  },
+
+  {
+    id: 5,
+    title: "Menu dépliant A4 ouvert A5 fermé",
+    format: "A4 ouvert - A5 fermé",
+    base_price: 17900,
+    category: impressCategories[7],
+    cover: Resto5,
+    type: "MENU RESTO",
+    short_description: ``,
+    full_description: [
+      {
+        title: "",
+        desc: `Le <strong>menu restaurant</strong> est un outil de communication des plus efficace.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Format ouvert A4 (29,7 x 21 cm)",
+      "Format fermé A5 (14,85 x 21 cm)",
+      "1 pli au centre",
+      "350 gr couché mat",
+      "Impression recto / verso",
+      "Pelliculage recto/verso mat ou brillan",
+    ],
+  },
+
+  {
+    id: 6,
+    title: "Menu 4 pages indéchirable",
+    format: "A3 ouvert - A4 fermé",
+    base_price: 18500,
+    category: impressCategories[7],
+    cover: Resto6,
+    type: "MENU RESTO",
+    short_description: `Pour des menus un support de qualité qui résiste à des utilisations intenses`,
+    full_description: [
+      {
+        title:
+          "Pour des menus un support de qualité qui résiste à des utilisations intenses.",
+        desc: ``,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Support polyester blanc 195 ou 350 micron",
+      "coins arrondis",
+      "1 pli au centre",
+      "350 gr couché mat",
+      "Livré rainé & plié",
+    ],
+  },
+
+  {
+    id: 7,
+    title: "Menu simple indéchirable",
+    format: "A4",
+    base_price: 15500,
+    category: impressCategories[7],
+    cover: Resto7,
+    type: "MENU RESTO",
+    short_description: `Pour des menus un support de qualité qui résiste à des utilisations intenses`,
+    full_description: [
+      {
+        title: "",
+        desc: `Le <strong>menu indéchirable</strong>, un support de qualité qui résiste à des utilisations intenses. Imprimez vos <strong>cartes restaurant</strong>, bar, café et brasserie avec Fac Imprimeur.
+        Cette carte de qualité supérieur, résiste aux déchirures et au temps.  En effet, le papier indéchirable a été conçu spécialement pour une qualité d’impression optimale. Cette caractéristique permet de manipuler le menu sans crainte. De plus, la <strong>carte indéchirable</strong> est prévue pour résister à toutes contraintes extérieures comme l’eau, les taches et les UV. Par conséquent, ce support est une réelle avancé pour vos menus. Puis, l’avantage de ce menu indéchirable c’est qu’il sera apprécié par les plus grands comme les plus petits.
+        
+        • Les avantages de la <strong>carte restaurant indéchirable</strong> :
+            • Bonne tenue de main
+            • Résistant aux taches, à l’eau et aux déchirures.
+            • Usage intérieur et extérieur
+            • Durabilité, fiabilité et super qualité d’impression
+        `,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Support polyester blanc 195 ou 350 micron",
+      "Plusieurs formats menus restaurant :  A3, portrait (15×42) et A4",
+    ],
+  },
+
+  {
+    id: 8,
+    title: "Pvc indéchirable",
+    format: "A4",
+    base_price: 18500,
+    category: impressCategories[7],
+    cover: Resto8,
+    type: "MENU RESTO",
+    short_description: `Pour des menus un support de qualité qui résiste à des utilisations intenses`,
+    full_description: [
+      {
+        title: "",
+        desc: `Le <strong>PVC indéchirable</strong>, un support de qualité qui résiste à des utilisations intenses. En effet, le papier indéchirable a été conçu spécialement pour obtenir une qualité d’impression optimale. Cette caractéristique permet de manipuler votre document sans l’abimer. De plus, l’impression de documents indéchirables est conçue pour résister aux contraintes extérieures comme l’eau et les UV. Par conséquent, ce support est une réelle sécurité.
+        
+        • L’avantage du support indéchirable :
+            • Bonne tenue de main
+            • Résistant aux taches, à l’eau et aux déchirures.
+            • Usage intérieur et extérieur
+            • Durabilité, fiabilité et super qualité d’impression
+        `,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Support polyester blanc 195 ou 350 micron",
+      "Plusieurs formats menus restaurant :  A3, portrait (15×42) et A4",
+    ],
+  },
+  {
+    id: 9,
+    title: "Menu dépliant A3 ouvert A4 fermé",
+    format: "A3 ouvert A4 fermé",
+    base_price: 16500,
+    category: impressCategories[7],
+    cover: Resto9,
+    type: "MENU RESTO",
+    short_description: `Pour des menus un support de qualité qui résiste à des utilisations intenses`,
+    full_description: [
+      {
+        title: "",
+        desc: `Le menu est un outil de communication des plus efficace.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Format ouvert A3 (42 x 29,7 cm)",
+      "Format fermé A4 (21 x 29,7 cm)",
+      "1 rainage au centre",
+      "350 gr couché mat",
+      "Impression recto / verso",
+      "Pelliculage recto/verso Mat ou Brillant",
+    ],
+  },
+  {
+    id: 10,
+    title: "Set de table restaurant",
+    format: "A3",
+    base_price: 16500,
+    category: impressCategories[7],
+    cover: Resto10,
+    type: "MENU RESTO",
+    short_description: `Pour des menus un support de qualité qui résiste à des utilisations intenses`,
+    full_description: [
+      {
+        title: "SET DE TABLE RESTAURANT",
+        desc: `L’ <strong>impression de set de table</strong> restaurant en tant que support de communication est un choix original. C’est un élément de décoration fonctionnel souvent utilisé pour protéger les tables des tâches et des rayures. Ils sont généralement placés sur la table pour accueillir les assiettes, les couverts et les verres. Ainsi, cela ajoutera une touche d’élégance et de sophistication à l’ambiance du restaurant. En effet, vous avez la possibilité de personnaliser vos sets de table restaurant en fonction du thème ou d’une occasion. Également, vous pouvez ajouter votre impression menu directement sur le papier. Cela vous permettra d’avoir un seul support polyvalent. Ainsi le set de table papier peut aussi être utilisé comme objet publicitaire. En partenariat avec des entreprises ou des associations locales, vous pouvez promouvoir leurs activités tout en y gagnant un avantage. Votre client aura le loisir de lire les différentes annonces durant toute la durée du repas. Pour divertir les plus petits, il est aussi possible d’intégrer des jeux ludiques à votre set de table restaurant.`,
+      },
+      {
+        title: "IMPRESSION SET DE TABLE : UNE ALTERNATIVE EFFICACE",
+        desc: `Le set de table restaurant est une alternative efficace à la nappe traditionnelle. Économique et efficace, l’impression de set de table menu permet de mettre en valeur votre carte. Ce support à usage jetable garantit la sécurité de vos employés et de vos clients dans votre établissement. En effet, il est plus hygiénique qu’un tissu lavable et réutilisable. Le set de table restaurant permet de débarrasser et dresser vos tables en un clin d’oeil.
+
+        Chez Fac Imprimeur nous vous proposons des sets de table personnalisés pour refléter au mieux l’identité de votre établissement. Ces jolis décorations de table sont disponibles au format A3. Pour s’adapter à tous les budgets nous vous proposons un tarif dégressif pour les commandes de grandes quantités. Pour un plus petit budget, vous pouvez également opter pour l’impression set de table N&B.`,
+      },
+      {
+        title: "CHOISIR LE SET DE TABLE PAPIER POUR SON RESTAURANT",
+        desc: `L’impression de sets de table en papier représente une alternative moderne et efficace à la nappe traditionnelle. Non seulement économiques, ces sets personnalisés offrent une mise en valeur optimale de votre carte tout en garantissant l’hygiène et la praticité. Jetables, ils assurent la sécurité des clients et du personnel, se montrant bien plus hygiéniques que les nappes lavables. En un instant, ils facilitent la préparation et le nettoyage des tables, offrant une solution pratique et esthétique pour votre restaurant.`,
+      },
+    ],
+    caracteristics: [
+      "Format A3",
+      "Recto ou recto verso",
+      "Impression Quadri HD sur presse offset",
+      "Support 90 gr offset ou 135 gr couché brillant",
+    ],
+  },
+
+  {
+    id: 11,
+    title: "Set de table N&B",
+    format: "A3",
+    base_price: 16500,
+    category: impressCategories[7],
+    cover: Resto9,
+    type: "MENU RESTO",
+    short_description: `Impression numérique HD en N&B, rapide et économique`,
+    full_description: [
+      {
+        title:
+          "Le Set De Table N&B : Une Communication Bon Marché Pour Les Restaurateu",
+        desc: `Le set de table est un élément incontournable de la communication en restauration. Il joue un rôle bien plus important que de simplement protéger la table des éclaboussures et des éraflures. De plus, il constitue un support de communication efficace pour les restaurants qui souhaitent véhiculer leur image, promouvoir leurs plats, ou tout simplement offrir une expérience agréable à leurs clients.`,
+      },
+      {
+        title: "Flexibilité Et Personnalisation Avec L’Impression Numérique",
+        desc: `Parmi les diverses options disponibles, la version imprimée en noir et blanc (N&B) émerge comme une solution économique et versatile pour les établissements de restauration. C’est pourquoi, l’impression numérique offre une grande flexibilité en matière de personnalisation des sets de table. Les restaurants peuvent ainsi renouveler régulièrement leur offre visuelle en fonction des saisons, des événements spéciaux, ou des promotions en cours. Cette capacité à changer le visuel de vos sets de table permet de maintenir l’intérêt des clients, tout en renforçant l’identité de votre établissement.`,
+      },
+      {
+        title: "Économie Et Praticité Avec Des Sets De Table Jetables",
+        desc: `L’un des avantages majeurs des sets de table imprimés en noir et blanc réside dans leur caractère jetable. De fait, ils sont idéaux pour les établissements qui privilégient la facilité d’entretien et la réduction des coûts liés aux articles réutilisables. Vous pouvez ainsi imprimer la quantité de sets de table dont vous avez réellement besoin, éliminant ainsi les coûts liés au stockage et à l’entretien. De plus, en optant pour une version N&B, vous économisez sur les coûts d’impression par rapport aux modèles en couleur, tout en conservant un aspect élégant et épuré.`,
+      },
+      {
+        title: "Une Solution Rentable Pour Une Communication Efficace",
+        desc: `Le set de table imprimé en noir et blanc est une solution pratique, économique et polyvalente pour les restaurants soucieux de leur image et de leur budget. Grâce à l’impression numérique, vous pouvez personnaliser vos sets de table en fonction de vos besoins, tout en minimisant les coûts de stockage et d’entretien. Cette approche vous permet de rester flexible et de surprendre agréablement vos clients tout en renforçant la notoriété de votre établissement. Il s’agit d’un investissement judicieux pour les restaurants qui cherchent à offrir une expérience mémorable à leurs convives tout en préservant leur rentabilité.`,
+      },
+    ],
+    caracteristics: [
+      "Format A3",
+      "Recto ou recto verso",
+      "Impression Quadri HD sur presse offset",
+      "Papier 80 gr Laser",
+    ],
+  },
+];
+
+const plastifications: MetaDataProps[] = [
+  {
+    price: 5700,
+    libelle: "Plastification encapsulée à chaud brillante",
+  },
+];
+const restoSupport: MetaDataProps[] = [
+  {
+    price: 500,
+    libelle: "80 gr Laser",
+  },
+  {
+    price: 1000,
+    libelle: "90 gr Ofset Laser",
+  },
+  {
+    price: 500,
+    libelle: "300 gr C. Brillant rainé à plat",
+  },
+  {
+    price: 800,
+    libelle: "350 gr C. Brillant rainé à plat",
+  },
+  {
+    price: 1000,
+    libelle: "350 gr C. Mat rainé à plat",
+  },
+  {
+    price: 800,
+    libelle: "350 gr Couché Mat",
+  },
+  {
+    price: 2800,
+    libelle: "Polyester blanc 190 micron (indéchirable)",
+  },
+  {
+    price: 1800,
+    libelle: "Polyester blanc 350 micron (indéchirable)",
+  },
+];
+
+const restoMenuPelliclage: MetaDataProps[] = [
+  {
+    price: 450,
+    libelle: "Recto Brillant",
+  },
+  {
+    price: 550,
+    libelle: "Recto Mat",
+  },
+  {
+    price: 5650,
+    libelle: "Recto / verso brillant",
+  },
+  {
+    price: 1450,
+    libelle: "Recto / Verso Mat",
+  },
+];
+
 export {
   defaultOders,
   chats,
@@ -2322,4 +3216,16 @@ export {
   bcardPaperColors,
   bcardRadius,
   bcardOptions,
+
+  /* brochure */
+  brochures,
+  brochurePageNumber,
+  brochurePrintingSide,
+
+  /* rollup */
+  rollups,
+  rollupSupport,
+
+  /* menu resto */
+  menusResto,
 };

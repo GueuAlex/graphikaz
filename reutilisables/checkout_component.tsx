@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import {
   BcardProps,
+  BrochureProps,
   FlyersProps,
   ImpressOrderProps,
+  RollupProps,
   deliZoneProps,
+  RestoProps,
 } from "@/types";
 import { payMethodsTab } from "@/constants";
 import CheckoutMobileForm from "./checkout_mobile_form";
@@ -13,7 +16,12 @@ import CheckoutCreditCardForm from "./checkout_credit_card_form";
 interface CheckoutComponentProps {
   updateToggle: (value: boolean) => void;
   order: ImpressOrderProps;
-  impressable: FlyersProps | BcardProps;
+  impressable:
+    | FlyersProps
+    | BcardProps
+    | BrochureProps
+    | RollupProps
+    | RestoProps;
   delizone: deliZoneProps | undefined;
 }
 
