@@ -61,7 +61,12 @@ const RollupView = () => {
       {/* Banner  */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>FLYERS SANS VOLETS</h2>
+          <div className="title-container">
+            <h2>KEKEMONO & ROLL UP</h2>
+            <small className="subtitle">
+              {rollups.length} resultats affichés
+            </small>
+          </div>
           <Carousel
             responsive={responsive}
             autoPlay={true}

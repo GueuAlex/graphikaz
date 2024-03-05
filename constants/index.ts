@@ -83,6 +83,7 @@ import {
 import {
   Resto1,
   Resto10,
+  Resto11,
   Resto2,
   Resto3,
   Resto4,
@@ -116,6 +117,7 @@ import {
   MetaDataProps,
   PayProps,
   PrestatorProps,
+  ProductLibelle,
   RestoProps,
   RollupProps,
   ServiceProps,
@@ -822,6 +824,7 @@ const FlyersTab: FlyersProps[] = [
   {
     id: 1,
     title: "A7 Flyers & Leaflets",
+    product: ProductLibelle.FLYER,
     type: "UNFOLDED",
     category: impressCategories[1],
     base_price: 1000,
@@ -852,6 +855,7 @@ const FlyersTab: FlyersProps[] = [
   },
   {
     id: 2,
+    product: ProductLibelle.FLYER,
     title: "A6 Flyers & Leaflets",
     type: "UNFOLDED",
     category: impressCategories[1],
@@ -886,6 +890,7 @@ const FlyersTab: FlyersProps[] = [
   },
   {
     id: 3,
+    product: ProductLibelle.FLYER,
     title: "A5 Flyers & Leaflets",
     type: "UNFOLDED",
     category: impressCategories[1],
@@ -930,6 +935,7 @@ const FlyersTab: FlyersProps[] = [
   },
   {
     id: 4,
+    product: ProductLibelle.FLYER,
     title: "A4 Flyers & Leaflets",
     type: "UNFOLDED",
     category: impressCategories[1],
@@ -976,6 +982,7 @@ const FlyersTab: FlyersProps[] = [
   },
   {
     id: 5,
+    product: ProductLibelle.FLYER,
     title: "A3 Flyers & Leaflets",
     type: "UNFOLDED",
     category: impressCategories[1],
@@ -1019,6 +1026,7 @@ const FlyersTab: FlyersProps[] = [
 
   {
     id: 6,
+    product: ProductLibelle.FLYER,
     title: "DL Flyers & Leaflets",
     type: "UNFOLDED",
     category: impressCategories[1],
@@ -1060,6 +1068,7 @@ const FlyersTab: FlyersProps[] = [
 
   {
     id: 7,
+    product: ProductLibelle.FLYER,
     title: "Flyers Express 15 x 15 cm",
     type: "UNFOLDED",
     category: impressCategories[1],
@@ -1091,6 +1100,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
 
   {
     id: 8,
+    product: ProductLibelle.FLYER,
     title: "Flyers Express 21 x 21 cm",
     type: "UNFOLDED",
     category: impressCategories[1],
@@ -1148,6 +1158,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
   /* FOLDED FLEYERS */
   {
     id: 9,
+    product: ProductLibelle.FLYER,
     title: "Dépliants 2 volets A4",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1182,6 +1193,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
 
   {
     id: 10,
+    product: ProductLibelle.FLYER,
     title: "Dépliant 2 volets A5",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1224,6 +1236,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
   },
   {
     id: 11,
+    product: ProductLibelle.FLYER,
     title: "Dépliants 2 volets A6",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1256,6 +1269,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
   },
   {
     id: 12,
+    product: ProductLibelle.FLYER,
     title: "Dépliant 2 volets 10×21 cm",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1299,6 +1313,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
 
   {
     id: 13,
+    product: ProductLibelle.FLYER,
     title: "Dépliants 2 volets 15 x 15 cm",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1337,6 +1352,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
 
   {
     id: 14,
+    product: ProductLibelle.FLYER,
     title: "Dépliant 3 volets 14 x 29,7 cm",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1371,6 +1387,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
 
   {
     id: 15,
+    product: ProductLibelle.FLYER,
     title: "Dépliant 3 volets 10 x 21 cm",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1413,6 +1430,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
 
   {
     id: 16,
+    product: ProductLibelle.FLYER,
     title: "Dépliants 3 volets 21×21 cm",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1445,6 +1463,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
   },
   {
     id: 17,
+    product: ProductLibelle.FLYER,
     title: "Dépliants 3 volets A5",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1477,6 +1496,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
   },
   {
     id: 18,
+    product: ProductLibelle.FLYER,
     title: "Flyers et dépliants en forme de carte",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1517,6 +1537,7 @@ De ce fait, durant le processus de personnalisation de votre <strong>flyer carr�
   },
   {
     id: 19,
+    product: ProductLibelle.FLYER,
     title: "Dépliants 3 volets A4",
     type: "FOLDED",
     category: impressCategories[1],
@@ -1819,6 +1840,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 1,
     title: "Cartes de visite bon marché",
+    product: ProductLibelle.BUSINESS_CARD,
     formats: bcardFormats,
     type: "BY FINISH",
     base_price: 1500,
@@ -1854,6 +1876,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 2,
     title: "Cartes de visite plastifiées",
+    product: ProductLibelle.BUSINESS_CARD,
     formats: bcardFormats,
     type: "BY FINISH",
     base_price: 1200,
@@ -1889,6 +1912,7 @@ const bcardTab: BcardProps[] = [
     id: 3,
     title: "Cartes de visite Spot UV",
     type: "BY FINISH",
+    product: ProductLibelle.BUSINESS_CARD,
     formats: bcardFormats,
     base_price: 1400,
     category: impressCategories[2],
@@ -1921,6 +1945,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 4,
     title: "Cartes de visite en pâte à papier",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY FINISH",
     formats: bcardFormats,
     base_price: 1700,
@@ -1952,6 +1977,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 5,
     title: "Cartes de visite écologiques",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY FINISH",
     base_price: 1100,
     formats: bcardFormats,
@@ -1983,6 +2009,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 6,
     title: "Cartes de visite en kraft brun",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY FINISH",
     formats: bcardFormats,
     base_price: 1100,
@@ -2014,6 +2041,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 7,
     title: "Cartes de visite en aluminium",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY FINISH",
     formats: bcardFormats,
     base_price: 1900,
@@ -2045,6 +2073,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 8,
     title: "Cartes de visite texturées",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY FINISH",
     base_price: 1900,
     formats: bcardFormats,
@@ -2078,6 +2107,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 9,
     title: "Cartes de visite métalliques",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY FINISH",
     base_price: 1900,
     formats: bcardFormats,
@@ -2114,6 +2144,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 10,
     title: "Cartes de visite à coins arrondis",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY TYPE",
     base_price: 1900,
     formats: bcardFormats,
@@ -2151,6 +2182,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 11,
     title: "Cartes de visite carrées",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY TYPE",
     base_price: 1300,
     formats: bcardFormats,
@@ -2186,6 +2218,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 12,
     title: "Mini cartes de visite",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY TYPE",
     formats: bcardFormats,
     base_price: 1350,
@@ -2221,6 +2254,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 13,
     title: "Cartes de fidélité",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY TYPE",
     base_price: 1550,
     formats: bcardFormats,
@@ -2262,6 +2296,7 @@ const bcardTab: BcardProps[] = [
   {
     id: 14,
     title: "Cartes de visite pliées",
+    product: ProductLibelle.BUSINESS_CARD,
     type: "BY TYPE",
     base_price: 1550,
     formats: bcardFormats,
@@ -2300,6 +2335,7 @@ const bcardTab: BcardProps[] = [
     id: 15,
     title: "Cartes de visite perforées",
     type: "BY TYPE",
+    product: ProductLibelle.BUSINESS_CARD,
     base_price: 1150,
     formats: bcardFormats,
     category: impressCategories[2],
@@ -2334,6 +2370,7 @@ const brochures: BrochureProps[] = [
   {
     id: 1,
     title: "Brochure A4 fermée – Paysage",
+    product: ProductLibelle.BROCHURE,
     base_price: 2500,
     format: "59.4x21 cm ouvert - A4 fermé",
     category: impressCategories[3],
@@ -2350,6 +2387,7 @@ const brochures: BrochureProps[] = [
   {
     id: 2,
     title: "Brochure Express 21 x 21 cm fermé",
+    product: ProductLibelle.BROCHURE,
     base_price: 1000,
     format: "42 x 21 cm ouvert - 21 x 21 cm fermé",
     category: impressCategories[3],
@@ -2380,6 +2418,7 @@ const brochures: BrochureProps[] = [
   {
     id: 3,
     title: "Brochure Express A4 fermée",
+    product: ProductLibelle.BROCHURE,
     base_price: 1500,
     format: "A3 ouvert - A4 fermé",
     category: impressCategories[3],
@@ -2420,6 +2459,7 @@ const brochures: BrochureProps[] = [
   {
     id: 4,
     title: "Brochure Express A5 fermé",
+    product: ProductLibelle.BROCHURE,
     base_price: 1250,
     format: "A4 ouvert - A5 fermé",
     category: impressCategories[3],
@@ -2448,6 +2488,7 @@ const brochures: BrochureProps[] = [
   {
     id: 5,
     title: "Brochure Express A6 fermé",
+    product: ProductLibelle.BROCHURE,
     base_price: 1250,
     format: "A5 ouvert - A6 fermé",
     category: impressCategories[3],
@@ -2527,6 +2568,7 @@ const rollups: RollupProps[] = [
   {
     id: 1,
     title: "Roll Up 85 x 200 cm",
+    product: ProductLibelle.ROLLUP,
     category: impressCategories[4],
     type: "ROLLUP",
     cover: Roller1,
@@ -2558,6 +2600,7 @@ const rollups: RollupProps[] = [
   },
   {
     id: 2,
+    product: ProductLibelle.ROLLUP,
     title: "Roll Up 100×200 cm",
     category: impressCategories[4],
     type: "ROLLUP",
@@ -2590,6 +2633,7 @@ const rollups: RollupProps[] = [
 
   {
     id: 3,
+    product: ProductLibelle.ROLLUP,
     title: "Roll Up 120 x 200 cm",
     category: impressCategories[4],
     type: "ROLLUP",
@@ -2625,6 +2669,7 @@ const rollups: RollupProps[] = [
   {
     id: 4,
     title: "Roll Up 150 x 200 cm",
+    product: ProductLibelle.ROLLUP,
     category: impressCategories[4],
     type: "ROLLUP",
     cover: Roller4,
@@ -2650,6 +2695,7 @@ const rollups: RollupProps[] = [
 
   {
     id: 5,
+    product: ProductLibelle.ROLLUP,
     title: "Roll Up 200 x 200 cm",
     category: impressCategories[4],
     type: "ROLLUP",
@@ -2683,6 +2729,7 @@ const rollups: RollupProps[] = [
 
   {
     id: 6,
+    product: ProductLibelle.ROLLUP,
     title: "Roll Up 240 x 200 cm",
     category: impressCategories[4],
     type: "ROLLUP",
@@ -2714,6 +2761,7 @@ const rollups: RollupProps[] = [
   {
     id: 7,
     title: "Roll Up 300 x 200 cm",
+    product: ProductLibelle.ROLLUP,
     category: impressCategories[4],
     type: "ROLLUP",
     cover: Roller6,
@@ -2738,6 +2786,7 @@ La taille du visuel imprimé en couleur est de 3 mètres  sur  2, fixé par amor
   },
   {
     id: 8,
+    product: ProductLibelle.ROLLUP,
     title: "Roll Up recto/verso",
     category: impressCategories[4],
     type: "ROLLUP",
@@ -2791,6 +2840,7 @@ const menusResto: RestoProps[] = [
   {
     id: 1,
     title: "Set de table plastifié",
+    product: ProductLibelle.MENU_RESTORE,
     format: "A4",
     base_price: 15700,
     category: impressCategories[7],
@@ -2822,6 +2872,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 2,
     title: "Porte Addition",
+    product: ProductLibelle.MENU_RESTORE,
     format: "21x10 cm fermé - 21x20 cm ouvert",
     base_price: 15900,
     category: impressCategories[7],
@@ -2866,6 +2917,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 3,
     title: "Menus depliants 21 X 30 – 2 plis roulés",
+    product: ProductLibelle.MENU_RESTORE,
     format: "63x29.7 cm ouvert A4 fermé",
     base_price: 15900,
     category: impressCategories[7],
@@ -2903,6 +2955,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 4,
     title: "Menu restaurant 8 pages A3",
+    product: ProductLibelle.MENU_RESTORE,
     format: "A3 ouvert A4 fermé",
     base_price: 16900,
     category: impressCategories[7],
@@ -2929,6 +2982,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 5,
     title: "Menu dépliant A4 ouvert A5 fermé",
+    product: ProductLibelle.MENU_RESTORE,
     format: "A4 ouvert - A5 fermé",
     base_price: 17900,
     category: impressCategories[7],
@@ -2955,6 +3009,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 6,
     title: "Menu 4 pages indéchirable",
+    product: ProductLibelle.MENU_RESTORE,
     format: "A3 ouvert - A4 fermé",
     base_price: 18500,
     category: impressCategories[7],
@@ -2981,6 +3036,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 7,
     title: "Menu simple indéchirable",
+    product: ProductLibelle.MENU_RESTORE,
     format: "A4",
     base_price: 15500,
     category: impressCategories[7],
@@ -3011,6 +3067,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 8,
     title: "Pvc indéchirable",
+    product: ProductLibelle.MENU_RESTORE,
     format: "A4",
     base_price: 18500,
     category: impressCategories[7],
@@ -3039,6 +3096,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 9,
     title: "Menu dépliant A3 ouvert A4 fermé",
+    product: ProductLibelle.MENU_RESTORE,
     format: "A3 ouvert A4 fermé",
     base_price: 16500,
     category: impressCategories[7],
@@ -3064,6 +3122,7 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
   {
     id: 10,
     title: "Set de table restaurant",
+    product: ProductLibelle.MENU_RESTORE,
     format: "A3",
     base_price: 16500,
     category: impressCategories[7],
@@ -3098,9 +3157,10 @@ Optez pour un set de table plastifié, alliant praticité et style. Imperméable
     id: 11,
     title: "Set de table N&B",
     format: "A3",
+    product: ProductLibelle.MENU_RESTORE,
     base_price: 16500,
     category: impressCategories[7],
-    cover: Resto9,
+    cover: Resto11,
     type: "MENU RESTO",
     short_description: `Impression numérique HD en N&B, rapide et économique`,
     full_description: [
@@ -3191,6 +3251,470 @@ const restoMenuPelliclage: MetaDataProps[] = [
   },
 ];
 
+const products: (
+  | FlyersProps
+  | BcardProps
+  | BrochureProps
+  | RollupProps
+  | RestoProps
+)[] = [
+  {
+    id: 1,
+    title: "A7 Flyers & Leaflets",
+    type: "UNFOLDED",
+    product: ProductLibelle.FLYER,
+    category: impressCategories[1],
+    base_price: 1000,
+    cover: FlyersA7,
+    format: "A7",
+    isFolded: false,
+    short_description:
+      "If you need to get the word out about an upcoming event, promote a new menu in your restaurant or advertise a service on behalf of your business, our A7 Flyers & Leaflets are the ideal marketing tool. All A7 Flyers are trimmed to 105 x 74 mm. Every time you order from Solopress, you'll benefit from low prices, rapid turnarounds, and trustworthy UK delivery. White label packaging comes as standard, and the option for carbon offsetting lets you do your bit for the environment.",
+    full_description: [
+      {
+        title: "",
+        desc: `Chez Digifaz, nous tenons à vous aider à faire entendre la voix de votre entreprise et c'est pourquoi nous nous spécialisons dans une gamme d'options d'impression. Les flyers et dépliants A7 sont idéalement dimensionnés pour l'impression de menus ou la publicité d'événements si vous recherchez un outil promotionnel très pratique.
+
+        Livraison gratuite en France pour toute commande de Flyers et Dépliants A7 !
+        
+        Notre équipe d'impression est à votre disposition pour vous aider à concrétiser votre vision du marketing et à faire en sorte que votre maquette et vos messages finis de haute qualité sortent et vous parviennent le plus rapidement possible, afin que vous ne soyez pas retardé. Ce service d'impression de flyers A7 est parfait pour les promotions ou les menus de restaurants ou pour faire passer le message d'un nouveau produit ou d'un événement - son format pratique (105 x 74 mm) le rend extrêmement pratique. Si vous travaillez dans le commerce de détail, vous pouvez même créer de petites notes pour les paquets cadeaux.
+        
+        Disponible dans une gamme de papiers et avec l'option d'impression recto-verso, nous sommes convaincus que vous serez satisfaits de votre achat.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presses numérique",
+      "Format A5 (14,85 x 21 cm)",
+      "Du 90 gr offset au 350 gr couché mat ou brillant",
+      "Impression recto ou recto / verso",
+      "Pelliculage mat ou brillant  – recto ou recto / verso",
+    ],
+  },
+  {
+    id: 2,
+    title: "A6 Flyers & Leaflets",
+    product: ProductLibelle.FLYER,
+    type: "UNFOLDED",
+    category: impressCategories[1],
+    base_price: 1000,
+    cover: FlyersA6,
+    format: "A6",
+    isFolded: false,
+    short_description: `If you want to showcase photography or promote an event, A6 Flyers & Leaflets are a great way to do it. All you need to do is create an eye-catching design and choose your paper type, then we’ll do the rest.
+
+    All A6 Flyers are trimmed to 148 x 105 mm.
+    
+    Ordering from Solopress entitles you to budget-friendly prices, free UK delivery, and speedy turnarounds. White label packaging comes as standard, while our carbon offsetting option helps you support sustainable printing.`,
+    full_description: [
+      {
+        title: "Imprimer Un Flyer A6",
+        desc: `Le flyer A6 se distingue comme un outil promotionnel compact et économique, grâce à son format de petite taille. Malgré ses dimensions modestes, ce tract offre une plateforme efficace pour transmettre une variété d’informations pertinentes liées à un événement, une annonce spécifique ou une promotion en lien avec votre entreprise.
+
+      Cet outil publicitaire polyvalent, largement distribué dans les boîtes aux lettres ou déployé lors d’initiatives de street marketing, se trouve également en libre service sur des comptoirs ou des présentoirs. Le flyer A6 se révèle ainsi être le support idéal pour tenir informés vos prospects sur les dernières actualités de votre activité.
+      
+      Grâce à sa compacité et à son coût abordable, le flyer A6 offre une visibilité accrue lorsqu’il s’agit de faire passer des messages impactants. Que ce soit pour promouvoir un événement à venir, diffuser une annonce cruciale ou mettre en avant une offre spéciale, ce support de communication permet de toucher un large public, renforçant ainsi la présence et la notoriété de votre enseigne. Optez pour le flyer A6 afin d’optimiser votre stratégie marketing et rester en tête des esprits de vos clients potentiels.
+      
+      `,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presses numérique",
+      "Format A6 (10,5 x 14,85 cm)",
+      "Du 90 gr offset au 350 gr couché mat ou brillant",
+      "Impression recto ou recto / verso",
+      "Pelliculage mat ou brillant  – recto ou recto / verso",
+    ],
+  },
+  {
+    id: 9,
+    title: "Dépliants 2 volets A4",
+    product: ProductLibelle.FLYER,
+    type: "FOLDED",
+    category: impressCategories[1],
+    base_price: 1000,
+    cover: FoldedA4,
+    format: "A3 ouvert - A4 fermé",
+    isFolded: true,
+    short_description: `Lorsqu'un simple prospectus ne suffit pas, l'impression de dépliants en demi-pli vous permet d'exprimer votre message sur quatre pages. La variété des dimensions proposées vous offre un choix de formes et de tailles pour votre dépliant.
+
+    En combinant votre propre contenu et votre maquette avec notre gamme d'options sur les stocks de papier, les grammages et les finitions, vous avez la possibilité de créer un document marketing vraiment unique.
+    
+    Avec des prix bas et une expédition gratuite dans tout le Royaume-Uni, vous bénéficierez d'une livraison rapide et d'un emballage en marque blanche. Chaque commande vous permet de compenser les émissions de carbone associées à votre commande pour une solution d'impression durable.`,
+
+    full_description: [
+      {
+        title: "Les Dépliants A3 Plié En 2",
+        desc: `Les dépliants A3 plié en 2 sont des supports papier intéressants pour accroitre la visibilité d’une entreprise. En effet, ils mettent en valeur les informations clés de votre société, comme des descriptions de produits ou des visuels. De ce fait, chez Fac Imprimeur nous proposons l’impression rapide de vos supports.
+
+        Les dépliants sont édités dans notre atelier à Nice, au format A3 (29,7 x 42 cm) avec une pliure centrale. Les impressions de vos dépliants professionnels sont éditées en couleur et en haute-définition. De plus, nous proposons plusieurs grammages pour votre support. En effet, ils vont du 90 gr laser au 350 gr couché brillant/Mat. Enfin, si vous avez choisi un support de 200 gr ou plus, vous avez l’option de pelliculer votre support pub`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Format ouvert A3 (29,7 x 42 cm)",
+      "Format fermé A4 (21 x 29,7 cm)",
+      "1 pli au centre",
+      "Du 90 gr offset au 350 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto ou recto / verso",
+    ],
+  },
+
+  {
+    id: 10,
+    title: "Dépliant 2 volets A5",
+    product: ProductLibelle.FLYER,
+    type: "FOLDED",
+    category: impressCategories[1],
+    base_price: 1000,
+    cover: FoldedA5,
+    format: "A4 ouvert - A5 fermé",
+    isFolded: true,
+    short_description: `Lorsqu'un simple prospectus ne suffit pas, l'impression de dépliants en demi-pli vous permet d'exprimer votre message sur quatre pages. La variété des dimensions proposées vous offre un choix de formes et de tailles pour votre dépliant.
+
+    En combinant votre propre contenu et votre maquette avec notre gamme d'options sur les stocks de papier, les grammages et les finitions, vous avez la possibilité de créer un document marketing vraiment unique.
+    
+    Avec des prix bas et une expédition gratuite dans tout le Royaume-Uni, vous bénéficierez d'une livraison rapide et d'un emballage en marque blanche. Chaque commande vous permet de compenser les émissions de carbone associées à votre commande pour une solution d'impression durable.`,
+
+    full_description: [
+      {
+        title: "COMMENT FAIRE UN DEPLIANT 2 VOLETS EN A4",
+        desc: `Le Dépliant A4 est un support imprimé dont la forme définitive est obtenue par le moyen d’un pliage suivant la longueur de la feuille. Ce prospectus a pour principal objectif la mise en avant de multiples informations. En effet, le dépliant 2 volets en A4 est un format très prisé car il peut contenir une importante quantité d’informations. De ce fait, on s’en sert généralement de dépliant commercial. Son but est de permettre à un vendeur ou un commercial d’avoir toutes les informations en main pour renseigner un client. Par exemple, il indique le plus souvent le détail et le prix d’une prestation.
+        `,
+      },
+      {
+        title: "LES AVANTAGES DU DÉPLIANT A4",
+        desc: `Pour débuter, le dépliant 2 volets en A4 est un support facile à distribuer et répond rapidement à vos besoins. En effet, ce produit est imprimé en 1-2 jours ouvrés dans notre atelier. C’est un outil pratique pour communiquer sur les caractéristiques d’un service ou d’un produit. De plus le dépliant commercial est facile à imprimer. De ce fait, nous vous proposons une impression personnalisée dans des délais restreint. Pour cela, il vous suffit d’indiquer la quantité exacte que vous souhaitez. La dernière étape consiste à sélectionner le grammage parfait pour votre dépliant 2 volets en A4.
+
+        Le dépliant 2 volets en A4 est simple à administrer. Disposé sur un comptoir ou sur un bureau, il est facile pour un client de récupérer un dépliant commercial. De plus, ce support est un excellent outil pour les commerciaux. En effet, ce support est léger et facile à transporter, notamment pour les déplacements d’affaires et les évènements. D’autant plus qu’il permet d’aider à faire la promotion d’une entreprise. Cet outil de communication peut aussi servir dans les cas suivant : dépliant touristique, dépliant design, dépliants photo ou encore dépliant publicitaire.
+        
+        Plusieurs autres formats de dépliant commercial sont disponibles : le A5, A3, 15 x 15 cm
+        
+        `,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Format ouvert A4 (29,7 x 21 cm)",
+      "Format fermé A5 (21 x 14,85 cm) ",
+      "1 pli au centre",
+      "Du 90 gr offset au 350 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto ou recto/verso mat ou brillant",
+    ],
+  },
+  {
+    id: 1,
+    title: "Cartes de visite bon marché",
+    product: ProductLibelle.BUSINESS_CARD,
+    formats: bcardFormats,
+    type: "BY FINISH",
+    base_price: 1500,
+    category: impressCategories[2],
+    cover: Bcard1,
+    short_description: `Obtenir le meilleur retour sur investissement est toujours une priorité pour les entreprises, mais une carte de visite bien conçue et parfaitement imprimée est essentielle pour établir des contacts et développer de nouvelles relations. Heureusement, des cartes de visite bon marché ne sont pas forcément synonymes de mauvaise qualité.
+
+    En proposant une large gamme de formats sur un papier populaire non laminé, nous sommes en mesure de maintenir une qualité d'impression élevée sur une carte de visite abordable qui ne vous décevra pas.
+    
+    Chaque fois que vous commandez chez Solopress, vous bénéficiez de prix bas, de délais d'exécution rapides et d'une livraison fiable en France. L'emballage en marque blanche est standard, et l'option de compensation carbone vous permet de faire votre part pour l'environnement.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite à bas prix",
+        desc: `Restez à l'esprit de vos clients et ouvrez de nouvelles voies de communication sans vous ruiner grâce à l'impression de cartes de visite à bas prix de Solopress.
+
+      Cette gamme de cartes économiques associe un prix avantageux à une impression de haute qualité, ce qui vous permet d'impressionner vos clients ou de faire passer le message lors d'événements de réseautage sans avoir à dépenser beaucoup d'argent. Vous pouvez ainsi communiquer vos coordonnées en toute confiance, en sachant que vous avez fait un choix judicieux et sans compromis.
+      
+      Choisissez votre format et votre design pour des cartes de visite bon marché, en recto ou en recto verso. Utilisez les modèles de conception en ligne de notre outil Créez votre propre carte pour produire des cartes de visite personnalisées avec des éléments graphiques et des mises en page éprouvés. Nous pouvons vous aider à créer des designs personnalisés en couleur, afin que vous puissiez être sûr que votre carte est unique.
+      
+      Si vous êtes en panne d'inspiration, notre équipe de designers internes est là pour vous aider à concrétiser votre vision. Une fois que vous serez satisfait de votre maquette, nous nous mettrons immédiatement au travail pour imprimer votre nouvelle carte de visite.
+      
+      Pour des cartes de visite britanniques bon marché avec livraison gratuite, il n'y a rien de plus simple que de commander en ligne avec nous.`,
+      },
+    ],
+    caracteristics: [
+      "Carte de visite à finition lisse en soie 400gsm",
+      "Afficher le texte avec des détails et des couleurs vives",
+      "Acheter des tailles standard, mini, carrées ou autres",
+    ],
+  },
+
+  {
+    id: 2,
+    title: "Cartes de visite plastifiées",
+    formats: bcardFormats,
+    product: ProductLibelle.BUSINESS_CARD,
+    type: "BY FINISH",
+    base_price: 1200,
+    category: impressCategories[2],
+    cover: Bcard2,
+    short_description: `Ajoutez de l'éclat à votre présentation grâce à la gamme de cartes de visite plastifiées de Solopress. Disponibles en différents formats et finitions, nous pouvons vous aider à faire en sorte que votre prochain événement de réseautage se déroule aussi bien que la sensation de ces cartes brillantes qui attirent l'attention.
+
+    <strong>Disponibles en :</strong>
+    Pelliculage mat - soyeux et lisse au toucher, il adoucit les images.
+    Pelliculage brillant - Finition ultra brillante, les couleurs de l'œuvre d'art apparaissent plus vives.
+    Pelliculage Velvet Soft-Touch - Comme une peau de pêche, les couleurs paraissent plus riches.
+    
+    Des prix avantageux, une livraison gratuite et efficace au Royaume-Uni et des délais d'exécution rapides font partie de l'expérience Solopress. Les emballages en marque blanche sont parfaits pour l'impression par des tiers, et notre option de compensation carbone favorise l'impression respectueuse de l'environnement.`,
+
+    full_description: [
+      {
+        title: "Impression de cartes de visite plastifiées à bas prix",
+        desc: `L'ajout d'un pelliculage lorsque vous imprimez des cartes de visite offre un niveau de protection solide qui garantira leur longévité.
+
+        Le type de pelliculage choisi dépend de l'impact que vous souhaitez avoir sur le destinataire. Les cartes de visite pelliculées brillantes sont brillantes et attirent l'attention, tandis que les cartes de visite pelliculées velours sont très douces au toucher.
+        
+        Les cartes de visite plastifiées mates restent toutefois notre finition la plus couramment commandée en raison de leur aspect général et de l'équilibre parfait entre performance et présentation.
+        
+        Quelle que soit l'option choisie, le pelliculage peut être appliqué sur une ou deux faces,
+        
+        Utilisez l'un de nos modèles de cartes de visite gratuits pour créer votre maquette et soumettez-la nous en ligne lorsque vous passez votre commande. Vous pouvez également faire appel à notre équipe de concepteurs pour vous aider à obtenir un produit de haute qualité, avec une livraison gratuite pour chaque commande, pour couronner notre processus simple.`,
+      },
+    ],
+    caracteristics: [],
+  },
+  {
+    id: 2,
+    title: "Brochure Express 21 x 21 cm fermé",
+    base_price: 1000,
+    product: ProductLibelle.BROCHURE,
+    format: "42 x 21 cm ouvert - 21 x 21 cm fermé",
+    category: impressCategories[3],
+    type: "EXPRESS",
+    cover: Brochure2,
+    short_description: `Découvrez notre service d'impression de brochures ultra-rapide, le "Brochure Express 21 x 21 cm fermé". Avec des dimensions parfaites de 42 x 21 cm ouvert et 21 x 21 cm fermé, cette brochure est idéale pour présenter votre entreprise, vos produits ou vos événements de manière professionnelle et percutante.
+
+    Grâce à notre technologie d'impression de pointe, nous garantissons une qualité exceptionnelle pour mettre en valeur vos contenus. Commandez dès maintenant et bénéficiez d'une livraison rapide pour vous démarquer avec style !`,
+    full_description: [
+      {
+        title: "",
+        desc: `La <strong>brochure</strong> est un outil de communication indispensable pour présenter vos produits ou votre activité en détail.
+
+        La brochure 21 x 21 est idéale pour l’impression de vos documents de présentation de vos produits et services. <strong>Le brochage 2 points métal</strong> est une confection permettant d’assembler vos documents par le centre. Cela permet d’ouvrir facilement votre brochure imprimée. A destination de vos clients professionnels ou particuliers, il est  facile de le transporter et de le distribuer.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD",
+      "Format ouvert 42 x 21 cm",
+      "Format fermé 21 x 21 cm",
+      "Plié agraphé au centre",
+      "90 gr offset, 135 et 170 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto sur la couverture",
+    ],
+  },
+
+  {
+    id: 3,
+    title: "Brochure Express A4 fermée",
+    base_price: 1500,
+    format: "A3 ouvert - A4 fermé",
+    product: ProductLibelle.BROCHURE,
+    category: impressCategories[3],
+    type: "EXPRESS",
+    cover: Brochure3,
+    short_description: `Offrez à votre entreprise une visibilité exceptionnelle avec notre service d'impression de brochures "Brochure Express A4 fermée". 
+
+    Conçue pour captiver l'attention de vos clients, cette brochure au format A3 ouvert et A4 fermé offre un support idéal pour présenter vos produits, services ou événements de manière percutante et professionnelle. Grâce à notre processus d'impression rapide et de haute qualité, vous pouvez obtenir des brochures impeccables en un temps record.
+    
+    Démarquez-vous de la concurrence et faites briller votre entreprise avec notre solution d'impression de brochures de qualité supérieure !`,
+    full_description: [
+      {
+        title: "Pourquoi Opter Pour L’impression De Brochures En Express ?",
+        desc: `Les brochures s’avèrent être un moyen efficace pour promouvoir votre entreprise ou vos produits, mais il peut parfois être délicat d’être préparé à temps pour des événements cruciaux ou des présentations importantes. C’est précisément là que l’impression express de brochures entre en jeu. En choisissant cette solution, vous garantissez une préparation rapide de vos brochures, répondant ainsi avec célérité à vos impératifs les plus pressants.`,
+      },
+      {
+        title: "Quels Sont Les Avantages De L’impression De Brochures En A4 ?",
+        desc: `L’impression de brochures en A4 peut offrir de nombreux avantages par rapport à d’autres formats. Le format A4 est un choix populaire car il est facile à lire et à manipuler, et il peut être imprimé à un coût raisonnable. De plus, les brochures en A4 peuvent être facilement pliées pour s’adapter à vos besoins de présentation.
+        `,
+      },
+      {
+        title:
+          "Comment Préparer Votre Fichier Pour L’impression De Brochures En Express ?",
+        desc: `Pour préparer votre fichier pour l’impression de brochures en express, il est important de fournir un fichier numérique de haute qualité. Ainsi, vous pouvez vous assurer que votre brochure sera imprimée rapidement et avec la qualité souhaitée. L’impression de brochures en express peut être un moyen efficace de promouvoir votre entreprise ou votre produit de manière rapide et professionnelle. En optant pour l’impression en A4, vous pouvez bénéficier d’un format facile à lire et à manipuler, ainsi que d’un coût raisonnable. Assurez-vous de préparer correctement votre fichier pour l’impression pour garantir un produit final de qualité.`,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD",
+      "Format ouvert A3 (42 x 29,7 cm)",
+      "Format fermé A4 (21 x 29,7 cm)",
+      "Plié agrafé au centre",
+      "90 gr offset, 135 et 170 gr couché mat ou brillant",
+      "Impression recto / verso",
+      "Pelliculage recto sur la couverture",
+    ],
+  },
+  {
+    id: 1,
+    title: "Roll Up 85 x 200 cm",
+    category: impressCategories[4],
+    product: ProductLibelle.ROLLUP,
+    type: "ROLLUP",
+    cover: Roller1,
+    format: "85 x 200 cm",
+    base_price: 12500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 85×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title: "Le Roll Up 85×200 Est L’outil De Communication Idéal",
+        desc: `<strong>Le roll up 85×200</strong> est un véritable moyen de communication à lui tout seul. Économique et efficace, il est idéal pour tous types d’entreprises ou d’organisations. Ainsi, généralement imprimé pour des événements en extérieur ou en intérieur. Le roll up est une <strong>grande affiche</strong> qui impacte directement votre clientèle ou vos prospects. C’est pourquoi, Il permet de mettre en avant facilement une <strong>offre promotionnelle</strong> sur vos produits. D’autre part, le roll-up personnalisé est également apprécié par les entreprises pour lancer un nouveau produit. Grâce à ça structure solide et compacte, le stand est monté en quelques minutes pour une installation rapide de votre publicité sur le lieu de votre manifestation. De plus, le roll up 85×200 a l’avantage de maintenir durablement votre impression.`,
+      },
+      {
+        title: "",
+        desc: `Apprécié par les professionnels, il est disponible sous de multiple formats : le 85×200 cm étant le standard de la gamme offrant ainsi le meilleur rapport qualité/prix. Ce <strong>kakemono avec enrouleur</strong> est un outil idéal pour diffuser votre message clairement. Esthétique et efficace, ce support imprimé en recto est solide face aux intempéries (vent, pluie et soleil).`,
+      },
+      {
+        title: "Impression Roll Up Personnalisé En Ligne",
+        desc: `Facile et simple, il suffit de fournir votre visuel de roll up 85×200 au format pdf via interface en ligne. Ainsi, notre équipe de professionnel à Nice traitera votre demande pour un résultat en HD dans les plus brefs délais.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 440 gr",
+      "Impression recto couleur haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+  {
+    id: 2,
+    title: "Roll Up 100×200 cm",
+    product: ProductLibelle.ROLLUP,
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller2,
+    format: "100 x 200 cm",
+    base_price: 14500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 100×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title:
+          "Le Roll-Up : La Solution Idéale Pour Les Entreprises En Déplacement",
+        desc: `Un roll up 100×200 cm est un support de communication visuelle portable et pratique. Il se compose d’un support enroulable sur lui-même, généralement en aluminium, sur lequel est fixée une bâche imprimée à votre image. Le rollup est facile à installer et à déplacer, ce qui en fait un choix populaire pour les expositions, les foires commerciales, les événements promotionnels et les présentations de produits.La bannière du roll up est imprimée en haute résolution pour offrir une qualité d’image professionnelle. Elle peut être personnalisée selon les besoins de chaque client, avec le logo, les images et le texte de leur choix.`,
+      },
+      {
+        title:
+          "La Solution Du Roll-Up Publicitaire Pratique Pour Tous Vos Besoins",
+        desc: `Le roll up est équipé d’un mécanisme de tendeur qui permet de tendre la bannière pour qu’elle soit parfaitement tendue lors de l’utilisation. Il est également équipé d’un système de verrouillage pour maintenir la bannière enroulée lors du transport et de la rangement.
+        En résumé, le roll up est un outil de communication visuelle pratique, portable et facile à utiliser, idéal pour les expositions, les foires commerciales et les événements promotionnels. Il permet d’afficher des images de qualité professionnelle de manière simple et rapide.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 440 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+
+  {
+    id: 3,
+    title: "Roll Up 120 x 200 cm",
+    product: ProductLibelle.ROLLUP,
+    category: impressCategories[4],
+    type: "ROLLUP",
+    cover: Roller3,
+    format: "120 x 200 cm",
+    base_price: 14500,
+    short_description: `<strong>La Bannière Déroulante Standard Pour Vos Événements</strong>
+    Le roll-up 120×200 est un support publicitaire portable et compact. Il offre une surface généreuse pour afficher des visuels percutants. Idéal pour les événements, salons ou présentations, ce dispositif se déploie facilement et peut être rapidement installé.`,
+    full_description: [
+      {
+        title: "ROLL UP PUBLICITAIRE : UN OUTIL DE COMMUNICATION EFFICACE",
+        desc: `Le roll-up publicitaire est un outil de communication efficace pour promouvoir votre entreprise ou votre événement. Faciles à installer et à transporter, les roll-up sont des supports publicitaires pratiques qui attirent l’attention de votre public cible. Que vous soyez une petite entreprise ou une grande entreprise, les roll-up publicitaires sont un choix judicieux pour maximiser votre visibilité et votre impact. En effet, il permet de diffuser un message publicitaire de manière rapide et simple. Grâce à leur format compact et léger, les roll-up peuvent être utilisés dans de nombreuses situations différentes, que ce soit lors d’un salon professionnel, d’une conférence, d’une exposition ou d’un événement public.`,
+      },
+      {
+        title: "CRÉER SON UN ROLL UP PUBLICITAIRE",
+        desc: `Pour créer un roll-up publicitaire infaillible, il est important de choisir le bon format et le bon design. Le format doit être adapté à l’emplacement dans lequel vous prévoyez d’afficher le roll-up, tandis que le design doit refléter votre image de marque et attirer l’attention de votre clientèle. Les couleurs, les polices et les images doivent être soigneusement choisies pour créer un visuel attractif et facile à lire. Il est également important d’inclure des informations claires et concises sur le roll-up publicitaire. Les messages doivent être simples et directs pour que le public puisse facilement comprendre ce que vous offrez et ce que vous attendez d’eux. N’oubliez pas d’inclure votre logo et vos coordonnées pour que les gens puissent vous contacter facilement.`,
+      },
+      {
+        title:
+          "LE KAKEMONO PUBLICITAIRE : UN SUPPORT IDÉAL POUR UNE VISIBILITÉ OPTIMALE",
+        desc: `Ainsi, pour maximiser l’impact de votre roll-up publicitaire, assurez-vous de l’afficher dans un endroit stratégique où les prospects sont susceptibles de le voir. Quel que soit l’événement, un roll-up publicitaire bien conçu peut faire la différence et attirer l’attention. Les roll-up publicitaires sont particulièrement intéressants pour les petites entreprises, car ils permettent de maximiser leur visibilité sans avoir à investir des sommes importantes dans des campagnes publicitaires coûteuses. Ils peuvent également être utilisés par les grandes entreprises pour compléter leur stratégie de communication et pour renforcer leur image de marque. Dans tous les cas, les roll-up publicitaires permettent de toucher un large public et de diffuser efficacement un message publicitaire.`,
+      },
+    ],
+    caracteristics: [
+      "Le Visuel sur bâche 510 gr",
+      "Impression recto quadri haute définition",
+      "La structure : corps en Aluminium",
+      "Le sac de transport matelassé",
+      "Livré avec le visuel monté prêt à l’emploi",
+    ],
+  },
+
+  /* part two */
+  /*  FlyersTab[3],
+  bcardTab[8],
+  brochures[3],
+  brochures[4],
+  menusResto[1], */
+  {
+    id: 11,
+    title: "Set de table N&B",
+    format: "A3",
+    product: ProductLibelle.MENU_RESTORE,
+    base_price: 16500,
+    category: impressCategories[7],
+    cover: Resto11,
+    type: "MENU RESTO",
+    short_description: `Impression numérique HD en N&B, rapide et économique`,
+    full_description: [
+      {
+        title:
+          "Le Set De Table N&B : Une Communication Bon Marché Pour Les Restaurateu",
+        desc: `Le set de table est un élément incontournable de la communication en restauration. Il joue un rôle bien plus important que de simplement protéger la table des éclaboussures et des éraflures. De plus, il constitue un support de communication efficace pour les restaurants qui souhaitent véhiculer leur image, promouvoir leurs plats, ou tout simplement offrir une expérience agréable à leurs clients.`,
+      },
+      {
+        title: "Flexibilité Et Personnalisation Avec L’Impression Numérique",
+        desc: `Parmi les diverses options disponibles, la version imprimée en noir et blanc (N&B) émerge comme une solution économique et versatile pour les établissements de restauration. C’est pourquoi, l’impression numérique offre une grande flexibilité en matière de personnalisation des sets de table. Les restaurants peuvent ainsi renouveler régulièrement leur offre visuelle en fonction des saisons, des événements spéciaux, ou des promotions en cours. Cette capacité à changer le visuel de vos sets de table permet de maintenir l’intérêt des clients, tout en renforçant l’identité de votre établissement.`,
+      },
+      {
+        title: "Économie Et Praticité Avec Des Sets De Table Jetables",
+        desc: `L’un des avantages majeurs des sets de table imprimés en noir et blanc réside dans leur caractère jetable. De fait, ils sont idéaux pour les établissements qui privilégient la facilité d’entretien et la réduction des coûts liés aux articles réutilisables. Vous pouvez ainsi imprimer la quantité de sets de table dont vous avez réellement besoin, éliminant ainsi les coûts liés au stockage et à l’entretien. De plus, en optant pour une version N&B, vous économisez sur les coûts d’impression par rapport aux modèles en couleur, tout en conservant un aspect élégant et épuré.`,
+      },
+      {
+        title: "Une Solution Rentable Pour Une Communication Efficace",
+        desc: `Le set de table imprimé en noir et blanc est une solution pratique, économique et polyvalente pour les restaurants soucieux de leur image et de leur budget. Grâce à l’impression numérique, vous pouvez personnaliser vos sets de table en fonction de vos besoins, tout en minimisant les coûts de stockage et d’entretien. Cette approche vous permet de rester flexible et de surprendre agréablement vos clients tout en renforçant la notoriété de votre établissement. Il s’agit d’un investissement judicieux pour les restaurants qui cherchent à offrir une expérience mémorable à leurs convives tout en préservant leur rentabilité.`,
+      },
+    ],
+    caracteristics: [
+      "Format A3",
+      "Recto ou recto verso",
+      "Impression Quadri HD sur presse offset",
+      "Papier 80 gr Laser",
+    ],
+  },
+  {
+    id: 6,
+    title: "Menu 4 pages indéchirable",
+    product: ProductLibelle.MENU_RESTORE,
+    format: "A3 ouvert - A4 fermé",
+    base_price: 18500,
+    category: impressCategories[7],
+    cover: Resto6,
+    type: "MENU RESTO",
+    short_description: `Pour des menus un support de qualité qui résiste à des utilisations intenses`,
+    full_description: [
+      {
+        title:
+          "Pour des menus un support de qualité qui résiste à des utilisations intenses.",
+        desc: ``,
+      },
+    ],
+    caracteristics: [
+      "Impression couleur HD sur presse numérique",
+      "Support polyester blanc 195 ou 350 micron",
+      "coins arrondis",
+      "1 pli au centre",
+      "350 gr couché mat",
+      "Livré rainé & plié",
+    ],
+  },
+];
+
 export {
   defaultOders,
   chats,
@@ -3203,6 +3727,8 @@ export {
   payMethodsTab,
   miniatureTab,
   impressCategories,
+
+  /* flyers */
   FlyersTab,
   flyersPageText,
   flyersPaperType,
@@ -3228,4 +3754,10 @@ export {
 
   /* menu resto */
   menusResto,
+  plastifications,
+  restoSupport,
+  restoMenuPelliclage,
+
+  /* All products */
+  products,
 };

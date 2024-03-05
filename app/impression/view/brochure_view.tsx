@@ -50,10 +50,26 @@ const BrochureView = () => {
           <BannerContainer />
         </div>
       </div>
+      {/* Product home */}
+      <div className="product-home best-sell">
+        <Wrapper>
+          <div className="title-container mb-4">
+            <h2>LES PLUS COMMANDER</h2>
+            <small className="subtitle">{2} resultats affichés</small>
+          </div>
+          <ProductHome setSelectedBrochure={setSelectedBrochure} />
+        </Wrapper>
+      </div>
+
       {/* Banner  */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>FLYERS SANS VOLETS</h2>
+          <div className="title-container">
+            <h2>BROCHURES</h2>
+            <small className="subtitle">
+              {brochures.length} resultats affichés
+            </small>
+          </div>
           <Carousel
             responsive={responsive}
             autoPlay={true}
@@ -80,13 +96,6 @@ const BrochureView = () => {
         </div>
       </Wrapper>
       {/* unfolded  flyers */}
-
-      {/* Product home */}
-      <div className="product-home">
-        <Wrapper>
-          <ProductHome setSelectedBrochure={setSelectedBrochure} />
-        </Wrapper>
-      </div>
 
       <div className="text-container w-full">
         <Wrapper>

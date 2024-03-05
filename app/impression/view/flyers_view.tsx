@@ -60,7 +60,12 @@ const FlyserView = () => {
       {/* Banner  */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>FLYERS SANS VOLETS</h2>
+          <div className="title-container">
+            <h2>FLYERS SANS VOLETS</h2>
+            <small className="subtitle">
+              {unfoldedFlyers.length} resultats affichés
+            </small>
+          </div>
           <Carousel
             responsive={responsive}
             autoPlay={true}
@@ -87,7 +92,12 @@ const FlyserView = () => {
       {/* unfolded  flyers */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>FLYERS AVEC VOLETS</h2>
+          <div className="title-container">
+            <h2>FLYERS AVEC VOLETS</h2>
+            <small className="subtitle">
+              {unfoldedFlyers.length} resultats affichés
+            </small>
+          </div>
           <Carousel
             responsive={responsive}
             autoPlay={true}

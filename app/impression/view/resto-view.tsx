@@ -54,7 +54,12 @@ const RestoView = () => {
       {/* Banner  */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>FLYERS SANS VOLETS</h2>
+          <div className="title-container">
+            <h2>RESTAURATION</h2>
+            <small className="subtitle">
+              {menusResto.length} resultats affichés
+            </small>
+          </div>
           <Carousel
             responsive={responsive}
             autoPlay={true}
@@ -62,7 +67,7 @@ const RestoView = () => {
             className=" justify-normal"
             itemClass="carou-items"
           >
-            {menusResto.map((resto) => (
+            {menusResto.slice(0, 6).map((resto) => (
               <div
                 key={resto.title}
                 className="carou-item w-full h-full flex justify-center items-center"
@@ -79,6 +84,70 @@ const RestoView = () => {
         </div>
       </Wrapper>
       {/* unfolded  flyers */}
+
+      <Wrapper>
+        <div className="unfolded-flyers best-sell">
+          <div className="title-container">
+            <h2>LES INDÉCHIRABLES</h2>
+            <small className="subtitle">
+              {menusResto.slice(5, 8).length} resultats affichés
+            </small>
+          </div>
+          <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            infinite={false}
+            className=" justify-normal"
+            itemClass="carou-items"
+          >
+            {menusResto.slice(5, 8).map((resto) => (
+              <div
+                key={resto.title}
+                className="carou-item w-full h-full flex justify-center items-center"
+                onClick={() => handleMenuChanges(resto)}
+              >
+                <div className="test">
+                  {/* <img src="https://facimprimeur.fr/wp-content/uploads/2018/05/Flyer-A5-imprime.jpg" /> */}
+                  <Image src={resto.cover} alt={resto.title} />
+                </div>
+                <p className="w-full h-full text-center pt-1">{resto.title}</p>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      </Wrapper>
+
+      <Wrapper>
+        <div className="unfolded-flyers best-sell">
+          <div className="title-container">
+            <h2>LES SETS DE TABLE</h2>
+            <small className="subtitle">
+              {menusResto.slice(8, 12).length} resultats affichés
+            </small>
+          </div>
+          <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            infinite={false}
+            className=" justify-normal"
+            itemClass="carou-items"
+          >
+            {menusResto.slice(8, 12).map((resto) => (
+              <div
+                key={resto.title}
+                className="carou-item w-full h-full flex justify-center items-center"
+                onClick={() => handleMenuChanges(resto)}
+              >
+                <div className="test">
+                  {/* <img src="https://facimprimeur.fr/wp-content/uploads/2018/05/Flyer-A5-imprime.jpg" /> */}
+                  <Image src={resto.cover} alt={resto.title} />
+                </div>
+                <p className="w-full h-full text-center pt-1">{resto.title}</p>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      </Wrapper>
 
       <div className="text-container w-full">
         <Wrapper>

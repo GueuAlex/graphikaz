@@ -186,6 +186,7 @@ export interface ImpressMetadataNameProps {
 export interface ImpressableProps {
   id: number;
   title: string;
+  product: ProductLibelle;
   category: ImpressCategoryProps;
   base_price: number;
   cover: StaticImageData;
@@ -200,6 +201,12 @@ export interface FlyersProps extends ImpressableProps {
   isFolded: boolean;
   format: string;
   type: "UNFOLDED" | "FOLDED";
+  full_description: Fulldescription[];
+  caracteristics: string[];
+}
+
+export interface PromotionalProps extends ImpressableProps {
+  format: string;
   full_description: Fulldescription[];
   caracteristics: string[];
 }
@@ -256,6 +263,15 @@ export interface MetaDataProps {
 export enum CheckoutType {
   CASH = "CASH",
   HALF = "HALF",
+}
+
+export enum ProductLibelle {
+  FLYER = "FLYER",
+  BUSINESS_CARD = "BUSINESS_CARD",
+  BROCHURE = "BROCHURE",
+  ROLLUP = "ROLLUP",
+  MENU_RESTORE = "MENU_RESTORE",
+  PROMOTIONAL = "PROMOTIONAL",
 }
 
 export enum CheckoutStatus {

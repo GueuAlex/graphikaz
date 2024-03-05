@@ -1,10 +1,25 @@
 import { Affiche, Flyers } from "@/public";
 import { Wrapper } from "@/reutilisables";
-import React from "react";
+import React, { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import CatCarou from "../cat-carou";
 import Carou from "../carou";
 import Image from "next/image";
+import Carousel from "react-multi-carousel";
+import { impressCategories, products } from "@/constants";
+import {
+  BcardProps,
+  BrochureProps,
+  FlyersProps,
+  ProductLibelle,
+  RestoProps,
+  RollupProps,
+} from "@/types";
+import SecletedFlyerView from "./selected_flyer_view";
+import SelectedBcardView from "./selected_bcard_view";
+import SecletedBrochureView from "./selected_brochure_view";
+import SelectedRollupView from "./selected_rollup_view";
+import SecletedRestoView from "./selected_resto_view";
 
 const tags = [
   {
@@ -25,7 +40,86 @@ const tags = [
   },
 ];
 
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+const someProducts = products.sort(() => Math.random() - 0.5);
+
 const DefaultView = () => {
+  const [selectedProduct, setSelectedProduct] = useState<
+    | FlyersProps
+    | BcardProps
+    | BrochureProps
+    | RollupProps
+    | RestoProps
+    | undefined
+  >(undefined);
+  const handleMenuChanges = (
+    product: FlyersProps | BcardProps | BrochureProps | RollupProps | RestoProps
+  ) => {
+    setSelectedProduct(product);
+  };
+
+  if (selectedProduct) {
+    switch (selectedProduct.product) {
+      case ProductLibelle.FLYER:
+        return (
+          <SecletedFlyerView
+            selectedFlyer={selectedProduct as FlyersProps}
+            setSelectedFlyer={setSelectedProduct}
+          />
+        );
+      case ProductLibelle.BUSINESS_CARD:
+        return (
+          <SelectedBcardView
+            selectedBcard={selectedProduct as BcardProps}
+            setSelectedFlyer={setSelectedProduct}
+          />
+        );
+      case ProductLibelle.BROCHURE:
+        return (
+          <SecletedBrochureView
+            selectedBrochure={selectedProduct as BrochureProps}
+            setSelectedFlyer={setSelectedProduct}
+          />
+        );
+      case ProductLibelle.ROLLUP:
+        return (
+          <SelectedRollupView
+            selectedRollup={selectedProduct as RollupProps}
+            setSelectedRollup={setSelectedProduct}
+          />
+        );
+
+      case ProductLibelle.MENU_RESTORE:
+        return (
+          <SecletedRestoView
+            selectedResto={selectedProduct as RestoProps}
+            setSelectedFlyer={setSelectedProduct}
+          />
+        );
+      default:
+        break;
+    }
+  }
+
   return (
     <>
       <div className="bannerss relative flex justify-center items-center">
@@ -35,7 +129,7 @@ const DefaultView = () => {
       </div>
       {/* banners */}
       {/* tags */}
-      <div className="tags w-full h-full">
+      {/*  <div className="tags w-full h-full">
         <Wrapper>
           <div className="tags-container w-full">
             {tags.map((tag) => (
@@ -46,26 +140,83 @@ const DefaultView = () => {
             ))}
           </div>
         </Wrapper>
-      </div>
+      </div> */}
       {/* Meilleur vente */}
       <div className="best-sell">
         <Wrapper>
-          <h2>MEILLEURS VENTES</h2>
-          <Carou />
+          <div className="title-container">
+            <h2>MEILLEURS VENTES</h2>
+            <small className="subtitle">
+              {someProducts.length} resultats affichés
+            </small>
+          </div>
+          <Carousel
+            responsive={responsive}
+            autoPlay={true}
+            infinite={true}
+            className=" justify-normal"
+            itemClass="carou-items"
+          >
+            {someProducts.map((produc, index) => (
+              <div
+                key={produc.title}
+                className="carou-item w-full h-full flex justify-center items-center"
+                onClick={() => handleMenuChanges(produc)}
+              >
+                <div className="test">
+                  {/* <img src="https://facimprimeur.fr/wp-content/uploads/2018/05/Flyer-A5-imprime.jpg" /> */}
+                  <Image src={produc.cover} alt={produc.title} />
+                </div>
+                <p className="w-full h-full text-center pt-1">{produc.title}</p>
+              </div>
+            ))}
+          </Carousel>
         </Wrapper>
       </div>
 
       {/* Product home */}
       <div className="product-home">
         <Wrapper>
-          <ProductHome />
+          <div className="product-home-items">
+            <div
+              className="product-home-item relative"
+              onClick={() => setSelectedProduct(someProducts[6])}
+            >
+              <div className="product-home-img-overlay w-full h-full absolute">
+                <p className="labelle">
+                  {someProducts[6].product.toLowerCase()}
+                </p>
+                <p className="labelle begin-price">
+                  A partir de <span>{someProducts[6].base_price} ₣</span>
+                </p>
+              </div>
+              <Image src={someProducts[6].cover} alt="" className="image" />
+            </div>
+            <div
+              className="product-home-item relative"
+              onClick={() => setSelectedProduct(someProducts[0])}
+            >
+              <div className="product-home-img-overlay w-full h-full absolute">
+                <p className="labelle">
+                  {someProducts[0].product.toLowerCase()}
+                </p>
+                <p className="labelle begin-price">
+                  A partir de <span>{someProducts[0].base_price} ₣</span>
+                </p>
+              </div>
+              <Image src={someProducts[0].cover} alt="" className="image" />
+            </div>
+          </div>
         </Wrapper>
       </div>
 
       {/* Meilleur vente */}
       <div className="best-sell">
         <Wrapper>
-          <h2>PRODUITS A LA UNE</h2>
+          <div className="title-container">
+            <h2>PRODUITS A LA UNE</h2>
+            <small className="subtitle">{""}</small>
+          </div>
           <Carou />
         </Wrapper>
       </div>
@@ -73,7 +224,10 @@ const DefaultView = () => {
       {/* Meilleur vente */}
       <div className="best-sell our-categories">
         <Wrapper>
-          <h2>NOS CATEGORIES</h2>
+          <div className="title-container">
+            <h2>NOS CATEGORIES</h2>
+            <small className="subtitle">{""}</small>
+          </div>
           <CatCarou />
         </Wrapper>
       </div>

@@ -15,6 +15,9 @@ import {
   flyersPelliculage,
   flyersPrintingSide,
   menusResto,
+  plastifications,
+  restoMenuPelliclage,
+  restoSupport,
 } from "@/constants";
 import { GraphikazDesign, Logo, LogoColor } from "@/public";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,12 +44,29 @@ const SecletedRestoView: React.FC<SecletedRestoViewProps> = ({
   const [printingSide, setPrintingSide] = useState<MetaDataProps>(
     flyersPrintingSide[0]
   );
-  const [paperType, setPaperType] = useState<MetaDataProps>(flyersPaperType[0]); //);
-  const [paperWidget, setPaperWidget] = useState<MetaDataProps>(
-    flyersPaperWidget[0]
+
+  const [paperType, setPaperType] = useState<MetaDataProps>(restoSupport[0]); //);
+  const [customePaperType, setCustomePaperType] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (
+      selectedResto.id === 6 ||
+      selectedResto.id === 7 ||
+      selectedResto.id === 8
+    ) {
+      setPaperType(restoSupport[6]);
+      setCustomePaperType(true);
+    } else {
+      setPaperType(restoSupport[0]);
+      setCustomePaperType(false);
+    }
+  }, [selectedResto.id]);
+
+  const [plastification, setPlastification] = useState<MetaDataProps>(
+    plastifications[0]
   );
   const [pelliculage, setPelliculage] = useState<MetaDataProps>(
-    flyersPelliculage[0]
+    restoMenuPelliclage[0]
   );
 
   const [deliZone, setDeliZone] = useState<deliZoneProps[]>([]);
@@ -75,14 +95,25 @@ const SecletedRestoView: React.FC<SecletedRestoViewProps> = ({
   };
 
   // Calculer le prix total en fonction de la quantité et des prix supplémentaires sélectionnés
-  const totalPrice =
-    (selectedResto.base_price +
-      printingSide.price +
-      paperType.price +
-      paperWidget.price +
-      pelliculage.price) *
-      quantity +
-    parseInt(selecteddeliZone?.montant.toString());
+  let totalPrice: number;
+  if (selectedResto.id === 1) {
+    totalPrice =
+      (selectedResto.base_price +
+        printingSide.price +
+        paperType.price +
+        plastification.price +
+        pelliculage.price) *
+        quantity +
+      parseInt(selecteddeliZone?.montant.toString());
+  } else {
+    totalPrice =
+      (selectedResto.base_price +
+        printingSide.price +
+        paperType.price +
+        pelliculage.price) *
+        quantity +
+      parseInt(selecteddeliZone?.montant.toString());
+  }
 
   // Gestionnaire d'événement pour mettre à jour les prix supplémentaires sélectionnés et recalculer le prix total
   const handleSelectChange = (
@@ -172,12 +203,19 @@ const SecletedRestoView: React.FC<SecletedRestoViewProps> = ({
     checkout_type: null,
     order_status: null,
     /* deli_zone: selecteddeliZone, */
-    meta_data: {
-      "coté imprimé": printingSide,
-      support: paperType,
-      "densité du support": paperWidget,
-      pelliculage: pelliculage,
-    },
+    meta_data:
+      selectedResto.id === 1
+        ? {
+            "coté imprimé": printingSide,
+            support: paperType,
+            plastification: plastification,
+            pelliculage: pelliculage,
+          }
+        : {
+            "coté imprimé": printingSide,
+            support: paperType,
+            pelliculage: pelliculage,
+          },
   };
 
   return (
@@ -394,47 +432,46 @@ const SecletedRestoView: React.FC<SecletedRestoViewProps> = ({
                   <select
                     className=" w-full select"
                     onChange={(event) =>
-                      handleSelectChange(event, setPaperType, flyersPaperType)
+                      handleSelectChange(event, setPaperType, restoSupport)
                     }
                   >
-                    {flyersPaperType.map((paper) => (
-                      <option value={paper.libelle} key={paper.libelle}>
-                        {paper.libelle}
-                      </option>
-                    ))}
+                    {customePaperType
+                      ? restoSupport.slice(6, 9).map((paper) => (
+                          <option value={paper.libelle} key={paper.libelle}>
+                            {paper.libelle}
+                          </option>
+                        ))
+                      : restoSupport.slice(0, 6).map((paper) => (
+                          <option value={paper.libelle} key={paper.libelle}>
+                            {paper.libelle}
+                          </option>
+                        ))}
                   </select>
                 </div>
                 {/* grammage du papier */}
-                <div className="label-input mt-2">
-                  <label htmlFor="">
-                    Grammage {"( Densité du papier )"}{" "}
-                    <a
-                      href="http://"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#3366cc] font-light underline"
+                {selectedResto.id === 1 ? (
+                  <div className="label-input mt-2">
+                    <label htmlFor="">Plastification</label>
+                    <select
+                      className=" w-full select"
+                      onChange={(event) =>
+                        handleSelectChange(
+                          event,
+                          setPlastification,
+                          plastifications
+                        )
+                      }
                     >
-                      {" "}
-                      Plus d'infos
-                    </a>
-                  </label>
-                  <select
-                    className=" w-full select"
-                    onChange={(event) =>
-                      handleSelectChange(
-                        event,
-                        setPaperWidget,
-                        flyersPaperWidget
-                      )
-                    }
-                  >
-                    {flyersPaperWidget.map((weight) => (
-                      <option value={weight.libelle} key={weight.libelle}>
-                        {weight.libelle}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                      {plastifications.map((weight) => (
+                        <option value={weight.libelle} key={weight.libelle}>
+                          {weight.libelle}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                ) : (
+                  <></>
+                )}
                 {/* Pelliculage */}
                 <div className="label-input mt-2">
                   <label htmlFor="">
@@ -455,11 +492,11 @@ const SecletedRestoView: React.FC<SecletedRestoViewProps> = ({
                       handleSelectChange(
                         event,
                         setPelliculage,
-                        flyersPelliculage
+                        restoMenuPelliclage
                       )
                     }
                   >
-                    {flyersPelliculage.map((pellicule) => (
+                    {restoMenuPelliclage.map((pellicule) => (
                       <option value={pellicule.libelle} key={pellicule.libelle}>
                         {pellicule.libelle}
                       </option>

@@ -61,7 +61,12 @@ const BusinessCardView = () => {
       {/* Banner  */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>CARTES DE VISITE PAR FINITION</h2>
+          <div className="title-container">
+            <h2>CARTES DE VISITE PAR FINITION</h2>
+            <small className="subtitle">
+              {bcardByFinish.length} resultats affichés
+            </small>
+          </div>
           <Carousel
             responsive={responsive}
             autoPlay={true}
@@ -87,7 +92,12 @@ const BusinessCardView = () => {
       {/* unfolded  flyers */}
       <Wrapper>
         <div className="unfolded-flyers best-sell">
-          <h2>CARTES DE VISITE PAR TYPE</h2>
+          <div className="title-container">
+            <h2>CARTES DE VISITE PAR TYPE</h2>
+            <small className="subtitle">
+              {bcardByFinish.length} resultats affichés
+            </small>
+          </div>
           <Carousel
             responsive={responsive}
             autoPlay={true}

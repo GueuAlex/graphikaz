@@ -236,7 +236,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                 <Image src={selectedFlyer.cover} alt={selectedFlyer.title} />
               </div>
               <div className="unselected-container">
-                <h3>SÉLECTIONNER UN STYLE DE FLYERS</h3>
+                <h3>SÉLECTIONNER UN STYLE</h3>
                 <div className="unseleted-content w-full">
                   {unselectedFlyers.map((flyer, index) => (
                     <div

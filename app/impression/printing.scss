@@ -195,12 +195,20 @@
     /* button {
       
     } */
-    h2 {
-      width: 100%;
-      text-align: center;
-      font-weight: 300;
-      font-size: 18px;
-      padding: 1rem;
+    .title-container {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      h2 {
+        width: 100%;
+        text-align: left;
+        font-weight: 600;
+        font-size: 17px;
+      }
+      small {
+        color: #7d7d7d;
+      }
     }
 
     .react-multi-carousel-list ul li {
