@@ -61,7 +61,7 @@ const PromoView = () => {
             </small>
           </div>
 
-          <div className="flex promo-products">
+          <div className="flex  items-flex">
             {promostionals.map((promo) => (
               <div
                 key={promo.title}

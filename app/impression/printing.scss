@@ -257,7 +257,7 @@
     }
   }
 
-  .promo-products {
+  .items-flex {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -268,6 +268,9 @@
       ); /* Pour prendre 25% de la largeur du conteneur avec une marge de 10px entre les éléments */
       margin-bottom: 20px; /* Espacement entre les lignes */
     }
+  }
+  .item-justify-between {
+    justify-content: space-between !important;
   }
 
   .product-home {
@@ -362,14 +365,16 @@
   }
 
   /* flyers view */
-  .text-container .text-content {
+  .text-container {
     background-color: #eaeaeabc;
-    padding: 2rem;
-    border-radius: 8px;
+    .text-content {
+      padding: 2rem;
+      border-radius: 8px;
 
-    small strong {
-      font-size: 14px;
-      font-weight: 700;
+      small strong {
+        font-size: 14px;
+        font-weight: 700;
+      }
     }
   }
 

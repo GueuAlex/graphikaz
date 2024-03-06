@@ -67,13 +67,7 @@ const RollupView = () => {
               {rollups.length} resultats affichés
             </small>
           </div>
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            infinite={true}
-            className=" justify-normal"
-            itemClass="carou-items"
-          >
+          <div className="item-justify-between items-flex">
             {rollups.map((rollup) => (
               <div
                 key={rollup.title}
@@ -87,7 +81,7 @@ const RollupView = () => {
                 <p className="w-full h-full text-center pt-1">{rollup.title}</p>
               </div>
             ))}
-          </Carousel>
+          </div>
         </div>
       </Wrapper>
       {/* unfolded  flyers 

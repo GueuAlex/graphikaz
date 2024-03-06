@@ -70,13 +70,7 @@ const BrochureView = () => {
               {brochures.length} resultats affichés
             </small>
           </div>
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            infinite={true}
-            className=" justify-normal"
-            itemClass="carou-items"
-          >
+          <div className="item-justify-between items-flex">
             {brochures.map((brochure) => (
               <div
                 key={brochure.title}
@@ -92,7 +86,7 @@ const BrochureView = () => {
                 </p>
               </div>
             ))}
-          </Carousel>
+          </div>
         </div>
       </Wrapper>
       {/* unfolded  flyers */}
