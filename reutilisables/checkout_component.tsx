@@ -8,6 +8,7 @@ import {
   RollupProps,
   deliZoneProps,
   RestoProps,
+  PromotionalProps,
 } from "@/types";
 import { payMethodsTab } from "@/constants";
 import CheckoutMobileForm from "./checkout_mobile_form";
@@ -21,7 +22,8 @@ interface CheckoutComponentProps {
     | BcardProps
     | BrochureProps
     | RollupProps
-    | RestoProps;
+    | RestoProps
+    | PromotionalProps;
   delizone: deliZoneProps | undefined;
 }
 

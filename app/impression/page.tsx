@@ -15,6 +15,7 @@ import BusinessCardView from "./view/business_card_view";
 import BrochureView from "./view/brochure_view";
 import RollupView from "./view/rollup_view";
 import RestoView from "./view/resto-view";
+import PromoView from "./view/promo_view";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -66,7 +67,7 @@ const Impression = () => {
       case "Menus Restau":
         return <RestoView />;
       case "Promotional":
-        return <>Promotional</>;
+        return <PromoView />;
       default:
         return <DefaultView />;
     }

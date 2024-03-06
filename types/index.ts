@@ -207,6 +207,7 @@ export interface FlyersProps extends ImpressableProps {
 
 export interface PromotionalProps extends ImpressableProps {
   format: string;
+  type: string;
   full_description: Fulldescription[];
   caracteristics: string[];
 }

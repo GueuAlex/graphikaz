@@ -24,6 +24,8 @@ export default function NavBar({
 
   const pathname = usePathname();
 
+  const route = useRouter();
+
   /* const [categoryList, setData] = useState<ApiCategoryProps[]>([]);
   const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
   async function getCategoriesList() {
@@ -38,6 +40,7 @@ export default function NavBar({
   } */
 
   useEffect(() => {
+    route.prefetch("/categories");
     if (pathname === "/") {
       setIsHome(true);
     } else {
@@ -167,7 +170,12 @@ export default function NavBar({
           <div className="flex flex-row items-center">
             <div className="hidden lg:flex lg:items-center">
               <span className="categories-label">
-                Categories
+                <div
+                  className="w-full h-full cursor-pointer"
+                  onClick={() => route.push("/categories")}
+                >
+                  Categories
+                </div>
                 <div className="sub-menu shadow-xl">
                   {
                     <ul>

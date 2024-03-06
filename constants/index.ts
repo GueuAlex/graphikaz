@@ -18,10 +18,6 @@ import {
   F3,
   F4,
   F5,
-  F6,
-  F7,
-  F8,
-  F9,
   Blog1,
   Blog2,
   Blog3,
@@ -81,6 +77,18 @@ import {
   FoldedMap,
 } from "@/public/flyers_img";
 import {
+  Promo1,
+  Promo10,
+  Promo2,
+  Promo3,
+  Promo4,
+  Promo5,
+  Promo6,
+  Promo7,
+  Promo8,
+  Promo9,
+} from "@/public/promo";
+import {
   Resto1,
   Resto10,
   Resto11,
@@ -110,22 +118,20 @@ import {
   CategoryProps,
   ChatMessageProps,
   ChatProps,
-  DefaultOrderProps,
   FlyersProps,
   ImpressCategoryProps,
-  ImpressMetadataNameProps,
   MetaDataProps,
   PayProps,
   PrestatorProps,
   ProductLibelle,
+  PromotionalProps,
   RestoProps,
   RollupProps,
   ServiceProps,
   userMenuProps,
   userProps,
 } from "@/types";
-import { now } from "next-auth/client/_utils";
-import { useSession } from "next-auth/react";
+
 import { StaticImageData } from "next/image";
 import { title } from "process";
 
@@ -3251,6 +3257,375 @@ const restoMenuPelliclage: MetaDataProps[] = [
   },
 ];
 
+/* promotional */
+const promostionals: PromotionalProps[] = [
+  {
+    id: 1,
+    title: "Stylos à bille",
+    category: impressCategories[10],
+    format: "",
+    base_price: 1200,
+    cover: Promo1,
+    type: "PEN",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `Ces stylos en plastique aux formes harmonieuses apportent de la couleur et du confort à un format promotionnel classique. Avec des courbes ergonomiques et une prise en main douce, ils sont aussi agréables à toucher qu'à regarder. Le corps blanc et frais est la plateforme parfaite pour accueillir votre logo en quatre couleurs maximum.
+
+    La zone de préhension est disponible dans un choix de neuf couleurs pour compléter votre marque. Le mécanisme d'encliquetage et le clip solide signifient qu'ils sont toujours prêts pour l'appel à l'action.`,
+
+    full_description: [
+      {
+        title: "",
+        desc: `Le Looe est un stylo élégant avec des détails métalliques, un corps en plastique imprimable et un mécanisme d'actionnement par clic.`,
+      },
+      {
+        title: "Graphiques vectoriels",
+        desc: `Pour que votre maquette soit imprimée à la plus haute résolution possible, elle doit être fournie sous forme de graphique vectoriel. Veuillez fournir votre maquette sous la forme d'un fichier EPS, PDF vectoriel ou SVG avec des polices intégrées, ce qui signifie que nous pouvons mettre votre maquette à l'échelle à n'importe quelle taille sans que l'image apparaisse pixélisée. Nous ne pouvons pas utiliser les formats de fichiers suivants : JPEG, GIF, PNG ou TIFF, ni aucun fichier contenant ces types de fichiers.`,
+      },
+      {
+        title: "Informations sur les couleurs d'accompagnement",
+        desc: `Nous pouvons imprimer une couleur Pantone unie sur certains produits. La couleur Pantone unie choisie doit être unie à 100 %, car nous ne pouvons malheureusement pas imprimer deux nuances différentes de la couleur choisie. Nous ne pouvons pas non plus imprimer des couleurs métalliques ou néon.`,
+      },
+      {
+        title: "Couleurs des produits",
+        desc: `Ce produit est disponible dans une gamme de couleurs d'accentuation pour compléter la couleur principale. Si vous ne pouvez pas sélectionner l'une des couleurs présentées dans l'image du produit à partir de l'option déroulante, nous avons malheureusement épuisé ce produit pour le moment. Cependant, nous ferons de notre mieux pour le réapprovisionner et le rendre disponible bientôt !
+        
+        Veuillez noter que ce produit est imprimé par tampographie et que le matériau de support peut transparaître lors de l'impression à l'encre blanche. La couleur du produit peut varier légèrement par rapport aux échantillons en ligne.
+
+Une fois imprimés et emballés, nous vous enverrons vos stylos partout au Royaume-Uni sans frais supplémentaires.`,
+      },
+    ],
+    caracteristics: [
+      "Matériau : Plastique",
+      "Longueur : 14 cm",
+      "Diamètre : 1,3 cm",
+      "Poids : 12g",
+      "Couleur de l'encre : noir",
+      "Méthode d'impression : Tampographie",
+      "Lieu d'impression : Barre",
+      "Largeur d'impression : 60 mm",
+      "Hauteur d'impression : 8 mm",
+      "Impression d'un maximum de couleurs : 4",
+    ],
+  },
+
+  {
+    id: 2,
+    title: "Cahiers A5",
+    category: impressCategories[10],
+    format: "A5",
+    base_price: 1200,
+    cover: Promo2,
+    type: "BOOK",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `Ce n'est pas pour rien que le format A5 est un format de carnet classique. Il est suffisamment grand pour les croquis imaginatifs et les notes détaillées, tout en étant suffisamment compact pour se ranger dans les tiroirs et les sacs.
+
+    Nous proposons des carnets A5 personnalisés dans une large gamme de couleurs, de couvertures et de styles. Réservez votre place à la table de chaque réunion à laquelle ils participent avec des carnets A5 de marque.
+    `,
+
+    full_description: [
+      {
+        title: "",
+        desc: `De nombreux professionnels ne se déplacent pas sans leur ordinateur portable, et l'impression d'un ordinateur portable A5 vous permet d'apposer votre marque sur cet objet indispensable.
+
+        Pourquoi ne pas associer les carnets A5 à nos stylos de marque pour créer des sets d'écriture pratiques pour les clients, les délégués ou les nouveaux arrivants ?
+        
+        Si vous n'êtes pas sûr de savoir comment produire votre design ou comment le fournir dans le bon format, notre équipe de designers est toujours disponible pour vous aider.`,
+      },
+      {
+        title: "Informations sur les couleurs d'accompagnement",
+        desc: `Nous sommes en mesure d'imprimer une couleur Pantone unie sur ce produit. Les couleurs Pantone unies que vous avez choisies doivent être 100% unies. Nous ne pouvons pas non plus imprimer des couleurs métalliques ou néon.`,
+      },
+    ],
+    caracteristics: [
+      "Longeur: 210 mm",
+      "Largeur : 140 mm",
+      "Poids : 270g",
+      "Pages : 96 pages, papier ligné 60gsm",
+      "Surface d'impression : 90 mm x 190 mm",
+      "Méthode d'impression : Sérigraphie",
+      "Couleurs d'impression maximales : 1",
+    ],
+  },
+
+  {
+    id: 3,
+    title: "Mugs en céramique de 330ml",
+    category: impressCategories[10],
+    format: "Hauteur : 97 mm - Diamètre : 82 mm",
+    base_price: 1200,
+    cover: Promo3,
+    type: "CUP",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `D'un design classique à faces droites, ces tasses en céramique seront parfaitement à leur place sur le bureau de vos clients. Inscrivez un message chaleureux sur votre tasse qui les accueillera tous les matins lorsqu'ils auront besoin d'un petit coup de pouce.
+
+    Ces tasses en céramique sont robustes, lavables au lave-vaisselle et faciles à transporter, parfaites pour supporter les tournées quotidiennes de thé et de café. Fabriquées en céramique et dotées d'une poignée solide, ces tasses de 330 ml protègeront les mains de vos clients contre les boissons brûlantes.`,
+
+    full_description: [
+      {
+        title: "",
+        desc: `La zone d'impression mesure 60 mm de haut lorsque le Mug est debout. Elle peut être ajoutée au recto, au verso ou aux deux endroits.`,
+      },
+      {
+        title: "Informations sur les couleurs d'accompagnement",
+        desc: `Nous pouvons imprimer 2 couleurs Pantone unies sur ce produit. Les couleurs Pantone unies que vous avez choisies doivent être 100% solides. Nous ne pouvons pas non plus imprimer des couleurs métalliques ou néon.
+
+        Une fois imprimés et emballés, nous vous enverrons vos mugs partout au Royaume-Uni sans frais supplémentaires.`,
+      },
+    ],
+    caracteristics: [
+      "Hauteur : 97 mm",
+      "Diamètre : 82 mm",
+      "Poids : 340g",
+      "Surface d'impression : 45 x 60 mm (l x h)",
+      "Couleurs d'impression maximales : 2",
+    ],
+  },
+
+  {
+    id: 4,
+    title: "Parapluies de golf 30 pouces",
+    category: impressCategories[10],
+    format: "Hauteur : 960 mm - Diamètre : 1 300 mm",
+    base_price: 5000,
+    cover: Promo4,
+    type: "UMBRELLAS",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `Ces parapluies géants renforceront votre marque grâce à la couverture la plus large que notre gamme puisse offrir. Avec une protection de 30 pouces, votre logo sera bien visible sur le fairway. C'est un compagnon idéal pour vos clients, qu'ils pourront emporter lors d'événements en plein air ou garder dans le coffre de leur voiture en cas d'urgence.
+
+    Ces parapluies de golf sont suffisamment grands pour abriter deux personnes, tout en étant légers et faciles à transporter jusqu'à ce que le temps s'améliore. Vous pouvez utiliser jusqu'à deux couleurs d'accompagnement pour imprimer votre dessin sur un, deux ou quatre panneaux.`,
+
+    full_description: [
+      {
+        title: "",
+        desc: `La zone d'impression mesure 60 mm de haut lorsque le Mug est debout. Elle peut être ajoutée au recto, au verso ou aux deux endroits.`,
+      },
+      {
+        title: "Informations sur les couleurs d'accompagnement",
+        desc: `Nous pouvons imprimer 2 couleurs Pantone unies sur ce produit. Les couleurs Pantone unies que vous avez choisies doivent être 100% solides. Nous ne pouvons pas non plus imprimer des couleurs métalliques ou néon.
+
+        Une fois imprimés et emballés, nous vous enverrons vos mugs partout au Royaume-Uni sans frais supplémentaires.`,
+      },
+    ],
+    caracteristics: [
+      "Hauteur : 960 m",
+      "Diamètre : 1 300 mm",
+      "Poids : 480g",
+      "Surface d'impression en sérigraphie : 310 x 250 mm (l x h)",
+      "Sérigraphie couleurs d'impression maximales : 2",
+    ],
+  },
+
+  {
+    id: 5,
+    title: "chapeaux et casquettes",
+    category: impressCategories[10],
+    format: "110 x 45 mm",
+    base_price: 5000,
+    cover: Promo5,
+    type: "CASQUESTTE",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `Les casquettes de baseball de marque sont un excellent moyen de maintenir votre entreprise au premier plan de l'esprit des gens. Elles sont parfaites pour les marques de fitness, les styles de vie actifs, les supporters d'équipes ou pour représenter l'ambiance décontractée d'une entreprise.
+
+    Disponibles dans un large éventail de couleurs, ces casquettes de baseball offrent une grande surface d'impression pour que votre marque se démarque vraiment. Vos motifs, mis en valeur dans un maximum de quatre couleurs vives, ne passeront pas inaperçus.`,
+
+    full_description: [
+      {
+        title: "",
+        desc: `Les casquettes de baseball marquées offrent à vos clients un accessoire à la mode qui a un impact important. Parfaites pour les marques de fitness et de loisirs, les entreprises qui bravent les grands espaces ou celles qui cherchent à ajouter un cachet unique à leur marque.
+
+        Vos casquettes de baseball sont le parfait mélange de style et de confort pour toutes les occasions. Conçues pour une respirabilité maximale, nos casquettes sont dotées d'œillets brodés qui assurent une bonne ventilation, même lors des journées les plus chaudes.
+        
+        La fermeture auto-agrippante en tissu garantit un ajustement sûr et réglable, s'adaptant à toutes les tailles de tête avec une circonférence confortable.
+        
+        Grâce à l'impression nette et vibrante par transfert numérique, votre motif prendra vie en couleur sur le devant, sur une surface d'impression généreuse de 110 x 45 mm.
+        
+        Fabriquées à partir du meilleur sergé 100 % coton, d'un poids de 175 g/m2, ces casquettes offrent une durabilité exceptionnelle et un toucher haut de gamme. Notre engagement en faveur de la haute qualité garantit que votre casquette résistera à l'épreuve du temps et conservera son design robuste pendant des années.
+        
+        Que vous cherchiez à promouvoir votre marque, à mettre en valeur vos œuvres d'art ou simplement à ajouter une touche de sophistication à votre tenue, nos casquettes promotionnelles sont le choix idéal.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 6,
+    title: "Lanières en tissu",
+    category: impressCategories[10],
+    format: "10 mm, 15 mm, 20 mm et 25 mm",
+    base_price: 5000,
+    cover: Promo6,
+    type: "LANIERES",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `Créez une reconnaissance instantanée et renforcez la sécurité avec des lanières en tissu imprimées de manière vivante qui représentent ce que vous êtes. Ces lanières en couleur sont imprimées par sublimation, ce qui est idéal pour reproduire avec précision des motifs complexes. Pour une sécurité accrue contre l'étouffement ou les blessures, choisissez un cordon doté d'une rupture de sécurité qui se libère sous l'effet de la tension.
+
+    Chaque lanière est munie d'un crochet métallique à ressort pivotant pour que vous puissiez toujours garder vos informations d'identification face à l'avant et bien en vue.`,
+
+    full_description: [],
+    caracteristics: [
+      "<strong>Matière : </strong>  Polyester",
+      "<strong>Longueur :</strong> 900 mm sans rupture de sécurité, 930 mm avec rupture de sécurité",
+      "<strong>Largeur :</strong> 10 mm, 15 mm, 20 mm et 25 mm",
+      "<strong>Couleurs d'impression maximales :</strong> Pleine couleur",
+    ],
+  },
+
+  {
+    id: 7,
+    title: "T-shirts",
+    category: impressCategories[10],
+    format: "10 mm, 15 mm, 20 mm et 25 mm",
+    base_price: 5000,
+    cover: Promo7,
+    type: "TSHIRTS",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `Doux pour la peau et agréables à porter, ces tee-shirts sont un excellent moyen de diffuser votre message auprès d'un public plus large. Lorsque vos employés et vos clients porteront fièrement votre marque, vous saurez qu'ils n'ont rien d'ordinaire !
+
+    Diffusez votre marque avec un design éblouissant grâce à l'impression par transfert numérique en quadrichromie.
+    
+    Ces tee-shirts 100 % coton sont disponibles dans une vaste gamme de couleurs pour aider votre marque à se démarquer sur le lieu de travail ou lors d'événements.`,
+
+    full_description: [
+      {
+        title: "",
+        desc: `Faites l'expérience d'un confort imbattable et d'un style intemporel avec nos T-shirts à coupe régulière. Conçus pour être les incontournables de votre garde-robe, ces T-shirts unisexes sont parfaits pour toutes les occasions. Que vous recherchiez une tenue d'affaires, une tenue décontractée ou une marchandise personnalisée, les possibilités sont infinies.
+
+        Les couleurs disponibles sont les suivantes : Blanc, Kaki, Jaune, Rose, Rose clair, Bourgogne, Rouge, Orange, Prune, Bleu clair, Bleu, Marine, Aqua, Forêt, Vert pomme, Fougère, Vert armée, Gris clair, Anthracite, Gris mélangé, et Noir, vous trouverez la nuance parfaite pour correspondre à vos goûts personnels et à l'identité de votre marque.
+        
+        Fabriqués avec une attention méticuleuse aux détails, nos T-shirts à coupe régulière sont dotés d'un col côtelé en tricot plat et d'un col ras-du-cou classique, offrant un look propre et sophistiqué. Les détails de piqûre ajoutent une touche de raffinement, tandis que la bande de satin d'une épaule à l'autre renforce la durabilité et le confort.
+        
+        Évitez les étiquettes qui démangent grâce à notre étiquette principale à transfert thermique, qui assure un confort sans étiquette tout au long de la journée. Fabriqués en coton 160 g/m², ces t-shirts offrent un équilibre parfait entre douceur et respirabilité.
+        
+        En matière d'entretien, ces t-shirts ne nécessitent que peu de soins. Il suffit de suivre les instructions de lavage pour qu'ils conservent leur fraîcheur et leur éclat plus longtemps.
+        
+        Commandez dès aujourd'hui vos T-shirts à coupe régulière et profitez de la qualité et du service exceptionnels offerts par Solopress. Que vous en ayez besoin pour votre équipe, pour des événements ou à des fins promotionnelles, nos T-shirts imprimés sur mesure dépasseront vos attentes.`,
+      },
+    ],
+    caracteristics: [
+      "Jersey simple tricoté en 100% coton peigné ringspun",
+      "160 g/m2",
+      "Col côtelé en tricot plat",
+      "Etiquette principale à transfert thermique pour un confort sans étiquette",
+    ],
+  },
+
+  {
+    id: 8,
+    title: "Sacs",
+    category: impressCategories[10],
+    format: "10 mm, 15 mm, 20 mm et 25 mm",
+    base_price: 5000,
+    cover: Promo8,
+    type: "SACS",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `De haute qualité et durables, ces sacs en jute imprimés incarnent véritablement l'expression "sac pour la vie". Ils contribuent à éliminer le besoin de sacs à provisions à usage unique et sont fabriqués à partir d'une fibre naturelle résistante qui est heureuse de supporter des voyages sans fin dans les magasins, à la plage et au-delà.
+
+    Grâce à leur bordure élégante et à leur grande surface d'impression, ces sacs en jute seront très appréciés de votre public et véhiculeront votre message haut et fort, année après année.`,
+
+    full_description: [
+      {
+        title: "",
+        desc: `Les sacs en jute imprimés offrent une alternative durable et abordable aux sacs à provisions en papier ou en plastique. Durables et pratiques, votre public voudra garder ces sacs pour les vacances à la plage, les sorties au parc, les courses alimentaires et bien d'autres choses encore, grâce à leurs poignées confortables et à leur volume accommodant.
+
+        Fabriqués en fibre de jute naturelle et résistante et conçus pour survivre à des courses et des sorties sans fin, ces sacs en jute personnalisés offrent une alternative viable aux solutions à usage unique,
+        
+        La bordure contrastée, disponible dans un choix de couleurs, donne à votre sac une touche d'originalité et crée un contraste rafraîchissant avec le brun naturel de la toile de jute elle-même.
+        
+        Ce sac se transporte facilement grâce à ses larges poignées de 170 mm. Nous avons prévu une généreuse surface de 280 x 220 mm pour décorer votre marque. Choisissez entre une, deux, trois ou quatre sérigraphies en couleur pour faire ressortir des motifs audacieux aux yeux des passants.
+        
+        Créez votre propre design à l'aide de nos modèles téléchargeables gratuitement, ou laissez notre équipe de designers incroyables s'en charger pour vous.
+        
+        Une fois votre design finalisé et votre commande confirmée, notre livraison gratuite dans tout le Royaume-Uni signifie que vos sacs passeront la caisse sans frais supplémentaires.
+        
+        La zone d'impression mesure 230 mm de haut lorsque le sac est debout, et 300 mm de large.`,
+      },
+    ],
+    caracteristics: [
+      "Hauteur : 320 mm",
+      "Longueur : 425 mm",
+      "Largeur : 190 mm",
+      "Poids : 228g",
+      "Matière : Toile, 320 g/m2, jute, 330 g/m2",
+      "Surface d'impression : 300 x 230 mm",
+      "Couleurs d'impression maximales : 4",
+    ],
+  },
+
+  {
+    id: 9,
+    title: "Ticket standard",
+    category: impressCategories[10],
+    format: "10 mm, 15 mm, 20 mm et 25 mm",
+    base_price: 5000,
+    cover: Promo9,
+    type: "TICKETS",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `Démontrez le professionnalisme et la crédibilité de votre événement en imprimant des billets en couleur de haute qualité.
+
+    Les billets standard sont disponibles en deux formats pratiques, avec une sélection de papiers pour compléter votre design et fournir la preuve d'achat dont vous avez besoin.
+    
+    Rendez votre billet unique grâce à une illustration distinctive, un support solide et une impression recto ou recto-verso.
+    `,
+
+    full_description: [
+      {
+        title: "",
+        desc: `Lorsqu'il s'agit d'assurer un accès fluide et sécurisé à vos événements, Solopress vous couvre avec ses billets standard de première qualité. Ces billets d'entrée sont l'incarnation de la fiabilité et de la qualité, conçus pour répondre aux besoins des entreprises, des organisateurs d'événements, etc.
+
+        Nos billets standard sont disponibles en deux formats qui conviennent parfaitement aux besoins de votre événement : 210 x 105 mm et 148 x 50 mm. Choisissez l'impression recto ou recto-verso pour présenter les détails de votre événement de la manière la plus captivante possible.
+        
+        Nous proposons une large gamme de types de papier et de grammages différents, ce qui vous permet d'adapter vos billets à vos besoins spécifiques.
+        
+        Personnalisez vos billets en y ajoutant une marque attrayante, des informations essentielles et un code QR ou un système de numérotation pour une sécurité et une conservation des données accrues. Choisissez l'alignement horizontal ou vertical et la surface minimale de numérotation.
+        
+        Avec une résolution de 300 dpi, vos billets afficheront des graphiques et du texte d'une grande clarté.
+        
+        Profitez de la liberté d'impression en quadrichromie au recto et au verso de vos billets, pour faire ressortir votre marque. L'application maximale des couleurs est de 300 %, ce qui permet d'obtenir des conceptions vives et accrocheuses.
+        
+        Nous ne laissons aucune place à l'erreur. Vos billets comporteront une marge minimale de 5 mm entre le bord et la zone de numérotation.`,
+      },
+    ],
+    caracteristics: [],
+  },
+
+  {
+    id: 10,
+    title: "Sticker sur mesure",
+    category: impressCategories[10],
+    format: "10 mm, 15 mm, 20 mm et 25 mm",
+    base_price: 5000,
+    cover: Promo10,
+    type: "TICKETS",
+    product: ProductLibelle.PROMOTIONAL,
+    short_description: `Tous les messages n'ont pas besoin d'être éternels. Lorsque les étiquettes doivent être retirées, il est important qu'elles ne soient pas endommagées et qu'elles ne laissent pas de résidus collants.
+
+    C'est pourquoi nous proposons des autocollants amovibles qui se fixent solidement mais se décollent proprement et facilement pour l'utilisateur final.
+    
+    Choisissez entre une finition non couchée ou brillante pour compléter votre design personnalisé.
+    
+    Veuillez noter que la quantité que vous sélectionnez doit correspondre au nombre total d'autocollants amovibles individuels dont vous avez besoin, et non au nombre de feuilles.`,
+
+    full_description: [
+      {
+        title:
+          "LE STICKER SUR MESURE : UN SUPPORT INDISPENSABLE POUR VOS CAMPAGNES DE COMMUNICATION",
+        desc: `Le sticker sur mesure est un support moderne et modulable selon vos besoins de communication. De fait, l’autocollant sur mesure s’avère idéal pour répondre à une variété d’utilisations. Cet outil promotionnel offre une facilité de distribution qui en fait un moyen efficace pour véhiculer l’image de votre entreprise. En outre, ces étiquettes sur mesure se révèlent être une option économique pour concrétiser vos stratégies de marketing. Il est intéressant de les distribuer en grand nombre lors de rassemblements comme des salons, évènements ou foires. C’est un goodie très apprécié de la clientèle. Qu’il s’agisse d’un sticker informatif ou destiné à diffuser votre marque, cet outil peut avoir de multiples informations. Par exemple, ils peuvent servir à indiquer une direction ou personnaliser un produit. Le sticker sur mesure peut être appliqué sur vos packagings, colis ou même des cadeaux. Effectivement, il convient parfaitement à un support comme une bouteille de vin, un produit alimentaire ou encore un produit cosmétique.`,
+      },
+      {
+        title: "PERSONNALISEZ VOS STICKERS SUR MESURE",
+        desc: `Personnalisez votre sticker sur mesure avec un motif de votre choix. Imprimé en HD et découpé à la forme de votre choix, il s’adapte parfaitement à vos besoins. Ainsi, il existe des formes standards différentes mais vous avez aussi la possibilité de les créer sur-mesure. Différentes finitions sont disponibles pour vos jolies étiquettes. Bien sûr, vous pouvez choisir un vinyle brillant ou mat pour donner un aspect fini à votre produit. Pour protéger votre support, optez pour sa plastification. Cette option est nécessaire si vos autocollants peuvent se retrouver en contact avec du liquide. Les stickers sur mesure sont imprimés sous forme de planche ou peuvent être découpés à l’unité.
+
+        Ces autocollants peuvent avoir différents formats : grand format ou petit format. En effet, si vous voulez un sticker en XL pour une vitrine, un mur ou encore un véhicule il faudra s’orienter vers du vinyle adhésif : vitrophanie vitrine, lettrage adhésif et sticker voiture. Facimprimeur propose également des stickers mariage pour décorer le plus beau jour de votre vie.`,
+      },
+    ],
+    caracteristics: [
+      "Impression quadri recto haute définition",
+      "Découpe numérique suivant un tracé vectoriel",
+      "Rond, carré, rectangulaire ou ovale",
+      "Livré en planche ou à l’unité",
+    ],
+  },
+];
+
 const products: (
   | FlyersProps
   | BcardProps
@@ -3758,6 +4133,8 @@ export {
   restoSupport,
   restoMenuPelliclage,
 
+  /* promotionals */
+  promostionals,
   /* All products */
   products,
 };

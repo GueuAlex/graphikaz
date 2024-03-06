@@ -151,6 +151,9 @@
   .resto-view {
     background-image: url("./banners/menus-banner.jpeg");
   }
+  .promo-view {
+    background-image: url("./banners/promotional-banner.webp");
+  }
   .banner-caption {
     font-size: 35px;
     font-weight: 900;
@@ -251,6 +254,19 @@
         /* opacity: 1; */
         background-color: #0a021c22;
       }
+    }
+  }
+
+  .promo-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    .carou-item {
+      width: calc(
+        25% - 10px
+      ); /* Pour prendre 25% de la largeur du conteneur avec une marge de 10px entre les éléments */
+      margin-bottom: 20px; /* Espacement entre les lignes */
     }
   }
 
