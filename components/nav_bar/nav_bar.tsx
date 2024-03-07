@@ -170,12 +170,7 @@ export default function NavBar({
           <div className="flex flex-row items-center">
             <div className="hidden lg:flex lg:items-center">
               <span className="categories-label">
-                <div
-                  className="w-full h-full cursor-pointer"
-                  onClick={() => route.push("/categories")}
-                >
-                  Categories
-                </div>
+                <Link href={"/categories"}>Categories</Link>
                 <div className="sub-menu shadow-xl">
                   {
                     <ul>

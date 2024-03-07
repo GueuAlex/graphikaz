@@ -28,7 +28,7 @@ const TServiceCard = ({
                 service.image_services[0].libelle
               }
               alt="sv1"
-              className="rounded-t-[8px] w-full h-full"
+              className="service-img rounded-t-[8px] w-full h-full"
               width={576}
               height={768}
             />
@@ -36,13 +36,13 @@ const TServiceCard = ({
             <Image
               src={Imgold}
               alt="sv1"
-              className="rounded-t-[8px] w-full h-full"
+              className="service-img rounded-t-[8px]  w-full h-full"
               width={576}
               height={768}
             />
           )}
         </div>
-        <div className=" bg-slate-50 rounded-b-[8px] px-4 shadow h-[50%]">
+        <div className=" bottom-part bg-slate-50 rounded-b-[8px] px-4 shadow">
           <div className="px-[20px] py-[5px]">
             <p className="mt-2 text-slate-400 mb-[8px]">
               {category !== undefined ? category.libelle : ""}

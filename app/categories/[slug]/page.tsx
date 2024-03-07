@@ -18,6 +18,9 @@ import Loader from "@/reutilisables/laoder";
 import { motion, AnimatePresence } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import { useSession } from "next-auth/react";
+import "./service_detail.scss";
+import "../categories.scss";
+import "../../../styles/checkout_side_bar.scss";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const session = useSession();
@@ -223,7 +226,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         </aside>
         {/* end custom pack paiement side bar */}
         <Wrapper>
-          <div className="flex justify-between">
+          <div className="flex justify-between mobile-col">
             <PathnameComponent />
             {/* share, save and repport area */}
             <div className="icon-container">
@@ -355,35 +358,22 @@ export default function Page({ params }: { params: { slug: string } }) {
               {/* service carousel img */}
               <div className="service-carousel">
                 <div className="carousel-slider">
-                  <Carousel className=" w-full">
-                    {/* display service images */}
-                    {/* {service.coverList.map((cover, index) => (
-                      <div
-                        id={`item${index + 1}`}
-                        className="carousel-item relative w-full"
-                      >
-                        <Image
-                          src={cover}
-                          alt={service.title}
-                          className="w-full rounded-[5px]"
-                        />
-                      </div>
-                    ))} */}
+                  <Carousel className=" w-full" showThumbs={false}>
                     {service.image_services.length > 0
                       ? service.image_services.map((cover, index) => (
                           <div
                             id={`item${index + 1}`}
                             className="carousel-item relative w-full"
                           >
-                            <Image
+                            <img
                               src={
                                 "https://graphikaz.digifaz.com/api/photo_service/" +
                                 cover.libelle
                               }
-                              width={576}
-                              height={768}
+                              /* width={576}
+                              height={768} */
                               alt={"service.title"}
-                              className="w-full rounded-[5px]"
+                              className="internet-img w-full rounded-[5px]"
                             />
                           </div>
                         ))
@@ -415,22 +405,26 @@ export default function Page({ params }: { params: { slug: string } }) {
                   ))} */}
                   {service.image_services.length > 0
                     ? service.image_services.map((cover, index) => (
-                        <div className="carousel-item relative w-[9em] h-[7.5em]">
-                          <Image
+                        <div
+                          className="carousel-item relative w-[9em] h-[7.5em]"
+                          key={index}
+                        >
+                          <img
                             src={
                               "https://graphikaz.digifaz.com/api/photo_service/" +
                               cover.libelle
                             }
-                            width={576}
-                            height={768}
+                            /*  width={576}
+                            height={768} */
                             alt={"service.title"}
-                            className="w-full rounded-[5px]"
+                            className="internet-img w-full rounded-[5px]"
                           />
                         </div>
                       ))
                     : coverList.map((cover, index) => (
                         <div className="carousel-item relative w-[9em] h-[7.5em]">
                           <Image
+                            key={index}
                             src={cover}
                             alt={"service.title"}
                             className="w-full rounded-[5px]"
@@ -459,7 +453,10 @@ export default function Page({ params }: { params: { slug: string } }) {
                     <div className="accordeon bg-slate-50 rounded">
                       {packs.map((pack, index) => {
                         return (
-                          <div className="collapse collapse-plus rounded-none">
+                          <div
+                            className="collapse collapse-plus rounded-none"
+                            key={index}
+                          >
                             <input type="radio" name="my-accordion-3" checked />
                             <div className="collapse-title  text-[16px] font-[500]">
                               <span className="text-[16px] font-[500]">
@@ -490,6 +487,60 @@ export default function Page({ params }: { params: { slug: string } }) {
                   {/* end pack accordeon */}
                 </div>
 
+                {/* small screen only */}
+                <div className="small-screen-only">
+                  <div className="left sticky-r">
+                    <div className=" ">
+                      <DefaultPacks
+                        packs={packs}
+                        setOrderPack={setSelectedPack}
+                        updateToggle={updateToggle}
+                      />
+                      {/* THIS SERVICE PROVIDER INFOS */}
+                      {/* <div className="prestator-infos shadow">
+                  <h3>À propos du vendeur</h3>
+                  <div className="pretator-profil items-center flex gap-3 mt-3">
+                    <div className=" object-cover w-[30%] h-[6em]  rounded-full">
+                      <Image
+                        //src={prestator.profilPic}
+                        src={Digifaz}
+                        //alt={prestator.fullName}
+                        alt={"digifaz"}
+                        className="object-cover rounded-full"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center items-start">
+                      <h3>{"Digifaz"}</h3>
+                      <small>{"Entreprise de services informatique"}</small>
+                      <div className="reviews">
+                        <i className="ri-star-fill text-yellow-500"></i> {4.9}{" "}
+                        {`(`}
+                        {567}
+                        {` Reviews)`}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="divider"></div>
+                  <div className="flex justify-between meta">
+                    <div className="location">
+                      <span>Location</span>
+                      <br />
+                      <small>Abidjan</small>
+                    </div>
+                    <div className="rate">
+                      <span>Rate:</span>
+                      <br />
+                      <small>$55 - $60 / hr</small>
+                    </div>
+                  </div>
+                  <button type="button">
+                    Contact Me <i className="ri-arrow-right-up-line"></i>
+                  </button>
+                </div> */}
+                    </div>
+                  </div>
+                </div>
+
                 {/* customisation part */}
                 <div className="customisation" id="customisation">
                   <div className="customisation-content">
@@ -504,7 +555,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                     </div>
                     {/* end header */}
                     <div className="customisation-body">
-                      <div className="service-base py-5 flex justify-between">
+                      <div className=" mobile-col service-base py-5 flex justify-between">
                         <div className="flex  gap-3 items-start">
                           <input
                             type="checkbox"
@@ -525,7 +576,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                         </span>
                       </div>
 
-                      <p className=" font-semibold text-[20px]">
+                      <p className=" sup font-semibold text-[20px]">
                         Options supplémentaires
                       </p>
 
@@ -574,7 +625,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                           placeholder="Commentaire"
                         ></textarea>
                       </div>
-                      <div className="name-email-inputs">
+                      <div className="name-email-inputs mobile-col-inputs">
                         <div className="name-input">
                           <span>Votre nom</span>
                           <input type="text" placeholder="nom" />
@@ -591,7 +642,9 @@ export default function Page({ params }: { params: { slug: string } }) {
                           que je ferai un commentaire.
                         </span>
                       </div>
-                      <button type="submit">Envoyer</button>
+                      <button type="submit" className="mobile-full">
+                        Envoyer
+                      </button>
                     </div>
                   </form>
                   {/* rating & comment form */}
@@ -599,7 +652,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="related-services-area w-full pt-12">
-                <h2 className="mb-6 font-bold">Related Services</h2>
+                {/*  <h2 className="mb-6 font-bold">Related Services</h2> */}
                 <div className="related-services">
                   {/* filtrage des service pour recupérer les
                     services simulaires au service actuel
@@ -975,7 +1028,7 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
   const [selectedPacks, setSelectedPacks] = useState<packProps[]>([]);
   //const basePrice = service.pack_services[0].montant || 0;
   const [basePrice, setPrice] = useState(service.pack_services[0].montant || 0);
-  const [quantity, setQuantity] = useState(1); // État pour suivre la quantité
+  /* const [quantity, setQuantity] = useState(1); */ // État pour suivre la quantité
 
   useEffect(() => {
     selectedPacks.push(service.pack_services[0]);
@@ -1026,8 +1079,8 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
 
     console.log("Total Price:", optionsTotal);
     useEffect(() => {
-      setPrice(optionsTotal + packsTotal + quantity);
-    }, [optionsTotal, packsTotal, quantity]);
+      setPrice(optionsTotal + packsTotal);
+    }, [optionsTotal, packsTotal]);
     return parseInt(basePrice.toString(), 10);
     // Reste du code...
   };
@@ -1044,7 +1097,10 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
           /* const delaiSup =
             service.pack_services[0].delais_livraison - pack.delais_livraison; */
           return (
-            <div className="service-base py-5 flex justify-between" key={index}>
+            <div
+              className="mobile-col service-base py-5 flex justify-between"
+              key={index}
+            >
               <div className="flex  gap-3 items-start">
                 <input
                   type="checkbox"
@@ -1072,7 +1128,10 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
       {/* options map */}
       {allOption.map((option, index) => {
         return (
-          <div className="service-base py-5 flex justify-between" key={index}>
+          <div
+            className="mobile-col service-base py-5 flex justify-between"
+            key={index}
+          >
             <div className="flex  gap-3 items-start">
               <input
                 type="checkbox"
@@ -1109,13 +1168,13 @@ const ServiceOptions: React.FC<ServiceOptionsProps> = ({
       <div className="flex">
         <button
           type="button"
-          className="first-chirld mt-4]"
+          className=" mobile-full first-chirld mt-4]"
           onClick={() => updateToggle(true)}
         >
           Acheter {calculateTotalPrice()} FCFA{" "}
           <i className="ri-arrow-right-up-line"></i>
         </button>
-        <div className="w-[90%]"></div>
+        <div className="mobile-hidden w-[90%]"></div>
       </div>
       {/*  <p>Total Price: {}</p> */}
 

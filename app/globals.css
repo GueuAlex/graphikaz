@@ -99,8 +99,20 @@ div.add-to-favorite:hover i {
 
 /* SERVICE CARD */
 .service-carde {
-  width: 100%;
-  max-width: 20em;
+  width: 300px;
+  max-width: 305px;
+  height: 400px;
+  /* background: #000; */
+}
+.service-carde .service-img {
+  height: 200px;
+  width: 300px;
+  max-width: 305px;
+}
+.service-carde .bottom-part {
+  height: 200px;
+  width: 300px;
+  max-width: 305px;
 }
 .service-carde .carde-link {
   display: flex;
