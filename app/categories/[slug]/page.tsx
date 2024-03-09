@@ -312,14 +312,14 @@ export default function Page({ params }: { params: { slug: string } }) {
             <div className="rigth" ref={elementRef}>
               <div className="service-description">
                 <div className="desc-head flex gap-14">
-                  <div className="desc flex items-center gap-8">
+                  <div className="desc mobile-col2 flex items-center gap-8">
                     <div className="icon-large relative">
                       <i className="ri-calendar-2-line text-[2.8em] text-primary"></i>{" "}
                       <div className="transparant absolute"></div>
                     </div>
-                    <div className="desc-text">
+                    <div className="desc-text mobile-col2 flex flex-col">
                       <span>Delais de livraison</span>
-                      <br />
+
                       <small>
                         {packs.length > 0
                           ? packs[0].delais_livraison + " jours"
@@ -340,14 +340,14 @@ export default function Page({ params }: { params: { slug: string } }) {
                     </div>
                   </div> */}
 
-                  <div className="desc flex items-center gap-8">
+                  <div className="mobile-col2 desc flex items-center gap-8">
                     <div className="icon-large relative">
                       <i className="ri-map-pin-2-line text-[2.8em] text-primary"></i>{" "}
                       <div className="transparant absolute"></div>
                     </div>
-                    <div className="desc-text">
+                    <div className="desc-text mobile-col2 flex flex-col">
                       <span>Location</span>
-                      <br />
+
                       <small>Abidjan</small>
                     </div>
                   </div>

@@ -120,6 +120,10 @@ PAIEMENT SIDE BAR STYLES
         color: #c67300;
       }
       .details-content-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
         .commande-total {
           padding-top: 2rem;
           padding-bottom: 2rem;
@@ -453,4 +457,50 @@ select.select-div {
 }
 .this-option-price {
   font-family: "Amatic+SC";
+}
+
+/* *****************************************************
+********** PAIEMENT SIDE BAR RESPONSIVE ****************
+******************************************************* */
+
+@media screen and (max-width: 1315px) {
+  .paiement-side-bar {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .paiement-side-bar {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .paiement-side-bar {
+    width: 100%;
+  }
+  .credit-card-form {
+    padding-right: 1rem;
+  }
+  .pay-methods {
+    padding-right: 1rem;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .paiement-side-bar {
+    .content-body {
+      flex-direction: column;
+      .mobile-hidden {
+        visibility: hidden;
+      }
+    }
+
+    .mobile-show-pay-copy {
+      display: flex;
+      visibility: visible;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
 }

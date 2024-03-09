@@ -196,7 +196,7 @@ const CheckoutMobileForm: React.FC<CheckoutMobileFormProps> = ({
   };
   ////////////////////////////////////////////////////////////////
   return (
-    <form className="credit-card-form" onSubmit={handleSubmit}>
+    <form className="credit-card-form small-screen" onSubmit={handleSubmit}>
       <ToastContainer />
 
       <div className="flex flex-col">

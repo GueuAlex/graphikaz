@@ -118,7 +118,7 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
               </div>
             </div>
           </div>
-          <div className="copy-right-terms w-full ">
+          <div className="mobile-hidden copy-right-terms w-full ">
             <span className="text-[13px] font-light text-slate-600">
               Powered by <span className="font-semibold">Digifaz</span> |{" "}
               <span>Terms {"  "} Privacy</span>
@@ -129,7 +129,7 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
       <div className="paiement-informatios flex justify-center ">
         <div className="paiement-infos-content">
           <div className="paiement-infos-header">
-            <div className="pay-methods w-full  flex">
+            <div className="pay-methods w-full  flex small-screen">
               {payMethodsTab.map((method, index) => (
                 <div
                   onClick={() => setSelectedMetohd(method.libelle)}
@@ -183,6 +183,12 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
             )}
           </div>
         </div>
+      </div>
+      <div className="mobile-show-pay-copy hidden copy-right-terms w-full items-center justify-center ">
+        <span className="text-[13px] font-light text-slate-600">
+          Powered by <span className="font-semibold">Digifaz</span> |{" "}
+          <span>Terms {"  "} Privacy</span>
+        </span>
       </div>
     </div>
   );

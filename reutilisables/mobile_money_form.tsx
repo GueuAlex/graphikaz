@@ -401,7 +401,7 @@ const MobileMoneyForm = ({
     } */
   };
   return (
-    <form onSubmit={handleSubmit} className="credit-card-form">
+    <form onSubmit={handleSubmit} className="credit-card-form small-screen">
       <ToastContainer />
       <AlertDialog msg="Erreur lors de la création de la transaction. Vérifier vos informations et reéssayer" />
       <div className="flex flex-col">
