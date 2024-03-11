@@ -235,7 +235,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                 </div>
                 <Image src={selectedFlyer.cover} alt={selectedFlyer.title} />
               </div>
-              <div className="unselected-container">
+              <div className="unselected-container mobile-hidden">
                 <h3>SÉLECTIONNER UN STYLE</h3>
                 <div className="unseleted-content w-full">
                   {unselectedFlyers.map((flyer, index) => (
@@ -272,7 +272,10 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
             <div className="short-desc">
               {/* Mappez sur le tableau de paragraphes pour afficher chaque paragraphe */}
               {paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: paragraph }}
+                />
               ))}
             </div>
             <div className="help-center">
@@ -290,6 +293,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
                   alt="graphikaz-logo"
                   width={120}
                   height={60}
+                  className="img"
                 />
 
                 <a href="http://" target="_blank" rel="noopener noreferrer">
@@ -550,7 +554,7 @@ const SecletedFlyerView: React.FC<SecletedFlyerViewProps> = ({
               <div className="line" />
             </div>
             <div className="full-desc">
-              {selectedFlyer.full_description.map((desc, index) => {
+              {selectedFlyer.full_description.map((desc) => {
                 const para = desc.desc.split("\n");
                 return (
                   <div className="desc">

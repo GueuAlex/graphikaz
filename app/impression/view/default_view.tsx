@@ -244,43 +244,39 @@ const DefaultView = () => {
 };
 
 const BannerContainer = () => {
+  const labels = [
+    "Carte de visite",
+    "Flyers & Depliants",
+    "Panneaux PVC",
+    "Stickers",
+    "Et bien plus",
+  ];
   return (
     <div className="banner default-view w-full max-h-[20rem]">
       <Wrapper>
-        <small className="small-text">
+        <small className=" text-[20px] text-white">
           Nos services de confection et d'impression sur mesure
         </small>{" "}
         <br />
-        <TypeAnimation
-          sequence={[
-            // Same substring at the start will only be typed once, initially
-            "Confection & Impression de Carte de visite ",
-            1000,
-            "Confection & Impression de Flyers ",
-            1000,
-            "Confection & Impression de Depliants",
-            1000,
-            "Confection & Impression de Panneaux PVC",
-            1000,
-            "Confection & Impression de Stickers",
-            1000,
-          ]}
-          speed={50}
-          style={{ fontSize: "2em" }}
-          repeat={Infinity}
-        />
-        <div className="banner-demo-container">
+        <ul className=" text-[14px] text-white font-semibold">
+          {labels.map((label) => (
+            <li>
+              <i className="ri-arrow-right-line"></i> {label}{" "}
+            </li>
+          ))}
+        </ul>
+        {/*  <div className="banner-demo-container">
           <div className="flex items-center justify-center">
             <i className="ri-play-fill text-[1.9em]"></i>
           </div>
           <p>How Graphikaz Works</p>
-        </div>
+        </div> */}
       </Wrapper>
     </div>
   );
 };
 
-const ProductHome = () => {
+/* const ProductHome = () => {
   return (
     <div className="product-home-items">
       <div className="product-home-item relative">
@@ -303,7 +299,7 @@ const ProductHome = () => {
       </div>
     </div>
   );
-};
+}; */
 
 const TextBloc = () => {
   return (

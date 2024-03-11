@@ -274,8 +274,8 @@
   }
 
   .product-home {
-    width: 100%;
-    margin: 1.5rem;
+    /* width: 100%; */
+    /* margin: 1.5rem; */
 
     .product-home-items {
       display: flex;
@@ -799,6 +799,139 @@
               font-weight: 300;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+/* ***********************************************************
+******************** IMPRESS ESPONSIVE ***********************
+************************************************************ */
+.printing {
+  @media screen and (max-width: 1024px) {
+    .banner {
+      border-radius: 0px;
+    }
+    .wrapper-content {
+      padding: 0.5rem 1rem;
+    }
+    .product-home-items {
+      flex: 20% 20%;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-home-item {
+      width: 370px !important;
+      height: 370px !important;
+    }
+    .text-bloc-bloc {
+      h1 {
+        font-size: 20px;
+      }
+    }
+
+    /* selected service responsive */
+    .selected-flyer-container {
+      .selected-flyer {
+        .flyer-details {
+          .flyer-details-left {
+            h3 {
+              font-size: 14px !important;
+            }
+            .unseleted-content {
+              h1 {
+                font-size: 14px !important;
+              }
+              strong {
+                font-size: 16px !important;
+              }
+            }
+          }
+          .flyer-details-right {
+            h1 {
+              font-size: 21px !important;
+            }
+            .short-desc {
+              p {
+                font-size: 15px !important;
+              }
+            }
+            .help-center {
+              .a-btn * {
+                margin-left: -2rem;
+                transform: scale(0.8);
+              }
+              .help-link {
+                img {
+                  transform: scale(0.6);
+                  margin-left: -2rem;
+                }
+                a {
+                  font-size: 13px !important;
+                }
+              }
+            }
+            .price-container {
+              p {
+                font-size: 13px !important;
+              }
+              strong {
+                font-size: 21px !important;
+              }
+            }
+            .customisation {
+              h1 {
+                font-size: 16px !important;
+              }
+            }
+            form {
+              label {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .selected-flyer-desc {
+      .desc-container {
+        h2 {
+          font-size: 18px !important;
+        }
+        .caption {
+          font-size: 15px !important;
+        }
+        .full-desc {
+          h3 {
+            font-size: 16px !important;
+          }
+          p {
+            font-size: 14 !important;
+          }
+        }
+      }
+      font-size: 14px !important;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .selected-flyer {
+      .flyer-details {
+        flex-direction: column;
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .a-btn {
+      flex-direction: column;
+    }
+    .flyer-details-left {
+      .cover-container {
+        height: 300px !important;
+        img {
+          height: 300px !important;
         }
       }
     }

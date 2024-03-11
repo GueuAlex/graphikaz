@@ -30,7 +30,7 @@ const Navigation: React.FC<NavigationProps> = ({ setSelectedMenuItem }) => {
     setSelectedMenu(item);
   };
   return (
-    <Disclosure as="nav" className="navigation sticky top-0">
+    <Disclosure as="nav" className="navigation sticky top-0 w-full">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-[87.3rem]">
