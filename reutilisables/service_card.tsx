@@ -56,36 +56,8 @@ const TServiceCard = ({
               <span className="text-black font-semibold">{4.5}</span>{" "}
               {`(${2} Reviews)`}
             </p>
-
-            <div className="mt-5 w-full border " />
-            <div className="pt-[0.7rem] flex flex-row items-start justify-between">
-              <div className="second-link flex flex-row gap-3 justify-start items-center">
-                <div className="w-[2.2rem] h-[2.2rem]  rounded-full object-contain relative">
-                  {/* prestator src */}
-                  {/* prestators.find(
-                      (prestator) => prestator.id === service.prestatorId
-                    )?.profilPic ?? "" */}
-                  <div className="t-overlay-dot absolute "></div>
-                  <Image src={DeliCar} alt="f1" className="rounded-full" />
-                </div>
-                <p className="text-[0.9rem]">
-                  {/* prestator name */}
-                  {/* {prestators.find(
-                  (prestator) => prestator.id === service.prestatorId
-                )?.fullName ?? ""} */}
-
-                  {service.pack_services.length > 0 ? (
-                    <span>
-                      <small>Livrer sous </small>{" "}
-                      <small>
-                        {service.pack_services[0].delais_livraison + " jours"}
-                      </small>
-                    </span>
-                  ) : (
-                    ""
-                  )}
-                </p>
-                {/*  {service.pack_services.length > 0 ? (
+            <small>
+              {service.pack_services.length > 0 ? (
                 <span>
                   <small>Livrer sous </small>{" "}
                   <small>
@@ -94,15 +66,8 @@ const TServiceCard = ({
                 </span>
               ) : (
                 ""
-              )} */}
-              </div>
-            </div>
-            {/*  <button type="button" className="service-view-button">
-              <p className="text-[0.8rem]">
-                A PARTIR DE{" "}
-                <span className="text-[16px]  font-normal">{montant} FCFA</span>
-              </p>
-            </button> */}
+              )}
+            </small>
           </div>
         </div>
       </Link>

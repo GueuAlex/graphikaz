@@ -1,12 +1,10 @@
-import { Affiche, Flyers } from "@/public";
 import { Wrapper } from "@/reutilisables";
 import React, { useState } from "react";
-import { TypeAnimation } from "react-type-animation";
 import CatCarou from "../cat-carou";
 import Carou from "../carou";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
-import { impressCategories, products } from "@/constants";
+import { products } from "@/constants";
 import {
   BcardProps,
   BrochureProps,
@@ -157,7 +155,7 @@ const DefaultView = () => {
             className=" justify-normal"
             itemClass="carou-items"
           >
-            {someProducts.map((produc, index) => (
+            {someProducts.map((produc) => (
               <div
                 key={produc.title}
                 className="carou-item w-full h-full flex justify-center items-center"

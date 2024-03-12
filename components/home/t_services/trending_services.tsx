@@ -33,14 +33,13 @@ const TrendingService = ({
         </div>
         <div className="px-[5px] py-[5px] relative">
           {/* Trying carrousel  */}
-
-          <div className="carousel carousel-center  p-4 space-x-4 ">
+          <div className="carousel carousel-center max-w-md p-4 space-x-4">
             {serviceList.map((service, index) => {
               const category: ApiCategoryProps = categories.find(
                 (c) => c.id === service.category_id
               )!;
               return (
-                <div className="carousel-item ">
+                <div className="carousel-item">
                   <TServiceCard
                     key={service.id}
                     service={service}

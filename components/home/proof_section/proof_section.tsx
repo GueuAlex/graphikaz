@@ -8,7 +8,7 @@ const ProofSection = () => {
     <div className="proof-section w-full  px-[2rem] py-[2rem] bg-tertiary relative">
       <div className="py-[4rem] max-w-[97rem] mx-auto  relative">
         <div className="flex-container justify-center items-center   proof-container">
-          <div className="flex-item1  f-right flex flex-col justify-start  items-start">
+          <div className="proof-desc flex-item1  f-right flex flex-col justify-start  items-start">
             <h2 className="text-slate-800">
               Tout un monde de talents freelance à portée de main
             </h2>

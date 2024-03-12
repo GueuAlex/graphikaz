@@ -90,32 +90,38 @@ export default function NavBar({
                 <p>GRAPHIKAZ</p>
               </div>
             </div>
-            <div className="item active">
-              <div className="icon-small close-icon">
-                <i className="ri-home-line"></i>
+            <a href="/">
+              <div className="item active">
+                <div className="icon-small close-icon">
+                  <i className="ri-home-line"></i>
+                </div>
+                <div className="text-medium">
+                  <p>Accueil</p>
+                </div>
               </div>
-              <div className="text-medium">
-                <p>Home</p>
-              </div>
-            </div>
+            </a>
 
-            <div className="item">
-              <div className="icon-small close-icon">
-                <i className="ri-apps-2-line"></i>
+            <a href="/categories">
+              <div className="item">
+                <div className="icon-small close-icon">
+                  <i className="ri-apps-2-line"></i>
+                </div>
+                <div className="text-medium">
+                  <p>Services</p>
+                </div>
               </div>
-              <div className="text-medium">
-                <p>Categories</p>
-              </div>
-            </div>
+            </a>
 
-            <div className="item">
-              <div className="icon-small close-icon">
-                <i className="ri-code-view"></i>
+            <a href="/impression">
+              <div className="item">
+                <div className="icon-small close-icon">
+                  <i className="ri-code-view"></i>
+                </div>
+                <div className="text-medium">
+                  <p>Impression</p>
+                </div>
               </div>
-              <div className="text-medium">
-                <p>Prestations</p>
-              </div>
-            </div>
+            </a>
 
             <div className="item">
               <div className="icon-small close-icon">
@@ -126,24 +132,40 @@ export default function NavBar({
               </div>
             </div>
           </div>
-          <div className="bottom-items">
-            <div className="item">
-              <div className="icon-small close-icon">
-                <i className="ri-login-circle-line"></i>
-              </div>
-              <div className="text-medium">
-                <p>Connexion</p>
-              </div>
-            </div>
+          {/* check session */}
 
-            <div className="item">
-              <div className="icon-small close-icon">
-                <i className="ri-user-add-line"></i>
+          <div className="side-bar-bottom-part">
+            {session.status === "loading" ? (
+              <span className="loading loading-dots loading-md"></span>
+            ) : session.status === "authenticated" ? (
+              <>
+                <div className="divider" />
+                <a href="/dashboard">
+                  {" "}
+                  <AvatarContainer user={session.data?.user!} />
+                </a>
+              </>
+            ) : (
+              <div className="bottom-items">
+                <div className="item">
+                  <div className="icon-small close-icon">
+                    <i className="ri-login-circle-line"></i>
+                  </div>
+                  <div className="text-medium">
+                    <p>Connexion</p>
+                  </div>
+                </div>
+
+                <div className="item">
+                  <div className="icon-small close-icon">
+                    <i className="ri-user-add-line"></i>
+                  </div>
+                  <div className="text-medium">
+                    <p>S'Inscrire</p>
+                  </div>
+                </div>
               </div>
-              <div className="text-medium">
-                <p>S'Inscrire</p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
         {/* nav side bar end */}
@@ -160,11 +182,11 @@ export default function NavBar({
             !isHome
               ? "justify-between flex w-full"
               : "justify-between max-w-[97rem] w-full"
-          } relative flex items-center py-[1.78rem] max-lg:justify-between`}
+          } relative flex items-center py-[1rem] max-lg:justify-between`}
         >
           <div>
             <Link href="/" className="mr-auto flex-none text-slate-900">
-              <Image src={LogoColor} alt="Graphikaz_logo" width={150} />
+              <Image src={LogoColor} alt="Graphikaz_logo" width={120} />
             </Link>
           </div>
           <div className="flex flex-row items-center">

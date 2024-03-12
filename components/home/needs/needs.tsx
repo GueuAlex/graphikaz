@@ -12,7 +12,7 @@ const Needs = () => {
             Services les plus consultés et les plus vendus de tous les temps
           </small>
         </div>
-        <div className="needs-content w-full flex flex-row justify-between items-start gap-12 mt-12">
+        <div className="needs-content w-full flex flex-row justify-between items-start gap-12 mt-12 flex-wrap">
           <div className="flex flex-col gap-2 flex-1">
             <i className="ri-macbook-line text-slate-200 text-[2.8rem]"></i>
             <h3 className="text-slate-200 font-semibold text-[1.3rem]">

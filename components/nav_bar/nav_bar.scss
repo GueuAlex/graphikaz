@@ -155,3 +155,15 @@
     transition-delay: 0s;
   }
 }
+
+.side-bar-bottom-part {
+  .divider {
+    margin: 0;
+  }
+  .avatar-conatainer {
+    padding: 1.5rem;
+    .user-menu {
+      display: none;
+    }
+  }
+}
