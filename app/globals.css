@@ -105,8 +105,9 @@ div.add-to-favorite:hover i {
   /* background: #000; */
 }
 /* t service component  */
-/* .t-services .carousel-item .service-carde {
-  background-color: #000;
+/* .t-services .carousel {
+  margin: 0px !important;
+  width: 100% !important;
 } */
 .service-carde .service-img {
   height: 200px;
