@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const navigation: ImpressCategoryProps[] = impressCategories
   .map((element, index) => {
-    if (index === 5 || index === 6) {
+    if (index > 2) {
       return null; // Ou tout autre valeur que vous voulez utiliser pour représenter un élément exclu
     }
     return element;
