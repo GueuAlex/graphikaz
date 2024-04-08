@@ -29,7 +29,7 @@
 .login-signup-page .inputs-group div {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   padding: 0.5em;
   width: var(--percent100);
   margin-top: 0.5em;
@@ -140,7 +140,7 @@
 .login-component .inputs-group {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
 }
 .login-component .password-input input {
@@ -194,7 +194,7 @@
 .form-container .auth-radio-group .auth-radio {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 0.5em;
   grid-template-columns: 1fr 3fr;
   font-size: var(--font-small);
@@ -204,7 +204,7 @@
   height: 16px;
 }
 .form-container .check-box {
-  justify-content: start;
+  justify-content: flex-start;
 }
 .form-container .check-box a {
   font-weight: var(--fw6);

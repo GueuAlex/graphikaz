@@ -11,6 +11,7 @@ import {
   Row,
   Section,
   Text,
+  Hr,
 } from "@react-email/components";
 import * as React from "react";
 
@@ -32,16 +33,17 @@ export const SlackConfirmEmail = ({
       <Container style={container}>
         <Section style={logoContainer}>
           <Img
-            src={`${baseUrl}/static/slack-logo.png`}
-            width="120"
-            height="36"
-            alt="Slack"
+            src={`https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/graphikaz_logo-7AGJWygO9vxJBED9LuHVNg4kslfORB.jpg`}
+            width="100"
+            height="20"
+            alt="Graphikaz"
           />
         </Section>
-        <Heading style={h1}>Confirm your email address</Heading>
+        <Heading style={h1}>Confirmez votre adresse e-mail</Heading>
         <Text style={heroText}>
-          Your confirmation code is below - enter it in your open browser window
-          and we'll help you get signed in.
+          Votre code de confirmation se trouve ci-dessous - saisissez-le dans la
+          fenêtre ouverte de votre navigateur et nous vous aiderons à vous
+          connecter.
         </Text>
 
         <Section style={codeBox}>
@@ -49,18 +51,18 @@ export const SlackConfirmEmail = ({
         </Section>
 
         <Text style={text}>
-          If you didn't request this email, there's nothing to worry about, you
-          can safely ignore it.
+          Si vous n'avez pas demandé cet e-mail, il n'y a pas lieu de
+          s'inquiéter, vous pouvez l'ignorer en toute sécurité.
         </Text>
 
         <Section>
           <Row style={footerLogos}>
             <Column style={{ width: "66%" }}>
               <Img
-                src={`${baseUrl}/static/slack-logo.png`}
-                width="120"
-                height="36"
-                alt="Slack"
+                src={`https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/graphikaz_logo-7AGJWygO9vxJBED9LuHVNg4kslfORB.jpg`}
+                width="100"
+                height="20"
+                alt="Graphikaz"
               />
             </Column>
             <Column>
@@ -69,10 +71,10 @@ export const SlackConfirmEmail = ({
                   <Column>
                     <Link href="/">
                       <Img
-                        src={`${baseUrl}/static/slack-twitter.png`}
+                        src={`https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/2023_Facebook_icon.svg-9GQdjOCJv8h8LlP8lUUlCxauqiSNKx.png`}
                         width="32"
                         height="32"
-                        alt="Slack"
+                        alt="Graphikaz"
                         style={socialMediaIcon}
                       />
                     </Link>
@@ -80,10 +82,10 @@ export const SlackConfirmEmail = ({
                   <Column>
                     <Link href="/">
                       <Img
-                        src={`${baseUrl}/static/slack-facebook.png`}
+                        src={`https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/linkedin-icon-logo-png-transparent-bmmlMTEHnzlUY7K5Ma11x5qeF7Z4EV.png`}
                         width="32"
                         height="32"
-                        alt="Slack"
+                        alt="Graphikaz"
                         style={socialMediaIcon}
                       />
                     </Link>
@@ -91,10 +93,10 @@ export const SlackConfirmEmail = ({
                   <Column>
                     <Link href="/">
                       <Img
-                        src={`${baseUrl}/static/slack-linkedin.png`}
+                        src={`https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/whatsapp_logo_icon_186881-5tldw9GbY3OBcetrWN4o6PKc28mmi3.png`}
                         width="32"
                         height="32"
-                        alt="Slack"
+                        alt="Graphikaz"
                         style={socialMediaIcon}
                       />
                     </Link>
@@ -108,46 +110,46 @@ export const SlackConfirmEmail = ({
         <Section>
           <Link
             style={footerLink}
-            href="https://slackhq.com"
+            href="https://graphikaz-sqv5.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Our blog
+            Notre blog
           </Link>
           &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
           <Link
             style={footerLink}
-            href="https://slack.com/legal"
+            href="https://graphikaz-sqv5.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Policies
+            Politiques
           </Link>
           &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
           <Link
             style={footerLink}
-            href="https://slack.com/help"
+            href="https://graphikaz-sqv5.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Help center
+            Centre d'aide
           </Link>
           &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
           <Link
             style={footerLink}
-            href="https://slack.com/community"
+            href="https://graphikaz-sqv5.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             data-auth="NotApplicable"
             data-linkindex="6"
           >
-            Slack Community
+            Communauté Graphikaz
           </Link>
           <Text style={footerText}>
-            ©2022 Slack Technologies, LLC, a Salesforce company. <br />
-            500 Howard Street, San Francisco, CA 94105, USA <br />
+            ©2022 Graphikaz, LLC, une société de DIGIFAZ. <br />
+            AB Center - RT Abatta, Cocody Abidjan - Côte d'Ivoire <br />
             <br />
-            All rights reserved.
+            Tous droits réservés.
           </Text>
         </Section>
       </Container>

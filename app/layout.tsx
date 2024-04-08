@@ -107,6 +107,7 @@ export default function RootLayout({
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
           />
+          <link rel="icon" href="./image.ico" sizes="any" />
         </head>
         <body className={inter.className}>
           {isLaoding || categoriesIsLaoding ? (

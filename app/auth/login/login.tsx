@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import LoadingBtn from "@/reutilisables/loading_btn";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //type SetIsLoginFunction = (newValue: string) => void;
 const Login = (/* { setState }: { setState: SetIsLoginFunction } */) => {
@@ -28,7 +29,7 @@ const Login = (/* { setState }: { setState: SetIsLoginFunction } */) => {
       redirect: false,
     }).then((response) => {
       if (response?.status != 200) {
-        toast("Email ou mot de passe incorrect");
+        toast.error("Email ou mot de passe incorrect !");
       }
       setLoading(false);
     });
