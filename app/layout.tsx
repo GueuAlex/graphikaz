@@ -97,7 +97,7 @@ export default function RootLayout({
     <SessionProvider>
       <html lang="en">
         <head>
-          <script src="./google_tag" />
+          <script src="./google_tag.js" />
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
