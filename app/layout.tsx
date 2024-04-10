@@ -16,6 +16,7 @@ import Loader from "@/reutilisables/laoder";
 
 /* brevo chat box */
 import "./script.js";
+import Script from "next/dist/client/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -105,18 +106,9 @@ export default function RootLayout({
             href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
           />
           {/* <link rel="icon" href="/favicon.ico" sizes="35" /> */}
-          {/* <script src="./script.js"></script> */}
+          <Script src="/script.js" strategy="lazyOnload" />
         </head>
         <body className={inter.className}>
-          <noscript>
-            <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-593ZZTSQ"
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            ></iframe>
-          </noscript>
-
           {isLaoding || categoriesIsLaoding ? (
             <Loader />
           ) : (
