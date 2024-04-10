@@ -14,6 +14,9 @@ import { fetchAllData, getCategories } from "@/types/api_services";
 import { ApiCategoryProps, apiServiceProps } from "@/types";
 import Loader from "@/reutilisables/laoder";
 
+/* brevo chat box */
+import "./script.js";
+
 const inter = Inter({ subsets: ["latin"] });
 
 const excludedRoutes = ["/auth", "/dashboard"];
@@ -97,16 +100,21 @@ export default function RootLayout({
     <SessionProvider>
       <html lang="en">
         <head>
-          <script src="./google_tag.js" />
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
           />
           {/* <link rel="icon" href="/favicon.ico" sizes="35" /> */}
+          {/* <script src="./script.js"></script> */}
         </head>
         <body className={inter.className}>
           <noscript>
-            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-593ZZTSQ"></iframe>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-593ZZTSQ"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            ></iframe>
           </noscript>
 
           {isLaoding || categoriesIsLaoding ? (
