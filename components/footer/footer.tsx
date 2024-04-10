@@ -8,7 +8,19 @@ const Footer = ({ categories }: { categories: ApiCategoryProps[] }) => {
       <div className="max-w-[97rem] py-[2rem] w-full">
         <div className="header  flex flex-row justify-between items-center pb-5 border-b-2 border-teal-800">
           <div className="flex flex-row gap-5">
-            <Link href="/" className="text-slate-100 text-[1.2rem]">
+            <p className="text-slate-100 text-[1.2rem] mt-2">Nous suivre</p>
+            <div className="w-[2.3rem] h-[2.3rem] rounded-full bg-transparent hover:bg-teal-800 hover:cursor-pointer flex justify-center items-center">
+              <a href="https://www.facebook.com/graphikaz/">
+                <i className="ri-facebook-fill text-white"></i>
+              </a>
+            </div>
+            <div className="w-[2.3rem] h-[2.3rem] rounded-full bg-transparent hover:bg-teal-800 hover:cursor-pointer flex justify-center items-center">
+              <a href="https://www.instagram.com/graphikaz/">
+                {" "}
+                <i className="ri-instagram-line text-white"></i>
+              </a>
+            </div>
+            {/* <Link href="/" className="text-slate-100 text-[1.2rem]">
               Terms of Service
             </Link>
             <Link href="/" className="text-slate-100 text-[1.2rem]">
@@ -16,51 +28,20 @@ const Footer = ({ categories }: { categories: ApiCategoryProps[] }) => {
             </Link>
             <Link href="/" className="text-slate-100 text-[1.2rem]">
               Site Map
-            </Link>
+            </Link> */}
           </div>
           <div className="flex flex-row gap-5">
-            <Link href="/" className="text-slate-100 text-[1.2rem] mt-2">
-              Follow Us
-            </Link>
-            <div className="w-[2.3rem] h-[2.3rem] rounded-full bg-transparent hover:bg-teal-800 hover:cursor-pointer flex justify-center items-center">
-              <i className="ri-facebook-fill text-white"></i>
-            </div>
-            <div className="w-[2.3rem] h-[2.3rem] rounded-full bg-transparent hover:bg-teal-800 hover:cursor-pointer flex justify-center items-center">
-              <i className="ri-instagram-line text-white"></i>
-            </div>
-            <div className="w-[2.3rem] h-[2.3rem] rounded-full bg-transparent hover:bg-teal-800 hover:cursor-pointer flex justify-center items-center">
+            {/* <div className="w-[2.3rem] h-[2.3rem] rounded-full bg-transparent hover:bg-teal-800 hover:cursor-pointer flex justify-center items-center">
               <i className="ri-twitter-fill text-white"></i>
             </div>
             <div className="w-[2.3rem] h-[2.3rem] rounded-full bg-transparent hover:bg-teal-800 hover:cursor-pointer flex justify-center items-center">
               <i className="ri-linkedin-fill text-white"></i>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="footer-links flex justify-between items-start px-[5rem] py-[5rem]">
           <div className="flex flex-col justify-start gap-3">
-            <p className="text-white font-semibold">About</p>
-            <Link href="/" className="text-slate-300 hover:text-white">
-              About Us
-            </Link>
-            <Link href="/" className="text-slate-300 hover:text-white">
-              Become Seller
-            </Link>
-            <Link href="/" className="text-slate-300 hover:text-white">
-              Jobs on Graphikaz
-            </Link>
-            <Link href="/" className="text-slate-300 hover:text-white">
-              Pricing
-            </Link>
-            <Link href="/" className="text-slate-300 hover:text-white">
-              Services Graphikaz
-            </Link>
-            <Link href="/" className="text-slate-300 hover:text-white">
-              Terms of Services
-            </Link>
-          </div>
-
-          <div className="flex flex-col justify-start gap-3">
-            <p className="text-white font-semibold">Categories</p>
+            <p className="text-white font-semibold">Création graphique</p>
             {/* maping categories list */}
             {categories.map((cat, index) => (
               <Link
@@ -72,27 +53,74 @@ const Footer = ({ categories }: { categories: ApiCategoryProps[] }) => {
               </Link>
             ))}
           </div>
+          <div className="flex flex-col justify-start gap-3">
+            <p className="text-white font-semibold">Service d'impression</p>
+            <Link
+              href="/impression?category=Flyers & Leaflets"
+              className="text-slate-300 hover:text-white"
+            >
+              Flyers & Leaflets
+            </Link>
+            <Link
+              href="/impression?category=Business Cards"
+              className="text-slate-300 hover:text-white"
+            >
+              Business Cards
+            </Link>
+            {/*  <Link href="/" className="text-slate-300 hover:text-white">
+              Jobs on Graphikaz
+            </Link>
+            <Link href="/" className="text-slate-300 hover:text-white">
+              Pricing
+            </Link>
+            <Link href="/" className="text-slate-300 hover:text-white">
+              Services Graphikaz
+            </Link>
+            <Link href="/" className="text-slate-300 hover:text-white">
+              Terms of Services
+            </Link> */}
+          </div>
 
           <div className="flex flex-col justify-start gap-3">
-            <p className="text-white font-semibold">Support</p>
+            <p className="text-white font-semibold">Information</p>
             <Link href="/" className="text-slate-300 hover:text-white">
-              Help & Support
+              FAQ
             </Link>
             <Link href="/" className="text-slate-300 hover:text-white">
-              FAQ Graphikaz
+              CGV
             </Link>
             <Link href="/" className="text-slate-300 hover:text-white">
-              Services
+              Politique de confidentialité
             </Link>
-            <Link href="/" className="text-slate-300 hover:text-white">
+            {/* <Link href="/" className="text-slate-300 hover:text-white">
               Programming & Tech
             </Link>
             <Link href="/" className="text-slate-300 hover:text-white">
               Terms of Service
-            </Link>
+            </Link> */}
           </div>
 
           <div className="flex flex-col justify-start gap-3">
+            <p className="text-white font-semibold">Contacts</p>
+            <div className="text-slate-300 hover:text-white flex gap-3 items-center">
+              <i className="ri-phone-line"></i> <p>+225 07 77 77 71 04</p>
+            </div>
+            <div className="text-slate-300 hover:text-white flex gap-3 items-center">
+              <i className="ri-mail-line"></i> <p>contact@digifaz.com</p>
+            </div>
+            <div className="text-slate-300 hover:text-white flex gap-3 items-center">
+              <i className="ri-map-pin-2-line"></i>{" "}
+              <p>Abidjan, Abatta, AB CENTER Immeuble Gervinho</p>
+            </div>
+            {/* <Link href="/" className="text-slate-300 hover:text-white">
+              Programming & Tech
+            </Link>
+            <Link href="/" className="text-slate-300 hover:text-white">
+              Terms of Service
+            </Link> */}
+          </div>
+
+          {/*  <div className="flex flex-col justify-start gap-3">
             <p className="text-white font-semibold">Subscribe</p>
             <div className="w-[100%] h-[4rem] bg-teal-800 rounded-[8px] opacity-60 px-[15px] flex justify-between items-center">
               <input
@@ -114,7 +142,7 @@ const Footer = ({ categories }: { categories: ApiCategoryProps[] }) => {
             <Link href="/" className="text-slate-300 hover:text-white">
               <i className="ri-apple-fill"> </i> &nbsp; iOS App
             </Link>
-          </div>
+          </div> */}
         </div>
         <div className="footer-last-child flex flex-row justify-between items-center pt-5 px-5 border-t-2 border-teal-800">
           <p className="text-slate-200">

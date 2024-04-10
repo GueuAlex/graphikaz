@@ -32,6 +32,18 @@ small {
   font-weight: 500;
 }
 
+.seach-tag a {
+  padding: 0.25rem;
+  border-radius: 5px;
+  background-color: #00000010;
+  transition: all ease 0.3s;
+}
+
+.seach-tag a:hover {
+  background-color: #5bbb7b60;
+  color: #407953;
+}
+
 .error-div {
   display: flex;
   margin-top: 0.5rem;
@@ -59,7 +71,7 @@ small {
   div.my-hero .rigth_hero .search-container .input_div {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     height: 7rem;
     padding-top: 0.7rem;
@@ -71,7 +83,7 @@ small {
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    justify-content: start;
+    justify-content: flex-start;
     width: 100%;
   }
 

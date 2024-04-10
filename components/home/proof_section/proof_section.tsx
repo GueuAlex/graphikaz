@@ -10,45 +10,47 @@ const ProofSection = () => {
         <div className="flex-container justify-center items-center   proof-container">
           <div className="proof-desc flex-item1  f-right flex flex-col justify-start  items-start">
             <h2 className="text-slate-800">
-              Tout un monde de talents freelance à portée de main
+              Simplifiez votre expérience de conception grâce à Graphikaz
             </h2>
             <div className="flex flex-row gap-5  mt-8  items-start">
-              <i className="ri-medal-line text-primary text-[3rem]"></i>
+              <i className="ri-timer-flash-line text-primary text-[3rem]"></i>
               <div className="f-text">
-                <h3 className="text-[1.3em] mb-2 font-[600] ">
-                  Preuve de qualité
-                </h3>
+                <h3 className="text-[1.3em] mb-2 font-[600] ">Gain de temps</h3>
                 <p>
-                  Explorez des échantillons de travail, des avis clients et des
-                  vérifications <br /> d'identité pour garantir la qualité des
-                  professionnels que vous engagez.
+                  Accédez à un large choix de services graphiques et
+                  d'impression en un seul lieu. <br />
+                  Bénéficiez de prix compétitifs et de devis transparents.{" "}
+                  <br />
+                  Vous pouvez personnaliser vos projets en fonction de vos
+                  préférences de conception.
                 </p>
               </div>
             </div>
             <div className="flex flex-row gap-5  mt-8  items-start">
-              <i className="ri-money-dollar-circle-line text-primary text-[3rem]"></i>
+              <i className="ri-cursor-line text-primary text-[3rem]"></i>
               <div className="f-text">
                 <h3 className="text-[1.3em] mb-2 font-[600] ">
-                  Pas de frais avant l'embauche
+                  Flexibilité et simplicité
                 </h3>
                 <p>
-                  Bénéficiez de la tranquillité d'esprit en ne payant aucun
-                  frais avant d'embaucher le professionnel qui correspond
-                  parfaitement à vos attentes.
+                  Commandez votre infographie en quelques clics depuis n'importe
+                  où et à n'importe quelle heure. Suivez l'avancement de votre
+                  projet en temps réel et recevez des notifications
+                  automatiques.
                 </p>
               </div>
             </div>
             <div className="flex flex-row gap-5  mt-8  items-start">
-              <i className="ri-shield-check-line text-primary text-[3rem]"></i>
+              <i className="ri-group-line text-primary text-[3rem]"></i>
               <div className="f-text">
                 <h3 className="text-[1.3em] mb-2 font-[600] ">
-                  Sûreté et sécurité
+                  Collaboration et révisions simplifiées
                 </h3>
                 <p>
-                  Priorisez la sécurité en consultant des échantillons de
-                  travail, les avis clients et les <br /> vérifications
-                  d'identité pour chaque professionnel, assurant ainsi une
-                  expérience <br /> sûre et fiable.
+                  Collaborez étroitement avec les designers pour vous assurer
+                  que votre vision soit parfaitement réalisée. Demandez des
+                  révisions et des ajustements pour être satisfait du résultat
+                  final
                 </p>
               </div>
             </div>
@@ -64,18 +66,20 @@ const ProofSection = () => {
               <div className="flex flex-row gap-5 items-center">
                 <i className="ri-checkbox-circle-fill text-white text-[2rem]"></i>
                 <small className=" text-white text-[1rem]">
-                  Un travail de qualité fait rapidement
+                  Un processus de commande rapide
                 </small>
               </div>
               <div className="flex flex-row gap-5 items-center">
                 <i className="ri-checkbox-circle-fill text-white text-[2rem]"></i>
                 <small className=" text-white text-[1rem]">
-                  Des paiements protégés, à chaque fois
+                  Des résultats de qualité
                 </small>
               </div>
               <div className="flex flex-row gap-5 items-center">
                 <i className="ri-checkbox-circle-fill text-white text-[2rem]"></i>
-                <small className=" text-white text-[1rem]">24/7 support</small>
+                <small className=" text-white text-[1rem]">
+                  Une équipe d'experts à votre écoute
+                </small>
               </div>
             </div>
             <Image src={Cover} alt="cover" className="relative " />

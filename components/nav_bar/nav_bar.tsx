@@ -107,7 +107,7 @@ export default function NavBar({
                   <i className="ri-apps-2-line"></i>
                 </div>
                 <div className="text-medium">
-                  <p>Services</p>
+                  <p>Création graphique</p>
                 </div>
               </div>
             </a>
@@ -192,7 +192,7 @@ export default function NavBar({
           <div className="flex flex-row items-center">
             <div className="hidden lg:flex lg:items-center">
               <span className="categories-label">
-                <Link href={"/categories"}>Categories</Link>
+                <Link href={"/categories"}>Création graphique</Link>
                 <div className="sub-menu shadow-xl">
                   {
                     <ul>
@@ -211,9 +211,9 @@ export default function NavBar({
               <Link href="/impression" className="ml-8">
                 Impression
               </Link>
-              <div className="ml-2 hidden rounded-full bg-secondary px-1.5 py-0.5 text-xs text-white sm:block">
+              {/* <div className="ml-2 hidden rounded-full bg-secondary px-1.5 py-0.5 text-xs text-white sm:block">
                 New
-              </div>
+              </div> */}
               <Link href="#" className="ml-8">
                 À propos
               </Link>

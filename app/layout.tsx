@@ -16,12 +16,6 @@ import Loader from "@/reutilisables/laoder";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// Exporter metadata directement depuis le fichier
-/* export const metadata = {
-  title: 'Graphikaz',
-  description: 'Graphikaz 2023 | prestation provider app',
-}; */
-
 const excludedRoutes = ["/auth", "/dashboard"];
 
 export default function RootLayout({
@@ -103,13 +97,23 @@ export default function RootLayout({
     <SessionProvider>
       <html lang="en">
         <head>
+          <script src="./google_tag" />
           <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
           />
-          <link rel="icon" href="./image.ico" sizes="any" />
+          {/* <link rel="icon" href="/favicon.ico" sizes="35" /> */}
         </head>
         <body className={inter.className}>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-593ZZTSQ"
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            ></iframe>
+          </noscript>
+
           {isLaoding || categoriesIsLaoding ? (
             <Loader />
           ) : (

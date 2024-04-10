@@ -20,9 +20,9 @@ const TrendingService = ({
       <div className="max-w-[97rem] relative   w-full">
         <div className="t-service-header flex flex-row justify-between items-center mb-[3rem] mt-5">
           <div className="">
-            <h2 className=" text-neutral-800">Services en vogue</h2>
+            <h2 className=" text-neutral-800">Best sellers</h2>
             <small className="subtitle mt-3 text-slate-500 font-semibold">
-              Services les plus consultés et les plus vendus de tous les temps
+              Services les plus consultés et vendus
             </small>
           </div>
           <span className="hover:text-secondary text-slate-700 font-semibold">

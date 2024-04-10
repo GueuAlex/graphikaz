@@ -93,7 +93,7 @@ const MyHome = () => {
   }
   return (
     <>
-      <Hero />
+      <Hero apiCategories={categoriesList} />
       <Needs />
       <Categories apiCategories={categoriesList} />
       <TrendingService serviceList={serviceList} categories={categoriesList} />

@@ -288,3 +288,11 @@ export enum OrderStatus {
   IN_PROCESS = "IN_PROCESS",
   CANCELLED = "CANCELLED",
 }
+
+/* CREATION GRAPHIC TEST MODEL */
+export interface GraphicServProps {}
+export interface GraphicServItemProps {}
+
+/* export enum GraphicServItemTypeProps {
+
+}{ */

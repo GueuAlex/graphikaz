@@ -16,8 +16,9 @@ import {
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import { ApiCategoryProps } from "@/types";
 
-const Hero = () => {
+const Hero = ({ apiCategories }: { apiCategories: ApiCategoryProps[] }) => {
   const [searchInfo, setSearchInfo] = useState("");
   const [isErro, setError] = useState(false);
   const popularSearch = [
@@ -44,14 +45,14 @@ const Hero = () => {
             >
               <h1 className="hero-h1 text-primary font-semibold lg:text-[40px] mt-2">
                 Trouver les bons services{" "}
-                <span className="text-secondary">freelances</span>
+                <span className="text-secondary">graphiques</span>
                 <br />
                 immédiatement.
               </h1>
 
               <small className=" text-slate-800 mt-4 ">
-                Des millions de personnes utilisent graphikaz.com pour
-                concrétiser leurs idées.
+                Rejoignez la communauté des personnes qui utilisent
+                graphikaz.com pour gagner du temps
               </small>
             </motion.div>
           </AnimatePresence>
@@ -118,11 +119,15 @@ const Hero = () => {
               exit={{ opacity: 0, y: 45 }}
               transition={{ delay: 1, ease: "easeIn" }}
             >
-              <small className=" text-slate-800 font-medium mt-4 text-[14px] ">
+              <small className="seach-tag text-slate-800 font-medium mt-4 text-[14px] ">
                 Recherches populaires :{" "}
-                {popularSearch.map((searchword, index) => (
-                  <a href={`search/${searchword}`} className="mr-2">
-                    {searchword},
+                {apiCategories.map((category, index) => (
+                  <a
+                    href={`/categories?category=${category.libelle}`}
+                    className="mr-2"
+                    key={index}
+                  >
+                    {category.libelle}
                   </a>
                 ))}
               </small>
