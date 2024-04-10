@@ -106,12 +106,7 @@ export default function RootLayout({
         </head>
         <body className={inter.className}>
           <noscript>
-            <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-593ZZTSQ"
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            ></iframe>
+            <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-593ZZTSQ"></iframe>
           </noscript>
 
           {isLaoding || categoriesIsLaoding ? (
