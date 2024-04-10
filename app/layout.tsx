@@ -126,10 +126,10 @@ export default function RootLayout({
               {!isExcludedRoute && <Footer categories={categoriesList} />}
             </>
           )}
-          <script
+          {/*  <script
             src="//code.tidio.co/lvwvljciykg3iycfbgvvk9v7o5tnxtsw.js"
             async
-          ></script>
+          ></script> */}
         </body>
       </html>
     </SessionProvider>
