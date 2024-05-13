@@ -14,11 +14,16 @@ import {
   Comp,
 } from "@/public";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { MyAppContext } from "@/reutilisables/app_context";
 import { useRouter } from "next/navigation";
 import { ApiCategoryProps } from "@/types";
 
-const Hero = ({ apiCategories }: { apiCategories: ApiCategoryProps[] }) => {
+interface HeroProps {
+  apiCategories: ApiCategoryProps[];
+}
+
+const Hero: React.FC<HeroProps> = ({ apiCategories }) => {
   const [searchInfo, setSearchInfo] = useState("");
   const [isErro, setError] = useState(false);
   const popularSearch = [
@@ -30,7 +35,13 @@ const Hero = ({ apiCategories }: { apiCategories: ApiCategoryProps[] }) => {
     "Senior",
     "Engineer",
   ];
-
+  const context = useContext(MyAppContext);
+  if (!context) {
+    throw new Error("ComponentX must be used within a MyProvider");
+  } else {
+    console.log("context ok in hero component");
+  }
+  const { toggleState } = context;
   const router = useRouter();
   return (
     <div className="mx-auto  px-4 sm:px-6 flex justify-center items-center lg:px-8">
@@ -72,9 +83,10 @@ const Hero = ({ apiCategories }: { apiCategories: ApiCategoryProps[] }) => {
                     </i>
                     <input
                       type="text"
-                      className=""
+                      className=" disabled"
                       name=""
                       id=""
+                      onClick={toggleState}
                       placeholder="Que recherchez-vous  ?"
                       value={searchInfo}
                       onChange={({ target }) => {
@@ -86,7 +98,11 @@ const Hero = ({ apiCategories }: { apiCategories: ApiCategoryProps[] }) => {
                   <button
                     type="button"
                     className="bg-primary "
-                    onClick={() => {
+                    onClick={
+                      () => {
+                        toggleState();
+                      }
+                      /* () => {
                       //console.log(searchInfo.length);
                       if (searchInfo.trim().length <= 0) {
                         //console.log("true");
@@ -95,7 +111,8 @@ const Hero = ({ apiCategories }: { apiCategories: ApiCategoryProps[] }) => {
                         console.log("bonjour");
                         router.push("/search/" + searchInfo);
                       }
-                    }}
+                    } */
+                    }
                   >
                     Recherche
                   </button>

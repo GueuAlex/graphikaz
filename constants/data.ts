@@ -987,3 +987,107 @@ export const files = [
     date: "06 June 2021 / 155MB",
   },
 ];
+
+export const date_interval = [
+  "Dernières Heures",
+  "Dernières 24 heures",
+  "7 derniers jours",
+  "14 derniers jours",
+  "30 derniers jours",
+  "Tout",
+];
+
+export const response_time = [
+  "1 Hour",
+  "2 Hours",
+  "3 hours",
+  "4 Hours",
+  "5 Hours",
+  "6 Hours",
+  "7 Hours",
+];
+
+export const delivery_time = [
+  "1 Jour",
+  "2 Jous",
+  "3 Jours",
+  "4 Jourss",
+  "5 Jourss",
+  "6 Jourss",
+  "7 Jourss",
+];
+
+export const english_level = [
+  "Basic",
+  "Conversational",
+  "Fluent",
+  "Native Or Bilingual",
+  "Professional",
+];
+export const cities = [
+  "Abidjan",
+  "Man",
+  "Biankouman",
+  "Yakro",
+  "Daloa",
+  "Sans-Pédro",
+  "Divo",
+  "Gagnoa",
+  "et etc ...",
+];
+
+export const iconTab: string[] = [
+  "bi bi-bezier",
+  "bi bi-code-slash",
+  "bi bi-megaphone-fill",
+  "bi bi-laptop",
+  "bi bi-megaphone-fill",
+  "bi bi-bezier",
+  "bi bi-laptop",
+  "bi bi-megaphone-fill",
+  "bi bi-bezier",
+  "bi bi-laptop",
+];
+
+export const colorTab = [
+  "bg-color-black",
+
+  "bg-color-green",
+
+  "bg-color-purple",
+  "bg-color-red",
+
+  "bg-color-orange",
+
+  "bg-color-yellow",
+
+  "bg-color-blue",
+
+  "bg-color-pink",
+
+  "bg-color-brown",
+
+  "bg-color-cyan",
+
+  "bg-color-lime",
+
+  "bg-color-teal",
+
+  "bg-color-gray",
+
+  "bg-color-deep-orange",
+
+  "bg-color-indigo",
+
+  "bg-color-light-blue",
+
+  "bg-color-light-green",
+
+  "bg-color-deep-purple",
+
+  "bg-color-blue-gray",
+
+  "bg-color-light-gray",
+];
+
+export const options = ["Sort by (Default)", "Newest", "Oldest", "Random"];

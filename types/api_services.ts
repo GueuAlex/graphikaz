@@ -57,6 +57,7 @@ export const getCategories = async (): Promise<ApiCategoryProps[]> => {
     const categories: ApiCategoryProps[] = apiDataList.map((apiData: any) => ({
       id: apiData.id,
       libelle: apiData.libelle,
+      type: "CREATION GRAPHIQUE",
     }));
 
     //console.log(mappedDataList.at(0)?.service.libelle);

@@ -1,8 +1,17 @@
+import { Wrapper } from "@/reutilisables";
 import "./needs.css";
 
 import React from "react";
+import Link from "next/link";
+import { ApiCategoryProps } from "@/types";
+import { CategorySelector } from "@/reutilisables/category_selector";
+import { impressCategories } from "@/constants";
 
-const Needs = () => {
+interface NeedPrps {
+  categories: ApiCategoryProps[];
+}
+
+const Needs: React.FC<NeedPrps> = ({ categories }) => {
   return (
     <div className="w-full px-[2rem] py-[5rem]  bg-primary relative  needs">
       <div className="max-w-[97rem] mx-auto relative ">
@@ -60,6 +69,38 @@ const Needs = () => {
               téléchargez le fichier final prêt à être utilisé pour l'impression
               ou le numérique.
             </p>
+          </div>
+        </div>
+        <hr className="border-b-[1px] border-teal-800 my-14" />
+        <div className="mt-[75px]">
+          <div className="flex justify-between items-center pb-8">
+            <div className="head">
+              <h2 className=" text-slate-200">
+                Parcourez les services par catégorie
+              </h2>
+              <small className="subtitle mt-3 text-slate-50 font-semibold">
+                Une équipe de designers à votre écoute
+              </small>
+            </div>
+            <span className="hover:text-secondary font-semibold">
+              <Link href="/categories" className="see-more-link">
+                Toutes les catégories <i className="ri-arrow-right-line"></i>
+              </Link>
+            </span>
+          </div>
+          <div className="categories-list pt-6">
+            {categories.length > 2 &&
+              categories
+                .slice(1, 3)
+                .map((category, index) => (
+                  <CategorySelector category={category} key={index} />
+                ))}
+            {impressCategories.map((impressCat, index) => {
+              if (index === 1 || index === 2) {
+                return <CategorySelector category={impressCat} key={index} />;
+              }
+              return null;
+            })}
           </div>
         </div>
       </div>

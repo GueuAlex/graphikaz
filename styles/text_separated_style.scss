@@ -1,0 +1,19 @@
+.or-container {
+  max-width: 569px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  div {
+    width: 49%;
+    height: 1px;
+    background-color: #d5d5d5;
+  }
+  span {
+    display: block;
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #444444;
+  }
+}

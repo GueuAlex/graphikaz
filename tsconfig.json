@@ -32,7 +32,8 @@
     "reutilisables/rating_state.js",
     "reutilisables/rate.js",
     "pages/api/api_four.js",
-    "services/mail_service.ts"
+    "services/mail_service.ts",
+    "reutilisables/mini_categories_carousel.tsx"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MyAppContext } from "@/reutilisables/app_context";
 import Link from "next/link";
 import "./nav_bar.scss";
 import { motion } from "framer-motion";
@@ -8,62 +9,27 @@ import { userMenuTab } from "@/constants";
 import { signIn, signOut, useSession } from "next-auth/react";
 import SearchBarContents from "@/hoc/search_bar_contents";
 import { User } from "next-auth";
-import { ApiCategoryProps } from "@/types";
 import Image from "next/image";
 import { LogoColor } from "@/public";
+import { iconTab } from "@/constants/data";
 
-export default function NavBar({
-  categories,
-}: {
-  categories: ApiCategoryProps[];
-}) {
+const NavBar: React.FC = () => {
+  const pathname = usePathname();
   const session = useSession();
   const [toggle, setToggle] = useState(true);
   const [isHome, setIsHome] = useState(true);
-  const [searchGlassVisible, setSearchGlassVisible] = useState(false); // Nouvel état pour la visibilité de search-glass
 
-  const pathname = usePathname();
+  const context = useContext(MyAppContext);
 
-  const route = useRouter();
+  if (!context) {
+    throw new Error("ComponentY must be used within a MyProvider");
+  } else {
+    console.log("context ok in navbar component");
+  }
+  const { state, toggleState, categories } = context;
 
-  /* const [categoryList, setData] = useState<ApiCategoryProps[]>([]);
-  const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
-  async function getCategoriesList() {
-    try {
-      const data = await getCategories();
-      return data;
-      //console.log(data.at(0)?.libelle);
-      // Faites quelque chose avec les données ici
-    } catch (error) {
-      console.error("Une erreur s'est produite :", error);
-    }
-  } */
+  //const [searchGlassVisible, setSearchGlassVisible] = useState(state); // Nouvel état pour la visibilité de search-glass
 
-  useEffect(() => {
-    route.prefetch("/categories");
-    if (pathname === "/") {
-      setIsHome(true);
-    } else {
-      setIsHome(false);
-    }
-  }, [pathname]); // Ne met à jour l'état que si le chemin change
-
-  ////////// fetch categories from database
-  /*  useEffect(() => {
-    getCategoriesList()
-      .then((data) => {
-        const categories: ApiCategoryProps[] = data!;
-        setData(categories);
-        // Maintenant, vous pouvez utiliser les données ici
-        console.log(categories);
-        setcategoriesIsloadin(false);
-      })
-      .catch((error) => {
-        // Gérez les erreurs ici
-        console.error("Une erreur s'est produite :", error);
-        setcategoriesIsloadin(false);
-      });
-  }, []); // */
   const catIconTab = [
     "ri-paint-brush-line",
     "ri-camera-lens-fill",
@@ -193,13 +159,13 @@ export default function NavBar({
             <div className="hidden lg:flex lg:items-center">
               <span className="categories-label">
                 <Link href={"/categories"}>Création graphique</Link>
-                <div className="sub-menu shadow-xl">
+                <div className="sub-menu shadow-xl rounded-b-md">
                   {
                     <ul>
                       {categories.map((cat, index) => (
                         <li key={index} className=" flex gap-4">
-                          <i className={catIconTab[index]}></i>{" "}
-                          <a href={`/categories?category=${cat.libelle}`}>
+                          <i className={iconTab[index]}></i>{" "}
+                          <a href={`/creationgraphique/${cat.libelle}`}>
                             {cat.libelle}
                           </a>
                         </li>
@@ -219,7 +185,7 @@ export default function NavBar({
               </Link>
             </div>
             <button
-              onClick={() => setSearchGlassVisible(!searchGlassVisible)}
+              onClick={() => toggleState()}
               type="button"
               className="-my-1 ml-8 flex h-8 w-8 items-center justify-center rounded-lg"
             >
@@ -252,21 +218,21 @@ export default function NavBar({
           className="search-glass"
           initial={{ opacity: 0, y: "-100%" }}
           animate={{
-            opacity: searchGlassVisible ? 1 : 0,
-            y: searchGlassVisible ? 0 : "-100%",
+            opacity: state ? 1 : 0,
+            y: state ? 0 : "-100%",
           }}
           transition={{ duration: 0.5 }}
         >
           <i
             className="ri-close-line mt-[40px] mr-4 close-button"
-            onClick={() => setSearchGlassVisible(!searchGlassVisible)}
+            onClick={() => toggleState()}
           ></i>{" "}
-          <SearchBarContents updateToggle={setSearchGlassVisible} />
+          <SearchBarContents updateToggle={toggleState} />
         </motion.div>
       </nav>
     </header>
   );
-}
+};
 
 const SignButtons = () => {
   return (
@@ -340,3 +306,5 @@ const AvatarContainer = ({ user }: { user: User }) => {
     </div>
   );
 };
+
+export default NavBar;

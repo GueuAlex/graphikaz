@@ -1,8 +1,16 @@
 import Link from "next/link";
 import "./footer.css";
-import { ApiCategoryProps } from "@/types";
+import { useContext } from "react";
+import { MyAppContext } from "@/reutilisables/app_context";
 
-const Footer = ({ categories }: { categories: ApiCategoryProps[] }) => {
+const Footer = () => {
+  const context = useContext(MyAppContext);
+  if (!context) {
+    throw new Error("ComponentY must be used within a MyProvider");
+  } else {
+    console.log("context ok in footer component");
+  }
+  const { categories } = context;
   return (
     <div className="my-footer w-full bg-primary flex justify-center">
       <div className="max-w-[97rem] py-[2rem] w-full">

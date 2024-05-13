@@ -258,8 +258,8 @@ div.add-to-favorite:hover i {
   font-weight: 400;
 }
 /* search results */
-.search-result-container {
-}
+/* .search-result-container {
+} */
 .search-result-container ul li {
   font-weight: 400;
   padding: 0.5em;

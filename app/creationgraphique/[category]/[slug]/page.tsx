@@ -1,7 +1,7 @@
 "use client";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Wrapper } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
 import { OptionsProps, apiServiceProps, packProps } from "@/types";
@@ -19,69 +19,56 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 import "./service_detail.scss";
-import "../categories.scss";
-import "../../../styles/checkout_side_bar.scss";
-
-interface Params {
-  slug: string;
-  test: string;
-}
+import "../creation_graphique_category.scss";
+import "../../../../styles/checkout_side_bar.scss";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+import { MyAppContext } from "@/reutilisables/app_context";
 
 export default function Page({ params }: { params: Params }) {
-  const { slug } = params;
-  const session = useSession();
-  ///////////// fetching data from api ///////////////:
-  async function fetchAndUseData() {
-    try {
-      const data = await fetchAllData();
-      return data;
-      //console.log(data.at(0)?.libelle);
-      // Faites quelque chose avec les données ici
-    } catch (error) {
-      console.error("Une erreur s'est produite :", error);
-    }
+  //s'assurer que le context est bien utilisables
+  const context = useContext(MyAppContext);
+  if (!context) {
+    throw new Error("ComponentY must be used within a MyProvider");
+  } else {
+    console.log("context ok in navbar component");
   }
-  const [isLaoding, setIsloadin] = useState(true);
-  const [services, setData] = useState<apiServiceProps[]>([]);
-  useEffect(() => {
-    fetchAndUseData()
-      .then((data) => {
-        const services: apiServiceProps[] = data!;
-        setData(services);
-        if (services !== undefined) {
-          // Maintenant, vous pouvez utiliser les données ici
-          console.log(services);
-          setIsloadin(false);
-        }
-      })
-      .catch((error) => {
-        // Gérez les erreurs ici
-        console.error("Une erreur s'est produite :", error);
-        setIsloadin(false);
-      });
-  }, []);
-  /////////////////////
-  //const montant = 0;
+  // get context data
+  const { categories, servicesList, isLoading } = context;
+
+  // initialize session
+  const session = useSession();
+
+  // get service title parsed as param to the url
+  const { slug } = params;
+
+  // decode slug to get service title
   const title = decodeURIComponent(slug);
-  const service: apiServiceProps | undefined = services.find(
+
+  // use context serviceList to find service that matche with the title
+  const service: apiServiceProps | undefined = servicesList.find(
     (serv) => serv.libelle === title
   );
-  ////////////////////
 
-  /////////////////////////
-  //console.log(service?.libelle);
-
+  /* ************************************************************************************
+   ************************* ALL HOOKS IN THIS PAGE************************************* */
   const [rating, setRating] = useState(0);
   const coverList = [Imgold, Imgold, Imgold, Imgold];
-  /////
-
   const [height, setHeight] = useState<number | null>(null);
   const elementRef = useRef<HTMLDivElement>(null);
-
   /* allow to show paiement side bar */
   const [toggle, setToggle] = useState(false); // permet d'aaficher le side bar de paiement des pack par défaut
   const [toggle1, setToggle1] = useState(false); // permet d'afficher side de paiement d'un service personnalisé
-  //
+  const [selectedPack, setSelectedPack] = useState<packProps | undefined>(); // envoyé a "PaiementCardBody" pour effectuer le paaiement d'un pack proposé par defaut
+
+  const [selectedPackList, setSelectedPackList] = useState<
+    packProps[] | undefined
+  >(); // // envoyé a "PaiementCardBody2" pour effectuer le paiement d'une list de pack personnalisé
+  const [selectedOptionsList, setSelectedOptionsList] = useState<
+    OptionsProps[] | undefined
+  >(); // // envoyé a "PaiementCardBody2" pour effectuer le paiement d'une list d' options personnalisé
+  /* ************************************************************************************
+   ************************************************************************************** */
+
   ///// fonctions de mise à jour des boolean permettants l'affichage des side bars
   const updateToggle = () => {
     setToggle(!toggle);
@@ -90,6 +77,7 @@ export default function Page({ params }: { params: Params }) {
     setToggle1(!toggle1);
   };
 
+  /* display sticky config */
   useEffect(() => {
     const measureHeight = () => {
       if (elementRef.current) {
@@ -110,21 +98,13 @@ export default function Page({ params }: { params: Params }) {
     };
   }); // Plus besoin de dépendance
 
+  /* use to set display sticky height */
   const style = height ? { height: `${height}px` } : {};
   console.log(height);
 
-  ////////////////////////////////:::: pack selectionné //////////////////////
-  const [selectedPack, setSelectedPack] = useState<packProps | undefined>(); // envoyé a "PaiementCardBody" pour effectuer le paaiement d'un pack proposé par defaut
-
-  const [selectedPackList, setSelectedPackList] = useState<
-    packProps[] | undefined
-  >(); // // envoyé a "PaiementCardBody2" pour effectuer le paiement d'une list de pack personnalisé
-  const [selectedOptionsList, setSelectedOptionsList] = useState<
-    OptionsProps[] | undefined
-  >(); // // envoyé a "PaiementCardBody2" pour effectuer le paiement d'une list d' options personnalisé
-
+  useEffect(() => {}, []);
   ///////////////////////////////////////////////////////////////////////////
-  if (isLaoding) {
+  if (isLoading) {
     return (
       <AnimatePresence>
         {" "}
@@ -138,6 +118,7 @@ export default function Page({ params }: { params: Params }) {
       </AnimatePresence>
     );
   }
+
   if (service && service.pack_services.length <= 0) {
     return <OnEditing />;
   }

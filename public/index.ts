@@ -67,6 +67,8 @@ import Imprime from "./imprime.jpg";
 import Flyers from "./flyer-express.jpeg";
 import Affiche from "./affiche.jpeg";
 import GraphikazDesign from "./graphikaz-design.png";
+import EmptyBox from "./empty-box.jpg";
+import EmptySearchResult from "./empty-search-results-new.d44b350.svg";
 
 export {
   Digifaz,
@@ -138,4 +140,6 @@ export {
   Flyers,
   Affiche,
   GraphikazDesign,
+  EmptyBox,
+  EmptySearchResult,
 };

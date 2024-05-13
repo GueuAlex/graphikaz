@@ -14,7 +14,7 @@ const TServiceCard = ({
     <div className="service-carde  flex-item">
       <Link
         key={service.id}
-        href={`/categories/${service.libelle}`}
+        href={`/creationgraphique/${category?.libelle}/${service.libelle}`}
         className="carde-link"
       >
         <div className="object-contain rounded-t-[8px] relative h-[50%] ">

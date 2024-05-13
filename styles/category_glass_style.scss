@@ -1,0 +1,70 @@
+.categories-list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+  gap: 8px;
+
+  .category-selector {
+    flex: 1 1 20%; /* 20% pour avoir 5 éléments par ligne */
+    box-sizing: border-box; /* Assurez-vous que les marges et les bordures sont comptées dans la taille totale */
+    text-align: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    grid-gap: 12px;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    background: hsla(165, 94%, 31%, 0.563);
+    border: 1px solid hsla(165, 96%, 42%, 0.4);
+
+    border-radius: 1600px;
+    -webkit-box-shadow: 0 10px 20px 0 rgba(0, 37, 19, 0.2);
+    box-shadow: 0 10px 20px 0 rgba(0, 37, 19, 0.2);
+    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 12px 24px 12px 12px;
+    transition: ease-in all 0.3s;
+    .category-caption {
+      text-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      pointer-events: none;
+      p {
+        font-weight: 500;
+        font-size: 18px;
+      }
+    }
+    .category-icon {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      -webkit-backdrop-filter: blur(40px);
+      backdrop-filter: blur(40px);
+      -webkit-box-shadow: 0 20px 30px 0 rgba(0, 37, 19, 0.2);
+      box-shadow: 0 20px 30px 0 rgba(0, 37, 19, 0.2);
+      i {
+        font-size: 25px;
+      }
+    }
+  }
+  .category-selector:hover {
+    cursor: pointer;
+    background: hsla(165, 94%, 20%, 0.657);
+    border: 1px solid hsla(165, 73%, 69%, 0.813);
+    -webkit-box-shadow: 0 12px 22px 0 rgba(0, 37, 19, 0.2);
+    box-shadow: 0 20px 30px 0 rgba(0, 37, 19, 0.2);
+  }
+}

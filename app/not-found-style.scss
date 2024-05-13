@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+.not-found {
+  .nunito {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+
+    font-style: normal;
+  }
+
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .not-found-container {
+    max-width: 769px;
+    width: 100%;
+    position: relative;
+    /* background-color: antiquewhite; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .large-dot {
+      width: 369px;
+      height: 369px;
+      padding: 50px;
+      border-radius: 100%;
+      background-color: #cccccc33;
+
+      .img-background {
+        width: calc(369px - 50px);
+        height: calc(369px - 50px);
+        border-radius: 100%;
+        /*  background-color: aqua; */
+        background-position: center;
+        background-image: url("/bg.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+    .text-container {
+      position: absolute;
+      left: calc(769px / 1.6);
+      top: 100px;
+    }
+    .text-container2 {
+      display: none;
+      text-align: center;
+      width: min-content;
+    }
+    .text-container,
+    .text-container2 {
+      width: fit-content;
+
+      h1 {
+        font-size: 55px;
+        font-weight: 800;
+        padding: 0;
+        box-sizing: border-box;
+        line-height: 1;
+      }
+      h2 {
+        font-size: 14px;
+        font-weight: 800;
+      }
+      p {
+        font-size: 14px;
+        font-weight: 300;
+        color: #7f8388;
+      }
+
+      .go-back {
+        letter-spacing: -1px;
+        font-weight: 600;
+        font-size: 16px;
+        display: block;
+
+        border-radius: 5px;
+        transition: all 0.3s ease-in;
+        width: max-content;
+      }
+
+      .go-back:hover {
+        background-color: #03301d1d;
+        color: #3f8d6c;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .text-container2 {
+    display: block !important;
+    margin-top: 15px;
+  }
+  .not-found {
+    padding: 20px;
+    height: max-content;
+  }
+  .not-found-container {
+    flex-direction: column;
+  }
+  .text-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 372px) {
+  .not-found-container {
+    transform: scale(0.6);
+  }
+}

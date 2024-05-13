@@ -10,6 +10,7 @@ import {
   TrendingService,
   Blogs,
   NewsLetter,
+  Categories2,
 } from "@/components/home";
 import Loader from "@/reutilisables/laoder";
 import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
@@ -94,8 +95,9 @@ const MyHome = () => {
   return (
     <>
       <Hero apiCategories={categoriesList} />
-      <Needs />
+      <Needs categories={categoriesList} />
       <Categories apiCategories={categoriesList} />
+      <Categories2 apiCategories={categoriesList} />
       <TrendingService serviceList={serviceList} categories={categoriesList} />
       {/* <PopularServices serviceList={serviceList} categories={categoriesList} /> */}
       <ProofSection />

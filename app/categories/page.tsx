@@ -5,12 +5,21 @@ import "./categories.scss";
 import "@/styles/checkout_side_bar.scss";
 import { PathnameComponent } from "@/components";
 import { TServiceCard, Wrapper } from "@/reutilisables";
-import { categories } from "@/constants";
+import {
+  bcardTab,
+  categories,
+  FlyersTab,
+  impressCategories,
+} from "@/constants";
 import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
 import { fetchAllData, getCategories } from "@/types/api_services";
 import { AnimatePresence, motion } from "framer-motion";
 import Loader from "@/reutilisables/laoder";
 import { useRouter, useSearchParams } from "next/navigation";
+import { CategorySelector } from "@/reutilisables/category_selector";
+import CategoryCarousel from "@/reutilisables/categories_carousel";
+import Image from "next/image";
+import { ImpressServiceContainer } from "@/reutilisables/impress_service_container";
 
 function Categories() {
   //////// get all categories
@@ -80,8 +89,8 @@ function Categories() {
   const toggleFilterSideBar = () =>
     toggle ? setToggle(false) : setToggle(true);
 
-  const [argCategory, setArgCategory] = useState<ApiCategoryProps>();
-  const [findedServices, setFindedServices] = useState<apiServiceProps[]>([]);
+  //const [argCategory, setArgCategory] = useState<ApiCategoryProps>();
+  //const [findedServices, setFindedServices] = useState<apiServiceProps[]>([]);
 
   /* ******** show more / show less === categories  **************/
   const itemsPerPage = 5;
@@ -174,50 +183,29 @@ function Categories() {
     const newMaxValue = parseInt(event.target.value);
     setMaxValue(Math.max(newMaxValue, minValue)); // Assurer que max >= min
   };
-  const params = useSearchParams();
-  const initialCategory = params?.get("category");
-  console.log("intial " + initialCategory);
-  useEffect(() => {
-    let currentCategory = initialCategory || "all";
-    if (initialCategory) {
-      const catFinded: ApiCategoryProps | undefined = categoriesList.find(
-        (c) => c.libelle.toLowerCase() === initialCategory.trim().toLowerCase()
-      );
-      if (catFinded) {
-        console.log("Category found: " + initialCategory);
-        setArgCategory(catFinded);
-        const findedServ: apiServiceProps[] = services.filter(
-          (serv) => serv.category_id === catFinded.id
-        );
-        setFindedServices(findedServ);
-      } else {
-        console.log("Category not found, setting to 'all'");
-      }
-    } else {
-      //initialCategory = "all";
-    }
-    console.log("Current category: " + currentCategory);
-  }, [initialCategory, argCategory, services, categoriesList]);
-  /*   console.log("---------------------------------------------------");
-  console.log(argCategory); */
+
+  /* const listeMultipliee = Array(100).fill(services).flat();
+  console.log(listeMultipliee); */
 
   //////////////////////////: PAGINATION LOGIQUE //////////////////////////
   const servicePerPage = 8; // Nombre d'éléments par page
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const displayedServices =
-    findedServices.length > 0 ? findedServices : services;
+  //const displayedServices = services;
 
-  const serviceTotalItems = displayedServices.length;
+  const serviceTotalItems = services.length;
   const totalPages = Math.ceil(serviceTotalItems / servicePerPage);
 
-  const visibleServices = displayedServices.slice(
+  const visibleServices = services.slice(
     (currentPage - 1) * servicePerPage,
     currentPage * servicePerPage
   );
   //////////////////////////////////////////////////////////////////////////
   ///////////////////////////////////////////////////////////////////////////
+
+  // État pour gérer l'affichage complet ou partiel de la liste des categories
+  const [showMore, setShowMore] = useState(false);
 
   if (isLaoding || categoriesIsLaoding) {
     return (
@@ -234,323 +222,105 @@ function Categories() {
     );
   }
 
+  /* ************************* */
+  /////////////////////////////////////////////////////////////:
+  ////// GETIONS D'AFFICHAGE DES DE LA LISTE DE CATEGORIE///////
+  const initialVisibleCatCount = 8;
+  const test = Array(100).fill(categoriesList).flat();
+
+  // Longueur totale de la liste des catégories
+  const totalCategories = test.length;
+
+  // Liste des catégories à afficher en fonction de l'état
+  const displayedCategories = showMore
+    ? test // Montrer tout si "showMore" est vrai
+    : test.slice(0, Math.min(initialVisibleCatCount, totalCategories)); // Montrer jusqu'à 5 ou moins
+
+  const handleCatToggle = () => {
+    setShowMore(!showMore);
+  };
+  const transition = { duration: 0.3, ease: "easeInOut" };
+
   return (
     <div className="categories">
-      <div className={`${toggle ? "show-overlay" : ""} overlay`}></div>
-      {/* categories aside filter */}
-      <aside
-        className={`${
-          toggle ? "show-cat-side-filter" : "hide-cat-side-filter"
-        } cat-side-filter`}
-      >
-        <form>
-          <div className="side-filter-container">
-            <div className="filter-header">
-              <h3>All Filters</h3>
-              <div className="close-button" onClick={toggleFilterSideBar}>
-                <i className="ri-close-line"></i>
-              </div>
-            </div>
-
-            {/* categories */}
-            <div className="filter-section">
-              <h3 className="title">Categories</h3>
-              <div className="filter-cat-body">
-                <ul>
-                  {visibleItems.map((cat, index) => (
-                    <li id={index.toString()}>
-                      <input
-                        type="checkbox"
-                        value={cat.libelle}
-                        name={cat.libelle}
-                        id={cat.id.toString()}
-                      />
-                      <label htmlFor={cat.id.toString()}>{cat.libelle}</label>
-                    </li>
-                  ))}
-                </ul>
-                {!showAll ? (
-                  <div className="show">
-                    <i className="ri-add-line symbol"></i>
-                    <span onClick={handleShoMore} className="show-text">
-                      Voir plus
-                    </span>
-                  </div>
-                ) : (
-                  <div className="show">
-                    <i className="ri-subtract-line symbol"></i>
-                    <span onClick={handleShoLess} className="show-text">
-                      Voir moin
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Date posted */}
-            <div className="filter-section">
-              <h3 className="title">Date de publication</h3>
-              <div className="filter-cat-body">
-                <ul>
-                  {visibleItemsD.map((data, index) => (
-                    <li>
-                      <input
-                        type="radio"
-                        value={data}
-                        name="radio"
-                        id={index.toString()}
-                      />
-                      <label htmlFor="">{data}</label>
-                    </li>
-                  ))}
-                </ul>
-                {!showAllD ? (
-                  <div className="show">
-                    <i className="ri-add-line symbol"></i>
-                    <span onClick={handleShoMoreD} className="show-text">
-                      Voir plus
-                    </span>
-                  </div>
-                ) : (
-                  <div className="show">
-                    <i className="ri-subtract-line symbol"></i>
-                    <span onClick={handleShoLessD} className="show-text">
-                      Voir moin
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Reponse time */}
-            {/* <div className="filter-section">
-              <h3 className="title">Response Time</h3>
-              <select name="" id="">
-                <option value="" selected disabled>
-                  Response Time
-                </option>
-                {responseTime.map((time, index) => (
-                  <option key={index} value={time}>
-                    {time}
-                  </option>
-                ))}
-              </select>
-            </div> */}
-
-            {/* delivery Time */}
-            <div className="filter-section">
-              <h3 className="title">Délai de livraison</h3>
-              <select name="" id="">
-                <option value="" selected disabled>
-                  Délai
-                </option>
-                {deliveryTime.map((time, index) => (
-                  <option key={index} value={time}>
-                    {time}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Budget */}
-            <div className="filter-section">
-              <h3 className="title">Budget</h3>
-              <div className="buget-min-max">
-                <div className="min">{minValue} ₣</div>
-                <div className="max">{maxValue} ₣</div>
-              </div>
-              <div className="ranger relative">
-                <div className="slider">
-                  <div className={`progress`}></div>
-                </div>
-                <div className="range-inputs">
-                  <input
-                    type="range"
-                    id="minRange"
-                    name="minRange"
-                    min="5000"
-                    max="975000"
-                    value={minValue}
-                    onChange={handleMinChange}
-                  />
-                  <input
-                    type="range"
-                    id="maxRange"
-                    name="maxRange"
-                    min="5000"
-                    max="975000"
-                    value={maxValue}
-                    onChange={handleMaxChange}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* English Level */}
-            {/* <div className="filter-section">
-              <h3 className="title">English Level</h3>
-              <select name="" id="">
-                <option value="" selected disabled>
-                  English Level
-                </option>
-                {englishLevel.map((level, index) => (
-                  <option key={index} value={level}>
-                    {level}
-                  </option>
-                ))}
-              </select>
-            </div> */}
-
-            {/* Cities */}
-            <div className="filter-section">
-              <h3 className="title">Ville</h3>
-              <select name="" id="">
-                <option value="" selected disabled>
-                  Abidjan
-                </option>
-                {cities.map((city, index) => (
-                  <option key={index} value={city}>
-                    {city}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Location */}
-            {/* <div className="filter-section">
-              <h3 className="title">Location</h3>
-              <div className="filter-location">
-                <input type="text" name="location" id="" className=" flex-1" />
-                <i className="ri-map-pin-line"></i>
-              </div>
-            </div> */}
-
-            <div className="filte-footer w-full">
-              <button
-                className="py-4 flex justify-center items-center gap-3 w-full bg-secondary mb-3 rounded text-white"
-                type="submit"
-              >
-                Find Service <i className="ri-arrow-right-up-line"></i>{" "}
-              </button>
-            </div>
-          </div>
-        </form>
-      </aside>
-      {/* aside filter end */}
       <Wrapper>
         <PathnameComponent /> {/* showing current root (file d'ariane) */}
       </Wrapper>
       {/* banner */}
       <div className="bannerss relative flex justify-center items-center">
         <div className=" max-w-[110rem] w-full">
-          <BannerContainer category={argCategory} />
+          <BannerContainer />
         </div>
       </div>
       {/* banner end */}
-      <Wrapper>
-        {/* filter buttons area */}
-        <div className="filter-container relative">
-          {/* <div className="text-light"> Showing 1 – 8 of 12 results</div> */}
-          {findedServices.length <= 0 ? (
-            <div className="text-light">
-              {" "}
-              Showing 1 – {services.length > 8 ? "8" : services.length} of{" "}
-              {services.length} results
+      <div className="backdrop-gb">
+        <Wrapper>
+          <div className="all-categories">
+            <div className="py-6">
+              <p className="text-[20px] font-semibold">Categories</p>
+              <small className=" text-stone-700 font-light">
+                Nous avons ce que vous cherchez
+              </small>
             </div>
-          ) : (
-            <div className="text-light">
-              {" "}
-              Showing 1 –{" "}
-              {findedServices.length > 8 ? "8" : findedServices.length} of{" "}
-              {findedServices.length} results
-            </div>
-          )}
-          <div className="filter-buttons">
-            <button type="button" onClick={toggleFilterSideBar}>
-              <i className="ri-filter-3-fill"></i> &nbsp; Filter
-            </button>
-            <button type="button" onClick={toggleOption}>
-              {selectedOption} <i className="ri-arrow-drop-down-fill"></i>
-            </button>
-            <div
-              className={`${
-                optionIsVisible ? "show-options" : ""
-              } selected-options shadow-sm absolute  right-0 top-11`}
-            >
-              <ul>
-                {options.map((option) => (
-                  <li
-                    onClick={() => {
-                      optionIsVisible
-                        ? setVisibility(false)
-                        : setVisibility(true);
-                      setOption(option);
-                    }}
-                    className={selectedOption == option ? "active" : ""}
-                  >
-                    {option}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-        {/* filter buttons area end */}
-      </Wrapper>
-      <Wrapper>
-        {/* service cards */}
-        <div className="cat-service-cards">
-          {visibleServices.map((service, index) => (
-            <TServiceCard
-              service={service}
-              category={argCategory}
-              key={index}
+            <CategoryCarousel
+              combinedCategories={[...impressCategories, ...categoriesList]}
             />
-          ))}
+          </div>
+        </Wrapper>
+      </div>
+
+      <Wrapper>
+        <div className="py-6">
+          <p className="text-[20px] font-semibold">Nos best seller</p>
+          <small className=" text-stone-700 font-light">
+            Dans création graphique
+          </small>
+        </div>
+        {/* service cards */}
+
+        <div className="cat-service-cards">
+          {visibleServices.map((service, index) => {
+            const category: ApiCategoryProps = categoriesList.find(
+              (c) => c.id === service.category_id
+            )!;
+            return (
+              <TServiceCard service={service} category={category} key={index} />
+            );
+          })}
         </div>
         {/* service cards end */}
-        {/* pagination buttons */}
-        <div className="paginator py-[2em] gap-3">
-          {Array.from({ length: totalPages }).map((_, index) => (
-            <div
-              key={index}
-              className={currentPage === index + 1 ? "active" : ""}
-              onClick={() => setCurrentPage(index + 1)}
-            >
-              {index + 1}
-            </div>
-          ))}
-          <div
-            className="next"
-            onClick={() =>
-              setCurrentPage((prev) => (prev < totalPages ? prev + 1 : prev))
-            }
-          >
-            <i className="ri-arrow-right-line"></i>
-          </div>
+      </Wrapper>
+
+      {/* impress best seller */}
+      <Wrapper>
+        <div className="py-6">
+          <p className="text-[20px] font-semibold">Services en voque</p>
+          <small className=" text-stone-700 font-light">Dans impression</small>
         </div>
-        {/* pagination end */}
+        {/* service cards */}
+
+        <div className="  relative flex  items-start justify-center gap-2 flex-wrap">
+          {[...bcardTab.slice(0, 2), ...FlyersTab.slice(8, 11)].map(
+            (impressService, index) => (
+              <ImpressServiceContainer service={impressService} key={index} />
+            )
+          )}
+        </div>
+        {/* service cards end */}
       </Wrapper>
     </div>
   );
 }
 
-const BannerContainer = ({
-  category,
-}: {
-  category: ApiCategoryProps | undefined;
-}) => {
+const BannerContainer = () => {
   return (
     <div className="banner w-full max-h-[18rem]">
       <Wrapper>
-        <h2 className="banner-title">
-          {category ? category.libelle : "Nos services"}
-        </h2>
+        <h2 className="banner-title">Decouvez nos services par categorie</h2>
         <small className="small-text font-light">
           Explorez un monde de possibilités dans notre captivante collection{" "}
-          {category ? "de " + category.libelle : "services"}, <br /> Où
-          l'innovation rencontre le style pour élever votre expérience au-delà
-          des attentes.
+          <br /> Où l'innovation rencontre le style pour élever votre expérience
+          au-delà des attentes.
         </small>
         <div className="banner-demo-container">
           <div className="flex items-center justify-center">

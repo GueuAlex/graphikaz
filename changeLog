@@ -1,0 +1,46 @@
+# Changelog
+
+Toutes les modifications notables apportées à ce projet seront documentées dans ce fichier.
+
+Le format est basé sur [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+et ce projet adhère à [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+Ce fichier changelog est divisé en sections basées sur les numéros de version. 
+Chaque section liste les ajouts, les changements et les corrections apportés dans cette version. 
+
+## [1.0.1] - 2024-04-30
+
+### Ajouté
+•  Fonctionnalité de recherche avancée dans la barre de navigation.
+
+•  Support multilingue pour l'application.
+
+
+### Changé
+•  Amélioration des performances de chargement des images sur la page d'accueil.
+
+•  Mise à jour des dépendances pour améliorer la sécurité.
+
+
+### Corrigé
+•  Correction d'un bug où les utilisateurs ne pouvaient pas se déconnecter sous certaines conditions.
+
+•  Correction d'un problème d'affichage sur les appareils mobiles pour la page de contact.'
+
+
+## [1.0.0] - 2024-04-20
+
+### Ajouté
+•  Lancement de la première version stable de l'application.
+
+•  Implémentation de la fonctionnalité de connexion utilisateur.
+
+•  Ajout de la page de profil utilisateur avec édition des informations personnelles.'
+
+
+### Changé
+•  Refonte de l'interface utilisateur pour une meilleure expérience utilisateur.'
+
+
+### Corrigé
+•  Diverses corrections de bugs mineurs signalés par les utilisateurs lors de la phase bêta.

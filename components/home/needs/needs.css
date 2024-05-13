@@ -2,6 +2,16 @@
   z-index: 10;
 }
 
+.needs-and-cat-separator {
+  border-color: rgb(17 94 89 / var(--tw-border-opacity));
+}
+.see-more-link {
+  background-color: rgba(86, 225, 146, 0.178);
+  padding: 3px;
+  border-radius: 5px;
+  color: rgba(86, 225, 146, 0.985);
+}
+
 @media screen and (max-width: 768px) {
   div.needs h2 {
     font-size: 1.2rem !important;

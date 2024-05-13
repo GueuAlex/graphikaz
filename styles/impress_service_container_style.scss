@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
+
+.impress_service_container {
+  display: grid;
+  grid-template-rows: 90% 10%;
+  align-items: center;
+  justify-content: center;
+  max-width: 270px; // Cette valeur détermine la largeur maximale du conteneur
+  position: relative;
+  // width: 100%; // Retirez cette ligne pour empêcher le conteneur de s'adapter à la largeur de l'écran
+
+  .img {
+    border: 15px solid #f0f0f0;
+    transition: all ease-in 0.3s;
+  }
+
+  .bottom-text {
+    text-align: center;
+
+    h1 {
+      padding-bottom: 0.25rem;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    span {
+      font-weight: 300;
+      font-size: 14px;
+    }
+    strong {
+      font-size: 14.8px;
+      font-family: "Amatic+SC";
+      font-weight: 800;
+    }
+  }
+}
+.impress_service_container:hover {
+  cursor: pointer;
+  .img {
+    transform: scale(1.05);
+  }
+}

@@ -2,11 +2,14 @@ import "./categories.css";
 
 import Link from "next/link";
 import React from "react";
-import { impressCategories } from "@/constants";
+import Image from "next/image";
+import { categories, impressCategories } from "@/constants";
 import { ApiCategoryProps } from "@/types";
+import { Hc1 } from "@/public";
 import CategoryContainer from "./category_container";
+import Category2Container from "./categories2_container";
 
-const Categories = ({
+const Categories2 = ({
   apiCategories,
 }: {
   apiCategories: ApiCategoryProps[];
@@ -29,22 +32,22 @@ const Categories = ({
             </Link>
           </span>
         </div>
-        <div className="categories-content relative  mt-16 w-full">
+        <div className="categories-content categories-content2 relative  mt-16 w-full">
           {/* new look */}
 
           {apiCategories.length > 2
             ? apiCategories
-                .slice(1, 3)
+                .slice(0, 3)
                 .map((category, index) => (
-                  <CategoryContainer category={category} key={index} />
+                  <Category2Container category={category} key={index} />
                 ))
             : apiCategories.map((category, index) => (
-                <CategoryContainer category={category} key={index} />
+                <Category2Container category={category} key={index} />
               ))}
 
           {impressCategories.map((impressCat, index) => {
             if (index === 1 || index === 2) {
-              return <CategoryContainer category={impressCat} key={index} />;
+              return <Category2Container category={impressCat} key={index} />;
             }
             return null;
           })}
@@ -54,4 +57,4 @@ const Categories = ({
   );
 };
 
-export default Categories;
+export default Categories2;

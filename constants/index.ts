@@ -783,38 +783,47 @@ const impressCategories: ImpressCategoryProps[] = [
   {
     id: 1,
     libelle: "All Products A-Z",
+    type: "IMPRESS",
   },
   {
     id: 2,
     libelle: "Flyers & Leaflets",
+    type: "IMPRESS",
   },
   {
     id: 3,
     libelle: "Business Cards",
+    type: "IMPRESS",
   },
   {
     id: 4,
     libelle: "Brochures",
+    type: "IMPRESS",
   },
   {
     id: 5,
     libelle: "Roller Banners",
+    type: "IMPRESS",
   },
   {
     id: 6,
     libelle: "Posters",
+    type: "IMPRESS",
   },
   {
     id: 7,
     libelle: "Stickers",
+    type: "IMPRESS",
   },
   {
     id: 8,
     libelle: "Menus Restau",
+    type: "IMPRESS",
   },
   {
     id: 9,
     libelle: "Promotional",
+    type: "IMPRESS",
   },
 ];
 

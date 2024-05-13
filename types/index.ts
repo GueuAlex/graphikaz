@@ -87,6 +87,7 @@ export interface CategoryProps {
 export interface ApiCategoryProps {
   id: number;
   libelle: string;
+  type: "CREATION GRAPHIQUE";
 }
 
 export interface ImageProps {
@@ -167,6 +168,7 @@ export interface CahtDefaultOrderProps {
 export interface ImpressCategoryProps {
   id: number;
   libelle: string;
+  type: "IMPRESS";
 }
 
 export interface ImpressMetadataProps {
@@ -290,8 +292,45 @@ export enum OrderStatus {
 }
 
 /* CREATION GRAPHIC TEST MODEL */
-export interface GraphicServProps {}
-export interface GraphicServItemProps {}
+export interface GraphicServProps {
+  id: number;
+  libelle: string;
+  category_id: number;
+  full_description: string;
+  covers: string[];
+  created_at: Date;
+}
+export interface GraphicServItemProps {
+  id: number;
+  libelle: string;
+  price: number;
+  type: GraphicServPackType;
+}
+export interface GraphicServOptionalItemProps {
+  id: number;
+  libelle: string;
+  price: number;
+  execution_deadline: ExecutionDeadlineProps | null;
+}
+
+export interface GraphicServPack {
+  id: number;
+  libelle: GraphicServPackType;
+  normal_execution_deadline: ExecutionDeadlineProps;
+  express_execution_deadline: ExecutionDeadlineProps;
+}
+
+export interface ExecutionDeadlineProps {
+  id: number;
+  libelle: string;
+  price: number;
+}
+
+export enum GraphicServPackType {
+  BASIQUE = "BASIQUE",
+  STANDARD = "STANDARD",
+  PREMIUM = "PREMIUM",
+}
 
 /* export enum GraphicServItemTypeProps {
 

@@ -39,7 +39,7 @@ const TrendingService = ({
                 (c) => c.id === service.category_id
               )!;
               return (
-                <div className="carousel-item">
+                <div className="carousel-item" key={service.id}>
                   <TServiceCard
                     key={service.id}
                     service={service}
