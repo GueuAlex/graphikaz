@@ -35,7 +35,8 @@ const Dashboard: React.FC = () => {
   if (!session) {
     useRouter().back();
   }
-  const user: User = session.data?.user!;
+
+  const user = session.data?.user;
   //toggle menu
   const handleToggleClick = () => {
     const navigation = document.querySelector(".navigation");
@@ -104,7 +105,7 @@ const Dashboard: React.FC = () => {
                     className="side-bar-icon"
                   ></IonIcon>
                 </span>
-                <span className="title">{user.name}</span>
+                <span className="title">{user?.user?.name}</span>
               </a>
             </li>
 
