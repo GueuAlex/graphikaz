@@ -1,6 +1,5 @@
 import Category2Container from "@/components/home/categories/categories2_container";
 import { ImpressCategoryProps, ApiCategoryProps } from "@/types";
-import { useState } from "react";
 
 // Créer un type union pour combiner les deux types
 type CombinedCategoryProps = ImpressCategoryProps | ApiCategoryProps;

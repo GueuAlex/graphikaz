@@ -189,8 +189,8 @@ export default function Page({ params }: { params: Params }) {
             {/* paiement card body */}
             <PaiementCardBody
               updateToggle={updateToggle}
-              defaultPack={selectedPack}
-              service={service}
+             /*  defaultPack={selectedPack}
+              service={service} */
             />
             {/* end paiement card body */}
           </div>

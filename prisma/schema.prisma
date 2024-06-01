@@ -4,11 +4,11 @@
 generator client {
   provider = "prisma-client-js"
 }
- 
+
 datasource db {
-  provider = "postgresql"
+  provider  = "postgresql"
   // Uses connection pooling
-  url = env("POSTGRES_PRISMA_URL")
+  url       = env("POSTGRES_PRISMA_URL")
   // Uses direct connection, ⚠️ make sure to keep this to `POSTGRES_URL_NON_POOLING`
   // or you'll have dangling databases from migrations
   directUrl = env("POSTGRES_URL_NON_POOLING")
@@ -18,20 +18,217 @@ datasource db {
 
 // Define your model for ImpressOrderProps
 model impressOrder {
-  id                Int      @id @default(autoincrement())
-  user_id           Int
-  order_number      String   @unique
-  transaction_ref   String?
+  id                Int            @id @default(autoincrement())
+  userId            Int
+  orderNumber       String         @unique
+  transactionRef    String?
   amount            Float
-  ordering_at       DateTime?
+  orderingAt        DateTime?
   impressable       String
-  impressable_type  String?
-  impressable_format String?
+  impressableType   String?
+  impressableFormat String?
   quantity          Int
-  checkout_type     CheckoutType
-  checkout_status   CheckoutStatus
-  order_status      OrderStatus
-  meta_data         Json
+  checkoutType      CheckoutType
+  checkoutStatus    CheckoutStatus
+  orderStatus       OrderStatus
+  metaData          Json
+}
+
+model User {
+  id           Int                @id @default(autoincrement())
+  name         String
+  email        String             @unique
+  typeUser     String
+  password     String
+  orders       GraphicServOrder[]
+  transactions Transaction[]
+
+  createdAt DateTime @default(now())
+} 
+
+model GraphicServ {
+  id              Int                       @id @default(autoincrement())
+  libelle         String
+  categoryId      Int
+  category        GraphicServCategory       @relation(fields: [categoryId], references: [id])
+  fullDescription String
+  covers          String[]
+  items           GraphicServItem[]
+  optionalItems   GraphicServOptionalItem[]
+  packs           GraphicServPack[]
+  faq             Faq[]
+  orders          OrderService[]
+  createdAt       DateTime                  @default(now())
+}
+
+model GraphicServOrder {
+  id            Int                       @id @default(autoincrement())
+  orderRef      String
+  packType      GraphicServPackType
+  deliveryDelay Int
+  orderStatus   OrderStatus
+  createdAt     DateTime                  @default(now())
+  userId        Int
+  user          User                      @relation(fields: [userId], references: [id])
+  transactions  Transaction[]
+  optionalItems GraphicServOptionalItem[]
+  services      OrderService[]
+  delizeId      Int
+  delizone      DeliZone                  @relation(fields: [delizeId], references: [id])
+}
+
+model OrderService {
+  graphicServOrderId Int
+  graphicServId      Int
+  order              GraphicServOrder @relation(fields: [graphicServOrderId], references: [id])
+  service            GraphicServ      @relation(fields: [graphicServId], references: [id]) // Relation inverse ajoutée
+
+  @@id([graphicServOrderId, graphicServId])
+}
+
+model GraphicServPack {
+  id                        Int                        @id @default(autoincrement())
+  libelle                   GraphicServPackType
+  subTitle                  String
+  description               String
+  normalExecutionDeadline   ExecutionDeadline?
+  expressExecutionDeadlines ExpressExecutionDeadline[]
+  graphicServId             Int?
+  graphicServ               GraphicServ?               @relation(fields: [graphicServId], references: [id])
+}
+
+model ExecutionDeadline {
+  id                Int                 @id @default(autoincrement())
+  numberOfDay       Int
+  price             Float
+  type              GraphicServPackType
+  graphicServPackId Int                 @unique
+  graphicServPack   GraphicServPack     @relation(fields: [graphicServPackId], references: [id])
+}
+
+model ExpressExecutionDeadline {
+  id                Int                 @id @default(autoincrement())
+  numberOfDay       Int
+  price             Float
+  type              GraphicServPackType
+  graphicServPackId Int
+  graphicServPack   GraphicServPack     @relation(fields: [graphicServPackId], references: [id])
+}
+
+model Transaction {
+  id                  Int              @id @default(autoincrement())
+  amount              Float
+  transactionRef      String           @unique
+  operator            String
+  paiementPhoneNumber String
+  paiementEmail       String
+  paiementType        CheckoutType
+  paiementStatus      CheckoutStatus
+  createdAt           DateTime         @default(now())
+  orderId             Int
+  order               GraphicServOrder @relation(fields: [orderId], references: [id])
+  userId              Int
+  user                User             @relation(fields: [userId], references: [id])
+}
+
+model GraphicServOptionalItem {
+  id            Int                    @id @default(autoincrement())
+  libelle       String
+  price         Float
+  values        GraphicServItemValue[]
+  orderId       Int?
+  order         GraphicServOrder?      @relation(fields: [orderId], references: [id])
+  graphicServId Int?
+  graphicServ   GraphicServ?           @relation(fields: [graphicServId], references: [id])
+}
+
+model GraphicServItemValue {
+  id                Int                      @id @default(autoincrement())
+  value             String
+  valueType         GraphicServPackType
+  optionalItemId    Int?
+  optionalItem      GraphicServOptionalItem? @relation(fields: [optionalItemId], references: [id])
+  graphicServItemId Int?
+  graphicServItem   GraphicServItem?         @relation(fields: [graphicServItemId], references: [id])
+
+  @@unique([optionalItemId, graphicServItemId], name: "unique_item_value_relation")
+}
+
+model GraphicServItem {
+  id            Int                    @id @default(autoincrement())
+  libelle       String
+  price         Float
+  type          GraphicServPackType
+  values        GraphicServItemValue[]
+  graphicServId Int
+  graphicServ   GraphicServ            @relation(fields: [graphicServId], references: [id])
+}
+
+model Faq {
+  id            Int         @id @default(autoincrement())
+  question      String
+  answer        String
+  graphicServId Int
+  graphicServ   GraphicServ @relation(fields: [graphicServId], references: [id])
+}
+
+model GraphicServCategory {
+  id       Int           @id @default(autoincrement())
+  libelle  String
+  type     CategoryType
+  icon     String
+  cover    String
+  services GraphicServ[]
+}
+
+// Define your model for Country
+model Country {
+  id        Int        @id @default(autoincrement())
+  pays      String
+  cities    City[]
+  deliZones DeliZone[]
+}
+
+// Define your model for City
+model City {
+  id        Int        @id @default(autoincrement())
+  ville     String
+  countryId Int
+  country   Country    @relation(fields: [countryId], references: [id])
+  communes  Commune[]
+  deliZones DeliZone[]
+}
+
+// Define your model for Commune
+model Commune {
+  id        Int        @id @default(autoincrement())
+  commune   String
+  cityId    Int
+  city      City       @relation(fields: [cityId], references: [id])
+  deliZones DeliZone[]
+}
+
+// Define your model for DeliZone
+model DeliZone {
+  id        Int                @id @default(autoincrement())
+  countryId Int
+  cityId    Int
+  communeId Int
+  montant   Float
+  country   Country            @relation(fields: [countryId], references: [id])
+  city      City               @relation(fields: [cityId], references: [id])
+  commune   Commune            @relation(fields: [communeId], references: [id])
+  orders    GraphicServOrder[]
+}
+
+enum CategoryType {
+  CREATION_GRAPHIQUE
+}
+
+enum GraphicServPackType {
+  BASIQUE
+  STANDARD
+  PREMIUM
 }
 
 enum CheckoutType {
@@ -46,7 +243,7 @@ enum CheckoutStatus {
   REFUSED
 }
 
- enum OrderStatus {
+enum OrderStatus {
   COMPLETED
   PENDING
   IN_PROCESS
@@ -54,5 +251,3 @@ enum CheckoutStatus {
 }
 
 // Define your model for MetaDataProp
-
-

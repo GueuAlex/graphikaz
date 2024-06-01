@@ -88,6 +88,8 @@ export interface ApiCategoryProps {
   id: number;
   libelle: string;
   type: "CREATION GRAPHIQUE";
+  cover: string;
+  icon: string;
 }
 
 export interface ImageProps {
@@ -169,6 +171,7 @@ export interface ImpressCategoryProps {
   id: number;
   libelle: string;
   type: "IMPRESS";
+  cover: string;
 }
 
 export interface ImpressMetadataProps {
@@ -268,6 +271,13 @@ export enum CheckoutType {
   HALF = "HALF",
 }
 
+export enum CheckoutStatus {
+  ACCEPTED = "ACCEPTED",
+  PENDING = "PENDING",
+  CANCELLED = "CANCELLED",
+  REFUSED = "REFUSED",
+}
+
 export enum ProductLibelle {
   FLYER = "FLYER",
   BUSINESS_CARD = "BUSINESS_CARD",
@@ -277,13 +287,6 @@ export enum ProductLibelle {
   PROMOTIONAL = "PROMOTIONAL",
 }
 
-export enum CheckoutStatus {
-  ACCEPTED = "ACCEPTED",
-  PENDING = "PENDING",
-  CANCELLED = "CANCELLED",
-  REFUSED = "REFUSED",
-}
-
 export enum OrderStatus {
   COMPLETED = "COMPLETED",
   PENDING = "PENDING",
@@ -291,39 +294,56 @@ export enum OrderStatus {
   CANCELLED = "CANCELLED",
 }
 
-/* CREATION GRAPHIC TEST MODEL */
+/* CREATION GRAPHIC INTERFACES */
 export interface GraphicServProps {
   id: number;
   libelle: string;
   category_id: number;
   full_description: string;
   covers: string[];
+  items: GraphicServItemProps[];
+  optional_items: GraphicServOptionalItemProps[];
+  packs: GraphicServPack[];
+  faq: FaqProps[];
   created_at: Date;
 }
-export interface GraphicServItemProps {
+
+export interface GraphicServItemValueProps {
   id: number;
-  libelle: string;
-  price: number;
-  type: GraphicServPackType;
+  value: string;
+  value_type: GraphicServPackType;
 }
+
 export interface GraphicServOptionalItemProps {
   id: number;
   libelle: string;
+  value: GraphicServItemValueProps[] | null;
   price: number;
-  execution_deadline: ExecutionDeadlineProps | null;
+}
+export interface GraphicServItemProps extends GraphicServOptionalItemProps {
+  type: GraphicServPackType;
 }
 
 export interface GraphicServPack {
   id: number;
   libelle: GraphicServPackType;
+  sub_title: string;
+  description: string;
   normal_execution_deadline: ExecutionDeadlineProps;
-  express_execution_deadline: ExecutionDeadlineProps;
+  express_execution_deadline: ExecutionDeadlineProps[];
 }
 
 export interface ExecutionDeadlineProps {
   id: number;
-  libelle: string;
+  number_of_day: number;
   price: number;
+  type: GraphicServPackType;
+}
+export interface ExpressExecutionDeadlineProps {
+  id: number;
+  number_of_day: number;
+  price: number;
+  type: GraphicServPackType;
 }
 
 export enum GraphicServPackType {
@@ -332,6 +352,75 @@ export enum GraphicServPackType {
   PREMIUM = "PREMIUM",
 }
 
-/* export enum GraphicServItemTypeProps {
+export interface FaqProps {
+  question: string;
+  answer: string;
+}
 
-}{ */
+export interface GraphicServOrderProps {
+  id: number;
+  order_ref: string;
+  pack_type: GraphicServPackType;
+  delivery_delay: number;
+  optional_items: GraphicServOptionalItemProps[];
+  order_status: OrderStatus;
+  created_at: Date;
+}
+
+export interface TransactionProps {
+  id: number;
+  amount: number;
+  transaction_ref: string;
+  paiement_type: CheckoutType;
+  paiement_status: CheckoutStatus;
+  created_at: Date;
+}
+
+/* *******************************************************************
+ ** UTILISER DANS LE CONTEXT LOCAL /creationgraphique/category/slug **/
+
+// Types des données de prix
+export interface PriceData {
+  basicTotalPrice: number;
+  standardTotalPrice: number;
+  premiumTotalPrice: number;
+}
+
+// Types des fonctions de mise à jour des prix
+export interface PriceFunctions {
+  setBasicTotalPrice: React.Dispatch<React.SetStateAction<number>>;
+  setStandardTotalPrice: React.Dispatch<React.SetStateAction<number>>;
+  setPremiumTotalPrice: React.Dispatch<React.SetStateAction<number>>;
+}
+
+// service du context
+export interface ContextServiceProps {
+  test_service: GraphicServProps;
+}
+
+// context seletected pack
+export interface ContextSeletecdPackProps {
+  contextPack: GraphicServPack;
+  setContextPack: React.Dispatch<React.SetStateAction<GraphicServPack>>;
+}
+
+export interface ItemSelectedOnProps {
+  optionalItems: GraphicServOptionalItemProps[];
+  selectedOn: GraphicServPackType;
+}
+// lignes de service optionnel selectionné
+// temps de livraison selectionné
+export interface ContextSelection {
+  seletedOptionalItems: ItemSelectedOnProps | undefined;
+  selectedDeliveryDelay: ExecutionDeadlineProps;
+}
+
+// fonction de mise a jour des context selections
+export interface ContextSelectionSetters {
+  setSeletedOptionalItems: React.Dispatch<
+    React.SetStateAction<ItemSelectedOnProps | undefined>
+  >;
+  setSelectedDeliveryDelay: React.Dispatch<
+    React.SetStateAction<ExecutionDeadlineProps>
+  >;
+}

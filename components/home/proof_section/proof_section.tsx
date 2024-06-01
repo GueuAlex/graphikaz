@@ -1,6 +1,5 @@
 import "./proof_section.css";
-
-import { Cover } from "@/public";
+import { Proof } from "@/public/proof";
 import Image from "next/image";
 
 const ProofSection = () => {
@@ -82,7 +81,7 @@ const ProofSection = () => {
                 </small>
               </div>
             </div>
-            <Image src={Cover} alt="cover" className="relative " />
+            <Image src={Proof} alt="cover" className="relative " />
           </div>
         </div>
       </div>

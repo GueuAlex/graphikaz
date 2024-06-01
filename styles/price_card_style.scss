@@ -1,0 +1,111 @@
+.pricing-card {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 420px;
+  font-family: Arial, sans-serif;
+
+  .tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+
+    .tab {
+      flex: 1;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      background: #f9f9f9;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: capitalize;
+      color: #707070;
+      border-bottom: 3px solid #f9f9f9;
+      transition: all ease-in 0.3s;
+
+      &.active {
+        border-bottom-color: #5bbb7b;
+        color: #000;
+      }
+      &:not(:last-child) {
+        border-right: 1px solid #ddd;
+      }
+      &:nth-child(1) {
+        border-top-left-radius: 5px;
+      }
+      &:last-child {
+        border-top-right-radius: 5px;
+      }
+    }
+  }
+
+  .card-body-container {
+    padding: 28px;
+    padding-top: 5px;
+  }
+
+  .button-enchor {
+    .continue-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 5px;
+      width: 100%;
+      padding: 10px;
+      background-color: #5bbb7b;
+      border: 1px solid #2e6340;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 10px;
+      transition: all ease-in 0.3s;
+
+      i {
+        font-size: 18px;
+      }
+      &:hover {
+        background-color: #2e6340;
+      }
+      &:disabled {
+        background-color: #5a5a5a;
+        cursor: not-allowed;
+      }
+    }
+
+    .compare-offers {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 300;
+      color: #1a73e8;
+      text-decoration: none;
+    }
+  }
+
+  .contact {
+    text-align: center;
+    margin-top: 20px;
+
+    button {
+      padding: 10px 20px;
+      background: #f0f0f0;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        border-color: #000;
+        background-color: #000;
+        color: #fff;
+      }
+    }
+
+    p {
+      font-size: 12px;
+      color: #888;
+    }
+  }
+}

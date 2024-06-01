@@ -1,0 +1,43 @@
+.commande-details {
+  div.pack-description {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    p.label {
+      width: max-content;
+      padding: 5px;
+      font-size: 14px;
+      font-weight: 800;
+      border-radius: 3px;
+      background-color: rgb(3, 98, 124);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    p.description {
+      font-size: 18px;
+      color: #606060;
+      line-height: 1.2;
+
+      b {
+        text-transform: capitalize;
+        font-size: 16px;
+      }
+    }
+  }
+
+  div.price-label {
+    small.this-option-price {
+      display: flex;
+      padding: 2px;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(3, 98, 124);
+      color: #fff;
+      font-weight: 800;
+      border-radius: 2px;
+      width: max-content;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.icon-box-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  .icon-box {
+    width: 45px;
+    height: 45px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 25px;
+  }
+  .text-box {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      font-size: 16px;
+      margin-bottom: -2px;
+      font-weight: 400;
+    }
+    small {
+      display: block;
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+    }
+  }
+}

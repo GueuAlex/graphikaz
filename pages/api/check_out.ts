@@ -1,12 +1,8 @@
 // Importez les modules nécessaires
 import { NextApiRequest, NextApiResponse } from "next";
-const { v4: uuidv4 } = require("uuid");
 
 //////: generate translation unique id
-function generateTransactionId() {
-  const transactionId = uuidv4();
-  return transactionId;
-}
+
 // La fonction principale qui gère la requête
 export default async function handler(
   req: NextApiRequest,

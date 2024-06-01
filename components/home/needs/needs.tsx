@@ -4,8 +4,6 @@ import "./needs.css";
 import React from "react";
 import Link from "next/link";
 import { ApiCategoryProps } from "@/types";
-import { CategorySelector } from "@/reutilisables/category_selector";
-import { impressCategories } from "@/constants";
 
 interface NeedPrps {
   categories: ApiCategoryProps[];
@@ -71,7 +69,7 @@ const Needs: React.FC<NeedPrps> = ({ categories }) => {
             </p>
           </div>
         </div>
-        <hr className="border-b-[1px] border-teal-800 my-14" />
+        {/* <hr className="border-b-[1px] border-teal-800 my-14" />
         <div className="mt-[75px]">
           <div className="flex justify-between items-center pb-8">
             <div className="head">
@@ -88,7 +86,7 @@ const Needs: React.FC<NeedPrps> = ({ categories }) => {
               </Link>
             </span>
           </div>
-          <div className="categories-list pt-6">
+           <div className="categories-list pt-6">
             {categories.length > 2 &&
               categories
                 .slice(1, 3)
@@ -102,7 +100,7 @@ const Needs: React.FC<NeedPrps> = ({ categories }) => {
               return null;
             })}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

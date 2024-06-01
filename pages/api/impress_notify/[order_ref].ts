@@ -39,7 +39,7 @@ export default async function handler(
       // Vérifiez si le statut est "ACCEPTED"
       if (verifyData?.code !== 404) {
         // Effectuez le update vers prisma
-
+        /* 
         const updateOrder = await myprisma.impressOrder.update({
           where: { order_number: order_ref as string }, // Spécifiez l'identifiant de la ligne à mettre à jour
           data: {
@@ -47,8 +47,8 @@ export default async function handler(
             checkout_status: verifyData?.data?.status,
             // Ajoutez d'autres champs et valeurs à mettre à jour si nécessaire
           },
-        });
-        res.status(201).json(updateOrder);
+        }); */
+        res.status(201).json("ok");
       } else {
         res.status(400).json({
           success: false,

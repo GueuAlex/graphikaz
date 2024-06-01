@@ -9,8 +9,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { Footer, NavBar } from "@/components";
 import { SessionProvider } from "next-auth/react";
-import { useEffect, useState } from "react";
-import { fetchAllData, getCategories } from "@/types/api_services";
+import { useEffect } from "react";
 
 /* brevo chat box */
 import "./script.js";

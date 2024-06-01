@@ -246,7 +246,7 @@ div.d {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 50px;
+  /* padding: 50px; */
   border-radius: 5px;
   background-color: var(--dark-color);
 }
@@ -315,137 +315,7 @@ div.d {
     }
   }
 }
-.ratting-area {
-  .review-score {
-    h2 {
-      font-size: 1.4em;
-      line-height: 2;
-      font-weight: 400;
-      color: #52565c;
-    }
-    .score-card {
-      display: flex;
-      gap: 1.25em;
-      align-items: center;
-      justify-content: flex-start;
-      .score {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 35%;
-        height: 15em;
-        border-radius: 10px;
-        background-color: #fcede8;
-        h1 {
-          font-size: 3.5em;
-          line-height: 1;
-          font-weight: bolder;
-          color: var(--stars-color);
-          margin-bottom: 0.1em;
-        }
-        .stars {
-          display: flex;
-          svg {
-            margin: 0 0.1em 0 0.1em;
-            width: 0.9em;
-            height: 0.9em;
-          }
-        }
-        span {
-          margin-top: 0.3em;
-          color: #52565c;
-        }
-      }
-    }
-    .scores-percent {
-      display: flex;
-      flex-direction: column;
-      width: 65%;
 
-      .star-line-percent {
-        display: flex;
-      }
-    }
-    .scores-percent {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
-
-      .rate-line-percent {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 0.15em;
-
-        span:nth-child(2) {
-          display: none;
-        }
-      }
-      .progress {
-        height: 0.5em;
-        border-radius: none;
-      }
-      .progress-warning::-moz-progress-bar {
-        --tw-bg-opacity: 1;
-        background-color: hsl(var(--wa) / var(--tw-bg-opacity));
-      }
-      .progress-warning:indeterminate {
-        --progress-color: hsl(var(--wa));
-      }
-      .progress-warning::-webkit-progress-value {
-        --tw-bg-opacity: 1;
-        background-color: hsl(var(--wa) / var(--tw-bg-opacity));
-      }
-    }
-  }
-}
-.review-comment {
-  padding-top: 2.5em;
-
-  .text-bold {
-    font-size: 1.3em;
-    font-weight: 600;
-    padding-top: 0.5em;
-  }
-  .text-small {
-    color: #676d75;
-  }
-  .inputs {
-    input {
-      outline: none;
-    }
-    span {
-      font-weight: 600;
-    }
-    .comment-input,
-    .email-input,
-    .name-input {
-      display: flex;
-      flex-direction: column;
-    }
-    .name-email-inputs {
-      margin-top: 1.5em;
-      display: flex;
-      gap: 1.5em;
-      .email-input,
-      .name-input {
-        width: 50%;
-      }
-    }
-    .check-box {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 0.5em;
-    }
-
-    button {
-      margin-top: 2em;
-      width: 30%;
-    }
-  }
-}
 .related-services-area {
   .related-services {
     display: flex;
@@ -559,5 +429,86 @@ div.d {
         }
       }
     }
+  }
+}
+
+/********************************************************************************************
+***************************** SERVICE DETAILS PAGE V2 TEST **********************************
+**********************************************************************************************/
+
+.single_service_details {
+  .single-service-details-page {
+    width: 100%;
+    gap: 25px;
+    display: flex;
+    justify-content: space-between;
+
+    .right-part {
+      flex: 0 0 60%; /* flex-grow: 0; flex-shrink: 0; flex-basis: 40%; */
+      .locates-pictures-descriptions-offers-comments {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        .locates {
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 1.5rem;
+        }
+      }
+
+      .faqs {
+        .faqs-head {
+          h1 {
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+
+        .collapse-title {
+          margin-right: 0;
+          margin-left: 0;
+          padding-left: 0;
+          padding-right: 0;
+          font-size: 17px;
+          color: #404347;
+        }
+        .collapse-content {
+          margin-right: 0;
+          margin-left: 0;
+          padding-left: 0;
+          padding-right: 0;
+          color: #52565c;
+          font-weight: 300;
+        }
+      }
+    }
+    /*  .left-part {
+      flex: 0 0 45%; 
+    } */
+    .right-part .left-part {
+      width: 100%;
+      padding: 0.5rem;
+    }
+
+    .left-part {
+      position: relative;
+      .packs-getcontact {
+        margin-top: -150px;
+        position: -webkit-sticky; /* pour Safari */
+        position: sticky;
+        top: 10px; /* Ajuste la valeur en fonction de ton design */
+      }
+    }
+  }
+
+  .similar-services {
+    width: 100%;
+    background-color: #f1f2f3;
+    border-top: 2px solid #e7e6e6;
   }
 }

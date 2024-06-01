@@ -1,11 +1,9 @@
 "use client";
 import "./testimonials.css";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { F1, F7, F8, F9, F5, F6 } from "@/public";
-import { packProps } from "@/types";
-import { fetchAllData } from "@/types/api_services";
+import { F1, F7, F9, F5, F6 } from "@/public";
 
 const Testinmonials = () => {
   return (

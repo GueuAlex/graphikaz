@@ -18,6 +18,14 @@ import React, { useState, useContext } from "react";
 import { MyAppContext } from "@/reutilisables/app_context";
 import { useRouter } from "next/navigation";
 import { ApiCategoryProps } from "@/types";
+import {
+  Bubble1,
+  Bubble2,
+  ShapeImg1,
+  ShapeImg2,
+  ShapeImg3,
+  Woman,
+} from "@/public/hero";
 
 interface HeroProps {
   apiCategories: ApiCategoryProps[];
@@ -159,7 +167,7 @@ const Hero: React.FC<HeroProps> = ({ apiCategories }) => {
               exit={{ opacity: 0, y: 15 }}
               transition={{ delay: 1, ease: "easeIn" }}
             >
-              <Image src={Slider} alt="Slider" />
+              <Image src={Woman} alt="Slider" />
             </motion.div>
           </AnimatePresence>
           <AnimatePresence>
@@ -181,7 +189,7 @@ const Hero: React.FC<HeroProps> = ({ apiCategories }) => {
               exit={{ opacity: 0, y: 15 }}
               transition={{ delay: 0.35, bounce: "easeInOut" }}
             >
-              <Image src={Slider65} alt="wave" className="boul1" />
+              <Image src={ShapeImg2} alt="wave" className="boul1" />
             </motion.div>
           </AnimatePresence>
 
@@ -193,7 +201,7 @@ const Hero: React.FC<HeroProps> = ({ apiCategories }) => {
               exit={{ opacity: 0, y: 15 }}
               transition={{ delay: 0.35, bounce: "easeInOut" }}
             >
-              <Image src={Slider66} alt="wave" className="boul1" />
+              <Image src={ShapeImg3} alt="wave" className="boul1" />
             </motion.div>
           </AnimatePresence>
 
@@ -205,7 +213,7 @@ const Hero: React.FC<HeroProps> = ({ apiCategories }) => {
               exit={{ opacity: 0, y: 15 }}
               transition={{ delay: 0.35, bounce: "easeInOut" }}
             >
-              <Image src={Slider64} alt="wave" className="boul1" />
+              <Image src={ShapeImg1} alt="wave" className="boul1" />
             </motion.div>
           </AnimatePresence>
 
@@ -218,19 +226,19 @@ const Hero: React.FC<HeroProps> = ({ apiCategories }) => {
               transition={{ delay: 1.35, bounce: "easeInOut" }}
             >
               <Image
-                src={Slider63}
+                src={Bubble2}
                 alt="wave"
                 className="absolute scl1 top-0 left-0"
               />
               <Image
-                src={Slider53}
+                src={Bubble1}
                 alt="wave"
                 className="absolute scl2 top-[35%] right-0"
               />
             </motion.div>
           </AnimatePresence>
 
-          <AnimatePresence>
+          {/*  <AnimatePresence>
             <motion.div
               className="absolute -z-50"
               initial={{ opacity: 0, y: 15 }}
@@ -240,7 +248,7 @@ const Hero: React.FC<HeroProps> = ({ apiCategories }) => {
             >
               <Image src={Comp} alt="wave" className="" />
             </motion.div>
-          </AnimatePresence>
+          </AnimatePresence> */}
         </div>
       </div>
     </div>

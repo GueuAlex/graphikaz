@@ -784,46 +784,64 @@ const impressCategories: ImpressCategoryProps[] = [
     id: 1,
     libelle: "All Products A-Z",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/mains-travaillant-banniere-superposition-graphique-du-reseau-bureau-qBq9UZ06z27wXf6lnGhuBOO1vE63Uw.jpg",
   },
   {
     id: 2,
     libelle: "Flyers & Leaflets",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/flyers-folded-a4-b3x8wJQkNuUDgt7SpEUbYy9PpmAXED.jpeg",
   },
   {
     id: 3,
     libelle: "Business Cards",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/b-card-7-5OvLj5PTFg92bUMG2EerT4Hg6Zqd9O.jpeg",
   },
   {
     id: 4,
     libelle: "Brochures",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/brochure9-qEJdP6BN0Xe6KcHGhF2EWiA4gsvr9G.jpeg",
   },
   {
     id: 5,
     libelle: "Roller Banners",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/rol-1-FexQLf6X261ZH46IQxIzBzaBXRWyjJ.jpeg",
   },
   {
     id: 6,
     libelle: "Posters",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/header_posters2-AuftDBwipi0UPVy3iu2Ospw4bc3xqI.avif",
   },
   {
     id: 7,
     libelle: "Stickers",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/Screenshot%202024-05-16%20at%2008.48.24-yjhn5qZEo8oSrxgv4b7YKNwoqpM7ig.png",
   },
   {
     id: 8,
     libelle: "Menus Restau",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/resto-1-g2v3B9cYVi1T1GC83PuO5gaXnWk6pS.jpeg",
   },
   {
     id: 9,
     libelle: "Promotional",
     type: "IMPRESS",
+    cover:
+      "https://oifoeivdflxzgtj0.public.blob.vercel-storage.com/categories_cover/promo3-Rh9jmFuTLYAe9IedfYArpCoB9UmHrb.jpeg",
   },
 ];
 

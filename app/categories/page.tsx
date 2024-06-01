@@ -5,20 +5,13 @@ import "./categories.scss";
 import "@/styles/checkout_side_bar.scss";
 import { PathnameComponent } from "@/components";
 import { TServiceCard, Wrapper } from "@/reutilisables";
-import {
-  bcardTab,
-  categories,
-  FlyersTab,
-  impressCategories,
-} from "@/constants";
-import { ApiCategoryProps, apiServiceProps, packProps } from "@/types";
+import { bcardTab, FlyersTab, impressCategories } from "@/constants";
+import { ApiCategoryProps, apiServiceProps } from "@/types";
 import { fetchAllData, getCategories } from "@/types/api_services";
 import { AnimatePresence, motion } from "framer-motion";
 import Loader from "@/reutilisables/laoder";
-import { useRouter, useSearchParams } from "next/navigation";
-import { CategorySelector } from "@/reutilisables/category_selector";
+
 import CategoryCarousel from "@/reutilisables/categories_carousel";
-import Image from "next/image";
 import { ImpressServiceContainer } from "@/reutilisables/impress_service_container";
 
 function Categories() {
@@ -80,112 +73,15 @@ function Categories() {
       });
   }, []);
   //////////////////////////////////////////////////////////////////////
-  const options = ["Sort by (Default)", "Newest", "Oldest", "Random"];
-  const [optionIsVisible, setVisibility] = useState(false);
-  const [toggle, setToggle] = useState(false);
-  const [selectedOption, setOption] = useState("Sort by (Default)");
-  const toggleOption = () =>
-    optionIsVisible ? setVisibility(false) : setVisibility(true);
-  const toggleFilterSideBar = () =>
-    toggle ? setToggle(false) : setToggle(true);
 
   //const [argCategory, setArgCategory] = useState<ApiCategoryProps>();
   //const [findedServices, setFindedServices] = useState<apiServiceProps[]>([]);
 
   /* ******** show more / show less === categories  **************/
-  const itemsPerPage = 5;
-  const [showAll, setShowAll] = useState(false);
-  const [visibleItems, setVisibleItems] = useState(
-    categoriesList.slice(0, itemsPerPage)
-  );
-  const handleShoMore = () => {
-    // afficher tous les elements
-    setVisibleItems(categoriesList);
-    setShowAll(true);
-  };
-  const handleShoLess = () => {
-    // afficher le nombre d'element par defaut
-    setVisibleItems(categoriesList.slice(0, itemsPerPage));
-    setShowAll(false);
-  };
+
   /* ******** show more / show less  **************/
 
   /* ******** show more / show less === date posted  **************/
-  const data = [
-    "Dernières Heures",
-    "Dernières 24 heures",
-    "7 derniers jours",
-    "14 derniers jours",
-    "30 derniers jours",
-    "Tout",
-  ];
-  const [showAllD, setShowAllD] = useState(false);
-  const [visibleItemsD, setVisibleItemsD] = useState(data.slice(0, 4));
-  const handleShoMoreD = () => {
-    // afficher tous les elements
-    setVisibleItemsD(data);
-    setShowAllD(true);
-  };
-  const handleShoLessD = () => {
-    // afficher le nombre d'element par defaut
-    setVisibleItemsD(data.slice(0, 4));
-    setShowAllD(false);
-  };
-  /* ******** show more / show less  **************/
-
-  /* select arrays */
-  const responseTime = [
-    "1 Hour",
-    "2 Hours",
-    "3 hours",
-    "4 Hours",
-    "5 Hours",
-    "6 Hours",
-    "7 Hours",
-  ];
-  const deliveryTime = [
-    "1 Jour",
-    "2 Jous",
-    "3 Jours",
-    "4 Jourss",
-    "5 Jourss",
-    "6 Jourss",
-    "7 Jourss",
-  ];
-  const englishLevel = [
-    "Basic",
-    "Conversational",
-    "Fluent",
-    "Native Or Bilingual",
-    "Professional",
-  ];
-  const cities = [
-    "Abidjan",
-    "Man",
-    "Biankouman",
-    "Yakro",
-    "Daloa",
-    "Sans-Pédro",
-    "Divo",
-    "Gagnoa",
-    "et etc ...",
-  ];
-
-  const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(975000);
-
-  const handleMinChange = (event: any) => {
-    const newMinValue = parseInt(event.target.value);
-    setMinValue(Math.min(newMinValue, maxValue)); // Assurer que min <= max
-  };
-
-  const handleMaxChange = (event: any) => {
-    const newMaxValue = parseInt(event.target.value);
-    setMaxValue(Math.max(newMaxValue, minValue)); // Assurer que max >= min
-  };
-
-  /* const listeMultipliee = Array(100).fill(services).flat();
-  console.log(listeMultipliee); */
 
   //////////////////////////: PAGINATION LOGIQUE //////////////////////////
   const servicePerPage = 8; // Nombre d'éléments par page

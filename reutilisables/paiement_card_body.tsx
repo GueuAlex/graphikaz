@@ -1,27 +1,56 @@
-import React, { useState } from "react";
-import { EmptyCart, Service1, Service2, Service3 } from "@/public";
-import Image, { StaticImageData } from "next/image";
+import React, { useContext, useState } from "react";
+import { EmptyCart } from "@/public";
+import Image from "next/image";
 import { payMethodsTab } from "@/constants";
 import CreditCardForm from "./credit_card_paiement";
 import MobileMoneyForm from "./mobile_money_form";
-import { DefaultOrderProps, apiServiceProps, packProps } from "@/types";
+import "@/styles/paiement_card_style.scss";
+import {
+  ContextSelection,
+  ContextSeletecdPackProps,
+  ContextServiceProps,
+  DefaultOrderProps,
+  GraphicServOptionalItemProps,
+  GraphicServPackType,
+  PriceData,
+} from "@/types";
+import { LocalContext } from "./local_context";
 
 interface PaiementCardBodyProps {
   updateToggle: (value: boolean) => void;
-  defaultPack: packProps | undefined;
-  service: apiServiceProps;
 }
 
 const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
   updateToggle,
-  defaultPack,
-  service,
 }) => {
+  const {
+    basicTotalPrice,
+
+    standardTotalPrice,
+
+    premiumTotalPrice,
+
+    test_service,
+    seletedOptionalItems,
+    selectedDeliveryDelay,
+
+    contextPack,
+  } = useContext(LocalContext) as PriceData &
+    ContextServiceProps &
+    ContextSelection &
+    ContextSeletecdPackProps;
+
+  let optionalItems: GraphicServOptionalItemProps[] = [];
+  if (seletedOptionalItems) {
+    if (contextPack.libelle === seletedOptionalItems.selectedOn) {
+      optionalItems = seletedOptionalItems.optionalItems;
+    }
+  }
   const [selectedMetohd, setSelectedMetohd] = useState("Carte de Crédit");
   //const imgTab: StaticImageData[] = [Service1, Service2, Service3];
   /// UI returned if defaultPack ==== undefined
 
-  if (defaultPack === undefined) {
+  if (!contextPack) {
     return (
       <div className="content-body flex  w-full h-full">
         <div className="commande-details">
@@ -56,12 +85,21 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
   const defaultOrder: DefaultOrderProps = {
     numero_commande: undefined,
     reference_paiement: undefined,
-    service_id: service.id,
-    pack_service_id: defaultPack.id,
+    service_id: test_service.id,
+    pack_service_id: contextPack.id,
     status_paiement: "EN ATTENTE",
     status: "EN ATTENTE",
   };
   console.log(defaultOrder);
+  function getPrice(packType: GraphicServPackType): number {
+    if (packType === GraphicServPackType.BASIQUE) {
+      return basicTotalPrice;
+    }
+    if (packType === GraphicServPackType.STANDARD) {
+      return standardTotalPrice;
+    }
+    return premiumTotalPrice;
+  }
   return (
     <div className="content-body flex  w-full h-full gap-3">
       <div className="commande-details">
@@ -78,16 +116,39 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
           <div className="details-content-body">
             <div className="commande-total flex flex-col ">
               <small>TOTAL</small>
-              <span>{defaultPack.montant} FCFA</span>
+              <span>{getPrice(contextPack.libelle)} FCFA</span>
+            </div>
+            <div className="pack-description  flex flex-col">
+              <p className="label">{contextPack.libelle}</p>
+              <p className="description">
+                <b>{contextPack.sub_title.toLowerCase()} :</b>{" "}
+                <small>{contextPack.description}</small>
+              </p>
+
+              <div className="delivery-infos py-5 font-bold text-slate-500">
+                <i className="bi bi-alarm"></i>{" "}
+                {selectedDeliveryDelay.type === contextPack.libelle ? (
+                  <span>
+                    Livraison en {selectedDeliveryDelay.number_of_day} jour(s)
+                  </span>
+                ) : (
+                  <span>
+                    Livraison en{" "}
+                    {contextPack.normal_execution_deadline.number_of_day}{" "}
+                    jour(s)
+                  </span>
+                )}
+              </div>
             </div>
             {/* showing service, pack and option */}
             {/*  <p className="title-of-this-service pb-2 text-[1.2rem]  font-normal">
               Je vais créer un logo qui traduit fidèlement votre activité
             </p> */}
             <div className="img-container flex gap-1">
-              {service.image_services.map((img, index) => (
-                <Image
-                  src={`https://graphikaz.digifaz.com/api/photo_service/${img.libelle}`}
+              {test_service.covers.map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
                   alt={index.toString()}
                   width={80}
                   height={80}
@@ -96,26 +157,59 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
             </div>
             {/* service title */}
 
-            <div className="comande-list mt-2">
+            <div className="comande-list mt-2 ">
               <p className="py-3 text-stone-500">Votre commande</p>
               {/* use map */}
-              <div className="custome-timeline w-full flex flex-col">
-                <small className="this-option-price">
-                  {defaultPack.montant} FCFA
-                </small>
-                <span className="this-option-tilte">
-                  PACK {defaultPack.libelle.toUpperCase()}{" "}
-                  {defaultPack.libelle.toLowerCase().includes("initial")
-                    ? "service basique, sans option"
-                    : "service basique et option - recommandée"}
-                </span>
-                <small className="py-2 text-gray-500 font-[300]">
-                  {defaultPack.delais_livraison} jours de réalisation
-                </small>
-              </div>
-              <div className="dot">
-                <i className="ri-check-line"></i>
-              </div>
+              <ul>
+                {test_service.items.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex gap-2 justify-start items-center py-2"
+                  >
+                    <i className="bi bi-check-lg"></i>
+                    <div className="price-label flex flex-col">
+                      <small className="this-option-price">
+                        {item.price} FCFA
+                      </small>
+                      <span className="this-option-tilte">
+                        {item.libelle}{" "}
+                        {item.value &&
+                          item.value.map((value, index) => (
+                            <b key={index}>
+                              {value.value_type === contextPack.libelle &&
+                                `(${value.value})`}
+                            </b>
+                          ))}{" "}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+                {seletedOptionalItems &&
+                  seletedOptionalItems.selectedOn === contextPack.libelle &&
+                  seletedOptionalItems.optionalItems.map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex gap-2 justify-start items-center py-2"
+                    >
+                      <i className="bi bi-check-lg"></i>
+                      <div className="price-label flex flex-col">
+                        <small className="this-option-price">
+                          {item.price} FCFA
+                        </small>
+                        <span className="this-option-tilte">
+                          {item.libelle}{" "}
+                          {item.value &&
+                            item.value.map((value, index) => (
+                              <b key={index}>
+                                {value.value_type === contextPack.libelle &&
+                                  `(${value.value})`}
+                              </b>
+                            ))}{" "}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
             </div>
           </div>
           <div className="mobile-hidden copy-right-terms w-full ">
@@ -170,15 +264,18 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
             {/* <MobileMoneyForm method={selectedMetohd} />      */}
             {selectedMetohd === "Carte de Crédit" ? (
               <CreditCardForm
-                montant={defaultPack.montant}
+                montant={getPrice(contextPack.libelle)}
                 method={selectedMetohd}
               />
             ) : (
               <MobileMoneyForm
                 method={selectedMetohd}
-                montant={defaultPack.montant}
-                defaultOrder={defaultOrder}
-                customeOrder={undefined}
+                montant={getPrice(contextPack.libelle)}
+                /* order={defaultOrder} */
+                selectedDeliveryDelay={selectedDeliveryDelay}
+                selectedOptionnalITems={optionalItems}
+                selectedPackType={contextPack.libelle}
+                services={[test_service]}
               />
             )}
           </div>

@@ -1,7 +1,6 @@
 import { ApiCategoryProps, apiServiceProps } from "@/types";
-import Link from "next/link";
 import Image from "next/image";
-import { DeliCar, Digifaz, Imgold, Service2 } from "@/public";
+import { Imgold } from "@/public";
 
 const TServiceCard = ({
   service,
@@ -12,7 +11,7 @@ const TServiceCard = ({
 }) => {
   return (
     <div className="service-carde  flex-item">
-      <Link
+      <a
         key={service.id}
         href={`/creationgraphique/${category?.libelle}/${service.libelle}`}
         className="carde-link"
@@ -70,7 +69,7 @@ const TServiceCard = ({
             </small>
           </div>
         </div>
-      </Link>
+      </a>
     </div>
   );
 };

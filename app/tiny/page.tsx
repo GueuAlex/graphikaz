@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+import "./tiny.scss";
+import { Wrapper } from "@/reutilisables";
 
 export default function App() {
   const [value, setValue] = useState("");
@@ -11,8 +13,9 @@ export default function App() {
     setValue(newValue);
     setText(editor.getContent({ format: "text" }));
   };
+  console.log(value);
   return (
-    <>
+    <Wrapper>
       <Editor
         onEditorChange={(newValue, editor) =>
           onEditorInputChange(newValue, editor)
@@ -38,7 +41,15 @@ export default function App() {
         }}
         initialValue="Welcome to TinyMCE!"
       />
-      <div dangerouslySetInnerHTML={{ __html: value }} />
-    </>
+      {/* <div
+        className="tiny-content"
+        dangerouslySetInnerHTML={{ __html: value }}
+      /> */}
+      <div className="mockup-code rounded-md">
+        <pre data-prefix="$">
+          <code>{value}</code>
+        </pre>
+      </div>
+    </Wrapper>
   );
 }

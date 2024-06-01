@@ -1,13 +1,5 @@
-import { userProps } from "@/types";
-import NextAuth, { NextAuthOptions, User } from "next-auth";
-import credentialsProvider from "next-auth/providers/credentials";
-
-interface UserProps {
-  id: string;
-  name: string;
-  email: string;
-  type_user: string;
-}
+import NextAuth, { NextAuthOptions } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -15,7 +7,7 @@ const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
-    credentialsProvider({
+    CredentialsProvider({
       credentials: {},
       authorize: async (credentials) => {
         const { email, password } = credentials as {
@@ -23,62 +15,50 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
 
-        var raw = JSON.stringify({
-          email: email,
-          password: password,
+        const response = await fetch(`${process.env.API_BASE_URL}users/auth`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
         });
-
-        const response = await fetch(
-          "https://graphikaz.digifaz.com/api/users/auth",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: raw,
-          }
-        );
 
         if (!response.ok) {
           throw new Error("Invalid credentials");
         }
 
         const data = await response.json();
-        console.log("data: " + data.user.id);
         const user = {
           id: data.user.id,
           name: data.user.name,
           email: data.user.email,
           type_user: data.user.type_user,
-          // ... autres champs supplémentaires
         };
-
-        console.log("user: ", user);
 
         return Promise.resolve(user);
       },
     }),
   ],
-  ///////
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
         token.name = user.name;
         token.email = user.email;
-        token.type_user = user.type_user; // Ajouter le champ type_user
-        // ... autres champs supplémentaires
+        token.type_user = user.type_user;
       }
 
       return token;
     },
     async session({ session, token }) {
-      session.user.type_user = token.type_user;
-      session.user.id = token.id;
+      session.user = {
+        ...session.user,
+        id: token.id,
+        type_user: token.type_user,
+      };
       return session;
     },
   },
-  ///////:
   pages: {
     signIn: "/auth",
   },

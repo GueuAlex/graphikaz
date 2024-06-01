@@ -1,0 +1,142 @@
+.offers-container {
+  .offers-head {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    h2 {
+      font-size: 20px;
+      line-height: 20px;
+      font-weight: 700;
+      color: #404145;
+    }
+  }
+  /* Style de la table */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+
+  /* Style des colonnes */
+  col {
+    width: 25%; /* Chaque colonne occupe 25% de la largeur */
+  }
+
+  /* Style des en-têtes de colonnes */
+  th {
+    padding: 8px;
+    text-align: left;
+    background-color: #f4f4f4; /* Couleur de fond gris clair */
+  }
+
+  /* Style des cellules de données */
+  td {
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word; /* Permettre le retour à la ligne */
+  }
+
+  /* Supprimer les bordures des lignes */
+  tr {
+    border-bottom: none;
+  }
+
+  /* Style des bordures des cellules */
+  td,
+  th {
+    border-right: 1px solid #ccc; /* Bordure grise à droite de chaque cellule */
+  }
+
+  /* Supprimer la bordure à droite de la dernière cellule */
+  td:last-child,
+  th:last-child {
+    border-right: none;
+  }
+
+  tr.package-type th {
+    font-size: 16px;
+    font-weight: 400;
+
+    p.price {
+      font-size: 18px;
+      font-weight: 400;
+    }
+    b {
+      font-size: 12px;
+      color: #404145;
+      font-weight: 600;
+      display: block;
+    }
+    b.type {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      font-size: 18px;
+      text-transform: capitalize;
+      font-weight: 700;
+    }
+  }
+
+  .description td {
+    font-size: 14px;
+    color: #505050;
+  }
+
+  tr .cell {
+    text-align: center;
+  }
+  tr .check-icon i {
+    font-size: 23px;
+  }
+  tr .icon-gray-color i {
+    color: #c7c7c7;
+  }
+
+  .customisation-label {
+    th {
+      div {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+
+        p {
+          font-size: 18px;
+          font-weight: 500;
+
+          span {
+            font-weight: 700;
+            font-style: italic;
+          }
+        }
+        small {
+          font-size: 14px;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
+  .onption-tr {
+    span.option-price {
+      font-size: 13px;
+      font-weight: 400;
+      font-style: italic;
+    }
+  }
+
+  tr.last-child {
+    border-top: 1px solid #ccc;
+    background-color: #f4f4f4;
+    padding: 8px;
+
+    td {
+      span.option-price {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+      }
+    }
+  }
+
+  tr input {
+    cursor: pointer;
+  }
+}

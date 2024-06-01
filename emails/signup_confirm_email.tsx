@@ -19,16 +19,16 @@ interface SlackConfirmEmailProps {
   validationCode?: string;
 }
 
-const baseUrl = process.env.VERCEL_URL
+/* const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "";
+  : ""; */
 
 export const SlackConfirmEmail = ({
   validationCode,
 }: SlackConfirmEmailProps) => (
   <Html>
     <Head />
-    <Preview>Confirm your email address</Preview>
+    <Preview>Confirmez votre adresse e-mail</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={logoContainer}>
@@ -42,8 +42,8 @@ export const SlackConfirmEmail = ({
         <Heading style={h1}>Confirmez votre adresse e-mail</Heading>
         <Text style={heroText}>
           Votre code de confirmation se trouve ci-dessous - saisissez-le dans la
-          fenêtre ouverte de votre navigateur et nous vous aiderons à vous
-          connecter.
+          fenêtre ouverte de votre navigateur pour continuer la créatio de votre
+          compte.
         </Text>
 
         <Section style={codeBox}>

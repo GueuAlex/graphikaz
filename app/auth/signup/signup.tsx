@@ -5,6 +5,8 @@ import EmailAlertDialog from "@/reutilisables/email_alert";
 import LoadingBtn from "@/reutilisables/loading_btn";
 import { useRouter } from "next/navigation";
 import { FormEventHandler, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const router = useRouter();
@@ -315,7 +317,6 @@ const SignUp = () => {
 
 export default SignUp;
 
-import React from "react";
 import PinInput from "react-pin-input";
 
 const PincodeAlert = ({
@@ -348,15 +349,19 @@ const PincodeAlert = ({
     try {
       // Remplacez cela par le code réel de six chiffres
       // console.log(pinCode);
-      const response = await fetch("/api/api_four", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: userdata.email,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}api_four`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_KEY}`,
+          },
+          body: JSON.stringify({
+            email: userdata.email,
+          }),
+        }
+      );
 
       if (response.ok) {
         const result = await response.json(); // Récupérer le JSON ici
@@ -377,14 +382,19 @@ const PincodeAlert = ({
 
   //// push data to laravel backend
   const pushDataTopApi = async () => {
+    //console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
     try {
-      const response = await fetch("https://graphikaz.digifaz.com/api/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userdata),
-      });
+      const response = await fetch(
+        /* "https://graphikaz.digifaz.com/api/users" */ `${process.env.NEXT_PUBLIC_API_BASE_URL}users/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_KEY}`,
+          },
+          body: JSON.stringify(userdata),
+        }
+      );
 
       if (response.ok) {
         //alert("Inscription réussie !");
@@ -394,7 +404,10 @@ const PincodeAlert = ({
         /*  setErrorMsg(
           "Un compte existe déjà avec cette adresse email. Reéssayer avec une autre adresse"
         ); */
-        window.my_modal_6.showModal();
+        // window.my_modal_6.showModal()
+        toast.error(
+          "Un compte existe déjà avec cette adresse email. Reéssayer avec une autre adresse"
+        );
       }
       return response;
     } catch (error) {
@@ -404,7 +417,9 @@ const PincodeAlert = ({
   };
   return (
     <dialog id="my_modal_5" className="modal">
+      <ToastContainer />
       <EmailAlertDialog />
+
       <div className="modal-box">
         {!isLoading ? (
           <div>
@@ -420,11 +435,11 @@ const PincodeAlert = ({
                 <i className="ri-mail-line"></i>
               </div>
               <span className=" text-red-600">
-                Vérification l'adresse email
+                Vérification de l'adresse email
               </span>
             </div>
             <p className=" text-stone-700 text-center pt-2">
-              Un email de vérification vous à été envoyé a l'adresse{" "}
+              Un email vous à été envoyé a l'adresse{" "}
               <span className=" font-semibold">{userdata.email}</span> . Entrer
               le code pour vérifier
             </p>

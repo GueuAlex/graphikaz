@@ -3,17 +3,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/mini-carousel.scss";
 import { ApiCategoryProps } from "@/types";
-import { colorTab, iconTab } from "@/constants/data";
+import { colorTab } from "@/constants/data";
 
 // Composant de catégorie
 
 const MiniCategoryContainer = ({
   category,
-  iconData,
   classename,
 }: {
   category: ApiCategoryProps;
-  iconData: string;
   classename: string;
 }) => {
   return (
@@ -22,7 +20,7 @@ const MiniCategoryContainer = ({
         className={` mini-category-container flex gap-2 justify-center items-center`}
       >
         <div className={`${classename} mini-cat-icon-contaier`}>
-          <i className={iconData}></i>
+          <i className={category.icon}></i>
         </div>
         <div className="mini-cat-text-container flex gap-2">
           <p>{category.libelle}</p>
@@ -67,7 +65,6 @@ const MiniCategoryCarousel: React.FC<MiniCategoryCarouselProps> = ({
           <div className="p-2" key={index}>
             <MiniCategoryContainer
               category={item}
-              iconData={iconTab[index]}
               classename={colorTab[index]}
             />
           </div>

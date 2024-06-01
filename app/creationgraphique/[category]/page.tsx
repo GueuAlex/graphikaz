@@ -3,6 +3,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./creation_graphique_category.scss";
 import "@/styles/checkout_side_bar.scss";
+import "@/styles/uderline_style.scss";
 import { PathnameComponent } from "@/components";
 import { TServiceCard, Wrapper } from "@/reutilisables";
 import { ApiCategoryProps, apiServiceProps } from "@/types";
@@ -51,7 +52,7 @@ export default function Page({ params }: { params: Params }) {
    ************************* ALL HOOKS IN THIS PAGE************************************* */
   const [optionIsVisible, setVisibility] = useState(false);
   const [toggleSideBar, setToggleSideBar] = useState(false);
-  const [selectedOption, setOption] = useState("Sort by (Default)");
+  const [selectedOption, setOption] = useState("Trier par (Défaut)");
   const [showAll, setShowAll] = useState(false);
   const [visibleItems, setVisibleItems] = useState(
     categories.slice(0, itemsPerPage)

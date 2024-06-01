@@ -1,3 +1,4 @@
+import { categories_placeholder } from "@/constants/data";
 import { DevIt } from "@/public/categories";
 import { ApiCategoryProps, ImpressCategoryProps } from "@/types";
 import { motion } from "framer-motion";
@@ -16,6 +17,12 @@ const Category2Container: React.FC<CategoryContainerProps> = ({ category }) => {
     }
     return `${base}${category.libelle.toLowerCase()}`;
   }
+  function getImg(): string {
+    if (category.cover.trim().length <= 0) {
+      return categories_placeholder;
+    }
+    return category.cover;
+  }
   return (
     <Link href={getUrl()}>
       <div className="flex-flex-col relative">
@@ -31,11 +38,12 @@ const Category2Container: React.FC<CategoryContainerProps> = ({ category }) => {
         </motion.div>
 
         <Image
-          src={DevIt}
-          alt="marketing"
+          src={getImg()}
+          alt={category.libelle}
           width={270}
-          height={280}
-          className=" max-w-[270px] w-full max-h-[280px] h-full rounded-t-md pb-2 img"
+          height={200}
+          style={{ height: "200px" }}
+          className=" h-full rounded-t-md  img"
         />
         <div className="flex flex-col justify-start items-start gap-1 pt-2 categories-bottom rounded-b-md">
           <small>{category.type}</small>

@@ -33,7 +33,8 @@
     "reutilisables/rate.js",
     "pages/api/api_four.js",
     "services/mail_service.ts",
-    "reutilisables/mini_categories_carousel.tsx"
+    "reutilisables/mini_categories_carousel.tsx",
+    "seed.mts"
   ],
   "exclude": ["node_modules"]
 }

@@ -164,7 +164,7 @@ const NavBar: React.FC = () => {
                     <ul>
                       {categories.map((cat, index) => (
                         <li key={index} className=" flex gap-4">
-                          <i className={iconTab[index]}></i>{" "}
+                          <i className={cat.icon}></i>{" "}
                           <a href={`/creationgraphique/${cat.libelle}`}>
                             {cat.libelle}
                           </a>

@@ -1,6 +1,7 @@
 import { ApiCategoryProps, apiServiceProps, deliZoneProps } from ".";
 
 const baseUri = "https://graphikaz.digifaz.com/api/";
+//const baseUrl = "http://localhost:3000/api/";
 export const fetchAllData = async (): Promise<apiServiceProps[]> => {
   //"use server";
   try {
@@ -41,16 +42,28 @@ export const fetchAllData = async (): Promise<apiServiceProps[]> => {
 };
 
 //////////
+//
 export const getCategories = async (): Promise<ApiCategoryProps[]> => {
-  //"use server";
   try {
-    const response = await fetch(`${baseUri}categories`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}g-categories/`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
     if (!response.ok) {
-      throw new Error("Erreur lors de la récupération des données");
+      const errorDetails = await response.text();
+      console.log(
+        `Request failed with status ${response.status}: ${errorDetails}`
+      );
+      throw new Error(`Request failed with status ${response.status}`);
     }
-    //console.log("bonjour ici 1");
-    //console.log(await response.json());
-    //console.log("bonjour ici 2");
+
     const apiDataList = await response.json();
 
     // Effectuez le mappage pour chaque élément de la liste
@@ -58,17 +71,15 @@ export const getCategories = async (): Promise<ApiCategoryProps[]> => {
       id: apiData.id,
       libelle: apiData.libelle,
       type: "CREATION GRAPHIQUE",
+      cover: apiData.cover,
+      icon: apiData.icon,
     }));
-
-    //console.log(mappedDataList.at(0)?.service.libelle);
 
     return categories;
   } catch (error: any) {
-    // Spécifiez ici le type de l'erreur
     throw new Error("Une erreur s'est produite : " + error.message);
   }
 };
-
 ///
 
 //////////

@@ -1,4 +1,7 @@
 require("dotenv").config();
+import { render } from "@react-email/render";
+import { SlackConfirmEmail } from "@/emails/signup_confirm_email";
+const nodemailer = require("nodemailer");
 //import { sendRandomNumberByEmail } from "../../services/mail_service";
 const handler = async (req, res) => {
   function generateRandomNumber() {
@@ -37,7 +40,6 @@ const handler = async (req, res) => {
     });
   }
 };
-const nodemailer = require("nodemailer");
 
 // Fonction pour générer un nombre aléatoire de 6 chiffres
 /* function generateRandomNumber() {
@@ -59,17 +61,21 @@ async function sendRandomNumberByEmail(email, code) {
     },
   });
 
+  //email template to string
+  const html = render(SlackConfirmEmail({ validationCode: code }));
+
   // Définir les détails de l'e-mail
   const mailOptions = {
-    from: "axe.y.2310@gmail.com",
+    from: "GRAPHIKAZ <axe.y.2310@gmail.com>",
     to: email,
-    subject: "Test Graphikaz",
-    text: `Votre code vérification est : ${code}`,
+    subject: "Email de confirmation",
+    html: html,
   };
 
   // Essayer d'envoyer l'e-mail
   try {
     const info = await transporter.sendMail(mailOptions);
+    console.log("infooo => :", info);
     console.log("E-mail envoyé :", code);
   } catch (error) {
     console.error("Erreur lors de l'envoi de l'e-mail :", error);
