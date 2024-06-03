@@ -43,7 +43,7 @@ const MobileMoneyForm: React.FC<MobileMoneyFormProps> = ({
     CheckoutType.CASH
   );
   //const [paymentToken, setPaymentToken] = useState<string>("");
-  const [paymentUrl, setPaymentUrl] = useState<string>("");
+  //const [paymentUrl, setPaymentUrl] = useState<string>("");
   const [checkoutLoadin, setCheckoutLoadin] = useState(false);
   const { v4: uuidv4 } = require("uuid");
   //const [msg, setMsg] = useState("");
@@ -126,7 +126,8 @@ const MobileMoneyForm: React.FC<MobileMoneyFormProps> = ({
       delizeId: selecteddeliZone.id,
       email: emailAddress,
       phone: phoneNumber,
-      totalAmount: calculAmont(paymentMethod),
+      /* totalAmount: calculAmont(paymentMethod), */
+      totalAmount: 100,
       lockPhoneNumber: method === "Wave" ? false : true,
       channels: method === "Wave" ? "WALLET" : "MOBILE_MONEY",
       operator: method,

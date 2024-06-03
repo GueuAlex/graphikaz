@@ -269,8 +269,7 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
             ) : (
               <MobileMoneyForm
                 method={selectedMetohd}
-                /* montant={getPrice(contextPack.libelle)} */
-                montant={100}
+                montant={getPrice(contextPack.libelle)}
                 /* order={defaultOrder} */
                 selectedDeliveryDelay={selectedDeliveryDelay!}
                 selectedOptionnalITems={optionalItems}
