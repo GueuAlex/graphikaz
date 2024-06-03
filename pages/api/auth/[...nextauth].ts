@@ -6,6 +6,7 @@ const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+
   providers: [
     CredentialsProvider({
       credentials: {},
@@ -15,7 +16,7 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
 
-        const response = await fetch(`${process.env.API_BASE_URL}users/auth`, {
+        const response = await fetch(`${process.env.NEXTAUTH_URL}users/auth`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
