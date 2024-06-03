@@ -3,10 +3,10 @@ import "./categories.css";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import { categories, impressCategories } from "@/constants";
+import { impressCategories } from "@/constants";
 import { ApiCategoryProps } from "@/types";
 import { Hc1 } from "@/public";
-import CategoryContainer from "./category_container";
+
 import Category2Container from "./categories2_container";
 
 const Categories2 = ({

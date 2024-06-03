@@ -90,6 +90,7 @@ export interface ApiCategoryProps {
   type: "CREATION GRAPHIQUE";
   cover: string;
   icon: string;
+  service_count: number;
 }
 
 export interface ImageProps {
@@ -298,14 +299,14 @@ export enum OrderStatus {
 export interface GraphicServProps {
   id: number;
   libelle: string;
-  category_id: number;
-  full_description: string;
+  categoryId: number;
+  fullDescription: string;
   covers: string[];
   items: GraphicServItemProps[];
-  optional_items: GraphicServOptionalItemProps[];
+  optionalItems: GraphicServOptionalItemProps[];
   packs: GraphicServPack[];
   faq: FaqProps[];
-  created_at: Date;
+  createdAt: Date;
 }
 
 export interface GraphicServItemValueProps {
@@ -327,21 +328,21 @@ export interface GraphicServItemProps extends GraphicServOptionalItemProps {
 export interface GraphicServPack {
   id: number;
   libelle: GraphicServPackType;
-  sub_title: string;
+  subTitle: string;
   description: string;
-  normal_execution_deadline: ExecutionDeadlineProps;
-  express_execution_deadline: ExecutionDeadlineProps[];
+  expressExecutionDeadlines: ExecutionDeadlineProps[];
+  normalExecutionDeadline: ExecutionDeadlineProps;
 }
 
 export interface ExecutionDeadlineProps {
   id: number;
-  number_of_day: number;
+  numberOfDay: number;
   price: number;
   type: GraphicServPackType;
 }
 export interface ExpressExecutionDeadlineProps {
   id: number;
-  number_of_day: number;
+  numberOfDay: number;
   price: number;
   type: GraphicServPackType;
 }
@@ -395,13 +396,13 @@ export interface PriceFunctions {
 
 // service du context
 export interface ContextServiceProps {
-  test_service: GraphicServProps;
+  test_service: GraphicServProps | undefined;
 }
 
 // context seletected pack
 export interface ContextSeletecdPackProps {
-  contextPack: GraphicServPack;
-  setContextPack: React.Dispatch<React.SetStateAction<GraphicServPack>>;
+  contextPack: GraphicServPack | null;
+  setContextPack: React.Dispatch<React.SetStateAction<GraphicServPack | null>>;
 }
 
 export interface ItemSelectedOnProps {
@@ -412,7 +413,7 @@ export interface ItemSelectedOnProps {
 // temps de livraison selectionné
 export interface ContextSelection {
   seletedOptionalItems: ItemSelectedOnProps | undefined;
-  selectedDeliveryDelay: ExecutionDeadlineProps;
+  selectedDeliveryDelay: ExecutionDeadlineProps | null;
 }
 
 // fonction de mise a jour des context selections
@@ -421,6 +422,6 @@ export interface ContextSelectionSetters {
     React.SetStateAction<ItemSelectedOnProps | undefined>
   >;
   setSelectedDeliveryDelay: React.Dispatch<
-    React.SetStateAction<ExecutionDeadlineProps>
+    React.SetStateAction<ExecutionDeadlineProps | null>
   >;
 }

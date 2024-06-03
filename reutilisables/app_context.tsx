@@ -1,7 +1,11 @@
 "use client";
 
-import { ApiCategoryProps, apiServiceProps, deliZoneProps } from "@/types";
-import { fetchAllData, getCategories, getDeliZone } from "@/types/api_services";
+import { ApiCategoryProps, deliZoneProps, GraphicServProps } from "@/types";
+import {
+  fetchServices,
+  getCategories,
+  getDeliZone,
+} from "@/types/api_services";
 import React, { useState, createContext, ReactNode, useEffect } from "react";
 
 // Mettre à jour le type du contexte
@@ -10,7 +14,7 @@ interface AppContextType {
   state: boolean;
   toggleState: () => void;
   categories: ApiCategoryProps[]; // Liste des catégories
-  servicesList: apiServiceProps[];
+  servicesList: GraphicServProps[];
   deliveryZones: deliZoneProps[];
   isLoading: boolean; // Indicateur de chargement
 }
@@ -27,7 +31,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
 }) => {
   const [state, setState] = useState(false);
   const [categories, setCategories] = useState<ApiCategoryProps[]>([]);
-  const [servicesList, setServicesList] = useState<apiServiceProps[]>([]);
+  const [servicesList, setServicesList] = useState<GraphicServProps[]>([]);
   const [deliveryZones, setDeliveryZones] = useState<deliZoneProps[]>([]);
   const [isLoading, setIsLoading] = useState(true); // Indicateur de chargement
 
@@ -41,8 +45,9 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
         await getCategories().then((fetchedCategories) =>
           setCategories(fetchedCategories)
         );
-        await fetchAllData().then((services) => setServicesList(services));
+        await fetchServices().then((services) => setServicesList(services));
         await getDeliZone().then((zones) => setDeliveryZones(zones));
+        setIsLoading(false); // Mise à jour de l'état de chargement
       } catch (error) {
         console.error(
           "Erreur lors du chargement des catégories app context",
@@ -54,7 +59,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
     };
 
     fetchData(); // Charger les catégories lors du montage
-  }, []);
+  }, [servicesList.length, categories.length]);
 
   return (
     <MyAppContext.Provider

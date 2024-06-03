@@ -17,6 +17,14 @@ const Category2Container: React.FC<CategoryContainerProps> = ({ category }) => {
     }
     return `${base}${category.libelle.toLowerCase()}`;
   }
+  /*  function serviceCount(): string {
+    //let base = "/creationgraphique/";
+    if (category.type === "CREATION GRAPHIQUE") {
+      return category.service_count.toString();
+    }
+    return `5`;
+  } */
+
   function getImg(): string {
     if (category.cover.trim().length <= 0) {
       return categories_placeholder;
@@ -34,7 +42,7 @@ const Category2Container: React.FC<CategoryContainerProps> = ({ category }) => {
         >
           <small>{category.type}</small>
           <h1>{category.libelle}</h1>
-          <small className="last-child">{"Services " + 5}</small>
+          <small className="last-child">{"Service(s) " + 5}</small>
         </motion.div>
 
         <Image

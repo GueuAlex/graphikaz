@@ -1,77 +1,33 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./categories.scss";
 import "@/styles/checkout_side_bar.scss";
 import { PathnameComponent } from "@/components";
 import { TServiceCard, Wrapper } from "@/reutilisables";
 import { bcardTab, FlyersTab, impressCategories } from "@/constants";
 import { ApiCategoryProps, apiServiceProps } from "@/types";
-import { fetchAllData, getCategories } from "@/types/api_services";
+import { getCategories } from "@/types/api_services";
 import { AnimatePresence, motion } from "framer-motion";
 import Loader from "@/reutilisables/laoder";
 
 import CategoryCarousel from "@/reutilisables/categories_carousel";
 import { ImpressServiceContainer } from "@/reutilisables/impress_service_container";
+import { MyAppContext } from "@/reutilisables/app_context";
 
 function Categories() {
   //////// get all categories
 
-  async function getCategoriesList() {
-    try {
-      const data = await getCategories();
-      return data;
-      //console.log(data.at(0)?.libelle);
-      // Faites quelque chose avec les données ici
-    } catch (error) {
-      console.error("Une erreur s'est produite :", error);
-    }
+  //s'assurer que le context est bien utilisables
+  const context = useContext(MyAppContext);
+  if (!context) {
+    throw new Error("ComponentY must be used within a MyProvider");
+  } else {
+    console.log("context ok in navbar component");
   }
-  //////// fetching api //////////////////////////////////////////////
+  // get context data
+  const { categories, servicesList, isLoading } = context;
 
-  async function fetchAndUseData() {
-    try {
-      const data = await fetchAllData();
-      return data;
-      //console.log(data.at(0)?.libelle);
-      // Faites quelque chose avec les données ici
-    } catch (error) {
-      console.error("Une erreur s'est produite :", error);
-    }
-  }
-  const [isLaoding, setIsloadin] = useState(true);
-  const [services, setData] = useState<apiServiceProps[]>([]);
-  const [categoriesList, setcategoriesList] = useState<ApiCategoryProps[]>([]);
-  const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
-  useEffect(() => {
-    fetchAndUseData()
-      .then((data) => {
-        const servicesList: apiServiceProps[] = data!;
-        setData(servicesList);
-        // Maintenant, vous pouvez utiliser les données ici
-        console.log(servicesList);
-        setIsloadin(false);
-      })
-      .catch((error) => {
-        // Gérez les erreurs ici
-        console.error("Une erreur s'est produite :", error);
-        setIsloadin(false);
-      });
-
-    getCategoriesList()
-      .then((data) => {
-        const categories: ApiCategoryProps[] = data!;
-        setcategoriesList(categories);
-        // Maintenant, vous pouvez utiliser les données ici
-        console.log(categories);
-        setcategoriesIsloadin(false);
-      })
-      .catch((error) => {
-        // Gérez les erreurs ici
-        console.error("Une erreur s'est produite :", error);
-        setcategoriesIsloadin(false);
-      });
-  }, []);
   //////////////////////////////////////////////////////////////////////
 
   //const [argCategory, setArgCategory] = useState<ApiCategoryProps>();
@@ -90,10 +46,10 @@ function Categories() {
 
   //const displayedServices = services;
 
-  const serviceTotalItems = services.length;
+  const serviceTotalItems = servicesList.length;
   const totalPages = Math.ceil(serviceTotalItems / servicePerPage);
 
-  const visibleServices = services.slice(
+  const visibleServices = servicesList.slice(
     (currentPage - 1) * servicePerPage,
     currentPage * servicePerPage
   );
@@ -103,7 +59,7 @@ function Categories() {
   // État pour gérer l'affichage complet ou partiel de la liste des categories
   const [showMore, setShowMore] = useState(false);
 
-  if (isLaoding || categoriesIsLaoding) {
+  if (isLoading) {
     return (
       <AnimatePresence>
         {" "}
@@ -122,7 +78,7 @@ function Categories() {
   /////////////////////////////////////////////////////////////:
   ////// GETIONS D'AFFICHAGE DES DE LA LISTE DE CATEGORIE///////
   const initialVisibleCatCount = 8;
-  const test = Array(100).fill(categoriesList).flat();
+  const test = Array(100).fill(categories).flat();
 
   // Longueur totale de la liste des catégories
   const totalCategories = test.length;
@@ -159,7 +115,7 @@ function Categories() {
               </small>
             </div>
             <CategoryCarousel
-              combinedCategories={[...impressCategories, ...categoriesList]}
+              combinedCategories={[...impressCategories, ...categories]}
             />
           </div>
         </Wrapper>
@@ -176,8 +132,8 @@ function Categories() {
 
         <div className="cat-service-cards">
           {visibleServices.map((service, index) => {
-            const category: ApiCategoryProps = categoriesList.find(
-              (c) => c.id === service.category_id
+            const category: ApiCategoryProps = categories.find(
+              (c) => c.id === service.categoryId
             )!;
             return (
               <TServiceCard service={service} category={category} key={index} />

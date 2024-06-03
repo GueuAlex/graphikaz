@@ -65,16 +65,16 @@ export const PricingCardContent: React.FC<PricingCardContentProps> = ({
         <a href="#">Souscrivez pour faire des économies !</a>
       </p>
       <p className="package-details">
-        <strong>{selectePack.sub_title.toLowerCase()} : </strong>
+        <strong>{selectePack.subTitle.toLowerCase()} : </strong>
         {selectePack.description}
       </p>
       <div className="delivery-info">
         <span>
           <i className="bi bi-alarm"></i> Livraison en{" "}
-          {selectePack.normal_execution_deadline.type ===
-          selectedDeliveryDelay.type
-            ? selectedDeliveryDelay.number_of_day
-            : selectePack.normal_execution_deadline.number_of_day}{" "}
+          {selectePack.normalExecutionDeadline.type ===
+          selectedDeliveryDelay!.type
+            ? selectedDeliveryDelay!.numberOfDay
+            : selectePack.normalExecutionDeadline.numberOfDay}{" "}
           jour(s)
         </span>
         <span>{/* 2 révisions */}</span>
@@ -102,7 +102,7 @@ export const PricingCardContent: React.FC<PricingCardContentProps> = ({
             <div className="pack-items">
               <ul>
                 {" "}
-                {test_service.items.map((item, index) => (
+                {test_service!.items.map((item, index) => (
                   <li
                     key={index}
                     className={`${getClasseName(

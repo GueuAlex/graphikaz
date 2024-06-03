@@ -1,12 +1,29 @@
-import { ApiCategoryProps, apiServiceProps, deliZoneProps } from ".";
+import { GraphicServ, GraphicServCategory } from "@prisma/client";
+import {
+  ApiCategoryProps,
+  apiServiceProps,
+  deliZoneProps,
+  GraphicServProps,
+} from ".";
 
 const baseUri = "https://graphikaz.digifaz.com/api/";
 //const baseUrl = "http://localhost:3000/api/";
-export const fetchAllData = async (): Promise<apiServiceProps[]> => {
+const getHeaders = {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_KEY}`,
+    "Content-Type": "application/json",
+  },
+};
+export const fetchServices = async (): Promise<GraphicServProps[]> => {
   //"use server";
   try {
-    const response = await fetch(`${baseUri}services`);
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}g-services`,
+      getHeaders
+    );
     if (!response.ok) {
+      //console.log(response.);
       throw new Error("Erreur lors de la récupération des données");
     }
     //console.log("bonjour ici 1");
@@ -15,26 +32,21 @@ export const fetchAllData = async (): Promise<apiServiceProps[]> => {
     const apiDataList = await response.json();
 
     // Effectuez le mappage pour chaque élément de la liste
-    const mappedDataList: apiServiceProps[] = apiDataList.map(
+    /* const mappedDataList: GraphicServProps[] = apiDataList.map(
       (apiData: any) => ({
+        
         id: apiData.id,
-        libelle: apiData.libelle,
-        description: apiData.description,
-        category_id: apiData.category_id,
-        /* delais_livrai: apiData.delais_livraison, */
-        /* service_id: apiData.service_id, */
-        /* type_paiement_id: apiData.type_paiement_id, */
-        /* pourcentage_remuneration: apiData.pourcentage_remuneration, */
-        create_at: apiData.create_at,
-        image_services: apiData.image_services,
-        pack_services: apiData.pack_services,
-        /* ligne_services: apiData.ligne_services, */
+        covers: apiData.covers,
+        category_id: apiData.categoryId,
+        created_at: apiData.createdAt,
+        full_description: apiData.fullDescription,
+        optional_items: apiData.optionalItems,
       })
-    );
+    ); */
 
     //console.log(mappedDataList.at(0)?.service.libelle);
 
-    return mappedDataList;
+    return apiDataList;
   } catch (error: any) {
     // Spécifiez ici le type de l'erreur
     throw new Error("Une erreur s'est produite : " + error.message);
@@ -47,13 +59,7 @@ export const getCategories = async (): Promise<ApiCategoryProps[]> => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}g-categories/`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_KEY}`,
-          "Content-Type": "application/json",
-        },
-      }
+      getHeaders
     );
 
     if (!response.ok) {

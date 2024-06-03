@@ -1,7 +1,6 @@
 import { categories_placeholder } from "@/constants/data";
 import { LocalContext } from "@/reutilisables/local_context";
 import {
-  ContextServiceProps,
   GraphicServItemProps,
   GraphicServOptionalItemProps,
   GraphicServPackType,

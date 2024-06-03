@@ -1,12 +1,7 @@
 import React, { useContext, useState } from "react";
 import "@/styles/price_card_style.scss";
 import { LocalContext } from "./local_context";
-import {
-  ContextSeletecdPackProps,
-  ContextServiceProps,
-  GraphicServPack,
-  PriceData,
-} from "@/types";
+import { ContextSeletecdPackProps, ContextServiceProps } from "@/types";
 import { PricingCardContent } from "./pricing_card_content";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -18,6 +13,8 @@ const PricingCard: React.FC<PricingCardProps> = ({ updateToggle }) => {
   const { test_service, contextPack, setContextPack } = useContext(
     LocalContext
   ) as ContextServiceProps & ContextSeletecdPackProps;
+
+  console.log("context pack ======>" + contextPack);
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,11 +30,11 @@ const PricingCard: React.FC<PricingCardProps> = ({ updateToggle }) => {
   return (
     <div className="pricing-card">
       <div className="tabs">
-        {test_service.packs.map((pack, index) => {
+        {test_service!.packs.map((pack, index) => {
           return (
             <button
               className={`tab ${
-                pack.libelle === contextPack.libelle && "active"
+                pack.libelle === contextPack!.libelle && "active"
               }`}
               key={index}
               onClick={() => setContextPack(pack)}
@@ -50,13 +47,13 @@ const PricingCard: React.FC<PricingCardProps> = ({ updateToggle }) => {
       <div className="card-body-container">
         <AnimatePresence mode="wait">
           <motion.div
-            key={contextPack.libelle} // Key to ensure correct animation on change
+            key={contextPack!.libelle} // Key to ensure correct animation on change
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            <PricingCardContent selectePack={contextPack} />
+            <PricingCardContent selectePack={contextPack!} />
           </motion.div>
         </AnimatePresence>
         <div className="button-enchor">

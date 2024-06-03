@@ -1104,19 +1104,19 @@ export const colorTab = [
 export const executable_deadline: ExecutionDeadlineProps[] = [
   {
     id: 1,
-    number_of_day: 1,
+    numberOfDay: 1,
     price: 5000,
     type: GraphicServPackType.BASIQUE,
   },
   {
     id: 2,
-    number_of_day: 2,
+    numberOfDay: 2,
     price: 2500,
     type: GraphicServPackType.BASIQUE,
   },
   {
     id: 3,
-    number_of_day: 3,
+    numberOfDay: 3,
     price: 0,
     type: GraphicServPackType.BASIQUE,
   },
@@ -1126,34 +1126,34 @@ export const graphic_serv_packs: GraphicServPack[] = [
   {
     id: 1,
     libelle: GraphicServPackType.BASIQUE,
-    sub_title: "PAQUET DE BASE",
+    subTitle: "PAQUET DE BASE",
     description:
       "Conceptions de logo minimales (logo de type texte avec conception minimale) au format de fichier jpeg et png",
-    normal_execution_deadline: executable_deadline[2],
-    express_execution_deadline: executable_deadline.slice(0, 2),
+    normalExecutionDeadline: executable_deadline[2],
+    expressExecutionDeadlines: executable_deadline.slice(0, 2),
   },
   {
     id: 2,
-    sub_title: "FORFAIT STANDARD",
+    subTitle: "FORFAIT STANDARD",
     description:
       "Conception de mascotte illustrative avec fichier source (AUCUN caractère) ai, png, jpeg, svg",
     libelle: GraphicServPackType.STANDARD,
-    normal_execution_deadline: {
+    normalExecutionDeadline: {
       id: 232,
-      number_of_day: 4,
+      numberOfDay: 4,
       price: 0,
       type: GraphicServPackType.STANDARD,
     },
-    express_execution_deadline: [
+    expressExecutionDeadlines: [
       {
         id: 3232,
-        number_of_day: 1,
+        numberOfDay: 1,
         price: 10000,
         type: GraphicServPackType.STANDARD,
       },
       {
         id: 232,
-        number_of_day: 2,
+        numberOfDay: 2,
         price: 7000,
         type: GraphicServPackType.STANDARD,
       },
@@ -1161,26 +1161,26 @@ export const graphic_serv_packs: GraphicServPack[] = [
   },
   {
     id: 3,
-    sub_title: "FORFAIT CRÉATIF",
+    subTitle: "FORFAIT CRÉATIF",
     description:
       "1 Caricature de personnage ou dessin animé (haute résolution, droits d'auteur complets ai, png, jpeg, svg)",
     libelle: GraphicServPackType.PREMIUM,
-    normal_execution_deadline: {
+    normalExecutionDeadline: {
       id: 23342,
-      number_of_day: 6,
+      numberOfDay: 6,
       price: 0,
       type: GraphicServPackType.PREMIUM,
     },
-    express_execution_deadline: [
+    expressExecutionDeadlines: [
       {
         id: 232342,
-        number_of_day: 2,
+        numberOfDay: 2,
         price: 20000,
         type: GraphicServPackType.PREMIUM,
       },
       {
         id: 232342,
-        number_of_day: 3,
+        numberOfDay: 3,
         price: 15000,
         type: GraphicServPackType.PREMIUM,
       },
@@ -1338,7 +1338,7 @@ export const graphic_serv_test: GraphicServProps[] = [
   {
     id: 1,
     libelle: "Je concevrai votre logo créatif en 24 heures",
-    category_id: 1,
+    categoryId: 1,
     covers: [
       "https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20230405/PORTFOLIO%204_mbsv7v.jpg",
       "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/110928855/original/c3fc46f6ac4d0287a2511cf5b06144aaa499326d/do-minimalist-logo-design.jpg",
@@ -1346,11 +1346,11 @@ export const graphic_serv_test: GraphicServProps[] = [
       "https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs3/110928855/original/8b65c55172f99d57b28fe8030a9d6695f2f21a6f/do-minimalist-logo-design.jpg",
       "https://fiverr-res.cloudinary.com/image/upload/t_gig_pdf_gallery_view_ver4,f_jpg/20230405/PORTFOLIO%206_qvi1ab.jpg",
     ],
-    created_at: new Date(),
+    createdAt: new Date(),
     items: graphic_serv_items,
-    optional_items: graphic_serv_optional_items,
+    optionalItems: graphic_serv_optional_items,
     packs: graphic_serv_packs,
-    full_description: `<div>✨🔥</div><p>Bonjour🙌🏼 🙌🏼, je m'appelle Vivek, un graphiste chevronn&eacute; avec plus de<span style="background: #ffecd1; text-decoration: underline;">&nbsp;</span><strong><span style="background: #ffecd1;">13 ans d'exp&eacute;rience.</span></strong>&nbsp;Avec une passion pour la cr&eacute;ativit&eacute; et un sens aigu du design, j'ai cr&eacute;&eacute; des visuels captivants qui laissent une impression durable.</p>
+    fullDescription: `<div>✨🔥</div><p>Bonjour🙌🏼 🙌🏼, je m'appelle Vivek, un graphiste chevronn&eacute; avec plus de<span style="background: #ffecd1; text-decoration: underline;">&nbsp;</span><strong><span style="background: #ffecd1;">13 ans d'exp&eacute;rience.</span></strong>&nbsp;Avec une passion pour la cr&eacute;ativit&eacute; et un sens aigu du design, j'ai cr&eacute;&eacute; des visuels captivants qui laissent une impression durable.</p>
     <p>&nbsp;</p>
     <p>"Collaborons pour &eacute;lever votre marque et faire briller votre id&eacute;e"</p>
     <p>&nbsp;</p>

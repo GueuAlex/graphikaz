@@ -36,6 +36,11 @@ import PricingCard from "@/reutilisables/price_card";
 import { Faq } from "@/reutilisables/faq";
 import { RattingReviwComponent } from "@/reutilisables/ratting_review_component";
 import SimilarService from "@/reutilisables/similar_service";
+import { TextSeparated } from "@/reutilisables/text_separaded";
+import Image from "next/image";
+import { EmptySearchResult } from "@/public";
+import { AnimatePresence, motion } from "framer-motion";
+import Loader from "@/reutilisables/laoder";
 
 export default function Page({ params }: { params: Params }) {
   //s'assurer que le context est bien utilisables
@@ -58,12 +63,18 @@ export default function Page({ params }: { params: Params }) {
   const title = decodeURIComponent(slug);
 
   // use context serviceList to find service that matche with the title
-  const service: apiServiceProps | undefined = servicesList.find(
+  const test_service: GraphicServProps | undefined = servicesList.find(
     (serv) => serv.libelle === title
   );
+  /* if (isLoading) {
+    return <div className="loading">chargement ...</div>;
+  }
+  if (!test_service) {
+    return <div>zero ...</div>;
+  } */
 
   // nouveu données des services (sera utilisé a la place de service)
-  const test_service: GraphicServProps = graphic_serv_test[0];
+  //const test_service: GraphicServProps = graphic_serv_test[0];
 
   /* ************************************************************************************
    ************************* ALL HOOKS IN THIS PAGE************************************* */
@@ -91,14 +102,10 @@ export default function Page({ params }: { params: Params }) {
   const [seletedOptionalItems, setSeletedOptionalItems] = useState<
     ItemSelectedOnProps | undefined
   >(undefined);
+  // Initialize state based on test_service
   const [selectedDeliveryDelay, setSelectedDeliveryDelay] =
-    useState<ExecutionDeadlineProps>(
-      test_service.packs[0].normal_execution_deadline
-    );
-
-  const [contextPack, setContextPack] = useState<GraphicServPack>(
-    test_service.packs[0]
-  );
+    useState<ExecutionDeadlineProps | null>(null);
+  const [contextPack, setContextPack] = useState<GraphicServPack | null>(null);
 
   /* ************************************************************************************
    ************************************************************************************** */
@@ -131,31 +138,35 @@ export default function Page({ params }: { params: Params }) {
   };
 
   /* display sticky config */
-  useEffect(() => {}); // Plus besoin de dépendance
+  // useEffect(() => {}); // Plus besoin de dépendance
 
   /* use to set display sticky height */
   const style = height ? { height: `${height}px` } : {};
   console.log(height);
 
   useEffect(() => {
-    // Fonction pour calculer le total des prix d'un type donné
-    const calculateTotalPrice = (type: GraphicServPackType): number => {
-      return test_service.items
-        .filter((item) => item.type === type)
-        .reduce((total, currentItem) => total + currentItem.price, 0);
-    };
+    if (test_service) {
+      setSelectedDeliveryDelay(test_service.packs[0].normalExecutionDeadline);
+      setContextPack(test_service.packs[0]);
+      // Fonction pour calculer le total des prix d'un type donné
+      const calculateTotalPrice = (type: GraphicServPackType): number => {
+        return test_service.items
+          .filter((item) => item.type === type)
+          .reduce((total, currentItem) => total + currentItem.price, 0);
+      };
 
-    // Mettre à jour les états des totaux des prix
-    setBasicTotalPrice(calculateTotalPrice(GraphicServPackType.BASIQUE));
-    setStandardTotalPrice(
-      calculateTotalPrice(GraphicServPackType.BASIQUE) +
-        calculateTotalPrice(GraphicServPackType.STANDARD)
-    );
-    setPremiumTotalPrice(
-      calculateTotalPrice(GraphicServPackType.BASIQUE) +
-        calculateTotalPrice(GraphicServPackType.STANDARD) +
-        calculateTotalPrice(GraphicServPackType.PREMIUM)
-    );
+      // Mettre à jour les états des totaux des prix
+      setBasicTotalPrice(calculateTotalPrice(GraphicServPackType.BASIQUE));
+      setStandardTotalPrice(
+        calculateTotalPrice(GraphicServPackType.BASIQUE) +
+          calculateTotalPrice(GraphicServPackType.STANDARD)
+      );
+      setPremiumTotalPrice(
+        calculateTotalPrice(GraphicServPackType.BASIQUE) +
+          calculateTotalPrice(GraphicServPackType.STANDARD) +
+          calculateTotalPrice(GraphicServPackType.PREMIUM)
+      );
+    }
 
     const measureHeight = () => {
       if (elementRef.current) {
@@ -174,16 +185,51 @@ export default function Page({ params }: { params: Params }) {
     return () => {
       window.removeEventListener("resize", measureHeight);
     };
-  }, []);
+  }, [slug, title, test_service]);
   ///////////////////////////////////////////////////////////////////////////
-  console.log("is loading ..." + isLoading);
+
   if (isLoading) {
-    return <div className="loading">chargement ...</div>;
+    return (
+      <AnimatePresence>
+        {" "}
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0.5 }}
+        >
+          <Loader />
+        </motion.div>
+      </AnimatePresence>
+    );
   }
 
-  /*  if (service && service.pack_services.length <= 0) {
-    return <OnEditing />;
-  } */
+  //console.log(service);
+  if (!test_service) {
+    return (
+      <Wrapper>
+        <div className="empty-service-container flex justify-center items-center flex-col gap-3 my-11 h-[90vh]">
+          <h2>Opps !</h2>
+          <Image
+            src={EmptySearchResult}
+            alt="empty-box"
+            width={203}
+            height={175}
+          />
+          <p>
+            Aucun résultat trouvé pour{" "}
+            <span className="underlined underline-mask font-semibold">
+              {title}.
+            </span>{" "}
+            Revenez plutard
+          </p>
+          <TextSeparated text="ou" />
+          <a href="/categories" className="redirect-link">
+            Explorez nos services par categorie
+          </a>
+        </div>
+      </Wrapper>
+    );
+  }
 
   if (/* service && service.pack_services.length > 0 */ test_service) {
     //
@@ -324,8 +370,8 @@ export default function Page({ params }: { params: Params }) {
                       color={colorTab[7]}
                       label="Delais de livraison"
                       details={
-                        test_service.packs[0].normal_execution_deadline
-                          .number_of_day + " jours"
+                        test_service.packs[0].normalExecutionDeadline
+                          .numberOfDay + " jours"
                       }
                       icon_class="bi bi-calendar-range-fill"
                     />
@@ -349,7 +395,7 @@ export default function Page({ params }: { params: Params }) {
                   {/* service description buidl with a text editor */}
                   <div className="descriptions">
                     <ServiceDescription
-                      description={test_service.full_description}
+                      description={test_service.fullDescription}
                     />
                   </div>
                   {/* offers comparaison table */}

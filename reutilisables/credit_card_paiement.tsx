@@ -114,7 +114,7 @@ const CreditCardForm = ({
             />
             <div className="img-list flex">
               {miniatureTab.map((miniature, index) => (
-                <div className="h-[100%]">
+                <div className="h-[100%]" key={index}>
                   <Image src={miniature} alt="" className="img" />
                 </div>
               ))}

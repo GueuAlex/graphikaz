@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import "./trending_services.css";
 import { TServiceCard } from "@/reutilisables";
-import { ApiCategoryProps, apiServiceProps } from "@/types";
+import { ApiCategoryProps, apiServiceProps, GraphicServProps } from "@/types";
 
 const TrendingService = ({
   serviceList,
   categories,
 }: {
-  serviceList: apiServiceProps[];
+  serviceList: GraphicServProps[];
   categories: ApiCategoryProps[];
 }) => {
   /*  const multipliedServiceList = serviceList.flatMap((service) =>
@@ -36,7 +36,7 @@ const TrendingService = ({
           <div className="carousel carousel-center  p-4 space-x-4">
             {serviceList.map((service, index) => {
               const category: ApiCategoryProps = categories.find(
-                (c) => c.id === service.category_id
+                (c) => c.id === service.categoryId
               )!;
               return (
                 <div className="carousel-item" key={service.id}>

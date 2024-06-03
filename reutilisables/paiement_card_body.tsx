@@ -42,7 +42,7 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
 
   let optionalItems: GraphicServOptionalItemProps[] = [];
   if (seletedOptionalItems) {
-    if (contextPack.libelle === seletedOptionalItems.selectedOn) {
+    if (contextPack!.libelle === seletedOptionalItems.selectedOn) {
       optionalItems = seletedOptionalItems.optionalItems;
     }
   }
@@ -85,7 +85,7 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
   const defaultOrder: DefaultOrderProps = {
     numero_commande: undefined,
     reference_paiement: undefined,
-    service_id: test_service.id,
+    service_id: test_service!.id,
     pack_service_id: contextPack.id,
     status_paiement: "EN ATTENTE",
     status: "EN ATTENTE",
@@ -121,21 +121,20 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
             <div className="pack-description  flex flex-col">
               <p className="label">{contextPack.libelle}</p>
               <p className="description">
-                <b>{contextPack.sub_title.toLowerCase()} :</b>{" "}
+                <b>{contextPack.subTitle.toLowerCase()} :</b>{" "}
                 <small>{contextPack.description}</small>
               </p>
 
               <div className="delivery-infos py-5 font-bold text-slate-500">
                 <i className="bi bi-alarm"></i>{" "}
-                {selectedDeliveryDelay.type === contextPack.libelle ? (
+                {selectedDeliveryDelay!.type === contextPack.libelle ? (
                   <span>
-                    Livraison en {selectedDeliveryDelay.number_of_day} jour(s)
+                    Livraison en {selectedDeliveryDelay!.numberOfDay} jour(s)
                   </span>
                 ) : (
                   <span>
                     Livraison en{" "}
-                    {contextPack.normal_execution_deadline.number_of_day}{" "}
-                    jour(s)
+                    {contextPack.normalExecutionDeadline.numberOfDay} jour(s)
                   </span>
                 )}
               </div>
@@ -145,7 +144,7 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
               Je vais créer un logo qui traduit fidèlement votre activité
             </p> */}
             <div className="img-container flex gap-1">
-              {test_service.covers.map((img, index) => (
+              {test_service!.covers.map((img, index) => (
                 <img
                   key={index}
                   src={img}
@@ -161,7 +160,7 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
               <p className="py-3 text-stone-500">Votre commande</p>
               {/* use map */}
               <ul>
-                {test_service.items.map((item, index) => (
+                {test_service!.items.map((item, index) => (
                   <li
                     key={index}
                     className="flex gap-2 justify-start items-center py-2"
@@ -272,10 +271,10 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
                 method={selectedMetohd}
                 montant={getPrice(contextPack.libelle)}
                 /* order={defaultOrder} */
-                selectedDeliveryDelay={selectedDeliveryDelay}
+                selectedDeliveryDelay={selectedDeliveryDelay!}
                 selectedOptionnalITems={optionalItems}
                 selectedPackType={contextPack.libelle}
-                services={[test_service]}
+                services={[test_service!]}
               />
             )}
           </div>

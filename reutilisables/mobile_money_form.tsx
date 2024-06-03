@@ -119,7 +119,7 @@ const MobileMoneyForm: React.FC<MobileMoneyFormProps> = ({
     // preparer les données neccessaire a la creation d'une commande
     const postData = {
       packType: selectedPackType,
-      deliveryDelay: selectedDeliveryDelay.number_of_day,
+      deliveryDelay: selectedDeliveryDelay.numberOfDay,
       userId: session.data?.user.id,
       optionalItems: selectedOptionnalITems,
       services: services,

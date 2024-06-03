@@ -65,7 +65,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
                   </div>
                   <b className="type">{pack.libelle.toLowerCase()}</b>
 
-                  <b className="title">{pack.sub_title}</b>
+                  <b className="title">{pack.subTitle}</b>
                 </th>
               ))}
             </tr>
@@ -80,7 +80,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
             })}
 
             {/* offres optionel */}
-            {service.optional_items.length > 0 && (
+            {service.optionalItems.length > 0 && (
               <tr className="customisation-label">
                 <th colSpan={4} className="customisation-title">
                   <div>
@@ -96,7 +96,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
                 </th>
               </tr>
             )}
-            {service.optional_items.map((option, index) => (
+            {service.optionalItems.map((option, index) => (
               <OptionalOfferTr option={option} key={index} />
             ))}
 
@@ -124,7 +124,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
                 <div className="flex flex-col gap-2">
                   <RadioComponent
                     name="basic"
-                    delay={service.packs[0].normal_execution_deadline}
+                    delay={service.packs[0].normalExecutionDeadline}
                     /* isChecked={checkedState.basic} */
                     /* updatePrice={setBasicTotalPrice} */
                     /*  updateChecked={() =>
@@ -135,7 +135,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
                     } */
                     currentPrice={basicTotalPrice}
                   />
-                  {service.packs[0].express_execution_deadline.map(
+                  {service.packs[0].expressExecutionDeadlines.map(
                     (delay, index) => (
                       <RadioComponent
                         key={index}
@@ -158,7 +158,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
                 <div className="flex flex-col gap-2">
                   <RadioComponent
                     name="standard"
-                    delay={service.packs[1].normal_execution_deadline}
+                    delay={service.packs[1].normalExecutionDeadline}
                     /* isChecked={checkedState.standard} */
                     currentPrice={standardTotalPrice}
                     /* updateChecked={() =>
@@ -168,7 +168,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
                       })
                     } */
                   />
-                  {service.packs[1].express_execution_deadline.map(
+                  {service.packs[1].expressExecutionDeadlines.map(
                     (delay, index) => (
                       <RadioComponent
                         key={index}
@@ -191,7 +191,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
                 <div className="flex flex-col gap-2">
                   <RadioComponent
                     name="premium"
-                    delay={service.packs[2].normal_execution_deadline}
+                    delay={service.packs[2].normalExecutionDeadline}
                     /* isChecked={checkedState.premium} */
                     currentPrice={premiumTotalPrice}
                     /*  updateChecked={() =>
@@ -201,7 +201,7 @@ export const OffersTable: React.FC<OffersTableProps> = ({ service }) => {
                       })
                     } */
                   />
-                  {service.packs[2].express_execution_deadline.map(
+                  {service.packs[2].expressExecutionDeadlines.map(
                     (delay, index) => (
                       <RadioComponent
                         key={index}
@@ -283,16 +283,16 @@ const RadioComponent: React.FC<RadioComponentProps> = ({
 
     //get initial prices
     const initialBPrice = calculateItemsTotalPrice(
-      test_service,
+      test_service!,
       GraphicServPackType.BASIQUE
     );
     const initialSPrice =
       initialBPrice +
-      calculateItemsTotalPrice(test_service, GraphicServPackType.STANDARD);
+      calculateItemsTotalPrice(test_service!, GraphicServPackType.STANDARD);
 
     const initialPPrice =
       initialSPrice +
-      calculateItemsTotalPrice(test_service, GraphicServPackType.PREMIUM);
+      calculateItemsTotalPrice(test_service!, GraphicServPackType.PREMIUM);
     console.log("initialBPrice ..." + initialBPrice);
     console.log("initialSPrice ..." + initialSPrice);
     console.log("initialPPrice ..." + initialPPrice);
@@ -322,7 +322,7 @@ const RadioComponent: React.FC<RadioComponentProps> = ({
       />
       <span className=" text-start">
         <span>
-          {delay.number_of_day} {delay.number_of_day > 1 ? "jours" : "jour"}
+          {delay.numberOfDay} {delay.numberOfDay > 1 ? "jours" : "jour"}
           <span className="option-price">{` (+ ${delay.price} F CFA)`}</span>
         </span>{" "}
       </span>

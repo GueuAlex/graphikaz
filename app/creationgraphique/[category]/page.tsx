@@ -6,7 +6,7 @@ import "@/styles/checkout_side_bar.scss";
 import "@/styles/uderline_style.scss";
 import { PathnameComponent } from "@/components";
 import { TServiceCard, Wrapper } from "@/reutilisables";
-import { ApiCategoryProps, apiServiceProps } from "@/types";
+import { ApiCategoryProps, apiServiceProps, GraphicServProps } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import Loader from "@/reutilisables/laoder";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
@@ -177,8 +177,8 @@ export default function Page({ params }: { params: Params }) {
   }
 
   // Récupérez tous les services dont l'id de catégorie correspond à celui de findedCategory
-  const filteredServices: apiServiceProps[] = servicesList.filter(
-    (service) => service.category_id === findedCategory!.id
+  const filteredServices: GraphicServProps[] = servicesList.filter(
+    (service) => service.categoryId === findedCategory!.id
   );
 
   return (
@@ -458,7 +458,7 @@ export default function Page({ params }: { params: Params }) {
           <div className="cat-service-cards mt-4">
             {visibleServices.map((service, index) => {
               const category: ApiCategoryProps = categories.find(
-                (c) => c.id === service.category_id
+                (c) => c.id === service.categoryId
               )!;
               return (
                 <TServiceCard
