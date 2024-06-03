@@ -61,8 +61,7 @@ const TServiceCard = ({
             <p className="first-link text-stone-900 font-[300] text-[1.2rem] line-clamp-2">
               {service.libelle} Lorem ipsum dolor sit amet consectetur
               adipisicing elit. Quo possimus beatae enim quas unde. Quaerat
-              delectus exercitationem placeat dolore illum consectetur ipsam
-              recusandae sed perspiciatis eius, aut ut explicabo magni.
+              delectus exercitationem placeat dolore
             </p>
             {service.libelle.length < 50 ? <br /> : ""}
             {/*  <p className="mt-3 text-stone-500">
