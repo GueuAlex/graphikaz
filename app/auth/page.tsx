@@ -1,7 +1,7 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
-import React, { useState } from "react";
+import { useEffect, Suspense } from "react";
+import React from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import "./aut.css";
@@ -11,7 +11,6 @@ import { useSession } from "next-auth/react";
 
 const Auth = () => {
   const { status, data } = useSession();
-
   const route = useRouter();
 
   useEffect(() => {
@@ -19,45 +18,42 @@ const Auth = () => {
       route.replace("/");
     }
   }, [status]);
-  const searchParams = useSearchParams();
 
-  // Utilise la méthode get() de l'objet searchParams pour récupérer la valeur du paramètre 'et'
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AuthContent />
+    </Suspense>
+  );
+};
+
+const AuthContent = () => {
+  const searchParams = useSearchParams();
   const et = searchParams!.get("et");
   //const [state, setState] = useState("authlinks");
+
   useEffect(() => {
-    // Vérifier si le composant est rendu côté client
-    // avant de traiter les paramètres
     if (typeof window !== "undefined") {
-      // Utiliser les paramètres ici
       console.log(et);
     }
   }, [et]);
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <div className="login-signup-page">
-        <div className="m-container">
-          {et === "signin" ? (
-            <SignUp />
-          ) : et === "login" ? (
-            <Login /* setState={setState} */ />
-          ) : (
-            <AuthLinks /* setState={setState} */ />
-          )}
-        </div>
+    <div className="login-signup-page">
+      <div className="m-container">
+        {et === "signin" ? (
+          <SignUp />
+        ) : et === "login" ? (
+          <Login /* setState={setState} */ />
+        ) : (
+          <AuthLinks /* setState={setState} */ />
+        )}
       </div>
-    </Suspense>
+    </div>
   );
 };
 
 //type SetIsLoginFunction = (newValue: string) => void;
 const AuthLinks = (/* { setState }: { setState: SetIsLoginFunction } */) => {
-  /*  const handleClick = () => {
-    setState("login");
-  }; */
-  /* const handleClick2 = () => {
-    setState("");
-  }; */
   const router = useRouter();
   return (
     <div className="auth-card">
@@ -72,7 +68,7 @@ const AuthLinks = (/* { setState }: { setState: SetIsLoginFunction } */) => {
       </span>
       <div className="buttons-group">
         <button type="button">
-          <i className="ri-facebook-fill"></i> Inscription avec facebook
+          <i className="ri-facebook-fill"></i> Inscription avec Facebook
         </button>
         <button type="button">
           <i className="ri-google-fill"></i> Inscription avec Google
