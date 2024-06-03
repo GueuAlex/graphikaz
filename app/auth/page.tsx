@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -23,7 +23,7 @@ const Auth = () => {
 
   // Utilise la méthode get() de l'objet searchParams pour récupérer la valeur du paramètre 'et'
   const et = searchParams!.get("et");
-  const [state, setState] = useState("authlinks");
+  //const [state, setState] = useState("authlinks");
   useEffect(() => {
     // Vérifier si le composant est rendu côté client
     // avant de traiter les paramètres
@@ -34,17 +34,19 @@ const Auth = () => {
   }, [et]);
 
   return (
-    <div className="login-signup-page">
-      <div className="m-container">
-        {et === "signin" ? (
-          <SignUp />
-        ) : et === "login" ? (
-          <Login /* setState={setState} */ />
-        ) : (
-          <AuthLinks /* setState={setState} */ />
-        )}
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="login-signup-page">
+        <div className="m-container">
+          {et === "signin" ? (
+            <SignUp />
+          ) : et === "login" ? (
+            <Login /* setState={setState} */ />
+          ) : (
+            <AuthLinks /* setState={setState} */ />
+          )}
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 
