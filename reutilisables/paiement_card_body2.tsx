@@ -228,7 +228,7 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
           <div className="paiement-info-body">
             {/* <CreditCardForm /> */}
             {/* <MobileMoneyForm method={selectedMetohd} />      */}
-            {selectedMetohd === "Carte de Crédit" ? (
+            {/*  {selectedMetohd === "Carte de Crédit" ? (
               <CreditCardForm
                 montant={calculateTotalPrice()}
                 method={selectedMetohd}
@@ -240,7 +240,7 @@ const PaiementCardBody2: React.FC<PaiementCardBodyProps> = ({
                 defaultOrder={undefined}
                 customeOrder={customeOrder}
               />
-            )}
+            )} */}
           </div>
         </div>
       </div>
