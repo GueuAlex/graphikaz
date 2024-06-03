@@ -4,13 +4,14 @@ import React, { useEffect, useState } from "react";
 import { PathnameComponent } from "@/components";
 import {
   ApiCategoryProps,
+  GraphicServProps,
   OptionsProps,
   apiServiceProps,
   packProps,
 } from "@/types";
 import Image from "next/image";
 
-import { fetchAllData, getCategories } from "@/types/api_services";
+import { fetchServices, getCategories } from "@/types/api_services";
 import { TServiceCard, Wrapper } from "@/reutilisables";
 import Error404 from "@/reutilisables/404";
 import Loader from "@/reutilisables/laoder";
@@ -22,7 +23,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   ///////////// fetching data from api ///////////////:
   async function fetchAndUseData() {
     try {
-      const data = await fetchAllData();
+      const data = await fetchServices();
       return data;
       //console.log(data.at(0)?.libelle);
       // Faites quelque chose avec les données ici
@@ -31,10 +32,10 @@ export default function Page({ params }: { params: { slug: string } }) {
     }
   }
   const [isLaoding, setIsloadin] = useState(true);
-  const [services, setData] = useState<apiServiceProps[]>([]);
+  const [services, setData] = useState<GraphicServProps[]>([]);
   const [categoriesList, setcategoriesList] = useState<ApiCategoryProps[]>([]);
   const [categoriesIsLaoding, setcategoriesIsloadin] = useState(true);
-  const [filteredServices, setFilteredServices] = useState<apiServiceProps[]>(
+  const [filteredServices, setFilteredServices] = useState<GraphicServProps[]>(
     []
   );
   async function getCategoriesList() {
@@ -50,7 +51,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   useEffect(() => {
     fetchAndUseData()
       .then((data) => {
-        const servicesList: apiServiceProps[] = data!;
+        const servicesList: GraphicServProps[] = data!;
         setData(servicesList);
         // Maintenant, vous pouvez utiliser les données ici
         //console.log(servicesList);
@@ -85,23 +86,23 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   ///////////////////::
   //// filtre de services
-  function matchesTitle(service: apiServiceProps, title: string): boolean {
+  function matchesTitle(service: GraphicServProps, title: string): boolean {
     // Vérifier si le libellé du service correspond au titre
     if (service.libelle.toLowerCase().includes(title.toLowerCase())) {
       return true;
     }
 
     // Vérifier si le libellé d'un pack de service correspond au titre
-    if (
+    /*  if (
       service.pack_services.some((pack) =>
         pack.libelle.toLowerCase().includes(title.toLowerCase())
       )
     ) {
       return true;
-    }
+    } */
 
     // Vérifier si le libellé d'une option dans un pack de service correspond au titre
-    if (
+    /*  if (
       service.pack_services.some((pack) =>
         pack.ligne_services.some((option) =>
           option.libelle.toLowerCase().includes(title.toLowerCase())
@@ -109,7 +110,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       )
     ) {
       return true;
-    }
+    } */
 
     return false;
   }
@@ -200,7 +201,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         <div className="cat-service-cards">
           {visibleServices.map((service, index) => {
             const category: ApiCategoryProps = categoriesList.find(
-              (c) => c.id === service.category_id
+              (c) => c.id === service.categoryId
             )!;
             return (
               <TServiceCard service={service} category={category} key={index} />

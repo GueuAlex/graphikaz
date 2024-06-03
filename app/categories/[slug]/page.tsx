@@ -4,11 +4,17 @@ import { Carousel } from "react-responsive-carousel";
 import React, { useEffect, useRef, useState } from "react";
 import { Wrapper } from "@/reutilisables";
 import { PathnameComponent } from "@/components";
-import { OptionsProps, apiServiceProps, packProps } from "@/types";
+import {
+  GraphicServPack,
+  GraphicServProps,
+  OptionsProps,
+  apiServiceProps,
+  packProps,
+} from "@/types";
 import Image from "next/image";
 
 import Rate from "@/reutilisables/rate";
-import { fetchAllData } from "@/types/api_services";
+
 import { Imgold } from "@/public";
 import PaiementCardBody from "@/reutilisables/paiement_card_body";
 import PaiementCardBody2 from "@/reutilisables/paiement_card_body2";
@@ -21,6 +27,7 @@ import { useSession } from "next-auth/react";
 import "./service_detail.scss";
 import "../categories.scss";
 import "../../../styles/checkout_side_bar.scss";
+import { fetchServices } from "@/types/api_services";
 
 interface Params {
   slug: string;
@@ -33,7 +40,7 @@ export default function Page({ params }: { params: Params }) {
   ///////////// fetching data from api ///////////////:
   async function fetchAndUseData() {
     try {
-      const data = await fetchAllData();
+      const data = await fetchServices();
       return data;
       //console.log(data.at(0)?.libelle);
       // Faites quelque chose avec les données ici
@@ -42,11 +49,11 @@ export default function Page({ params }: { params: Params }) {
     }
   }
   const [isLaoding, setIsloadin] = useState(true);
-  const [services, setData] = useState<apiServiceProps[]>([]);
+  const [services, setData] = useState<GraphicServProps[]>([]);
   useEffect(() => {
     fetchAndUseData()
       .then((data) => {
-        const services: apiServiceProps[] = data!;
+        const services: GraphicServProps[] = data!;
         setData(services);
         if (services !== undefined) {
           // Maintenant, vous pouvez utiliser les données ici
@@ -63,7 +70,7 @@ export default function Page({ params }: { params: Params }) {
   /////////////////////
   //const montant = 0;
   const title = decodeURIComponent(slug);
-  const service: apiServiceProps | undefined = services.find(
+  const service: GraphicServProps | undefined = services.find(
     (serv) => serv.libelle === title
   );
   ////////////////////
@@ -138,14 +145,14 @@ export default function Page({ params }: { params: Params }) {
       </AnimatePresence>
     );
   }
-  if (service && service.pack_services.length <= 0) {
+  if (service && service.packs.length <= 0) {
     return <OnEditing />;
   }
 
-  if (service && service.pack_services.length > 0) {
+  if (service && service.packs.length > 0) {
     //
     //const service: apiServiceProps = pack.service;
-    const packs: packProps[] = service.pack_services;
+    const packs: GraphicServPack[] = service.packs;
     console.log("this service", service);
     console.log("paaacks", packs);
     console.log("custom packs", selectedPackList);
@@ -189,7 +196,7 @@ export default function Page({ params }: { params: Params }) {
             {/* paiement card body */}
             <PaiementCardBody
               updateToggle={updateToggle}
-             /*  defaultPack={selectedPack}
+              /*  defaultPack={selectedPack}
               service={service} */
             />
             {/* end paiement card body */}
@@ -221,12 +228,12 @@ export default function Page({ params }: { params: Params }) {
               <div></div>
             )}
             {/* paiement card body */}
-            <PaiementCardBody2
+            {/*  <PaiementCardBody2
               updateToggle={updateToggle1}
               seletedOptionsList={selectedOptionsList}
               seletedPackList={selectedPackList}
               servce={service}
-            />
+            /> */}
             {/* end paiement card body */}
           </div>
         </aside>
@@ -307,9 +314,9 @@ export default function Page({ params }: { params: Params }) {
         {/* banner */}
         <div className="bannerss relative flex justify-center items-center">
           <div className=" max-w-[110rem] w-full">
-            <BannerContainer
+            {/* <BannerContainer
               service={service} //prestator={prestator}
-            />
+            /> */}
           </div>
         </div>
         {/* banner container */}
@@ -328,7 +335,8 @@ export default function Page({ params }: { params: Params }) {
 
                       <small>
                         {packs.length > 0
-                          ? packs[0].delais_livraison + " jours"
+                          ? packs[0].normalExecutionDeadline.numberOfDay +
+                            " jours"
                           : ""}
                       </small>
                     </div>
@@ -365,17 +373,14 @@ export default function Page({ params }: { params: Params }) {
               <div className="service-carousel">
                 <div className="carousel-slider">
                   <Carousel className=" w-full" showThumbs={false}>
-                    {service.image_services.length > 0
-                      ? service.image_services.map((cover, index) => (
+                    {service.covers.length > 0
+                      ? service.covers.map((cover, index) => (
                           <div
                             id={`item${index + 1}`}
                             className="carousel-item relative w-full"
                           >
                             <img
-                              src={
-                                "https://graphikaz.digifaz.com/api/photo_service/" +
-                                cover.libelle
-                              }
+                              src={cover}
                               /* width={576}
                               height={768} */
                               alt={"service.title"}
@@ -409,17 +414,14 @@ export default function Page({ params }: { params: Params }) {
                       />
                     </div>
                   ))} */}
-                  {service.image_services.length > 0
-                    ? service.image_services.map((cover, index) => (
+                  {service.covers.length > 0
+                    ? service.covers.map((cover, index) => (
                         <div
                           className="carousel-item relative w-[9em] h-[7.5em]"
                           key={index}
                         >
                           <img
-                            src={
-                              "https://graphikaz.digifaz.com/api/photo_service/" +
-                              cover.libelle
-                            }
+                            src={cover}
                             /*  width={576}
                             height={768} */
                             alt={"service.title"}
@@ -444,15 +446,7 @@ export default function Page({ params }: { params: Params }) {
                 <div className="descriptions">
                   <h2>Service Description</h2>
                   <p className="text-small">
-                    {service.description} <br />
-                    Sed ut perspiciatis unde omnis iste natus error sit
-                    voluptatem accusantium doloremque laudantium, totam rem
-                    aperiam, eaque ipsa quae ab illo inventore veritatis et
-                    quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                    enim ipsam voluptatem quia voluptas sit aspernatur aut odit
-                    aut fugit, sed quia consequuntur magni dolores eos qui
-                    ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-                    qui dolorem ipsum quia dolor sit amet.
+                    {service.fullDescription} <br />
                   </p>
                   {/* pack accordeon */}
                   <div className="other-provide-services">
@@ -469,20 +463,20 @@ export default function Page({ params }: { params: Params }) {
                                 {pack.libelle + " "}
                               </span>
                               <span className="text-[15px] font-[700] underline decoration-yellow-600">
-                                {" " + pack.montant + " FCFA"}
+                                {" " + "pack.montant" + " FCFA"}
                               </span>
                             </div>
                             <div className="collapse-content">
                               <ul className="text-small">
                                 <li>Bénéficier de :</li>
-                                {pack.ligne_services.map((ligne, index) => {
+                                {/*  {pack.ligne_services.map((ligne, index) => {
                                   return (
                                     <li>
                                       <i className="ri-check-fill"></i>{" "}
                                       {ligne.libelle}
                                     </li>
                                   );
-                                })}
+                                })} */}
                               </ul>
                             </div>
                           </div>
@@ -497,11 +491,11 @@ export default function Page({ params }: { params: Params }) {
                 <div className="small-screen-only">
                   <div className="left sticky-r">
                     <div className=" ">
-                      <DefaultPacks
+                      {/*   <DefaultPacks
                         packs={packs}
                         setOrderPack={setSelectedPack}
                         updateToggle={updateToggle}
-                      />
+                      /> */}
                       {/* THIS SERVICE PROVIDER INFOS */}
                       {/* <div className="prestator-infos shadow">
                   <h3>À propos du vendeur</h3>
@@ -572,13 +566,13 @@ export default function Page({ params }: { params: Params }) {
                           <div className="service-base-libelle text-[18px] font-[600]">
                             <p>{service.libelle}</p>
                             <small className="text-gray-500 font-[300]">
-                              {packs[0].delais_livraison +
+                              {"packs[0].delais_livraison " +
                                 " jours de réalisation"}
                             </small>
                           </div>
                         </div>
                         <span className="text-[18px] font-[600]">
-                          {packs[0].montant + " FCFA"}
+                          {"packs[0].montant" + " FCFA"}
                         </span>
                       </div>
 
@@ -587,12 +581,12 @@ export default function Page({ params }: { params: Params }) {
                       </p>
 
                       {/* use map */}
-                      <ServiceOptions
+                      {/*  <ServiceOptions
                         service={service}
                         updateToggle={updateToggle1}
                         setPacksList={setSelectedPackList}
                         setOptionsList={setSelectedOptionsList}
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>
@@ -684,11 +678,11 @@ export default function Page({ params }: { params: Params }) {
 
             <div className="left sticky-r" style={style}>
               <div className="sticky top-0">
-                <DefaultPacks
+                {/* <DefaultPacks
                   packs={packs}
                   setOrderPack={setSelectedPack}
                   updateToggle={updateToggle}
-                />
+                /> */}
                 {/* THIS SERVICE PROVIDER INFOS */}
                 {/* <div className="prestator-infos shadow">
                   <h3>À propos du vendeur</h3>
