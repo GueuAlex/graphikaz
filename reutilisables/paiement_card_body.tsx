@@ -172,10 +172,10 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
                       </small>
                       <span className="this-option-tilte">
                         {item.libelle}{" "}
-                        {item.value &&
-                          item.value.map((value, index) => (
+                        {item.values &&
+                          item.values.map((value, index) => (
                             <b key={index}>
-                              {value.value_type === contextPack.libelle &&
+                              {value.valueType === contextPack.libelle &&
                                 `(${value.value})`}
                             </b>
                           ))}{" "}
@@ -197,10 +197,10 @@ const PaiementCardBody: React.FC<PaiementCardBodyProps> = ({
                         </small>
                         <span className="this-option-tilte">
                           {item.libelle}{" "}
-                          {item.value &&
-                            item.value.map((value, index) => (
+                          {item.values &&
+                            item.values.map((value, index) => (
                               <b key={index}>
-                                {value.value_type === contextPack.libelle &&
+                                {value.valueType === contextPack.libelle &&
                                   `(${value.value})`}
                               </b>
                             ))}{" "}

@@ -176,10 +176,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               libelle: item.libelle,
               price: item.price,
               type: item.type as GraphicServPackType,
-              value: item.values.map((v) => ({
+              values: item.values.map((v) => ({
                 id: 0,
                 value: v.value,
-                value_type: v.valueType as GraphicServPackType,
+                valueType: v.valueType as GraphicServPackType,
               })),
             }));
           break;
@@ -191,10 +191,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               libelle: item.libelle,
               price: item.price,
               type: item.type as GraphicServPackType,
-              value: item.values.map((v) => ({
+              values: item.values.map((v) => ({
                 id: 0,
                 value: v.value,
-                value_type: v.valueType as GraphicServPackType,
+                valueType: v.valueType as GraphicServPackType,
               })),
             }));
           break;
@@ -204,10 +204,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             libelle: item.libelle,
             price: item.price,
             type: item.type as GraphicServPackType,
-            value: item.values.map((v) => ({
+            values: item.values.map((v) => ({
               id: 0,
               value: v.value,
-              value_type: v.valueType as GraphicServPackType,
+              valueType: v.valueType as GraphicServPackType,
             })),
           }));
           break;
@@ -221,10 +221,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           id: 0,
           libelle: item.libelle,
           price: item.price,
-          value: item.values.map((v) => ({
+          values: item.values.map((v) => ({
             id: 0,
             value: v.value,
-            value_type: v.valueType as GraphicServPackType,
+            valueType: v.valueType as GraphicServPackType,
           })),
         })
       );
