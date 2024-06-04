@@ -15,7 +15,6 @@ import {
   ItemSelectedOnProps,
   PriceData,
   PriceFunctions,
-  apiServiceProps,
 } from "@/types";
 
 import PaiementCardBody from "@/reutilisables/paiement_card_body";

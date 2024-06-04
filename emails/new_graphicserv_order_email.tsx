@@ -150,11 +150,11 @@ export const NewGraphicServOrderEmail = ({
                       {" "}
                       <small style={{ fontWeight: "600" }}>
                         {item.libelle}{" "}
-                        {item.value &&
-                          item.value.map((v, index) => (
+                        {item.values &&
+                          item.values.map((v, index) => (
                             <b key={index}>
                               {" "}
-                              {v.value_type === packType ? ` (${v.value})` : ""}
+                              {v.valueType === packType ? ` (${v.value})` : ""}
                             </b>
                           ))}
                       </small>
@@ -170,11 +170,11 @@ export const NewGraphicServOrderEmail = ({
                       {" "}
                       <small style={{ fontWeight: "600" }}>
                         {item.libelle}{" "}
-                        {item.value &&
-                          item.value.map((v, index) => (
+                        {item.values &&
+                          item.values.map((v, index) => (
                             <b key={index}>
                               {" "}
-                              {v.value_type === packType ? ` (${v.value})` : ""}
+                              {v.valueType === packType ? ` (${v.value})` : ""}
                             </b>
                           ))}
                       </small>
@@ -353,7 +353,7 @@ NewGraphicServOrderEmail.PreviewProps = {
       libelle: "Transparence de logo",
       price: 500,
       type: GraphicServPackType.BASIQUE,
-      value: null,
+      values: null,
     },
     {
       id: 2,
@@ -375,7 +375,7 @@ NewGraphicServOrderEmail.PreviewProps = {
       id: 6,
       libelle: "Offre optionnel 1",
       price: 4000,
-      value: null,
+      values: null,
     },
     {
       id: 7,

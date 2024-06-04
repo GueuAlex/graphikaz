@@ -9,6 +9,7 @@ import {
 import { useContext, useState } from "react";
 import { LocalContext } from "./local_context";
 import { AnimatePresence, motion } from "framer-motion";
+import { B } from "@vercel/blob/dist/helpers-BfcvAwfQ.cjs";
 
 interface PricingCardContentProps {
   selectePack: GraphicServPack;
@@ -110,7 +111,14 @@ export const PricingCardContent: React.FC<PricingCardContentProps> = ({
                     )} flex items-center gap-2`}
                   >
                     <i className={`bi bi-check-lg `}></i>{" "}
-                    <span>{item.libelle}</span>
+                    <span>{item.libelle}</span>{" "}
+                    {item.values &&
+                      item.values.map((v, indexx) => (
+                        <b key={indexx}>
+                          {v.valueType === selectePack.libelle &&
+                            `(${v.value})`}
+                        </b>
+                      ))}
                   </li>
                 ))}
                 {seletedOptionalItems &&
@@ -118,7 +126,14 @@ export const PricingCardContent: React.FC<PricingCardContentProps> = ({
                   seletedOptionalItems.optionalItems.map((item, index) => (
                     <li key={index} className={` flex items-center gap-2`}>
                       <i className={`bi bi-check-lg `}></i>{" "}
-                      <span>{item.libelle}</span>
+                      <span>{item.libelle}</span>{" "}
+                      {item.values &&
+                        item.values.map((v, indexx) => (
+                          <b key={indexx}>
+                            {v.valueType === selectePack.libelle &&
+                              `(${v.value})`}
+                          </b>
+                        ))}
                     </li>
                   ))}
               </ul>

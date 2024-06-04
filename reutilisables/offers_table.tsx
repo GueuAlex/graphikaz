@@ -489,7 +489,7 @@ const OfferTr: React.FC<OfferTrProps> = ({ offer }) => {
     }
     return "";
   }
-  if (offer.value) {
+  if (offer.values && offer.values.length > 0) {
     return (
       <tr className="mt-4">
         <td className="package-row-label">
@@ -499,15 +499,15 @@ const OfferTr: React.FC<OfferTrProps> = ({ offer }) => {
         </td>
         <td className={`check-icon cell`}>
           {/* <i className="bi bi-check2"></i> zz */}
-          <span>{offer.value[0].value}</span>
+          <span>{offer.values[0].value}</span>
         </td>
         <td className={`check-icon cell`}>
           {/* <i className="bi bi-check2"></i> zz */}
-          <span>{offer.value[1].value}</span>
+          <span>{offer.values[1].value}</span>
         </td>
         <td className={`check-icon cell`}>
           {/* <i className="bi bi-check2"></i> zz */}
-          <span>{offer.value[2].value}</span>
+          <span>{offer.values[2].value}</span>
         </td>
       </tr>
     );

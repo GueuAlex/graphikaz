@@ -15,8 +15,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
               normalExecutionDeadline: true,
             },
           },
-          items: true,
-          optionalItems: true,
+          items: {
+            include: {
+              values: { select: { id: true, value: true, valueType: true } },
+            },
+          },
+          optionalItems: {
+            include: {
+              values: { select: { id: true, value: true, valueType: true } },
+            },
+          },
           faq: true,
         },
       });

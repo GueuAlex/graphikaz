@@ -312,13 +312,13 @@ export interface GraphicServProps {
 export interface GraphicServItemValueProps {
   id: number;
   value: string;
-  value_type: GraphicServPackType;
+  valueType: GraphicServPackType;
 }
 
 export interface GraphicServOptionalItemProps {
   id: number;
   libelle: string;
-  value: GraphicServItemValueProps[] | null;
+  values: GraphicServItemValueProps[] | null;
   price: number;
 }
 export interface GraphicServItemProps extends GraphicServOptionalItemProps {

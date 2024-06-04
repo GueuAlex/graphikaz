@@ -1193,19 +1193,19 @@ export const graphic_serv_optional_items: GraphicServOptionalItemProps[] = [
     id: 5,
     libelle: "Fichier source",
     price: 1000,
-    value: null,
+    values: null,
   },
   {
     id: 6,
     libelle: "Offre optionnel 1",
     price: 4000,
-    value: null,
+    values: null,
   },
   {
     id: 7,
     libelle: "Offre optionnel 2",
     price: 3000,
-    value: null,
+    values: null,
   },
 ];
 export const graphic_serv_items: GraphicServItemProps[] = [
@@ -1214,28 +1214,28 @@ export const graphic_serv_items: GraphicServItemProps[] = [
     libelle: "Transparence de logo",
     price: 500,
     type: GraphicServPackType.BASIQUE,
-    value: null,
+    values: null,
   },
   {
     id: 2,
     libelle: "Fichier vectoriel",
     price: 600,
     type: GraphicServPackType.STANDARD,
-    value: null,
+    values: null,
   },
   {
     id: 3,
     libelle: "Fichier imprimable",
     price: 700,
     type: GraphicServPackType.BASIQUE,
-    value: null,
+    values: null,
   },
   {
     id: 4,
     libelle: "Maquette 3D",
     price: 800,
     type: GraphicServPackType.STANDARD,
-    value: null,
+    values: null,
   },
 
   {
@@ -1243,35 +1243,35 @@ export const graphic_serv_items: GraphicServItemProps[] = [
     libelle: "Conceptions de papeterie",
     price: 1500,
     type: GraphicServPackType.PREMIUM,
-    value: null,
+    values: null,
   },
   {
     id: 7,
     libelle: "Kit réseaux sociaux",
     price: 1500,
     type: GraphicServPackType.STANDARD,
-    value: null,
+    values: null,
   },
   {
     id: 8,
     libelle: "Nombre de concepts inclus",
     price: 2000,
     type: GraphicServPackType.BASIQUE,
-    value: [
+    values: [
       {
         id: 1,
         value: "2",
-        value_type: GraphicServPackType.BASIQUE,
+        valueType: GraphicServPackType.BASIQUE,
       },
       {
         id: 2,
         value: "4",
-        value_type: GraphicServPackType.STANDARD,
+        valueType: GraphicServPackType.STANDARD,
       },
       {
         id: 3,
         value: "6",
-        value_type: GraphicServPackType.PREMIUM,
+        valueType: GraphicServPackType.PREMIUM,
       },
     ],
   },
@@ -1280,21 +1280,21 @@ export const graphic_serv_items: GraphicServItemProps[] = [
     libelle: "Revision",
     price: 3000,
     type: GraphicServPackType.BASIQUE,
-    value: [
+    values: [
       {
         id: 1,
         value: "2",
-        value_type: GraphicServPackType.BASIQUE,
+        valueType: GraphicServPackType.BASIQUE,
       },
       {
         id: 2,
         value: "4",
-        value_type: GraphicServPackType.STANDARD,
+        valueType: GraphicServPackType.STANDARD,
       },
       {
         id: 3,
         value: "Illimité",
-        value_type: GraphicServPackType.PREMIUM,
+        valueType: GraphicServPackType.PREMIUM,
       },
     ],
   },
