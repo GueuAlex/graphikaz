@@ -279,12 +279,6 @@ async function main() {
     ],
   });
 
-  // Update the pack to add the normalExecutionDeadlineId
-  /* await prisma.graphicServPack.update({
-    where: { id: pack.id },
-    data: { normalExecutionDeadline: { connect: { id: normalDeadline.id } } },
-  }); */
-
   // ExpressExecutionDeadline (optional)
   const expressDeadline = await prisma.expressExecutionDeadline.createMany({
     data: [
@@ -371,37 +365,6 @@ async function main() {
       },
     ],
   });
-
-  // GraphicServOrder
-  /* const order = await prisma.graphicServOrder.create({
-    data: {
-      orderRef: "ORDER123",
-      packType: "BASIQUE",
-      deliveryDelay: 7,
-      orderStatus: "PENDING",
-      userId: user.id,
-      createdAt: new Date(),
-    },
-  }); */
-
-  // Transaction
-  /*  const transaction = await prisma.transaction.create({
-    data: {
-      amount: 150,
-      transactionRef: "TX123",
-      paiementType: "CASH",
-      paiementStatus: "ACCEPTED",
-      orderId: order.id,
-    },
-  }); */
-
-  // OrderService
-  /* const orderService = await prisma.orderService.create({
-    data: {
-      graphicServOrderId: order.id,
-      graphicServId: graphicServ.id,
-    },
-  }); */
 
   console.log("Data has been seeded");
 }
